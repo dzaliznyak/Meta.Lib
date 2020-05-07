@@ -137,7 +137,7 @@ namespace Meta.Lib.Examples
 
             hub.Subscribe<MyMessage>(OnMyMessage);
             await hub.Publish(message);
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandlerWithException);
+            hub.Unsubscribe<MyMessage>(OnMyMessage);
         }
 
         // message filtering - you can define a predicate to subscribe only those messages you want to process
