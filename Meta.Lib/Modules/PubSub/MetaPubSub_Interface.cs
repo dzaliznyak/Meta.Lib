@@ -62,10 +62,11 @@ namespace Meta.Lib.Modules.PubSub
         /// <param name="millisecondsTimeout">Time interval during which the response message must be received otherwise the TimeoutException will be thrown</param>
         /// <param name="cancellationToken">The cancellation token that can be used to discard awaiting the response message</param>
         /// <returns>A Task that can be awaited until the response message has been arrived</returns>
-        public Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout, CancellationToken cancellationToken = default)
+        public Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout, 
+            Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {
-            return _requestResponseProcessor.Process<TResponse>(message, millisecondsTimeout, cancellationToken);
+            return _requestResponseProcessor.Process(message, millisecondsTimeout, match, cancellationToken);
         }
 
         /// <summary>

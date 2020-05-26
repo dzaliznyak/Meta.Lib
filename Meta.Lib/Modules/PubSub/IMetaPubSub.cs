@@ -17,7 +17,8 @@ namespace Meta.Lib.Modules.PubSub
         Task<TMessage> When<TMessage>(int millisecondsTimeout, CancellationToken cancellationToken = default)
             where TMessage : class, IPubSubMessage;
 
-        Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout, CancellationToken cancellationToken = default)
+        Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout, 
+            Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage;
 
         void Schedule(IPubSubMessage message, int millisecondsDelay, CancellationToken cancellationToken = default);

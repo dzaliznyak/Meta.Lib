@@ -54,18 +54,25 @@ namespace Meta.Lib.Modules.PubSub
 
     internal class Node
     {
+        readonly object _lock = new object();
         ImmutableList<Subscriber> _subscribers = ImmutableList<Subscriber>.Empty;
 
         public IReadOnlyCollection<Subscriber> Subscribers => _subscribers;
 
         public void Add(Subscriber subscriber)
         {
-            _subscribers = _subscribers.Add(subscriber);
+            lock (_lock)
+            {
+                _subscribers = _subscribers.Add(subscriber);
+            }
         }
 
         public void Remove(Subscriber subscriber)
         {
-            _subscribers = _subscribers.Remove(subscriber);
+            lock (_lock)
+            {
+                _subscribers = _subscribers.Remove(subscriber);
+            }
         }
 
         public Subscriber Find(Predicate<Subscriber> match)

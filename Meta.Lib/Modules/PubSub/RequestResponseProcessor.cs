@@ -37,7 +37,10 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        public async Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout, CancellationToken cancellationToken)
+        public async Task<TResponse> Process<TResponse>(IPubSubMessage message, 
+            int millisecondsTimeout,
+            Predicate<TResponse> match = null,
+            CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {
             var tcs = new TaskCompletionSource<TResponse>();
@@ -48,7 +51,7 @@ namespace Meta.Lib.Modules.PubSub
                 return Task.CompletedTask;
             }
 
-            _hub.Subscribe((Func<TResponse, Task>)Handler, null);
+            _hub.Subscribe(Handler, match);
 
             try
             {

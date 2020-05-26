@@ -11,10 +11,11 @@
     <Copyright>Copyright © 2020 Denys Zaliznyak</Copyright>
     <Authors>Denys Zaliznyak</Authors>
     <RepositoryUrl>https://github.com/dzaliznyak/Meta.Lib.git</RepositoryUrl>
-    <Description>A set of classes and modules for .Net development</Description>
-    <PackageReleaseNotes>Publisher/Subscriber module is ready</PackageReleaseNotes>
-    <PackageTags>publish-subscribe utility csharp event-driven event-hub publisher-subscriber library</PackageTags>
+    <Description>A set of classes and modules for .Net development including MetaPubSub - Publish-Subscribe pattern implementation</Description>
+    <PackageReleaseNotes>Publisher-Subscriber module is ready</PackageReleaseNotes>
+    <PackageTags>publish-subscribe utility csharp event-driven event-hub publisher-subscriber library pubsub</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

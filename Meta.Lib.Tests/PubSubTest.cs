@@ -9,6 +9,7 @@ namespace Meta.Lib.Tests
 {
     public class MyMessage : PubSubMessageBase
     {
+        public int SomeId { get; set; }
         public int DeliveredCount { get; set; }
         public MetaLogErrorSeverity LogSeverity { get; set; }
     }
@@ -268,6 +269,44 @@ namespace Meta.Lib.Tests
             var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Information, DeliverAtLeastOnce = true, Timeout = 100 };
             var res = await hub.Process<MyEvent>(message, 100);
             Assert.IsNotNull(res);
+        }
+
+        [TestMethod]
+        public async Task Test_MultiProcess()
+        {
+            var hub = new MetaPubSub();
+
+            Task Handler(MyMessage x)
+            {
+                hub.Publish(new MyEvent() { SomeId = x.SomeId });
+                return Task.CompletedTask;
+            }
+
+            hub.Subscribe<MyMessage>(Handler);
+
+            var t1 = Task.Run(async () =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    var message = new MyMessage { SomeId = i, DeliverAtLeastOnce = true, Timeout = 100 };
+                    var res = await hub.Process<MyEvent>(message, 1000, x => x.SomeId == i);
+                    Assert.IsNotNull(res);
+                    Assert.IsTrue(res.SomeId == i);
+                }
+            });
+
+            var t2 = Task.Run(async () =>
+            {
+                for (int i = 100; i < 200; i++)
+                {
+                    var message = new MyMessage { SomeId = i, DeliverAtLeastOnce = true, Timeout = 100 };
+                    var res = await hub.Process<MyEvent>(message, 1000, x => x.SomeId == i);
+                    Assert.IsNotNull(res);
+                    Assert.IsTrue(res.SomeId == i);
+                }
+            });
+
+            await Task.WhenAll(t1, t2);
         }
 
         [TestMethod]

@@ -13,6 +13,13 @@ MetaPubSub is an implementation of the publish/subscribe pattern - when the publ
 - cancellation token support - you can cancel scheduling or waiting for the message
 - exceptions handling - all exceptions raised when a message processing by subscribers can be caught by the publisher as an AggregateException
 
+# NuGet packages
+
+To install the [Meta.Lib](https://www.nuget.org/packages/Meta.Lib/) run the following command:
+```Powershell
+PM> Install-Package Meta.Lib 
+```
+
 # How to use
 ## Hub creation
 ```c#
