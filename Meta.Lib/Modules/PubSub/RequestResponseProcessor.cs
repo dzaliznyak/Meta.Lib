@@ -14,7 +14,9 @@ namespace Meta.Lib.Modules.PubSub
             _hub = hub;
         }
 
-        public async Task<TMessage> When<TMessage>(int millisecondsTimeout, CancellationToken cancellationToken)
+        public async Task<TMessage> When<TMessage>(int millisecondsTimeout, 
+            Predicate<TMessage> match = null,
+            CancellationToken cancellationToken = default)
             where TMessage : class, IPubSubMessage
         {
             var tcs = new TaskCompletionSource<TMessage>();
@@ -25,7 +27,7 @@ namespace Meta.Lib.Modules.PubSub
                 return Task.CompletedTask;
             }
 
-            _hub.Subscribe((Func<TMessage, Task>)Handler, null);
+            _hub.Subscribe(Handler, match);
 
             try
             {

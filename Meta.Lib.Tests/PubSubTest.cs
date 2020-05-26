@@ -243,7 +243,7 @@ namespace Meta.Lib.Tests
             bool exception = false;
             try
             {
-                var res = await hub.When<MyEvent>(200, cts.Token);
+                var res = await hub.When<MyEvent>(200, null, cts.Token);
                 Assert.IsTrue(false);
             }
             catch (OperationCanceledException)

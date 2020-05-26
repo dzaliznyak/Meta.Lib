@@ -48,10 +48,11 @@ namespace Meta.Lib.Modules.PubSub
         /// <returns>A Task that can be awaited until the message has been arrived</returns>
         /// <exception cref="TimeoutException"></exception>
         /// <exception cref="OperationCanceledException"></exception>
-        public Task<TMessage> When<TMessage>(int millisecondsTimeout, CancellationToken cancellationToken = default)
+        public Task<TMessage> When<TMessage>(int millisecondsTimeout, Predicate<TMessage> match = null, 
+            CancellationToken cancellationToken = default)
             where TMessage : class, IPubSubMessage
         {
-            return _requestResponseProcessor.When<TMessage>(millisecondsTimeout, cancellationToken);
+            return _requestResponseProcessor.When(millisecondsTimeout, match, cancellationToken);
         }
 
         /// <summary>

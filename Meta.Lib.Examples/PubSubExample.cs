@@ -303,7 +303,7 @@ namespace Meta.Lib.Examples
 
             try
             {
-                var res = await hub.When<MyEvent>(millisecondsTimeout: 200, cts.Token);
+                var res = await hub.When<MyEvent>(millisecondsTimeout: 200, match: null, cts.Token);
             }
             catch (OperationCanceledException)
             {
