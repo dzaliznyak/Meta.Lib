@@ -23,7 +23,7 @@ namespace Meta.Lib.Modules.PubSub
 
             Task Handler(TMessage x)
             {
-                tcs.SetResult(x);
+                tcs.TrySetResult(x);
                 return Task.CompletedTask;
             }
 
@@ -49,7 +49,7 @@ namespace Meta.Lib.Modules.PubSub
 
             Task Handler(TResponse response)
             {
-                tcs.SetResult(response);
+                tcs.TrySetResult(response);
                 return Task.CompletedTask;
             }
 
