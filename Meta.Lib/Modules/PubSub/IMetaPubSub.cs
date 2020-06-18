@@ -9,6 +9,9 @@ namespace Meta.Lib.Modules.PubSub
         void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match)
             where TMessage : class, IPubSubMessage;
 
+        Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
+            where TMessage : class, IPubSubMessage;
+
         void Unsubscribe<TMessage>(Func<TMessage, Task> handler)
             where TMessage : class, IPubSubMessage;
 

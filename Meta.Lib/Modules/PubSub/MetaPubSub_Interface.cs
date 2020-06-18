@@ -6,6 +6,42 @@ namespace Meta.Lib.Modules.PubSub
 {
     public partial class MetaPubSub : IMetaPubSub
     {
+        public Task ConnectServer(string pipeName)
+        {
+            if (_proxy != null)
+                throw new InvalidOperationException("Already connected");
+
+            _proxy = new RemotePubSubProxy(this, pipeName);
+
+            _proxy.Disconnected += Proxy_Disconnected;
+
+            return _proxy.Connect();
+        }
+
+        async void Proxy_Disconnected(object sender, EventArgs e)
+        {
+            bool connected = false;
+            while (!connected)
+            {
+                try
+                {
+                    await _proxy.Connect();
+                    connected = true;
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        public void StartServer(string pipeName)
+        {
+            if (_proxy != null)
+                throw new InvalidOperationException("Cannot be started as a server when has been connected to another server");
+
+            _pipeConections.Start(pipeName);
+        }
+
         /// <summary>
         /// Subscribe to a message of TMessage type
         /// </summary>
@@ -16,6 +52,16 @@ namespace Meta.Lib.Modules.PubSub
             where TMessage : class, IPubSubMessage
         {
             _messageHub.Subscribe(handler, match);
+        }
+
+        public Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
+            where TMessage : class, IPubSubMessage
+        {
+            if (_proxy == null)
+                throw new Exception("Not connected to server");
+
+            _messageHub.Subscribe(handler, null);
+            return _proxy.Subscribe<TMessage>();
         }
 
         /// <summary>
@@ -48,7 +94,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <returns>A Task that can be awaited until the message has been arrived</returns>
         /// <exception cref="TimeoutException"></exception>
         /// <exception cref="OperationCanceledException"></exception>
-        public Task<TMessage> When<TMessage>(int millisecondsTimeout, Predicate<TMessage> match = null, 
+        public Task<TMessage> When<TMessage>(int millisecondsTimeout, Predicate<TMessage> match = null,
             CancellationToken cancellationToken = default)
             where TMessage : class, IPubSubMessage
         {
@@ -63,7 +109,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <param name="millisecondsTimeout">Time interval during which the response message must be received otherwise the TimeoutException will be thrown</param>
         /// <param name="cancellationToken">The cancellation token that can be used to discard awaiting the response message</param>
         /// <returns>A Task that can be awaited until the response message has been arrived</returns>
-        public Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout, 
+        public Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout,
             Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {

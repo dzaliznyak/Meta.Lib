@@ -6,8 +6,11 @@ namespace Meta.Lib.Examples
     {
         static void Main(string[] args)
         {
-            var examples = new PubSubExample();
-            examples.RunAllExamples();
+            var interproc = new InterprocPubSubTest();
+            interproc.RunAllExamples();
+
+            //var examples = new PubSubExample();
+            //examples.RunAllExamples();
 
             Console.ReadLine();
         }

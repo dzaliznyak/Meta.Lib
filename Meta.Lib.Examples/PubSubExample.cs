@@ -14,6 +14,13 @@ namespace Meta.Lib.Examples
         public MetaLogErrorSeverity LogSeverity { get; set; }
     }
 
+    public class MyMessage2 : PubSubMessageBase
+    {
+        public int SomeId { get; set; }
+        public int DeliveredCount { get; set; }
+        public MetaLogErrorSeverity LogSeverity { get; set; }
+    }
+
     public class MyEvent : MyMessage
     {
     }
