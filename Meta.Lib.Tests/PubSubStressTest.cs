@@ -1,4 +1,5 @@
-﻿using Meta.Lib.Modules.Logger;
+﻿using Meta.Lib.Examples.Shared;
+using Meta.Lib.Modules.Logger;
 using Meta.Lib.Modules.PubSub;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
@@ -8,28 +9,6 @@ namespace Meta.Lib.Tests
     [TestClass]
     public class PubSubStressTest
     {
-        Task OnMyMessageHandler(MyMessage message)
-        {
-            message.DeliveredCount++;
-            return Task.CompletedTask;
-        }
-
-        Task OnMyMessageHandler2(MyMessage message)
-        {
-            message.DeliveredCount++;
-            return Task.CompletedTask;
-        }
-
-        Task OnMyMessageHandler3(MyMessage message)
-        {
-            message.DeliveredCount++;
-            return Task.CompletedTask;
-        }
-
-        bool OnMyMessagePredicate(MyMessage message)
-        {
-            return message.LogSeverity != MetaLogErrorSeverity.Information;
-        }
 
         [TestMethod]
         // subscribed twice but delivered only once

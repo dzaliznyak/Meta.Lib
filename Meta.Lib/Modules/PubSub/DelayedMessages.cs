@@ -40,42 +40,83 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        internal async void OnNewSubscriber(Type messageType, Subscriber subscriber)
+        internal void OnNewSubscriber(Type messageType, Subscriber subscriber)
         {
-            if (_dict.TryGetValue(messageType, out var queue))
+            Task.Run(async () =>
             {
-                List<DelayedMessageScope> filteredMessages = null;
-                while (queue.TryDequeue(out DelayedMessageScope scope))
+                if (_dict.TryGetValue(messageType, out var queue))
                 {
-                    try
+                    List<DelayedMessageScope> filteredMessages = null;
+                    while (queue.TryDequeue(out DelayedMessageScope scope))
                     {
-                        if (!scope.IsTimedOut)
+                        try
                         {
-                            if (subscriber.Subscription.ShouldDeliver(scope.Message))
+                            if (!scope.IsTimedOut)
                             {
-                                await subscriber.Subscription.Deliver(scope.Message);
-                                scope.Tcs.SetResult(true);
-                            }
-                            else
-                            {
-                                if (filteredMessages == null)
-                                    filteredMessages = new List<DelayedMessageScope>();
-                                filteredMessages.Add(scope);
+                                if (subscriber.Subscription.ShouldDeliver(scope.Message))
+                                {
+                                    await subscriber.Subscription.Deliver(scope.Message);
+                                    scope.Tcs.SetResult(true);
+                                }
+                                else
+                                {
+                                    if (filteredMessages == null)
+                                        filteredMessages = new List<DelayedMessageScope>();
+                                    filteredMessages.Add(scope);
+                                }
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            scope.Tcs.SetException(ex);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        scope.Tcs.SetException(ex);
-                    }
-                }
 
-                if (filteredMessages != null)
-                {
-                    foreach (var item in filteredMessages)
-                        queue.Enqueue(item);
+                    // put to the queue again all messages that are not sent
+                    if (filteredMessages != null)
+                        foreach (var item in filteredMessages)
+                            queue.Enqueue(item);
                 }
-            }
+            });
+        }
+
+        internal void OnNewPipeSubscriber(Type messageType, PipeServer pipe)
+        {
+            Task.Run(async () =>
+            {
+                if (_dict.TryGetValue(messageType, out var queue))
+                {
+                    List<DelayedMessageScope> filteredMessages = null;
+                    while (queue.TryDequeue(out DelayedMessageScope scope))
+                    {
+                        try
+                        {
+                            if (!scope.IsTimedOut)
+                            {
+                                if (await pipe.SendMessage(scope.Message))
+                                {
+                                    scope.Tcs.SetResult(true);
+                                }
+                                else
+                                {
+                                    if (filteredMessages == null)
+                                        filteredMessages = new List<DelayedMessageScope>();
+                                    filteredMessages.Add(scope);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            scope.Tcs.SetException(ex);
+                        }
+                    }
+
+                    // put to the queue again all messages that are not sent
+                    if (filteredMessages != null)
+                        foreach (var item in filteredMessages)
+                            queue.Enqueue(item);
+                }
+            });
         }
 
     }

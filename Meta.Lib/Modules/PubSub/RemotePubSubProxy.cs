@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Meta.Lib.Modules.Logger;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
 {
-    public class RemotePubSubProxy
+    public class RemotePubSubProxy : LogWriterBase
     {
         readonly IMetaPubSub _hub;
         readonly string _pipeName;
@@ -26,7 +28,8 @@ namespace Meta.Lib.Modules.PubSub
 
         public bool IsConnected => _client?.IsConnected ?? false;
 
-        public RemotePubSubProxy(IMetaPubSub hub, string pipeName, string serverName = ".")
+        public RemotePubSubProxy(IMetaPubSub hub, IMetaLogger logger, string pipeName, string serverName = ".")
+            :base(nameof(RemotePubSubProxy), logger)
         {
             _hub = hub;
             _pipeName = pipeName;
@@ -36,7 +39,7 @@ namespace Meta.Lib.Modules.PubSub
         //todo - Disconnect
         internal async Task Connect(int millisecondsTimeout = 5_000)
         {
-            Console.WriteLine($">>> proxy connecting ...  {DateTime.Now:HH:mm:ss.fff}");
+            WriteDebugLine($">>> proxy connecting ...  {DateTime.Now:HH:mm:ss.fff}");
 
             _client = new NamedPipeClientStream(_serverName, _pipeName,
                 PipeDirection.InOut, PipeOptions.Asynchronous);
@@ -52,7 +55,7 @@ namespace Meta.Lib.Modules.PubSub
             await ResubscribeAllMessages();
 
             Connected?.Invoke(this, EventArgs.Empty);
-            Console.WriteLine($">>> proxy connected: {DateTime.Now:HH:mm:ss.fff}");
+            WriteDebugLine($">>> proxy connected: {DateTime.Now:HH:mm:ss.fff}");
 
             var t = Task.Run(async () =>
             {
@@ -66,7 +69,7 @@ namespace Meta.Lib.Modules.PubSub
                         return;
                     }
 
-                    //Console.WriteLine($">>> proxy recv: {temp}");
+                    //WriteDebugLine($">>> proxy recv: {temp}");
 
                     var parts = temp.Split('\t');
                     if (parts[0] == "m")

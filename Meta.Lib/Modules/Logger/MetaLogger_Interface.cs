@@ -5,6 +5,8 @@ namespace Meta.Lib.Modules.Logger
 {
     public partial class MetaLogger : IMetaLogger
     {
+        public static IMetaLogger Default = new MetaLogger();
+
         public void WriteLine(string source, string message, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Information, string stackTrace = null)
         {
             var item = new MetaLogEntity()

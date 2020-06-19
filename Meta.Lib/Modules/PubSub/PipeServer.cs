@@ -1,4 +1,5 @@
-﻿using Meta.Lib.Utils;
+﻿using Meta.Lib.Modules.Logger;
+using Meta.Lib.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
@@ -7,11 +8,9 @@ using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
 
-//todo - transferring large objects, 
-
 namespace Meta.Lib.Modules.PubSub
 {
-    internal class PipeServer
+    internal class PipeServer : LogWriterBase
     {
         readonly ConcurrentDictionary<Type, Type> _subscribedTypes =
             new ConcurrentDictionary<Type, Type>();
@@ -19,6 +18,7 @@ namespace Meta.Lib.Modules.PubSub
         readonly ConcurrentDictionary<string, PipeTransmit> _transmits =
             new ConcurrentDictionary<string, PipeTransmit>();
 
+        readonly Action<Type, PipeServer> _onNewPipeSubscriber;
         readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
 
         NamedPipeServerStream _server;
@@ -30,8 +30,10 @@ namespace Meta.Lib.Modules.PubSub
         public event EventHandler<EventArgs> Connected;
         public event EventHandler<EventArgs> Disconnected;
 
-        public PipeServer()
+        public PipeServer(IMetaLogger log, Action<Type, PipeServer> onNewPipeSubscriber)
+            : base(nameof(PipeServer), log)
         {
+            _onNewPipeSubscriber = onNewPipeSubscriber;
         }
 
         internal void Start(string pipeName)
@@ -53,20 +55,20 @@ namespace Meta.Lib.Modules.PubSub
                 };
 
                 Connected?.Invoke(this, EventArgs.Empty);
-                Console.WriteLine($"Server: client connected {DateTime.Now:HH:mm:ss.fff}");
+                WriteDebugLine($"Server: client connected {DateTime.Now:HH:mm:ss.fff}");
 
                 while (true)
                 {
                     var message = await _reader.ReadLineAsync();
-                    //Console.WriteLine($"Server recv: {message}");
-                    if (message == null)
+
+                    if (message != null)
                     {
-                        Disconnect();
-                        break;
+                        ProcessMessage(message);
                     }
                     else
                     {
-                        ProcessMessage(message);
+                        Disconnect();
+                        break;
                     }
                 }
             });
@@ -116,7 +118,6 @@ namespace Meta.Lib.Modules.PubSub
                     {
                         await _writeSemaphore.WaitAsync();
                         await _writer.WriteLineAsync(transmit.Packet);
-                        //await _writer.FlushAsync();
                     }
                     finally
                     {
@@ -141,7 +142,8 @@ namespace Meta.Lib.Modules.PubSub
                 var type = Type.GetType(parts[1]);
                 if (_subscribedTypes.TryAdd(type, type))
                 {
-                    Console.WriteLine($"subscribed to {type}");
+                    _onNewPipeSubscriber(type, this);
+                    WriteDebugLine($"subscribed to {type}");
                 }
             }
             else if (parts[0] == "u") // unsubscribe

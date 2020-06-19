@@ -1,4 +1,5 @@
-﻿using Meta.Lib.Modules.Logger;
+﻿using Meta.Lib.Examples.Shared;
+using Meta.Lib.Modules.Logger;
 using Meta.Lib.Modules.PubSub;
 using System;
 using System.Diagnostics;
@@ -7,24 +8,6 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Examples
 {
-    public class MyMessage : PubSubMessageBase
-    {
-        public int SomeId { get; set; }
-        public int DeliveredCount { get; set; }
-        public MetaLogErrorSeverity LogSeverity { get; set; }
-    }
-
-    public class MyMessage2 : PubSubMessageBase
-    {
-        public int SomeId { get; set; }
-        public int DeliveredCount { get; set; }
-        public MetaLogErrorSeverity LogSeverity { get; set; }
-    }
-
-    public class MyEvent : MyMessage
-    {
-    }
-
     public class PubSubExample
     {
         // message handler

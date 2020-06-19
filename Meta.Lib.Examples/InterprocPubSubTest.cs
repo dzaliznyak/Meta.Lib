@@ -1,4 +1,5 @@
-﻿using Meta.Lib.Modules.PubSub;
+﻿using Meta.Lib.Examples.Shared;
+using Meta.Lib.Modules.PubSub;
 using Meta.Lib.Modules.PubSub.Messages;
 using System;
 using System.Threading.Tasks;

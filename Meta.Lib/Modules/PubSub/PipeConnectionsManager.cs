@@ -1,22 +1,28 @@
-﻿using Meta.Lib.Utils;
-using Newtonsoft.Json;
+﻿using Meta.Lib.Modules.Logger;
+using Meta.Lib.Utils;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
 {
-    public class PipeConnectionsManager
+    public class PipeConnectionsManager : LogWriterBase
     {
+        readonly Action<Type, PipeServer> _onNewPipeSubscriber;
+
         ImmutableList<PipeServer> _servers = ImmutableList<PipeServer>.Empty;
+
+        internal PipeConnectionsManager(IMetaLogger log, Action<Type, PipeServer> onNewPipeSubscriber)
+            : base(nameof(PipeConnectionsManager), log)
+        {
+            _onNewPipeSubscriber = onNewPipeSubscriber;
+        }
 
         internal void Start(string pipeName)
         {
-            var server = new PipeServer();
+            var server = new PipeServer(_log, _onNewPipeSubscriber);
 
             server.Connected += (s, a) => 
             {
@@ -27,26 +33,25 @@ namespace Meta.Lib.Modules.PubSub
             server.Disconnected += (s, a) =>
             {
                 _servers = _servers.Remove(server);
-                Console.WriteLine($"Server removed");
             };
 
             server.Start(pipeName);
 
             _servers = _servers.Add(server);
-            Console.WriteLine($"Server added");
         }
 
         // Sends a message to the clients
         internal async Task<bool> Put(IPubSubMessage message)
         {
-            Console.WriteLine($"Put: {message}");
+            bool delivered = false;
             List<Exception> exceptions = null;
 
             foreach (var server in _servers.Where(s => s.IsConnected))
             {
                 try
                 {
-                    await server.SendMessage(message);
+                    if (await server.SendMessage(message))
+                        delivered = true;
                 }
                 catch (Exception ex)
                 {
@@ -59,8 +64,7 @@ namespace Meta.Lib.Modules.PubSub
             if (exceptions != null)
                 throw new AggregateException(exceptions).Fix();
 
-            //todo - processed at least once
-            return true;
+            return delivered;
         }
 
 

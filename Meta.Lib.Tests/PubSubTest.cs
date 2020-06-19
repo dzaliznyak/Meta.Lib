@@ -1,4 +1,5 @@
-﻿using Meta.Lib.Modules.Logger;
+﻿using Meta.Lib.Examples.Shared;
+using Meta.Lib.Modules.Logger;
 using Meta.Lib.Modules.PubSub;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -7,17 +8,6 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Tests
 {
-    public class MyMessage : PubSubMessageBase
-    {
-        public int SomeId { get; set; }
-        public int DeliveredCount { get; set; }
-        public MetaLogErrorSeverity LogSeverity { get; set; }
-    }
-
-    public class MyEvent : MyMessage
-    {
-    }
-
     public class MySubscriber
     {
         internal Task Handler(MyMessage x)
@@ -317,7 +307,6 @@ namespace Meta.Lib.Tests
 
             Task Handler(MyMessage x)
             {
-                //throw new Exception("as as ");
                 received = true;
                 return Task.CompletedTask;
             }

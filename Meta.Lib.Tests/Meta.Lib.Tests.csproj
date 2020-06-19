@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Meta.Lib.Examples.Shared\Meta.Lib.Examples.Shared.csproj" />
     <ProjectReference Include="..\Meta.Lib\Meta.Lib.csproj" />
   </ItemGroup>
 

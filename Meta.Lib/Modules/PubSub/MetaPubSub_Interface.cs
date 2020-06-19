@@ -11,7 +11,7 @@ namespace Meta.Lib.Modules.PubSub
             if (_proxy != null)
                 throw new InvalidOperationException("Already connected");
 
-            _proxy = new RemotePubSubProxy(this, pipeName);
+            _proxy = new RemotePubSubProxy(this, _logger, pipeName);
 
             _proxy.Disconnected += Proxy_Disconnected;
 

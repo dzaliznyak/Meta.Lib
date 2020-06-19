@@ -1,7 +1,10 @@
-﻿namespace Meta.Lib.Modules.PubSub
+﻿using Meta.Lib.Modules.Logger;
+
+namespace Meta.Lib.Modules.PubSub
 {
     public partial class MetaPubSub : IMetaPubSub
     {
+        readonly IMetaLogger _logger;
         readonly DelayedMessages _delayedMessages;
         readonly MessageHub _messageHub;
         readonly DeliveryManager _deliveryManager;
@@ -11,12 +14,14 @@
 
         RemotePubSubProxy _proxy;
 
-        public MetaPubSub()
+        public MetaPubSub(IMetaLogger logger = null)
         {
+            _logger = logger ?? MetaLogger.Default;
+
             _delayedMessages = new DelayedMessages();
-            _pipeConections = new PipeConnectionsManager();
-            _deliveryManager = new DeliveryManager(_delayedMessages.Put, _pipeConections.Put);
-            _messageHub = new MessageHub(_deliveryManager.Put, _delayedMessages.OnNewSubscriber);
+            _pipeConections = new PipeConnectionsManager(_logger, _delayedMessages.OnNewPipeSubscriber);
+            _deliveryManager = new DeliveryManager(_logger, _delayedMessages.Put, _pipeConections.Put);
+            _messageHub = new MessageHub(_logger, _deliveryManager.Put, _delayedMessages.OnNewSubscriber);
             _requestResponseProcessor = new RequestResponseProcessor(_messageHub);
             _messageScheduler = new MessageScheduler(_messageHub.Publish);
         }
