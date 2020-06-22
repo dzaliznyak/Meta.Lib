@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Examples
 {
-    public class InterprocPubSubTest
+    public class RemotePubSubExample
     {
         // message handler
         Task OnMyMessage(MyMessage message)
@@ -101,7 +101,7 @@ namespace Meta.Lib.Examples
                 await Task.Delay(100000);
 
                 // unsubscribing
-                hub.Unsubscribe<MyMessage>(OnMyMessage);
+                await hub.Unsubscribe<MyMessage>(OnMyMessage);
             }
             catch (Exception ex)
             {

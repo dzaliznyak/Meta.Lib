@@ -12,7 +12,7 @@ namespace Meta.Lib.Modules.PubSub
         Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
             where TMessage : class, IPubSubMessage;
 
-        void Unsubscribe<TMessage>(Func<TMessage, Task> handler)
+        Task Unsubscribe<TMessage>(Func<TMessage, Task> handler)
             where TMessage : class, IPubSubMessage;
 
         Task Publish(IPubSubMessage message);

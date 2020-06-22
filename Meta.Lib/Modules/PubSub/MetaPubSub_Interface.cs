@@ -6,16 +6,28 @@ namespace Meta.Lib.Modules.PubSub
 {
     public partial class MetaPubSub : IMetaPubSub
     {
+        public string PipeName => _pipeConections.PipeName;
+
+
         public Task ConnectServer(string pipeName)
         {
             if (_proxy != null)
                 throw new InvalidOperationException("Already connected");
 
-            _proxy = new RemotePubSubProxy(this, _logger, pipeName);
+            _proxy = new RemotePubSubProxy(_messageHub, _logger, pipeName);
 
             _proxy.Disconnected += Proxy_Disconnected;
 
             return _proxy.Connect();
+        }
+
+        public void DisconnectServer()
+        {
+            if (_proxy == null)
+                throw new InvalidOperationException("Not connected");
+
+            _proxy.Disconnected -= Proxy_Disconnected;
+            _proxy.Disconnect();
         }
 
         async void Proxy_Disconnected(object sender, EventArgs e)
@@ -48,6 +60,8 @@ namespace Meta.Lib.Modules.PubSub
         /// <typeparam name="TMessage">Type of message to subscribe to</typeparam>
         /// <param name="handler">Client defined function that will be called when the message has arrived</param>
         /// <param name="match">The delegate that defines the conditions of the message to subscribe for. If null all messages of the specified type will be received</param>
+        /// <exception cref="AggregateException" />
+        /// <exception cref="NoSubscribersException" />
         public void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
             where TMessage : class, IPubSubMessage
         {
@@ -69,10 +83,15 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         /// <typeparam name="TMessage">Type of message to unsubscribe from</typeparam>
         /// <param name="handler">The same callback function that was passed to the Subscribe method</param>
-        public void Unsubscribe<TMessage>(Func<TMessage, Task> handler)
+        public Task Unsubscribe<TMessage>(Func<TMessage, Task> handler)
             where TMessage : class, IPubSubMessage
         {
             _messageHub.Unsubscribe(handler);
+
+            if (_proxy != null)
+                return _proxy.Unsubscribe(typeof(TMessage));
+            else
+                return Task.CompletedTask;
         }
 
         /// <summary>
@@ -83,6 +102,14 @@ namespace Meta.Lib.Modules.PubSub
         public Task Publish(IPubSubMessage message)
         {
             return _messageHub.Publish(message);
+        }
+
+        public Task PublishOnServer(IPubSubMessage message)
+        {
+            if (_proxy == null)
+                throw new Exception("Not connected to server");
+
+            return _proxy.SendMessage(message);
         }
 
         /// <summary>
@@ -126,5 +153,7 @@ namespace Meta.Lib.Modules.PubSub
         {
             _messageScheduler.Schedule(message, millisecondsDelay, cancellationToken);
         }
+
+
     }
 }

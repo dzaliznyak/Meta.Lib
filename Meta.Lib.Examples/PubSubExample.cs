@@ -75,7 +75,7 @@ namespace Meta.Lib.Examples
             await hub.Publish(new MyMessage());
 
             // unsubscribing
-            hub.Unsubscribe<MyMessage>(OnMyMessage);
+            await hub.Unsubscribe<MyMessage>(OnMyMessage);
         }
 
         // exceptions handling - all exceptions raised when a message processing by subscribers can be caught by the publisher as an AggregateException
@@ -102,7 +102,7 @@ namespace Meta.Lib.Examples
                 }
             }
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandlerWithException);
+            await hub.Unsubscribe<MyMessage>(OnMyMessageHandlerWithException);
         }
 
         // at least once delivery check
@@ -129,7 +129,7 @@ namespace Meta.Lib.Examples
 
             hub.Subscribe<MyMessage>(OnMyMessage);
             await hub.Publish(message);
-            hub.Unsubscribe<MyMessage>(OnMyMessage);
+            await hub.Unsubscribe<MyMessage>(OnMyMessage);
         }
 
         // message filtering - you can define a predicate to subscribe only those messages you want to process
@@ -183,7 +183,7 @@ namespace Meta.Lib.Examples
             await hub.Publish(message);
             Console.WriteLine($"End awaiting at {DateTime.Now:HH:mm:ss.fff}");
 
-            hub.Unsubscribe<MyMessage>(OnMyMessage);
+            await hub.Unsubscribe<MyMessage>(OnMyMessage);
         }
 
         // scheduling a message - your message can be queued and published after a time delay
@@ -206,7 +206,7 @@ namespace Meta.Lib.Examples
 
             // waiting before unsubscribing
             await Task.Delay(3500);
-            hub.Unsubscribe<MyMessage>(OnMyMessage);
+            await hub.Unsubscribe<MyMessage>(OnMyMessage);
         }
 
         // asynchronous waiting for a specified message by a single method call, without need to Subscribe/Unsubscribe to this message

@@ -60,7 +60,7 @@ namespace Meta.Lib.Tests
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
 
             message = new MyMessage();
             await hub.Publish(message);
@@ -83,7 +83,7 @@ namespace Meta.Lib.Tests
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
         }
 
         [TestMethod]
@@ -107,7 +107,7 @@ namespace Meta.Lib.Tests
             Assert.IsTrue(noSubscriberException);
             Assert.IsTrue(message.DeliveredCount == 0);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
         }
 
         [TestMethod]
@@ -141,7 +141,7 @@ namespace Meta.Lib.Tests
 
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
             //hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
             //hub.Unsubscribe<MyMessage>(OnMyMessageHandler3);
         }
@@ -163,7 +163,7 @@ namespace Meta.Lib.Tests
             {
                 await Task.Delay(50);
                 hub.Subscribe<MyMessage>(OnMyMessageHandler2, OnMyMessagePredicate);
-                hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
+                await hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
             });
 
             var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Information, DeliverAtLeastOnce = true, Timeout = 100 };
@@ -179,7 +179,7 @@ namespace Meta.Lib.Tests
             Assert.IsTrue(timeoutException);
             Assert.IsTrue(message.DeliveredCount == 0);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
         }
 
         [TestMethod]

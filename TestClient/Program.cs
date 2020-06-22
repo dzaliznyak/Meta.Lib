@@ -7,6 +7,8 @@ namespace TestClient
 {
     class Program
     {
+        private static MetaPubSub hub;
+
         static void Main(string[] args)
         {
             RunClient();
@@ -16,18 +18,13 @@ namespace TestClient
         static async void RunClient()
         {
             // local hub creation
-            var hub = new MetaPubSub();
+            hub = new MetaPubSub();
 
             // connecting the remote server
             await hub.ConnectServer("Meta");
 
             // subscribing
             await hub.SubscribeOnServer<PingCommand>(OnPingCommand);
-
-            while (true)
-            {
-                await Task.Delay(2000);
-            }
         }
 
         static Task OnPingCommand(PingCommand arg)

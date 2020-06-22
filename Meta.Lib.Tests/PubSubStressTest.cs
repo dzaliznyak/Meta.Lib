@@ -39,7 +39,7 @@ namespace Meta.Lib.Tests
                     await hub.Publish(message);
                     totalDeliveryCount1 += message.DeliveredCount;
 
-                    hub.Unsubscribe<MyEvent>(subscriber.Handler);
+                    await hub.Unsubscribe<MyEvent>(subscriber.Handler);
                 }
             });
 
@@ -55,7 +55,7 @@ namespace Meta.Lib.Tests
                     await hub.Publish(message);
                     totalDeliveryCount2 += message.DeliveredCount;
 
-                    hub.Unsubscribe<MyMessage>(subscriber.Handler);
+                    await hub.Unsubscribe<MyMessage>(subscriber.Handler);
                 }
             });
 

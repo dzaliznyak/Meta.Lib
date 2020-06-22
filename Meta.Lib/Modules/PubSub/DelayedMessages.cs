@@ -93,7 +93,8 @@ namespace Meta.Lib.Modules.PubSub
                         {
                             if (!scope.IsTimedOut)
                             {
-                                if (await pipe.SendMessage(scope.Message))
+                                if (pipe.IsShouldSend(scope.Message) &&
+                                    await pipe.SendMessage(scope.Message))
                                 {
                                     scope.Tcs.SetResult(true);
                                 }

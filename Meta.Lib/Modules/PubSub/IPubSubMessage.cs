@@ -4,5 +4,6 @@
     {
         bool DeliverAtLeastOnce { get; }
         int Timeout { get; }
+        string RemoteConnectionId { get; set; }
     }
 }
