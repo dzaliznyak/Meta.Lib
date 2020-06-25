@@ -2,27 +2,13 @@
 using Meta.Lib.Modules.PubSub;
 using Meta.Lib.Modules.PubSub.Messages;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Meta.Lib.Examples
 {
     public class RemotePubSubExample
     {
-        // message handler
-        Task OnMyMessage(MyMessage message)
-        {
-            Console.WriteLine($"OnMyMessage called at {DateTime.Now:HH:mm:ss.fff}");
-            //throw new Exception("OnMyMessage exception");
-            return Task.CompletedTask;
-        }
-
-        Task OnMyMessage2(MyMessage2 message)
-        {
-            Console.WriteLine($"OnMyMessage2 called at {DateTime.Now:HH:mm:ss.fff}");
-            //throw new Exception("OnMyMessage2 exception");
-            return Task.CompletedTask;
-        }
-
         internal async void RunAllExamples()
         {
             Console.WriteLine("BasicExample start -----------------");
@@ -32,83 +18,44 @@ namespace Meta.Lib.Examples
 
         async Task BasicExample()
         {
-            try
+            int count = 0;
+            Task Handler(MyMessage x)
             {
-                // creating remote hub
-                var t = Task.Run(async () =>
-                {
-                    var hub = new MetaPubSub();
-                    hub.StartServer("Meta");
-                    Console.WriteLine($"Started server 'Meta' at {DateTime.Now:HH:mm:ss.fff}");
-
-                    while (true)
-                    {
-                        //await Task.Delay(2000);
-
-                        // publishing a message at the remote hub
-                        try
-                        {
-                            await hub.Publish(new PingCommand() { Data = new byte[1024*10] });
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"ERROR: {ex.Message}");
-                        }
-
-                        //await hub.Publish(new MyEvent());
-                    }
-                });
-
-
-                // creating first local hub
-                var t2 = Task.Run(async () =>
-                {
-                    try
-                    {
-                        // local hub creation
-                        var hub = new MetaPubSub();
-
-                        // connecting the remote server
-                        await hub.ConnectServer("Meta");
-
-                        // subscribing to MyMessage
-                        await hub.SubscribeOnServer<MyMessage2>(OnMyMessage2);
-
-                        while (true)
-                        {
-                            await Task.Delay(2000);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"!!!!!!!!!!!!!! Client2 exception: {ex.Message}");
-                    }
-                });
-
-                // local hub creation
-                var hub = new MetaPubSub();
-
-                // connecting the remote server
-                await hub.ConnectServer("Meta");
-
-                await Task.Delay(1000);
-
-                // subscribing to MyMessage
-                await hub.SubscribeOnServer<MyMessage>(OnMyMessage);
-
-                // publishing a message
-                //await hub.Publish(new MyMessage());
-                await Task.Delay(100000);
-
-                // unsubscribing
-                await hub.Unsubscribe<MyMessage>(OnMyMessage);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"!!!!!!!!!!!!!! Client1 exception: {ex.Message}");
+                count++;
+                return Task.CompletedTask;
             }
 
-            //return Task.CompletedTask;
+            // Creating the server hub.
+            // The server and the client hubs should be created in separate processes, 
+            // this example is for demo only.
+            var serverHub = new MetaPubSub();
+
+            // Starting the hub as a server named 'Meta'.
+            serverHub.StartServer("Meta");
+
+            // Client hub creation. There are can be several hubs connected to the same server.
+            var clientHub = new MetaPubSub();
+
+            // Connecting to the remote server.
+            await clientHub.ConnectServer("Meta");
+
+            // Subscribing to MyMessage on the server and locally at the same time.
+            await clientHub.SubscribeOnServer<MyMessage>(Handler);
+
+            // The server publishes a message.
+            await serverHub.Publish(new MyMessage());
+
+            // Client hub publishes a message and it will be received locally without being sent to the server.
+            await clientHub.Publish(new MyMessage());
+
+            // Client hub sends a message to the server where it will be published and sent back.
+            await clientHub.PublishOnServer(new MyMessage());
+
+            // All three messages should be received.
+            Debug.Assert(count == 3);
+
+            // Unsubscribing both on the server-side and locally.
+            await clientHub.Unsubscribe<MyMessage>(Handler);
         }
     }
 }

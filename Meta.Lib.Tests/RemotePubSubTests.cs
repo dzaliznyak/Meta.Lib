@@ -12,6 +12,14 @@ namespace Meta.Lib.Tests
     [TestClass]
     public class RemotePubSubTests
     {
+        MetaPubSub CreateServerHub(string pipeName = null)
+        {
+            pipeName ??= Guid.NewGuid().ToString();
+            var serverHub = new MetaPubSub();
+            serverHub.StartServer(pipeName);
+            return serverHub;
+        }
+
         [TestMethod]
         // subscribes on server and receives a message
         public async Task SendMessageToClient()
@@ -155,25 +163,13 @@ namespace Meta.Lib.Tests
                 // local hub creation
                 var hub = new MetaPubSub();
                 await hub.ConnectServer(pipeName);
-
-                try
-                {
-                    // publishing a message at the remote hub
-                    await hub.PublishOnServer(new MyMessage(text));
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-
-                // unsubscribing
-                await hub.Unsubscribe<MyMessage>(Handler);
+                await hub.PublishOnServer(new MyMessage(text));
             });
 
             // creating server
-            var hub = new MetaPubSub();
-            hub.StartServer(pipeName);
-            hub.Subscribe<MyMessage>(Handler);
+            var serverHub = new MetaPubSub();
+            serverHub.StartServer(pipeName);
+            serverHub.Subscribe<MyMessage>(Handler);
 
             @event.Wait(5_000);
 
@@ -339,7 +335,6 @@ namespace Meta.Lib.Tests
             }
             // server ------------------------
 
-
             for (int i = 0; i < loopCount; i++)
             {
                 // local hub creation
@@ -349,7 +344,6 @@ namespace Meta.Lib.Tests
 
                 await hub.PublishOnServer(new PingCommand());
 
-                await Task.Delay(50);
                 await hub.Unsubscribe<PingReplay>(Handler);
                 hub.DisconnectServer();
             }
@@ -357,12 +351,69 @@ namespace Meta.Lib.Tests
             Assert.IsTrue(receivedCount == loopCount);
         }
 
-        MetaPubSub CreateServerHub()
+        [TestMethod]
+        public async Task LostConnection()
         {
             var pipeName = Guid.NewGuid().ToString();
-            var serverHub = new MetaPubSub();
+            int receivedCount = 0;
+            int publishedCount = 0;
+            string lastReceivedId = "";
+
+            Task Handler(PingCommand x)
+            {
+                lastReceivedId = x.Id;
+                receivedCount++;
+                return Task.CompletedTask;
+            }
+
+            // server ------------------------
+            var serverHub = CreateServerHub(pipeName);
+
+            // local hub creation
+            var hub = new MetaPubSub();
+            await hub.ConnectServer(pipeName);
+            await hub.SubscribeOnServer<PingCommand>(Handler);
+
+            // break the connection after 2 sec
+            var t = Task.Run(async () =>
+            {
+                await Task.Delay(2_000);
+                serverHub.StopServer();
+            });
+
+
+            int i = 0;
+            try
+            {
+                for (i = 0; i < 10000; i++)
+                {
+                    await hub.PublishOnServer(new PingCommand() { Id = i.ToString() });
+                    publishedCount++;
+                }
+            }
+            catch (Exception)
+            {
+                // in the case when the message was received by the client but the confirmation 
+                // was failed to deliver back to the server
+                if (i.ToString() == lastReceivedId)
+                    receivedCount--;
+            }
+
+            // start the server again
             serverHub.StartServer(pipeName);
-            return serverHub;
+
+            // wait for connection
+            while (!hub.IsConnectedToServer)
+                await Task.Delay(1000);
+
+            for (i = 0; i < 100; i++)
+            {
+                await hub.PublishOnServer(new PingCommand());
+                publishedCount++;
+            }
+
+            Trace.WriteLine($"receivedCount - {receivedCount}, publishedCount - {publishedCount}");
+            Assert.IsTrue(receivedCount == publishedCount);
         }
     }
 }

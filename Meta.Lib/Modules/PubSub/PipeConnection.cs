@@ -3,14 +3,22 @@ using Meta.Lib.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
 {
+    internal enum PipeMessageType : byte
+    {
+        Subscribe = (byte)'s',
+        Unsubscribe = (byte)'u',
+        Message = (byte)'m',
+        MessageResponse = (byte)'r'
+    }
+
     internal class PipeConnection : LogWriterBase
     {
         static int InstanceNo = 0;
@@ -80,8 +88,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    // we shouldn't get here
-                    WriteLine(ex, MetaLogErrorSeverity.Fatal);
+                    WriteLine(ex);
                     OnDisconnected();
                 }
             });
@@ -99,7 +106,7 @@ namespace Meta.Lib.Modules.PubSub
 
         void OnDisconnected()
         {
-            ClearTransmits();
+            WriteDebugLine($">>>> {Id} OnDisconnected");
 
             lock (_lock)
             {
@@ -113,14 +120,19 @@ namespace Meta.Lib.Modules.PubSub
                 _writer = null;
             }
 
+            ClearTransmits();
+
             Disconnected?.Invoke(this, EventArgs.Empty);
         }
 
         void ClearTransmits()
         {
-            foreach (var item in _transmits)
+            foreach (var kvp in _transmits.Keys.ToList())
             {
-                item.Value.Tcs.TrySetCanceled();
+                if (_transmits.TryRemove(kvp, out var removed))
+                {
+                    removed.Tcs.TrySetCanceled();
+                }
             }
         }
 
@@ -129,7 +141,7 @@ namespace Meta.Lib.Modules.PubSub
             Connected?.Invoke(this, EventArgs.Empty);
         }
 
-        protected virtual void ProcessPacket(string packet)
+        protected void ProcessPacket(string packet)
         {
             Task.Run(async () =>
             {
@@ -144,6 +156,14 @@ namespace Meta.Lib.Modules.PubSub
                     {
                         OnMessageResponse(parts);
                     }
+                    else if (parts[0] == "s")
+                    {
+                        await OnSubscribe(parts);
+                    }
+                    else if (parts[0] == "u")
+                    {
+                        await OnUnsubscribe(parts);
+                    }
                     else
                     {
                         throw new InvalidDataException();
@@ -153,6 +173,16 @@ namespace Meta.Lib.Modules.PubSub
                 {
                 }
             });
+        }
+
+        protected virtual Task OnSubscribe(string[] parts)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual Task OnUnsubscribe(string[] parts)
+        {
+            throw new NotImplementedException();
         }
 
         async Task OnMessage(string[] parts)
@@ -209,9 +239,25 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        internal Task<bool> SendMessage(IPubSubMessage message)
+        internal Task<bool> SendMessage(IPubSubMessage message, PipeMessageType pipeMessageType)
         {
-            var transmit = new PipeTransmit(message);
+            if (!IsConnected)
+                throw new Exception("Pipe is not connected");
+
+            var transmit = new PipeTransmit(message, pipeMessageType);
+            _transmits.TryAdd(transmit.Id, transmit);
+
+            SendTransmit(transmit);
+
+            return transmit.Tcs.Task;
+        }
+
+        internal Task<bool> SendMessage(string message, PipeMessageType pipeMessageType)
+        {
+            if (!IsConnected)
+                throw new Exception("Pipe is not connected");
+
+            var transmit = new PipeTransmit(message, pipeMessageType);
             _transmits.TryAdd(transmit.Id, transmit);
 
             SendTransmit(transmit);
@@ -249,21 +295,27 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        async Task SendOkResponse(string id)
+        protected async Task SendOkResponse(string id)
         {
-            var str = $"r\t{id}\tok";
-            await WriteToPipe(str);
+            if (IsConnected)
+            {
+                var str = $"r\t{id}\tok";
+                await WriteToPipe(str);
+            }
         }
 
-        async Task SendErrorResponse(string id, Exception exception)
+        protected async Task SendErrorResponse(string id, Exception exception)
         {
-            if (!(exception is AggregateException))
-                exception = new AggregateException(exception);
+            if (IsConnected)
+            {
+                if (!(exception is AggregateException))
+                    exception = new AggregateException(exception);
 
-            var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            var exceptionStr = JsonConvert.SerializeObject(exception, exception.GetType(), settings);
-            var str = $"r\t{id}\terror\t{exceptionStr}";
-            await WriteToPipe(str);
+                var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+                var exceptionStr = JsonConvert.SerializeObject(exception, exception.GetType(), settings);
+                var str = $"r\t{id}\terror\t{exceptionStr}";
+                await WriteToPipe(str);
+            }
         }
 
     }

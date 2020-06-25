@@ -7,6 +7,7 @@ namespace Meta.Lib.Modules.PubSub
     public partial class MetaPubSub : IMetaPubSub
     {
         public string PipeName => _pipeConections.PipeName;
+        public bool IsConnectedToServer => _proxy.IsConnected;
 
 
         public Task ConnectServer(string pipeName)
@@ -52,6 +53,11 @@ namespace Meta.Lib.Modules.PubSub
                 throw new InvalidOperationException("Cannot be started as a server when has been connected to another server");
 
             _pipeConections.Start(pipeName);
+        }
+
+        public void StopServer()
+        {
+            _pipeConections.Stop();
         }
 
         /// <summary>
@@ -109,7 +115,7 @@ namespace Meta.Lib.Modules.PubSub
             if (_proxy == null)
                 throw new Exception("Not connected to server");
 
-            return _proxy.SendMessage(message);
+            return _proxy.SendMessage(message, PipeMessageType.Message);
         }
 
         /// <summary>

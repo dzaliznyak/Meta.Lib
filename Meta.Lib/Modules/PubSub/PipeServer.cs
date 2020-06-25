@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.IO.Pipes;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
@@ -12,6 +13,7 @@ namespace Meta.Lib.Modules.PubSub
             new ConcurrentDictionary<Type, Type>();
 
         readonly Action<Type, PipeServer> _onNewPipeSubscriber;
+        readonly CancellationTokenSource _cts = new CancellationTokenSource();
 
 
         public PipeServer(MessageHub hub, IMetaLogger logger, Action<Type, PipeServer> onNewPipeSubscriber)
@@ -25,18 +27,36 @@ namespace Meta.Lib.Modules.PubSub
             if (_pipe != null)
                 throw new InvalidOperationException("Pipe server already started");
 
-            var server = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 32,
+            var pipe = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 32,
                 PipeTransmissionMode.Message, PipeOptions.Asynchronous, 1024, 1024);
 
-            await server.WaitForConnectionAsync();
+            try
+            {
+                await pipe.WaitForConnectionAsync(_cts.Token);
+            }
+            catch (Exception)
+            {
+                pipe.Dispose();
+                throw;
+            }
 
-            Init(server);
+            Init(pipe);
 
             FireConnectedEvent();
 
-            WriteDebugLine($"Server: client connected {DateTime.Now:HH:mm:ss.fff}");
+            WriteDebugLine($"Client connected {DateTime.Now:HH:mm:ss.fff}");
 
             StartReadLoop();
+        }
+
+        internal void Stop()
+        {
+            _cts.Cancel();
+
+            if (_pipe == null)
+                return;
+
+            Disconnect();
         }
 
         internal bool IsShouldSend(IPubSubMessage message)
@@ -44,27 +64,24 @@ namespace Meta.Lib.Modules.PubSub
             return _subscribedTypes.TryGetValue(message.GetType(), out Type _);
         }
 
-        protected override void ProcessPacket(string packet)
+        protected override async Task OnSubscribe(string[] parts)
         {
-            var parts = packet.Split('\t');
-            if (parts[0] == "s") // subscribe
+            string id = parts[1];
+            Type type = Type.GetType(parts[2]);
+            if (_subscribedTypes.TryAdd(type, type))
             {
-                var type = Type.GetType(parts[1]);
-                if (_subscribedTypes.TryAdd(type, type))
-                {
-                    _onNewPipeSubscriber(type, this);
-                    WriteDebugLine($"subscribed to {type}");
-                }
+                _onNewPipeSubscriber(type, this);
+                WriteDebugLine($"subscribed to {type}");
             }
-            else if (parts[0] == "u") // unsubscribe
-            {
-                var type = Type.GetType(parts[1]);
-                _subscribedTypes.TryRemove(type, out var _);
-            }
-            else
-            {
-                base.ProcessPacket(packet);
-            }
+            await SendOkResponse(id);
+        }
+
+        protected override async Task OnUnsubscribe(string[] parts)
+        {
+            string id = parts[1];
+            Type type = Type.GetType(parts[2]);
+            _subscribedTypes.TryRemove(type, out var _);
+            await SendOkResponse(id);
         }
 
     }

@@ -12,7 +12,12 @@ namespace TestClient
         static void Main(string[] args)
         {
             RunClient();
-            Console.ReadLine();
+            string line;
+            while ((line = Console.ReadLine()) != "exit")
+            {
+                if (line == "ping")
+                    hub.PublishOnServer(new PingCommand());
+            }
         }
 
         static async void RunClient()

@@ -14,6 +14,7 @@ namespace Meta.Lib.Modules.PubSub
         readonly object _serversLock = new object();
 
         ImmutableList<PipeServer> _servers = ImmutableList<PipeServer>.Empty;
+        PipeServer _pendingServer;
 
         public string PipeName { get; private set; }
 
@@ -35,11 +36,24 @@ namespace Meta.Lib.Modules.PubSub
             StartNext(pipeName);
         }
 
+        internal void Stop()
+        {
+            _pendingServer.Stop();
+
+            foreach (var server in _servers)
+            {
+                server.Stop();
+            }
+
+            PipeName = null;
+            _servers = ImmutableList<PipeServer>.Empty;
+        }
+
         void StartNext(string pipeName)
         {
-            var server = new PipeServer(_hub, _log, _onNewPipeSubscriber);
+            _pendingServer = new PipeServer(_hub, _log, _onNewPipeSubscriber);
 
-            server.Connected += (s, a) =>
+            _pendingServer.Connected += (s, a) =>
             {
                 lock (_serversLock)
                     _servers = _servers.Add((PipeServer)s);
@@ -49,7 +63,7 @@ namespace Meta.Lib.Modules.PubSub
                 StartNext(pipeName);
             };
 
-            server.Disconnected += (s, a) =>
+            _pendingServer.Disconnected += (s, a) =>
             {
                 lock (_serversLock)
                     _servers = _servers.Remove((PipeServer)s);
@@ -60,7 +74,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 try
                 {
-                    await server.Start(pipeName);
+                    await _pendingServer.Start(pipeName);
                 }
                 catch (Exception ex)
                 {
@@ -85,7 +99,7 @@ namespace Meta.Lib.Modules.PubSub
                         //server.Id != message.RemoteConnectionId &&
                         server.IsShouldSend(message))
                     {
-                        if (await server.SendMessage(message))
+                        if (await server.SendMessage(message, PipeMessageType.Message))
                             delivered = true;
                     }
                 }

@@ -26,34 +26,41 @@ namespace Meta.Lib.Modules.PubSub
             var pipe = new NamedPipeClientStream(_serverName, _pipeName,
                 PipeDirection.InOut, PipeOptions.Asynchronous);
 
-            await pipe.ConnectAsync(millisecondsTimeout);
+            try
+            {
+                await pipe.ConnectAsync(millisecondsTimeout);
+            }
+            catch (Exception)
+            {
+                pipe.Dispose();
+                throw;
+            }
 
             Init(pipe);
+            
+            StartReadLoop();
 
             await ResubscribeAllMessages();
 
             FireConnectedEvent();
-
-            StartReadLoop();
         }
 
         async Task ResubscribeAllMessages()
         {
             foreach (var item in _subscribedTypes.Values)
-                await WriteToPipe($"s\t{item}");
+                await SendMessage(item, PipeMessageType.Subscribe);
         }
 
         public async Task Subscribe<TMessage>()
         {
-            var str = $"s\t{typeof(TMessage).AssemblyQualifiedName}";
-            await WriteToPipe(str);
-            _subscribedTypes.TryAdd(typeof(TMessage), typeof(TMessage).AssemblyQualifiedName);
+            var type = typeof(TMessage);
+            await SendMessage(type.AssemblyQualifiedName, PipeMessageType.Subscribe);
+            _subscribedTypes.TryAdd(type, type.AssemblyQualifiedName);
         }
 
         public async Task Unsubscribe(Type type)
         {
-            var str = $"u\t{type.AssemblyQualifiedName}";
-            await WriteToPipe(str);
+            await SendMessage(type.AssemblyQualifiedName, PipeMessageType.Unsubscribe);
             _subscribedTypes.TryRemove(type, out var _);
         }
 
