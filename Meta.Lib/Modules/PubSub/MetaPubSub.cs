@@ -23,7 +23,7 @@ namespace Meta.Lib.Modules.PubSub
             _deliveryManager = new DeliveryManager(_logger, _delayedMessages.Put, PipeConections_Put);
             _messageHub = new MessageHub(_logger, _deliveryManager.Put, _delayedMessages.OnNewSubscriber);
             _pipeConections = new PipeConnectionsManager(_messageHub, _logger, _delayedMessages.OnNewPipeSubscriber);
-            _requestResponseProcessor = new RequestResponseProcessor(_messageHub);
+            _requestResponseProcessor = new RequestResponseProcessor(this);
             _messageScheduler = new MessageScheduler(_messageHub.Publish);
         }
 

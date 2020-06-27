@@ -7,9 +7,9 @@ namespace Meta.Lib.Modules.PubSub
 {
     internal class RequestResponseProcessor
     {
-        readonly MessageHub _hub;
+        readonly MetaPubSub _hub;
 
-        public RequestResponseProcessor(MessageHub hub)
+        public RequestResponseProcessor(MetaPubSub hub)
         {
             _hub = hub;
         }
@@ -35,7 +35,7 @@ namespace Meta.Lib.Modules.PubSub
             }
             finally
             {
-                _hub.Unsubscribe((Func<TMessage, Task>)Handler);
+                await _hub.Unsubscribe((Func<TMessage, Task>)Handler);
             }
         }
 
@@ -62,8 +62,35 @@ namespace Meta.Lib.Modules.PubSub
             }
             finally
             {
-                _hub.Unsubscribe((Func<TResponse, Task>)Handler);
+                await _hub.Unsubscribe((Func<TResponse, Task>)Handler);
             }
         }
+
+        public async Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message,
+            int millisecondsTimeout,
+            CancellationToken cancellationToken = default)
+            where TResponse : class, IPubSubMessage
+        {
+            var tcs = new TaskCompletionSource<TResponse>();
+
+            Task Handler(TResponse response)
+            {
+                tcs.TrySetResult(response);
+                return Task.CompletedTask;
+            }
+
+            await _hub.SubscribeOnServer<TResponse>(Handler);
+
+            try
+            {
+                await _hub.PublishOnServer(message);
+                return await tcs.Task.TimeoutAfter(millisecondsTimeout, cancellationToken);
+            }
+            finally
+            {
+                await _hub.Unsubscribe((Func<TResponse, Task>)Handler);
+            }
+        }
+
     }
 }

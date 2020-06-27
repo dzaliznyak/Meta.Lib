@@ -140,12 +140,12 @@ namespace Meta.Lib.Examples
             // subscribing to MyMessage with a predicate that selects only error and critical messages
             hub.Subscribe<MyMessage>(OnMyMessage, m =>
                 m.LogSeverity == MetaLogErrorSeverity.Error ||
-                m.LogSeverity == MetaLogErrorSeverity.Fatal);
+                m.LogSeverity == MetaLogErrorSeverity.Critical);
 
             // this message will be filtered and not handled
             var message1 = new MyMessage
             {
-                LogSeverity = MetaLogErrorSeverity.Information
+                LogSeverity = MetaLogErrorSeverity.Info
             };
             await hub.Publish(message1);
 

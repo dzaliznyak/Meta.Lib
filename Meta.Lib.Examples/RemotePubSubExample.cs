@@ -37,7 +37,7 @@ namespace Meta.Lib.Examples
             var clientHub = new MetaPubSub();
 
             // Connecting to the remote server.
-            await clientHub.ConnectServer("Meta");
+            await clientHub.ConnectToServer("Meta");
 
             // Subscribing to MyMessage on the server and locally at the same time.
             await clientHub.SubscribeOnServer<MyMessage>(Handler);

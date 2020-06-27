@@ -17,7 +17,7 @@ namespace Meta.Lib.Modules.PubSub
 
 
         public PipeServer(MessageHub hub, IMetaLogger logger, Action<Type, PipeServer> onNewPipeSubscriber)
-            : base(hub, nameof(PipeServer), logger)
+            : base(hub, logger)
         {
             _onNewPipeSubscriber = onNewPipeSubscriber;
         }
@@ -28,7 +28,7 @@ namespace Meta.Lib.Modules.PubSub
                 throw new InvalidOperationException("Pipe server already started");
 
             var pipe = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 32,
-                PipeTransmissionMode.Message, PipeOptions.Asynchronous, 1024, 1024);
+                PipeTransmissionMode.Message, PipeOptions.Asynchronous, 4096, 4096);
 
             try
             {
@@ -44,7 +44,7 @@ namespace Meta.Lib.Modules.PubSub
 
             FireConnectedEvent();
 
-            WriteDebugLine($"Client connected {DateTime.Now:HH:mm:ss.fff}");
+            _logger.Debug($"Client connected {DateTime.Now:HH:mm:ss.fff}");
 
             StartReadLoop();
         }
@@ -52,10 +52,6 @@ namespace Meta.Lib.Modules.PubSub
         internal void Stop()
         {
             _cts.Cancel();
-
-            if (_pipe == null)
-                return;
-
             Disconnect();
         }
 
@@ -71,7 +67,7 @@ namespace Meta.Lib.Modules.PubSub
             if (_subscribedTypes.TryAdd(type, type))
             {
                 _onNewPipeSubscriber(type, this);
-                WriteDebugLine($"subscribed to {type}");
+                _logger.Debug($"subscribed to {type}");
             }
             await SendOkResponse(id);
         }

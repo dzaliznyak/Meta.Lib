@@ -6,23 +6,37 @@ namespace Meta.Lib.Modules.PubSub
 {
     public partial class MetaPubSub : IMetaPubSub
     {
+        /// <summary>
+        /// Name of the server pipe. Null if the server hasn't been started.
+        /// </summary>
         public string PipeName => _pipeConections.PipeName;
-        public bool IsConnectedToServer => _proxy.IsConnected;
 
+        /// <summary>
+        /// Shows is this hub connected to another server hub.
+        /// </summary>
+        public bool IsConnectedToServer => _proxy?.IsConnected ?? false;
 
-        public Task ConnectServer(string pipeName)
+        /// <summary>
+        /// Connect to a server hub.
+        /// </summary>
+        /// <param name="pipeName">Name of the pipe opened on the server.</param>
+        /// <param name="serverName">Name of the computer where the server runs. If the server and local hub on the same computer use "."</param>
+        public Task ConnectToServer(string pipeName, string serverName = ".")
         {
             if (_proxy != null)
                 throw new InvalidOperationException("Already connected");
 
-            _proxy = new RemotePubSubProxy(_messageHub, _logger, pipeName);
+            _proxy = new RemotePubSubProxy(_messageHub, _logger, pipeName, serverName);
 
             _proxy.Disconnected += Proxy_Disconnected;
 
             return _proxy.Connect();
         }
 
-        public void DisconnectServer()
+        /// <summary>
+        /// Disconnects from the server hub.
+        /// </summary>
+        public void DisconnectFromServer()
         {
             if (_proxy == null)
                 throw new InvalidOperationException("Not connected");
@@ -47,6 +61,10 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
+        /// <summary>
+        /// Starts accepting for incoming client connections.
+        /// </summary>
+        /// <param name="pipeName">Unique name for this server. The same name should be used to call ConnectToServer() method.</param>
         public void StartServer(string pipeName)
         {
             if (_proxy != null)
@@ -55,6 +73,9 @@ namespace Meta.Lib.Modules.PubSub
             _pipeConections.Start(pipeName);
         }
 
+        /// <summary>
+        /// Disconnects all client connections and stops accepting new connections.
+        /// </summary>
         public void StopServer()
         {
             _pipeConections.Stop();
@@ -63,7 +84,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <summary>
         /// Subscribe to a message of TMessage type
         /// </summary>
-        /// <typeparam name="TMessage">Type of message to subscribe to</typeparam>
+        /// <typeparam name="TMessage">Type of a message to subscribe to</typeparam>
         /// <param name="handler">Client defined function that will be called when the message has arrived</param>
         /// <param name="match">The delegate that defines the conditions of the message to subscribe for. If null all messages of the specified type will be received</param>
         /// <exception cref="AggregateException" />
@@ -74,11 +95,19 @@ namespace Meta.Lib.Modules.PubSub
             _messageHub.Subscribe(handler, match);
         }
 
+        /// <summary>
+        /// Subscribes to a message of TMessage type on the server and locally.
+        /// </summary>
+        /// <typeparam name="TMessage">Type of a message to subscribe to</typeparam>
+        /// <param name="handler">Client defined function that will be called when the message has arrived</param>
+        /// <exception cref="AggregateException" />
+        /// <exception cref="NoSubscribersException" />
+        /// <exception cref="InvalidOperationException" />
         public Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
             where TMessage : class, IPubSubMessage
         {
             if (_proxy == null)
-                throw new Exception("Not connected to server");
+                throw new InvalidOperationException("Not connected to server");
 
             _messageHub.Subscribe(handler, null);
             return _proxy.Subscribe<TMessage>();
@@ -147,6 +176,13 @@ namespace Meta.Lib.Modules.PubSub
             where TResponse : class, IPubSubMessage
         {
             return _requestResponseProcessor.Process(message, millisecondsTimeout, match, cancellationToken);
+        }
+
+        public Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message, int millisecondsTimeout,
+            CancellationToken cancellationToken = default)
+            where TResponse : class, IPubSubMessage
+        {
+            return _requestResponseProcessor.ProcessOnServer<TResponse>(message, millisecondsTimeout, cancellationToken);
         }
 
         /// <summary>

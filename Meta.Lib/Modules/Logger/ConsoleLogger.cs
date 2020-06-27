@@ -9,17 +9,18 @@ namespace Meta.Lib.Modules.Logger
         {
             switch (item.Severity)
             {
-                case MetaLogErrorSeverity.Fatal:
+                case MetaLogErrorSeverity.Critical:
                 case MetaLogErrorSeverity.Error:
                     Console.ForegroundColor = ConsoleColor.Red;
                     break;
                 case MetaLogErrorSeverity.Warning:
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     break;
-                case MetaLogErrorSeverity.Information:
+                case MetaLogErrorSeverity.Info:
                     Console.ForegroundColor = ConsoleColor.DarkGray;
                     break;
                 case MetaLogErrorSeverity.Debug:
+                case MetaLogErrorSeverity.Trace:
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 default:

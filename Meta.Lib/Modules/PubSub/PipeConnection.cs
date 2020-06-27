@@ -19,11 +19,13 @@ namespace Meta.Lib.Modules.PubSub
         MessageResponse = (byte)'r'
     }
 
-    internal class PipeConnection : LogWriterBase
+    internal class PipeConnection
     {
         static int InstanceNo = 0;
 
         readonly object _lock = new object();
+
+        protected readonly IMetaLogger _logger;
         protected readonly MessageHub _hub;
 
         protected PipeStream _pipe;
@@ -42,9 +44,9 @@ namespace Meta.Lib.Modules.PubSub
         public bool IsConnected => _pipe?.IsConnected ?? false;
 
 
-        public PipeConnection(MessageHub hub, string name, IMetaLogger logger)
-            : base(name, logger)
+        public PipeConnection(MessageHub hub, IMetaLogger logger)
         {
+            _logger = logger;
             _hub = hub;
         }
 
@@ -88,7 +90,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    WriteLine(ex);
+                    _logger.Error(ex);
                     OnDisconnected();
                 }
             });
@@ -106,7 +108,7 @@ namespace Meta.Lib.Modules.PubSub
 
         void OnDisconnected()
         {
-            WriteDebugLine($">>>> {Id} OnDisconnected");
+            _logger.Debug($">>>> {Id} OnDisconnected");
 
             lock (_lock)
             {
@@ -199,7 +201,7 @@ namespace Meta.Lib.Modules.PubSub
             }
             catch (Exception ex)
             {
-                WriteDebugLine(ex);
+                _logger.Debug(ex);
                 await SendErrorResponse(id, ex);
             }
         }

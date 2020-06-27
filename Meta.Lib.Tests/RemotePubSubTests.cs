@@ -54,7 +54,7 @@ namespace Meta.Lib.Tests
 
             // local hub creation
             var hub = new MetaPubSub();
-            await hub.ConnectServer(pipeName);
+            await hub.ConnectToServer(pipeName);
             await hub.SubscribeOnServer<MyMessage>(Handler);
             // delay allowing the server to process the subscription request
             await Task.Delay(100);
@@ -97,7 +97,7 @@ namespace Meta.Lib.Tests
 
             // local hub creation
             var hub = new MetaPubSub();
-            await hub.ConnectServer(pipeName);
+            await hub.ConnectToServer(pipeName);
             // delay allowing the server process the connection
             await Task.Delay(100);
             clientConnectedEvent.Set();
@@ -133,7 +133,7 @@ namespace Meta.Lib.Tests
 
             // local hub creation
             var hub = new MetaPubSub();
-            await hub.ConnectServer(pipeName);
+            await hub.ConnectToServer(pipeName);
             await hub.SubscribeOnServer<MyMessage>(Handler);
 
             @event.Wait(5_000);
@@ -162,7 +162,7 @@ namespace Meta.Lib.Tests
             {
                 // local hub creation
                 var hub = new MetaPubSub();
-                await hub.ConnectServer(pipeName);
+                await hub.ConnectToServer(pipeName);
                 await hub.PublishOnServer(new MyMessage(text));
             });
 
@@ -186,10 +186,9 @@ namespace Meta.Lib.Tests
             // local hub creation
             var hub = new MetaPubSub();
 
-            Task Handler(MyMessage x)
+            async Task Handler(MyMessage x)
             {
-                hub.Unsubscribe<MyMessage>(Handler);
-                return Task.CompletedTask;
+                await hub.Unsubscribe<MyMessage>(Handler);
             }
 
             // creating remote hub
@@ -202,8 +201,6 @@ namespace Meta.Lib.Tests
                 // publishing a message at the remote hub
                 await serverHub.Publish(new MyMessage() { DeliverAtLeastOnce = true });
 
-                await Task.Delay(200);
-
                 try
                 {
                     await serverHub.Publish(new MyMessage() { DeliverAtLeastOnce = true });
@@ -214,11 +211,8 @@ namespace Meta.Lib.Tests
                 }
             });
 
-            //await Task.Delay(1_000);
-
-            await hub.ConnectServer(pipeName);
+            await hub.ConnectToServer(pipeName);
             await hub.SubscribeOnServer<MyMessage>(Handler);
-            await Task.Delay(100);
             clientConnectedEvent.Set();
             @event.Wait(5000);
 
@@ -281,10 +275,9 @@ namespace Meta.Lib.Tests
                 }
 
                 @event.Set();
-                //await Task.Delay(100_000);
             });
 
-            await hub.ConnectServer(pipeName);
+            await hub.ConnectToServer(pipeName);
             await hub.SubscribeOnServer<MyMessage>(Handler);
             await Task.Delay(100);
             clientConnectedEvent.Set();
@@ -339,13 +332,13 @@ namespace Meta.Lib.Tests
             {
                 // local hub creation
                 var hub = new MetaPubSub();
-                await hub.ConnectServer(serverHub.PipeName);
+                await hub.ConnectToServer(serverHub.PipeName);
                 await hub.SubscribeOnServer<PingReplay>(Handler);
 
                 await hub.PublishOnServer(new PingCommand());
 
                 await hub.Unsubscribe<PingReplay>(Handler);
-                hub.DisconnectServer();
+                hub.DisconnectFromServer();
             }
 
             Assert.IsTrue(receivedCount == loopCount);
@@ -371,13 +364,13 @@ namespace Meta.Lib.Tests
 
             // local hub creation
             var hub = new MetaPubSub();
-            await hub.ConnectServer(pipeName);
+            await hub.ConnectToServer(pipeName);
             await hub.SubscribeOnServer<PingCommand>(Handler);
 
-            // break the connection after 2 sec
+            // break the connection after 1 sec
             var t = Task.Run(async () =>
             {
-                await Task.Delay(2_000);
+                await Task.Delay(1_000);
                 serverHub.StopServer();
             });
 
@@ -385,7 +378,7 @@ namespace Meta.Lib.Tests
             int i = 0;
             try
             {
-                for (i = 0; i < 10000; i++)
+                for (i = 0; i < 1_000_000; i++)
                 {
                     await hub.PublishOnServer(new PingCommand() { Id = i.ToString() });
                     publishedCount++;
@@ -393,18 +386,25 @@ namespace Meta.Lib.Tests
             }
             catch (Exception)
             {
-                // in the case when the message was received by the client but the confirmation 
-                // was failed to deliver back to the server
+                // in the case when the message was received by the client and counted
+                // but the confirmation was failed to deliver back to the server
                 if (i.ToString() == lastReceivedId)
+                {
+                    Trace.WriteLine($"decrement");
                     receivedCount--;
+                }
             }
+
+            Trace.WriteLine($"receivedCount - {receivedCount}, publishedCount - {publishedCount}");
 
             // start the server again
             serverHub.StartServer(pipeName);
 
             // wait for connection
             while (!hub.IsConnectedToServer)
-                await Task.Delay(1000);
+                await Task.Delay(100);
+
+            Trace.WriteLine($"receivedCount - {receivedCount}, publishedCount - {publishedCount}");
 
             for (i = 0; i < 100; i++)
             {
@@ -413,7 +413,54 @@ namespace Meta.Lib.Tests
             }
 
             Trace.WriteLine($"receivedCount - {receivedCount}, publishedCount - {publishedCount}");
-            Assert.IsTrue(receivedCount == publishedCount);
+            Assert.IsTrue(receivedCount - publishedCount <= 1);
+        }
+
+        [TestMethod]
+        public async Task When()
+        {
+            Task Handler(PingCommand x)
+            {
+                return Task.CompletedTask;
+            }
+
+            // server ------------------------
+            var serverHub = CreateServerHub();
+
+            // local hub creation
+            var hub = new MetaPubSub();
+            await hub.ConnectToServer(serverHub.PipeName);
+            await hub.SubscribeOnServer<PingCommand>(Handler);
+
+            var t = Task.Run(async () =>
+            {
+                await Task.Delay(200);
+                await hub.PublishOnServer(new PingCommand() { Id = "321" });
+                await hub.PublishOnServer(new PingCommand() { Id = "123" });
+            });
+
+            var ping = await hub.When<PingCommand>(1000, x => x.Id == "123");
+            Assert.IsTrue(ping.Id == "123");
+        }
+
+        [TestMethod]
+        public async Task Process()
+        {
+            // server ------------------------
+            var serverHub = CreateServerHub();
+
+            async Task Handler(PingCommand x)
+            {
+                await serverHub.Publish(new PingReplay() { Id = x.Id });
+            }
+
+            // local hub creation
+            var hub = new MetaPubSub();
+            await hub.ConnectToServer(serverHub.PipeName);
+            await hub.SubscribeOnServer<PingCommand>(Handler);
+
+            var ping = await hub.ProcessOnServer<PingReplay>(new PingCommand() { Id = "123" }, 1000);
+            Assert.IsTrue(ping.Id == "123");
         }
     }
 }

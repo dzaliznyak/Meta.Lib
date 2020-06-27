@@ -26,7 +26,7 @@ namespace TestClient
             hub = new MetaPubSub();
 
             // connecting the remote server
-            await hub.ConnectServer("Meta");
+            await hub.ConnectToServer("Meta");
 
             // subscribing
             await hub.SubscribeOnServer<PingCommand>(OnPingCommand);

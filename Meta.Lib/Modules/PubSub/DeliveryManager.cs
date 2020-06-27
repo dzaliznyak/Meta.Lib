@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
 {
-    internal class DeliveryManager : LogWriterBase
+    internal class DeliveryManager
     {
+        readonly IMetaLogger _logger;
         readonly Func<IPubSubMessage, Task> _onDelayedMessage;
         readonly Func<IPubSubMessage, Task<bool>> _onRemoteDeliver;
 
         public DeliveryManager(IMetaLogger logger, 
                                Func<IPubSubMessage, Task> onDelayedMessage,
                                Func<IPubSubMessage, Task<bool>> onRemoteDeliver)
-            :base(nameof(DeliveryManager), logger)
         {
+            _logger = logger;
             _onDelayedMessage = onDelayedMessage;
             _onRemoteDeliver = onRemoteDeliver;
         }
@@ -58,7 +59,7 @@ namespace Meta.Lib.Modules.PubSub
                 exceptions.Add(ex);
             }
 
-            WriteDebugLine($"Published <<<{message.GetType().Name}>>> Subs: {subscribers.Count}, Remote: {remoteDeliver}, Ex: {exceptions?.Count ?? 0}");
+            //WriteDebugLine($"Published <<<{message.GetType().Name}>>> Subs: {subscribers.Count}, Remote: {remoteDeliver}, Ex: {exceptions?.Count ?? 0}");
 
             if (exceptions != null)
                 throw new AggregateException(exceptions).Fix();
@@ -67,7 +68,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 if (message.Timeout > 0)
                 {
-                    WriteDebugLine($"Delayed <<<{message.GetType().Name}>>> for {message.Timeout} ms");
+                    _logger.Debug($"Delayed <<<{message.GetType().Name}>>> for {message.Timeout} ms");
                     await _onDelayedMessage(message);
                 }
                 else

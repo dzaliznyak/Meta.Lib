@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
 {
-    public class PipeConnectionsManager : LogWriterBase
+    public class PipeConnectionsManager
     {
+        readonly IMetaLogger _logger;
         readonly MessageHub _hub;
         readonly Action<Type, PipeServer> _onNewPipeSubscriber;
         readonly object _serversLock = new object();
@@ -19,10 +20,10 @@ namespace Meta.Lib.Modules.PubSub
         public string PipeName { get; private set; }
 
         internal PipeConnectionsManager(MessageHub hub,
-            IMetaLogger log,
+            IMetaLogger logger,
             Action<Type, PipeServer> onNewPipeSubscriber)
-            : base(nameof(PipeConnectionsManager), log)
         {
+            _logger = logger;
             _hub = hub;
             _onNewPipeSubscriber = onNewPipeSubscriber;
         }
@@ -51,13 +52,13 @@ namespace Meta.Lib.Modules.PubSub
 
         void StartNext(string pipeName)
         {
-            _pendingServer = new PipeServer(_hub, _log, _onNewPipeSubscriber);
+            _pendingServer = new PipeServer(_hub, _logger, _onNewPipeSubscriber);
 
             _pendingServer.Connected += (s, a) =>
             {
                 lock (_serversLock)
                     _servers = _servers.Add((PipeServer)s);
-                WriteDebugLine($"Server connected, count: {_servers.Count}");
+                _logger.Debug($"A client connected, total count: {_servers.Count}");
 
                 // start waiting for the next connection
                 StartNext(pipeName);
@@ -67,7 +68,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 lock (_serversLock)
                     _servers = _servers.Remove((PipeServer)s);
-                WriteDebugLine($"Server disconnected, count: {_servers.Count}");
+                _logger.Debug($"A client disconnected, remained: {_servers.Count}");
             };
 
             Task.Run(async () =>
@@ -78,7 +79,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    WriteLine(ex);
+                    _logger.Error(ex);
                 }
             });
         }

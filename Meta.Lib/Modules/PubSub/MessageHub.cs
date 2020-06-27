@@ -82,19 +82,18 @@ namespace Meta.Lib.Modules.PubSub
         }
     }
 
-    internal class MessageHub : LogWriterBase
+    internal class MessageHub
     {
-        readonly Dictionary<Type, Node> _nodes =
-            new Dictionary<Type, Node>();
-
+        readonly Dictionary<Type, Node> _nodes = new Dictionary<Type, Node>();
+        readonly IMetaLogger _logger;
         readonly Func<IReadOnlyCollection<Subscriber>, IPubSubMessage, Task> _onPublished;
         readonly Action<Type, Subscriber> _onNewSubscriber;
 
         public MessageHub(IMetaLogger logger,
                           Func<IReadOnlyCollection<Subscriber>, IPubSubMessage, Task> onPublished,
                           Action<Type, Subscriber> onNewSubscriber)
-            :base(nameof(MessageHub), logger)
         {
+            _logger = logger;
             _onPublished = onPublished;
             _onNewSubscriber = onNewSubscriber;
         }

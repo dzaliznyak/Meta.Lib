@@ -15,7 +15,7 @@ namespace Meta.Lib.Modules.PubSub
 
 
         public RemotePubSubProxy(MessageHub hub, IMetaLogger logger, string pipeName, string serverName = ".")
-            :base(hub, nameof(RemotePubSubProxy), logger)
+            :base(hub, logger)
         {
             _pipeName = pipeName;
             _serverName = serverName;
