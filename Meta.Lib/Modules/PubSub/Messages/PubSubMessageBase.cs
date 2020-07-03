@@ -5,5 +5,7 @@
         public bool DeliverAtLeastOnce { get; set; }
 
         public int Timeout { get; set; }
+
+        public string RemoteConnectionId { get; set; }
     }
 }

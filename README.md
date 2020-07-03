@@ -2,6 +2,8 @@
 ========================
 
 MetaPubSub is an implementation of the publish/subscribe pattern - when the publisher and subscriber know nothing of each other but can exchange messages. It's fast, lightweight and beside basic functionality has some cool features:
+
+- **New: client-server mode** - messages can be sent between different processes and computers
 - the independent order of the Subscribe and Publish methods
 - awaitable methods, for example, you can await Publish and wait until all subscribers have finished processing the message 
 - at least once delivery check - you can opt in to have an exception if no one subscribed to your message
@@ -19,6 +21,9 @@ To install the [Meta.Lib](https://www.nuget.org/packages/Meta.Lib/) run the foll
 ```Powershell
 PM> Install-Package Meta.Lib 
 ```
+
+# Logging
+MetaPubSub logs it's messaging to Console and Trace outputs by default. But you can assign any logger on your choice. The TestServer demo application contains a sample of how to use MetaPubSub with NLog.
 
 # How to use
 ## Hub creation
@@ -252,4 +257,48 @@ catch (OperationCanceledException)
 {
     Console.WriteLine("Waiting for MyEvent has been canceled");
 }
+```
+
+
+## Client-server mode
+You can start one hub as a server and connect to it several clients hubs from different processes and even different computers. Interprocess communication made on named pipes. If client disconnected from the server for some reason it tries to reconnect automatically.
+```c#
+int count = 0;
+Task Handler(MyMessage x)
+{
+    count++;
+    return Task.CompletedTask;
+}
+
+// Creating the server hub.
+// The server and the client hubs should be created in separate processes, 
+// this example is for demo only.
+var serverHub = new MetaPubSub();
+
+// Starting the hub as a server named 'Meta'.
+serverHub.StartServer("Meta");
+
+// Client hub creation. There are can be several hubs connected to the same server.
+var clientHub = new MetaPubSub();
+
+// Connecting to the remote server.
+await clientHub.ConnectToServer("Meta");
+
+// Subscribing to MyMessage on the server and locally at the same time.
+await clientHub.SubscribeOnServer<MyMessage>(Handler);
+
+// The server publishes a message.
+await serverHub.Publish(new MyMessage());
+
+// Client hub publishes a message and it will be received locally without being sent to the server.
+await clientHub.Publish(new MyMessage());
+
+// Client hub sends a message to the server where it will be published and sent back.
+await clientHub.PublishOnServer(new MyMessage());
+
+// All three messages should be received.
+Debug.Assert(count == 3);
+
+// Unsubscribing both on the server-side and locally.
+await clientHub.Unsubscribe<MyMessage>(Handler);
 ```

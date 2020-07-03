@@ -5,11 +5,15 @@ namespace Meta.Lib.Modules.Logger
 {
     public partial class MetaLogger : IMetaLogger
     {
-        public void WriteLine(string source, string message, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Information, string stackTrace = null)
+        public static IMetaLogger Default = new MetaLogger();
+
+        public string Name { get; set; }
+
+        void Log(string message, MetaLogErrorSeverity severity, string stackTrace = null)
         {
             var item = new MetaLogEntity()
             {
-                Source = source,
+                Source = this.Name,
                 Timestamp = DateTime.Now,
                 Message = message,
                 Severity = severity,
@@ -20,34 +24,122 @@ namespace Meta.Lib.Modules.Logger
         }
 
         [Conditional("DEBUG")]
-        void InternalWriteDebugLine(string source, string message, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Information, string stackTrace = null)
+        void DebugLog(string message, MetaLogErrorSeverity severity, string stackTrace = null)
         {
-            WriteLine(source, message, severity, stackTrace);
+            var item = new MetaLogEntity()
+            {
+                Source = this.Name,
+                Timestamp = DateTime.Now,
+                Message = message,
+                Severity = severity,
+#if DEBUG
+                StackTrace = stackTrace
+#endif
+            };
+
+            Queue.Enqueue(item);
         }
 
-        public void WriteLine(string source, Exception ex, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Error)
+
+        // Trace
+        public void Trace(string message)
         {
-            WriteLine(source, ex.Message, severity, ex.StackTrace);
+            Log(message, MetaLogErrorSeverity.Trace);
         }
 
-        public void WriteLine(string source, string message, Exception ex, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Error)
+        public void Trace(Exception ex)
         {
-            WriteLine(source, $"{message} ({ex.Message})", severity, ex.StackTrace);
+            Log(ex.Message, MetaLogErrorSeverity.Trace, ex.StackTrace);
         }
 
-        public void WriteDebugLine(string source, string message, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Debug)
+        public void Trace(string message, Exception ex)
         {
-            InternalWriteDebugLine(source, message, severity);
+            Log($"{message} ({ex.Message})", MetaLogErrorSeverity.Trace, ex.StackTrace);
         }
 
-        public void WriteDebugLine(string source, Exception ex, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Debug)
+
+        // Debug
+        public void Debug(string message)
         {
-            InternalWriteDebugLine(source, ex.Message, severity);
+            DebugLog(message, MetaLogErrorSeverity.Debug);
         }
 
-        public void WriteDebugLine(string source, string message, Exception ex, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Debug)
+        public void Debug(Exception ex)
         {
-            InternalWriteDebugLine(source, $"{message} ({ex.Message})", severity, ex.StackTrace);
+            DebugLog(ex.Message, MetaLogErrorSeverity.Debug, ex.StackTrace);
+        }
+
+        public void Debug(string message, Exception ex)
+        {
+            DebugLog($"{message} ({ex.Message})", MetaLogErrorSeverity.Debug, ex.StackTrace);
+        }
+
+
+        // Information
+        public void Info(string message)
+        {
+            Log(message, MetaLogErrorSeverity.Info);
+        }
+
+        public void Info(Exception ex)
+        {
+            Log(ex.Message, MetaLogErrorSeverity.Info, ex.StackTrace);
+        }
+
+        public void Info(string message, Exception ex)
+        {
+            Log($"{message} ({ex.Message})", MetaLogErrorSeverity.Info, ex.StackTrace);
+        }
+
+
+        // Warning
+        public void Warning(string message)
+        {
+            Log(message, MetaLogErrorSeverity.Warning);
+        }
+
+        public void Warning(Exception ex)
+        {
+            Log(ex.Message, MetaLogErrorSeverity.Warning, ex.StackTrace);
+        }
+
+        public void Warning(string message, Exception ex)
+        {
+            Log($"{message} ({ex.Message})", MetaLogErrorSeverity.Warning, ex.StackTrace);
+        }
+
+
+        // Error
+        public void Error(string message)
+        {
+            Log(message, MetaLogErrorSeverity.Error);
+        }
+
+        public void Error(Exception ex)
+        {
+            Log(ex.Message, MetaLogErrorSeverity.Error, ex.StackTrace);
+        }
+
+        public void Error(string message, Exception ex)
+        {
+            Log($"{message} ({ex.Message})", MetaLogErrorSeverity.Error, ex.StackTrace);
+        }
+
+
+        // Critical
+        public void Critical(string message)
+        {
+            Log(message, MetaLogErrorSeverity.Critical);
+        }
+
+        public void Critical(Exception ex)
+        {
+            Log(ex.Message, MetaLogErrorSeverity.Critical, ex.StackTrace);
+        }
+
+        public void Critical(string message, Exception ex)
+        {
+            Log($"{message} ({ex.Message})", MetaLogErrorSeverity.Critical, ex.StackTrace);
         }
     }
 }

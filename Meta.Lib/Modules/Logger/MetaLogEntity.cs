@@ -4,12 +4,15 @@ namespace Meta.Lib.Modules.Logger
 {
     public enum MetaLogErrorSeverity
     {
-        Fatal,
-        Error,
+        None,
+        Trace,
+        Debug,
+        Info,
         Warning,
-        Information,
-        Debug
+        Error,
+        Critical
     }
+
 
     public class MetaLogEntity
     {

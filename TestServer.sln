@@ -13,13 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestClient", "TestClient\Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meta.Lib.Examples.Shared", "Meta.Lib.Examples.Shared\Meta.Lib.Examples.Shared.csproj", "{AF4A9EBD-A530-4C8E-95DF-9684171B5884}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestServer", "TestServer\TestServer.csproj", "{1455B9E8-06BB-4E71-88E2-AF4067A0358A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{065AD8D2-0431-40D2-96D9-C49405EA29FD}"
-	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
-		TODO.txt = TODO.txt
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServer", "TestServer\TestServer.csproj", "{1455B9E8-06BB-4E71-88E2-AF4067A0358A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

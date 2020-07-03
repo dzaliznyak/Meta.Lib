@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meta.Lib.Modules.Logger;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
@@ -83,15 +84,16 @@ namespace Meta.Lib.Modules.PubSub
 
     internal class MessageHub
     {
-        readonly Dictionary<Type, Node> _nodes =
-            new Dictionary<Type, Node>();
-
+        readonly Dictionary<Type, Node> _nodes = new Dictionary<Type, Node>();
+        readonly IMetaLogger _logger;
         readonly Func<IReadOnlyCollection<Subscriber>, IPubSubMessage, Task> _onPublished;
         readonly Action<Type, Subscriber> _onNewSubscriber;
 
-        public MessageHub(Func<IReadOnlyCollection<Subscriber>, IPubSubMessage, Task> onPublished,
+        public MessageHub(IMetaLogger logger,
+                          Func<IReadOnlyCollection<Subscriber>, IPubSubMessage, Task> onPublished,
                           Action<Type, Subscriber> onNewSubscriber)
         {
+            _logger = logger;
             _onPublished = onPublished;
             _onNewSubscriber = onNewSubscriber;
         }
