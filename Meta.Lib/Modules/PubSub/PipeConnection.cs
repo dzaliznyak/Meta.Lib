@@ -3,6 +3,7 @@ using Meta.Lib.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
@@ -28,12 +29,12 @@ namespace Meta.Lib.Modules.PubSub
         protected readonly IMetaLogger _logger;
         protected readonly MessageHub _hub;
 
-        protected PipeStream _pipe;
+        PipeStream _pipe;
         StreamReader _reader;
         StreamWriter _writer;
 
-        protected readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
-        protected readonly ConcurrentDictionary<string, PipeTransmit> _transmits =
+        readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
+        readonly ConcurrentDictionary<string, PipeTransmit> _transmits =
             new ConcurrentDictionary<string, PipeTransmit>();
 
         public event EventHandler<EventArgs> Connected;
@@ -42,6 +43,7 @@ namespace Meta.Lib.Modules.PubSub
         public string Id { get; } = (++InstanceNo).ToString();
 
         public bool IsConnected => _pipe?.IsConnected ?? false;
+        public bool IsStarted => _pipe != null;
 
 
         public PipeConnection(MessageHub hub, IMetaLogger logger)
@@ -75,7 +77,6 @@ namespace Meta.Lib.Modules.PubSub
                     while (_reader != null)
                     {
                         var message = await _reader.ReadLineAsync();
-                        //WriteDebugLine($">>> recv:  {message}");
 
                         if (message != null)
                         {
@@ -108,7 +109,7 @@ namespace Meta.Lib.Modules.PubSub
 
         void OnDisconnected()
         {
-            _logger.Debug($">>>> {Id} OnDisconnected");
+            _logger.Info($"Pipe disconnected");
 
             lock (_lock)
             {
@@ -133,6 +134,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 if (_transmits.TryRemove(kvp, out var removed))
                 {
+                    _logger.Info($"Cancelled transmit '{removed.Packet}'");
                     removed.Tcs.TrySetCanceled();
                 }
             }
@@ -171,8 +173,9 @@ namespace Meta.Lib.Modules.PubSub
                         throw new InvalidDataException();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    _logger.Error(ex);
                 }
             });
         }
@@ -278,6 +281,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
+                    _logger.Error($"Send transmit error: '{ex.Message}, packet: {transmit.Packet}'");
                     if (_transmits.TryRemove(transmit.Id, out var removed))
                         removed.Tcs.SetException(ex);
                 }

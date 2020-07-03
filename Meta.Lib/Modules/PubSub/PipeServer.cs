@@ -24,7 +24,7 @@ namespace Meta.Lib.Modules.PubSub
 
         internal async Task Start(string pipeName)
         {
-            if (_pipe != null)
+            if (IsStarted)
                 throw new InvalidOperationException("Pipe server already started");
 
             var pipe = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 32,
@@ -42,11 +42,9 @@ namespace Meta.Lib.Modules.PubSub
 
             Init(pipe);
 
-            FireConnectedEvent();
-
-            _logger.Debug($"Client connected {DateTime.Now:HH:mm:ss.fff}");
-
             StartReadLoop();
+
+            FireConnectedEvent();
         }
 
         internal void Stop()
@@ -67,7 +65,7 @@ namespace Meta.Lib.Modules.PubSub
             if (_subscribedTypes.TryAdd(type, type))
             {
                 _onNewPipeSubscriber(type, this);
-                _logger.Debug($"subscribed to {type}");
+                _logger.Trace($"Client subscribed to {type}");
             }
             await SendOkResponse(id);
         }
@@ -77,6 +75,7 @@ namespace Meta.Lib.Modules.PubSub
             string id = parts[1];
             Type type = Type.GetType(parts[2]);
             _subscribedTypes.TryRemove(type, out var _);
+            _logger.Trace($"Client unsubscribed from {type}");
             await SendOkResponse(id);
         }
 

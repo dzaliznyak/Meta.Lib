@@ -22,14 +22,21 @@ namespace TestClient
 
         static async void RunClient()
         {
-            // local hub creation
-            hub = new MetaPubSub();
+            try
+            {
+                // local hub creation
+                hub = new MetaPubSub();
 
-            // connecting the remote server
-            await hub.ConnectToServer("Meta");
+                // connecting the remote server
+                await hub.ConnectToServer("Meta");
 
-            // subscribing
-            await hub.SubscribeOnServer<PingCommand>(OnPingCommand);
+                // subscribing
+                await hub.SubscribeOnServer<PingCommand>(OnPingCommand);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         static Task OnPingCommand(PingCommand arg)

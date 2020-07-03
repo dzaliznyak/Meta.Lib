@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -45,20 +46,9 @@ namespace Meta.Lib.Modules.PubSub
             _proxy.Disconnect();
         }
 
-        async void Proxy_Disconnected(object sender, EventArgs e)
+        void Proxy_Disconnected(object sender, EventArgs e)
         {
-            bool connected = false;
-            while (!connected)
-            {
-                try
-                {
-                    await _proxy.Connect();
-                    connected = true;
-                }
-                catch (Exception)
-                {
-                }
-            }
+            _proxy.StartReconnectionLoop(5_000);
         }
 
         /// <summary>

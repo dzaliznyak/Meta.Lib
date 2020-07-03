@@ -35,6 +35,8 @@ namespace Meta.Lib.Modules.PubSub
 
             PipeName = pipeName;
             StartNext(pipeName);
+
+            _logger.Info($"Started server '{pipeName}', waiting for connections...");
         }
 
         internal void Stop()
@@ -58,7 +60,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 lock (_serversLock)
                     _servers = _servers.Add((PipeServer)s);
-                _logger.Debug($"A client connected, total count: {_servers.Count}");
+                _logger.Info($"Client connected, total count: {_servers.Count}");
 
                 // start waiting for the next connection
                 StartNext(pipeName);
@@ -68,7 +70,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 lock (_serversLock)
                     _servers = _servers.Remove((PipeServer)s);
-                _logger.Debug($"A client disconnected, remained: {_servers.Count}");
+                _logger.Info($"Client disconnected, remained: {_servers.Count}");
             };
 
             Task.Run(async () =>
@@ -76,6 +78,9 @@ namespace Meta.Lib.Modules.PubSub
                 try
                 {
                     await _pendingServer.Start(pipeName);
+                }
+                catch (OperationCanceledException)
+                {
                 }
                 catch (Exception ex)
                 {
