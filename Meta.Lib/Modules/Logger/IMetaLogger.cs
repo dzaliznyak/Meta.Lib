@@ -4,12 +4,30 @@ namespace Meta.Lib.Modules.Logger
 {
     public interface IMetaLogger
     {
-        void WriteLine(string source, string message, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Information, string stackTrace = null);
-        void WriteLine(string source, Exception ex, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Error);
-        void WriteLine(string source, string message, Exception ex, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Error);
+        string Name { get; }
 
-        void WriteDebugLine(string source, string message, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Debug);
-        void WriteDebugLine(string source, Exception ex, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Debug);
-        void WriteDebugLine(string source, string message, Exception ex, MetaLogErrorSeverity severity = MetaLogErrorSeverity.Debug);
+        void Trace(string message);
+        void Trace(Exception ex);
+        void Trace(string message, Exception ex);
+
+        void Debug(string message);
+        void Debug(Exception ex);
+        void Debug(string message, Exception ex);
+
+        void Info(string message);
+        void Info(Exception ex);
+        void Info(string message, Exception ex);
+
+        void Warning(string message);
+        void Warning(Exception ex);
+        void Warning(string message, Exception ex);
+
+        void Error(string message);
+        void Error(Exception ex);
+        void Error(string message, Exception ex);
+
+        void Critical(string message);
+        void Critical(Exception ex);
+        void Critical(string message, Exception ex);
     }
 }

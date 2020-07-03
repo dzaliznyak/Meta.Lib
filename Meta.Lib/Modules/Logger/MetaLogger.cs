@@ -12,6 +12,7 @@ namespace Meta.Lib.Modules.Logger
         internal Split<MetaLogEntity> Split { get; }
         internal TraceLogger TraceLogger { get; }
         internal ConsoleLogger ConsoleLogger { get; }
+
         public MetaLogger()
         {
             Queue = new ManyToOneQueue<MetaLogEntity>(Split_Put);

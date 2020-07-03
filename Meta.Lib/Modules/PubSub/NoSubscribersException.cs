@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Meta.Lib.Modules.PubSub
 {
+    [Serializable]
     public class NoSubscribersException : Exception
     {
         public NoSubscribersException(string message)
@@ -17,5 +19,11 @@ namespace Meta.Lib.Modules.PubSub
         public NoSubscribersException()
         {
         }
+
+        public NoSubscribersException(SerializationInfo info, StreamingContext context)
+            :base(info, context)
+        {
+        }
+
     }
 }

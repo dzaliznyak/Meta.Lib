@@ -6,13 +6,26 @@ namespace Meta.Lib.Modules.PubSub
 {
     public interface IMetaPubSub
     {
+        Task ConnectToServer(string pipeName, string serverName = ".");
+
+        void DisconnectFromServer();
+
+        void StartServer(string pipeName);
+
+        void StopServer();
+
         void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match)
             where TMessage : class, IPubSubMessage;
 
-        void Unsubscribe<TMessage>(Func<TMessage, Task> handler)
+        Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
+            where TMessage : class, IPubSubMessage;
+
+        Task Unsubscribe<TMessage>(Func<TMessage, Task> handler)
             where TMessage : class, IPubSubMessage;
 
         Task Publish(IPubSubMessage message);
+
+        Task PublishOnServer(IPubSubMessage message);
 
         Task<TMessage> When<TMessage>(int millisecondsTimeout, Predicate<TMessage> match = null, 
             CancellationToken cancellationToken = default)
