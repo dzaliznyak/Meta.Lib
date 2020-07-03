@@ -15,21 +15,6 @@ namespace TestServer
             _log = log;
         }
 
-        //LogLevel GetLogLevel(MetaLogErrorSeverity severity)
-        //{
-        //    return severity switch
-        //    {
-        //        MetaLogErrorSeverity.Critical => LogLevel.Fatal,
-        //        MetaLogErrorSeverity.Error => LogLevel.Error,
-        //        MetaLogErrorSeverity.Warning => LogLevel.Warn,
-        //        MetaLogErrorSeverity.Information => LogLevel.Info,
-        //        MetaLogErrorSeverity.Debug => LogLevel.Debug,
-        //        MetaLogErrorSeverity.Trace => LogLevel.Trace,
-        //        MetaLogErrorSeverity.None => LogLevel.Off,
-        //        _ => LogLevel.Debug,
-        //    };
-        //}
-
         // Trace
         public void Trace(string message)
         {
