@@ -124,6 +124,9 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         /// <param name="message">An instance of any class derived from IPubSubMessage</param>
         /// <returns>A Task that can be awaited until the message has been processed by all subscribers</returns>
+        /// <exception cref="AggregateException" />
+        /// <exception cref="TimeoutException" />
+        /// <exception cref="NoSubscribersException" />
         public Task Publish(IPubSubMessage message)
         {
             return _messageHub.Publish(message);

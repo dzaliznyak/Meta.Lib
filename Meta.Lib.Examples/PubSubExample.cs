@@ -82,12 +82,35 @@ namespace Meta.Lib.Examples
         async Task ExceptionHandlingExample()
         {
             var hub = new MetaPubSub();
-            hub.Subscribe<MyMessage>(OnMyMessageHandlerWithException);
 
             try
             {
+                var message = new MyMessage
+                {
+                    DeliverAtLeastOnce = true,
+                };
+
+                // publishing a message when no one subscribed - NoSubscribersException
+                //await hub.Publish(message);
+
+                // publishing a message when no one subscribed and Timeout > 0 - TimeoutException
+                //message.Timeout = 100;
+                //await hub.Publish(message);
+
+                hub.Subscribe<MyMessage>(OnMyMessageHandlerWithException);
+
                 // publishing a message
-                await hub.Publish(new MyMessage());
+                await hub.Publish(message);
+            }
+            catch (NoSubscribersException ex)
+            {
+                // No one is subscribed to this message and (message.DeliverAtLeastOnce == true and message.Timeout == 0)
+                Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
+            }
+            catch (TimeoutException ex)
+            {
+                // No one is subscribed to this message and (message.DeliverAtLeastOnce == true and message.Timeout > 0)
+                Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
             }
             catch (AggregateException ex)
             {

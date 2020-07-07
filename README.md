@@ -3,7 +3,7 @@
 
 MetaPubSub is an implementation of the publish/subscribe pattern - when the publisher and subscriber know nothing of each other but can exchange messages. It's fast, lightweight and beside basic functionality has some cool features:
 
-- **New: client-server mode** - messages can be sent between different processes and computers
+- **New: interprocess communication** - messages can be sent between different processes and computers
 - the independent order of the Subscribe and Publish methods
 - awaitable methods, for example, you can await Publish and wait until all subscribers have finished processing the message 
 - at least once delivery check - you can opt in to have an exception if no one subscribed to your message
@@ -26,6 +26,62 @@ PM> Install-Package Meta.Lib
 MetaPubSub logs it's messaging to Console and Trace outputs by default. But you can assign any logger on your choice. The TestServer demo application contains a sample of how to use MetaPubSub with NLog.
 
 # How to use
+
+## Preparing a message class
+Each message class must be derived from the IPubSubMessage interface:
+
+```c#
+public interface IPubSubMessage
+{
+    bool DeliverAtLeastOnce { get; }
+    int Timeout { get; }
+    string RemoteConnectionId { get; set; }
+}
+```
+
+Also, you can derive it from PubSubMessageBase, which declaration is as follows:
+
+```c#
+public class PubSubMessageBase : IPubSubMessage
+{
+    public bool DeliverAtLeastOnce { get; set; }
+
+    public int Timeout { get; set; }
+
+    public string RemoteConnectionId { get; set; }
+}
+```
+
+Or you can define your own base class:
+
+```c#
+public class MessageBase : IPubSubMessage
+{
+    // set this to be the default value for all derived classes
+    public bool DeliverAtLeastOnce => true;
+
+    // default timeout in milliseconds
+    public int Timeout => 1000;
+
+    // required for internal message processing, leave it as is
+    public string RemoteConnectionId { get; set; }
+}
+```
+
+So your message declaration should look like this:
+
+```c#
+public class MyMessage : MessageBase // or PubSubMessageBase
+{
+    public string SomeData { get; }
+
+    public MyMessage(string data)
+    {
+        SomeData = data;
+    }
+}
+```
+
 ## Hub creation
 ```c#
 // hub creation
@@ -44,12 +100,35 @@ hub.Unsubscribe<MyMessage>(OnMyMessage);
 ## Exceptions handling
 ```c#
 var hub = new MetaPubSub();
-hub.Subscribe<MyMessage>(OnMyMessageHandlerWithException);
 
 try
 {
+    var message = new MyMessage
+    {
+        DeliverAtLeastOnce = true,
+    };
+
+    // publishing a message when no one subscribed - NoSubscribersException
+    //await hub.Publish(message);
+
+    // publishing a message when no one subscribed and Timeout > 0 - TimeoutException
+    //message.Timeout = 100;
+    //await hub.Publish(message);
+
+    hub.Subscribe<MyMessage>(OnMyMessageHandlerWithException);
+
     // publishing a message
-    await hub.Publish(new MyMessage());
+    await hub.Publish(message);
+}
+catch (NoSubscribersException ex)
+{
+    // No one is subscribed to this message and (message.DeliverAtLeastOnce == true and message.Timeout == 0)
+    Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
+}
+catch (TimeoutException ex)
+{
+    // No one is subscribed to this message and (message.DeliverAtLeastOnce == true and message.Timeout > 0)
+    Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
 }
 catch (AggregateException ex)
 {
@@ -64,7 +143,7 @@ catch (AggregateException ex)
     }
 }
 
-hub.Unsubscribe<MyMessage>(OnMyMessageHandlerWithException);
+await hub.Unsubscribe<MyMessage>(OnMyMessageHandlerWithException);
 ```
 
 ## At least once delivery check
