@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace Meta.Lib.Modules.PubSub
 
         void DisconnectFromServer();
 
-        void StartServer(string pipeName);
+        void StartServer(string pipeName, Func<NamedPipeServerStream> configure = null);
 
         void StopServer();
 

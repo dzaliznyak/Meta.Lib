@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -55,12 +56,13 @@ namespace Meta.Lib.Modules.PubSub
         /// Starts accepting for incoming client connections.
         /// </summary>
         /// <param name="pipeName">Unique name for this server. The same name should be used to call ConnectToServer() method.</param>
-        public void StartServer(string pipeName)
+        /// <param name="configure">Delegate wich can be used to create NamedPipeServerStream with non-default parameters.</param>
+        public void StartServer(string pipeName, Func<NamedPipeServerStream> configure = null)
         {
             if (_proxy != null)
                 throw new InvalidOperationException("Cannot be started as a server when has been connected to another server");
 
-            _pipeConections.Start(pipeName);
+            _pipeConections.Start(pipeName, configure);
         }
 
         /// <summary>

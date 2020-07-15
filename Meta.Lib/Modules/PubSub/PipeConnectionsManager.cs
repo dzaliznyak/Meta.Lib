@@ -3,6 +3,7 @@ using Meta.Lib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.IO.Pipes;
 using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
@@ -28,13 +29,13 @@ namespace Meta.Lib.Modules.PubSub
             _onNewPipeSubscriber = onNewPipeSubscriber;
         }
 
-        internal void Start(string pipeName)
+        internal void Start(string pipeName, Func<NamedPipeServerStream> configure)
         {
             if (PipeName != null)
                 throw new InvalidOperationException("Already started");
 
             PipeName = pipeName;
-            StartNext(pipeName);
+            StartNext(pipeName, configure);
 
             _logger.Info($"Started server '{pipeName}', waiting for connections...");
         }
@@ -52,7 +53,7 @@ namespace Meta.Lib.Modules.PubSub
             _servers = ImmutableList<PipeServer>.Empty;
         }
 
-        void StartNext(string pipeName)
+        void StartNext(string pipeName, Func<NamedPipeServerStream> configure)
         {
             _pendingServer = new PipeServer(_hub, _logger, _onNewPipeSubscriber);
 
@@ -63,7 +64,7 @@ namespace Meta.Lib.Modules.PubSub
                 _logger.Info($"Client connected, total count: {_servers.Count}");
 
                 // start waiting for the next connection
-                StartNext(pipeName);
+                StartNext(pipeName, configure);
             };
 
             _pendingServer.Disconnected += (s, a) =>
@@ -77,7 +78,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 try
                 {
-                    await _pendingServer.Start(pipeName);
+                    await _pendingServer.Start(pipeName, configure);
                 }
                 catch (OperationCanceledException)
                 {
