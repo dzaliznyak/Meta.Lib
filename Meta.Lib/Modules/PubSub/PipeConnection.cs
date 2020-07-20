@@ -97,7 +97,7 @@ namespace Meta.Lib.Modules.PubSub
             });
         }
 
-        public virtual void Disconnect()
+        internal virtual void Disconnect()
         {
             lock (_lock)
             {
@@ -226,8 +226,10 @@ namespace Meta.Lib.Modules.PubSub
                     {
                         var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
                         var aggException = JsonConvert.DeserializeObject<AggregateException>(parts[3], settings);
+
                         if (aggException.InnerExceptions.Count == 1 &&
-                            aggException.InnerException is NoSubscribersException)
+                            (aggException.InnerException is NoSubscribersException ||
+                             aggException.InnerException is TimeoutException))
                         {
                             transmit.Tcs.SetException(aggException.InnerException);
                         }

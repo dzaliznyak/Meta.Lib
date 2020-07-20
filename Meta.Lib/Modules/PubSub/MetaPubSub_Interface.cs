@@ -89,16 +89,17 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         /// <typeparam name="TMessage">Type of a message to subscribe to</typeparam>
         /// <param name="handler">Client defined function that will be called when the message has arrived</param>
+        /// <param name="match">The delegate that defines the conditions of the message to subscribe for. If null all messages of the specified type will be received</param>
         /// <exception cref="ArgumentNullException" />
-        /// <exception cref="InvalidOperationException" />
-        public Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
+        /// <exception cref="NotConnectedToServerException" />
+        public Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
             where TMessage : class, IPubSubMessage
         {
             if (!_proxy.ConnectedOrConnecting)
-                throw new InvalidOperationException("Not connected to a server");
+                throw new NotConnectedToServerException("Not connected to a server");
 
-            _messageHub.Subscribe(handler, null);
-            return _proxy.Subscribe<TMessage>();
+            _messageHub.Subscribe(handler, match);
+            return _proxy.Subscribe(handler);
         }
 
         /// <summary>
@@ -107,13 +108,14 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         /// <typeparam name="TMessage">Type of a message to subscribe to</typeparam>
         /// <param name="handler">Client defined function that will be called when the message has arrived</param>
+        /// <param name="match">The delegate that defines the conditions of the message to subscribe for. If null all messages of the specified type will be received</param>
         /// <exception cref="ArgumentNullException" />
         /// <exception cref="InvalidOperationException" />
-        public Task<bool> TrySubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
+        public Task<bool> TrySubscribeOnServer<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
             where TMessage : class, IPubSubMessage
         {
-            _messageHub.Subscribe(handler, null);
-            return _proxy.TrySubscribe<TMessage>();
+            _messageHub.Subscribe(handler, match);
+            return _proxy.TrySubscribe(handler);
         }
 
         /// <summary>
@@ -125,12 +127,7 @@ namespace Meta.Lib.Modules.PubSub
             where TMessage : class, IPubSubMessage
         {
             _messageHub.Unsubscribe(handler);
-            //return Task.CompletedTask;
-
-            //if (_proxy != null)
-            return _proxy.Unsubscribe(typeof(TMessage));
-            //else
-            //     return Task.CompletedTask;
+            return _proxy.Unsubscribe(handler);
         }
 
         /// <summary>
@@ -146,10 +143,19 @@ namespace Meta.Lib.Modules.PubSub
             return _messageHub.Publish(message);
         }
 
+        /// <summary>
+        /// Publishes a message on the server
+        /// </summary>
+        /// <param name="message">An instance of any class derived from IPubSubMessage</param>
+        /// <returns>A Task that can be awaited until the message has been processed by all subscribers</returns>
+        /// <exception cref="AggregateException" />
+        /// <exception cref="TimeoutException" />
+        /// <exception cref="NoSubscribersException" />
+        /// <exception cref="NotConnectedToServerException" />
         public Task PublishOnServer(IPubSubMessage message)
         {
-            //  if (_proxy == null)
-            //      throw new Exception("Not connected to server");
+            if (!_proxy.IsConnected)
+                throw new NotConnectedToServerException("Not connected to server");
 
             return _proxy.SendMessage(message, PipeMessageType.Message);
         }
@@ -185,11 +191,19 @@ namespace Meta.Lib.Modules.PubSub
             return _requestResponseProcessor.Process(message, millisecondsTimeout, match, cancellationToken);
         }
 
+        /// <summary>
+        /// Publishes the message and waits until the response message will arrive
+        /// </summary>
+        /// <typeparam name="TResponse">Type of the response message to wait for</typeparam>
+        /// <param name="message">An instance of any class derived from IPubSubMessage</param>
+        /// <param name="millisecondsTimeout">Time interval during which the response message must be received otherwise the TimeoutException will be thrown</param>
+        /// <param name="cancellationToken">The cancellation token that can be used to discard awaiting the response message</param>
+        /// <returns>A Task that can be awaited until the response message has been arrived</returns>
         public Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message, int millisecondsTimeout,
-            CancellationToken cancellationToken = default)
+            Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {
-            return _requestResponseProcessor.ProcessOnServer<TResponse>(message, millisecondsTimeout, cancellationToken);
+            return _requestResponseProcessor.ProcessOnServer(message, millisecondsTimeout, match, cancellationToken);
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using Meta.Lib.Examples.Shared;
+using Meta.Lib.Modules.Logger;
 using Meta.Lib.Modules.PubSub;
 using Meta.Lib.Modules.PubSub.Messages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -708,5 +709,137 @@ namespace Meta.Lib.Tests
             await serverHub.Publish(new PingCommand() { DeliverAtLeastOnce = false });
             Assert.IsTrue(receivedCount == 3);
         }
+
+        [TestMethod]
+        public async Task Predicate()
+        {
+            var pipeName = Guid.NewGuid().ToString();
+            // server ------------------------
+            var serverHub = CreateServerHub(pipeName);
+
+            int receivedCount = 0;
+            Task Handler1(MyMessage x)
+            {
+                receivedCount++;
+                return Task.CompletedTask;
+            }
+
+            static bool Predicate(MyMessage message)
+            {
+                return message.LogSeverity != MetaLogErrorSeverity.Info;
+            }
+
+            Task Handler2(MyMessage x)
+            {
+                receivedCount++;
+                return Task.CompletedTask;
+            }
+
+            // client hub
+            var hub = new MetaPubSub();
+            await hub.ConnectToServer(pipeName);
+            await hub.SubscribeOnServer<MyMessage>(Handler1, Predicate);
+            await hub.SubscribeOnServer<MyMessage>(Handler2);
+
+
+            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info };
+            await serverHub.Publish(message);
+            Assert.IsTrue(receivedCount == 1);
+
+
+            message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Error };
+            await serverHub.Publish(message);
+            Assert.IsTrue(receivedCount == 3);
+        }
+
+        [TestMethod]
+        public async Task ProcessWithPredicate()
+        {
+            // server ------------------------
+            var serverHub = CreateServerHub();
+            serverHub.Subscribe<MyMessage>(Handler);
+
+            async Task Handler(MyMessage x)
+            {
+                await serverHub.Publish(new MyMessageReplay() { SomeId = x.SomeId });
+            }
+            
+            static bool Predicate(MyMessageReplay message)
+            {
+                return message.SomeId == 456;
+            }
+
+            // local hub creation
+            var hub = new MetaPubSub();
+            await hub.ConnectToServer(serverHub.PipeName);
+
+            try
+            {
+                await hub.ProcessOnServer<MyMessageReplay>(
+                    new MyMessage() { SomeId = 123 },
+                    millisecondsTimeout: 1_000,
+                    Predicate);
+
+                // prev call must throw TimeoutException
+                Assert.IsTrue(false);
+            }
+            catch (TimeoutException)
+            {
+            }
+
+            var replay = await hub.ProcessOnServer<MyMessageReplay>(
+                    new MyMessage() { SomeId = 456 },
+                    millisecondsTimeout: 1_000,
+                    Predicate);
+
+            Assert.IsTrue(replay.SomeId == 456);
+        }
+
+        [TestMethod]
+        public async Task PublishOnServer()
+        {
+            // server ------------------------
+            var serverHub = CreateServerHub();
+
+            static Task Handler(PingCommand x)
+            {
+                return Task.CompletedTask;
+            }
+
+            // local hub creation
+            var hub = new MetaPubSub();
+
+            try
+            {
+                await hub.PublishOnServer(new PingCommand() { Id = "123" });
+                Assert.IsTrue(false);
+            }
+            catch (NotConnectedToServerException)
+            {
+            }
+            
+            await hub.ConnectToServer(serverHub.PipeName);
+
+            try
+            {
+                await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, Timeout = 0 });
+            }
+            catch (NoSubscribersException)
+            {
+            }
+
+            try
+            {
+                await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, Timeout = 100 });
+            }
+            catch (TimeoutException)
+            {
+            }
+
+            serverHub.Subscribe<PingCommand>(Handler);
+
+            await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, Timeout = 100 });
+        }
+
     }
 }

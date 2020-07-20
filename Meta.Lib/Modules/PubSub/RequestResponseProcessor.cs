@@ -14,7 +14,8 @@ namespace Meta.Lib.Modules.PubSub
             _hub = hub;
         }
 
-        public async Task<TMessage> When<TMessage>(int millisecondsTimeout, 
+        public async Task<TMessage> When<TMessage>(
+            int millisecondsTimeout, 
             Predicate<TMessage> match = null,
             CancellationToken cancellationToken = default)
             where TMessage : class, IPubSubMessage
@@ -39,7 +40,8 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        public async Task<TResponse> Process<TResponse>(IPubSubMessage message, 
+        public async Task<TResponse> Process<TResponse>(
+            IPubSubMessage message, 
             int millisecondsTimeout,
             Predicate<TResponse> match = null,
             CancellationToken cancellationToken = default)
@@ -66,8 +68,10 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        public async Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message,
+        public async Task<TResponse> ProcessOnServer<TResponse>(
+            IPubSubMessage message,
             int millisecondsTimeout,
+            Predicate<TResponse> match = null,
             CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {
@@ -79,7 +83,7 @@ namespace Meta.Lib.Modules.PubSub
                 return Task.CompletedTask;
             }
 
-            await _hub.SubscribeOnServer<TResponse>(Handler);
+            await _hub.SubscribeOnServer(Handler, match);
 
             try
             {

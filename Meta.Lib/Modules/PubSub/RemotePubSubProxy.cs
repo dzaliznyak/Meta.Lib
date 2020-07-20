@@ -1,7 +1,8 @@
 ﻿using Meta.Lib.Modules.Logger;
 using System;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO.Pipes;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,9 +19,8 @@ namespace Meta.Lib.Modules.PubSub
 
     internal class RemotePubSubProxy : PipeConnection
     {
-        readonly ConcurrentDictionary<Type, string> _subscribedTypes =
-            new ConcurrentDictionary<Type, string>();
-        readonly object _lock = new object();
+        readonly object _connectionLock = new object();
+        readonly Dictionary<Type, Node> _nodes = new Dictionary<Type, Node>();
 
         public bool ConnectedOrConnecting => _connectionScope != null;
 
@@ -32,11 +32,12 @@ namespace Meta.Lib.Modules.PubSub
         {
         }
 
+        #region Connection
         internal async Task<bool> Connect(string pipeName,
             int millisecondsTimeout = 5_000, int reconnectionPeriod = 5_000, string serverName = ".")
         {
             ConnectionScope scope;
-            lock (_lock)
+            lock (_connectionLock)
             {
                 if (_connectionScope != null)
                     throw new InvalidOperationException("The ConnectToServer() method has been already called. You need to call the Disconnect() method before attempting to establish a new connection.");
@@ -82,9 +83,9 @@ namespace Meta.Lib.Modules.PubSub
         async Task<NamedPipeClientStream> ConnectPipe(ConnectionScope connectionScope)
         {
             var pipe = new NamedPipeClientStream(
-                connectionScope.ServerName, 
+                connectionScope.ServerName,
                 connectionScope.PipeName,
-                PipeDirection.InOut, 
+                PipeDirection.InOut,
                 PipeOptions.Asynchronous);
 
             try
@@ -104,10 +105,10 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        public override void Disconnect()
+        internal override void Disconnect()
         {
             ConnectionScope scope = null;
-            lock (_lock)
+            lock (_connectionLock)
             {
                 if (_connectionScope == null)
                     throw new InvalidOperationException("The ConnectToServer() method has not been called.");
@@ -166,45 +167,82 @@ namespace Meta.Lib.Modules.PubSub
                 });
             }
         }
+        #endregion Connection
 
         async Task ResubscribeAllMessages()
         {
-            foreach (var item in _subscribedTypes.Values)
-                await SendMessage(item, PipeMessageType.Subscribe);
+            List<Type> nodes;
+            lock (_nodes)
+                nodes = _nodes.Keys.ToList();
+
+            foreach (var item in nodes)
+                await SendMessage(item.AssemblyQualifiedName, PipeMessageType.Subscribe);
         }
 
-        public async Task Subscribe<TMessage>()
+        public async Task Subscribe<TMessage>(Func<TMessage, Task> handler)
+            where TMessage : class, IPubSubMessage
         {
-            var type = typeof(TMessage);
-            _subscribedTypes.TryAdd(type, type.AssemblyQualifiedName);
-            await SendMessage(type.AssemblyQualifiedName, PipeMessageType.Subscribe);
-            _logger.Trace($"Subscribed '{type.Name}'");
+            if (handler == null)
+                throw new ArgumentNullException(nameof(handler));
+
+            if (!_nodes.TryGetValue(typeof(TMessage), out Node node))
+            {
+                lock (_nodes)
+                {
+                    if (!_nodes.TryGetValue(typeof(TMessage), out node))
+                    {
+                        node = new Node();
+                        _nodes.Add(typeof(TMessage), node);
+                    }
+                }
+            }
+
+            if (node.Find(x => x.Subscription.ActionEquals(handler)) == null)
+            {
+                var subscriber = new Subscriber(new Subscription<TMessage>(handler, null));
+                node.Add(subscriber);
+
+                if (node.Subscribers.Count == 1)
+                {
+                    await SendMessage(typeof(TMessage).AssemblyQualifiedName, PipeMessageType.Subscribe);
+                    _logger.Trace($"Subscribed on server: '{typeof(TMessage).Name}'");
+                }
+            }
         }
 
-        public async Task<bool> TrySubscribe<TMessage>()
+        public async Task<bool> TrySubscribe<TMessage>(Func<TMessage, Task> handler)
+            where TMessage : class, IPubSubMessage
         {
-            var type = typeof(TMessage);
             try
             {
-                _subscribedTypes.TryAdd(type, type.AssemblyQualifiedName);
-                await SendMessage(type.AssemblyQualifiedName, PipeMessageType.Subscribe);
-                _logger.Trace($"Subscribed '{type.Name}'");
+                await Subscribe(handler);
                 return true;
             }
             catch (Exception ex)
             {
-                _logger.Trace($"Failed to subscribe to '{type.Name}': {ex.Message}");
+                _logger.Trace($"Failed to subscribe to '{typeof(TMessage).Name}': {ex.Message}");
                 return false;
             }
         }
 
-        public async Task Unsubscribe(Type type)
+        public async Task Unsubscribe<TMessage>(Func<TMessage, Task> handler)
+            where TMessage : class, IPubSubMessage
         {
-            if (ConnectedOrConnecting)//todo
+            if (handler == null)
+                throw new ArgumentNullException(nameof(handler));
+
+            if (_nodes.TryGetValue(typeof(TMessage), out Node node))
             {
-                await SendMessage(type.AssemblyQualifiedName, PipeMessageType.Unsubscribe);
-                _subscribedTypes.TryRemove(type, out var _);
-                _logger.Trace($"Unsubscribed '{type.Name}'");
+                var subscriber = node.Find(x => x.Subscription.ActionEquals(handler));
+
+                if (subscriber != null)
+                    node.Remove(subscriber);
+
+                if (node.Subscribers.Count == 0)
+                {
+                    await SendMessage(typeof(TMessage).AssemblyQualifiedName, PipeMessageType.Unsubscribe);
+                    _logger.Trace($"Unsubscribed on server: '{typeof(TMessage).Name}'");
+                }
             }
         }
 
