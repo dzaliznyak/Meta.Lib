@@ -45,7 +45,7 @@ namespace Meta.Lib.Modules.PubSub
                 throw;
             }
 
-            Init(pipe);
+            InitPipeConnection(pipe);
 
             StartReadLoop();
 

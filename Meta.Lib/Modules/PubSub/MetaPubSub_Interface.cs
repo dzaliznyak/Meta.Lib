@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,23 +15,31 @@ namespace Meta.Lib.Modules.PubSub
         /// <summary>
         /// Shows is this hub connected to another server hub.
         /// </summary>
-        public bool IsConnectedToServer => _proxy?.IsConnected ?? false;
+        public bool IsConnectedToServer => _proxy.IsConnected;
 
         /// <summary>
         /// Connect to a server hub.
         /// </summary>
         /// <param name="pipeName">Name of the pipe opened on the server.</param>
+        /// <param name="millisecondsTimeout">The number of milliseconds to wait for the server to respond before the connection times out</param>
         /// <param name="serverName">Name of the computer where the server runs. If the server and local hub on the same computer use "."</param>
-        public Task ConnectToServer(string pipeName, string serverName = ".")
+        /// <exception cref="TimeoutException"/>
+        public Task ConnectToServer(string pipeName, int millisecondsTimeout = 5_000, string serverName = ".")
         {
-            if (_proxy != null)
-                throw new InvalidOperationException("Already connected");
+            return _proxy.Connect(pipeName, millisecondsTimeout, reconnectionPeriod: 0, serverName);
+        }
 
-            _proxy = new RemotePubSubProxy(_messageHub, _logger, pipeName, serverName);
-
-            _proxy.Disconnected += Proxy_Disconnected;
-
-            return _proxy.Connect();
+        /// <summary>
+        /// Trying to connect to a server hub. If connection times out starts a reconnection loop and returns false.
+        /// </summary>
+        /// <param name="pipeName">Name of the pipe opened on the server.</param>
+        /// <param name="millisecondsTimeout">The number of milliseconds to wait for the server to respond before the connection times out</param>
+        /// <param name="reconnectionPeriod">The time delay between attempts to establish the connection.</param>
+        /// <param name="serverName">Name of the computer where the server runs. If the server and local hub on the same computer use "."</param>
+        /// <returns>Returns true if the connection has been established.</returns>
+        public Task<bool> TryConnectToServer(string pipeName, int millisecondsTimeout = 1_000, int reconnectionPeriod = 5_000, string serverName = ".")
+        {
+            return _proxy.Connect(pipeName, millisecondsTimeout, reconnectionPeriod, serverName);
         }
 
         /// <summary>
@@ -40,16 +47,7 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         public void DisconnectFromServer()
         {
-            if (_proxy == null)
-                throw new InvalidOperationException("Not connected");
-
-            _proxy.Disconnected -= Proxy_Disconnected;
             _proxy.Disconnect();
-        }
-
-        void Proxy_Disconnected(object sender, EventArgs e)
-        {
-            _proxy.StartReconnectionLoop(5_000);
         }
 
         /// <summary>
@@ -59,7 +57,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <param name="configure">Delegate wich can be used to create NamedPipeServerStream with non-default parameters.</param>
         public void StartServer(string pipeName, Func<NamedPipeServerStream> configure = null)
         {
-            if (_proxy != null)
+            if (_proxy.ConnectedOrConnecting)
                 throw new InvalidOperationException("Cannot be started as a server when has been connected to another server");
 
             _pipeConections.Start(pipeName, configure);
@@ -79,8 +77,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <typeparam name="TMessage">Type of a message to subscribe to</typeparam>
         /// <param name="handler">Client defined function that will be called when the message has arrived</param>
         /// <param name="match">The delegate that defines the conditions of the message to subscribe for. If null all messages of the specified type will be received</param>
-        /// <exception cref="AggregateException" />
-        /// <exception cref="NoSubscribersException" />
+        /// <exception cref="ArgumentNullException" />
         public void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
             where TMessage : class, IPubSubMessage
         {
@@ -92,17 +89,31 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         /// <typeparam name="TMessage">Type of a message to subscribe to</typeparam>
         /// <param name="handler">Client defined function that will be called when the message has arrived</param>
-        /// <exception cref="AggregateException" />
-        /// <exception cref="NoSubscribersException" />
+        /// <exception cref="ArgumentNullException" />
         /// <exception cref="InvalidOperationException" />
         public Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
             where TMessage : class, IPubSubMessage
         {
-            if (_proxy == null)
-                throw new InvalidOperationException("Not connected to server");
+            if (!_proxy.ConnectedOrConnecting)
+                throw new InvalidOperationException("Not connected to a server");
 
             _messageHub.Subscribe(handler, null);
             return _proxy.Subscribe<TMessage>();
+        }
+
+        /// <summary>
+        /// Subscribes to a message of TMessage type locally and then trying to subscribe on the server. If the server not connected returns false.
+        /// Subscription will be made automatically after the server connection.
+        /// </summary>
+        /// <typeparam name="TMessage">Type of a message to subscribe to</typeparam>
+        /// <param name="handler">Client defined function that will be called when the message has arrived</param>
+        /// <exception cref="ArgumentNullException" />
+        /// <exception cref="InvalidOperationException" />
+        public Task<bool> TrySubscribeOnServer<TMessage>(Func<TMessage, Task> handler)
+            where TMessage : class, IPubSubMessage
+        {
+            _messageHub.Subscribe(handler, null);
+            return _proxy.TrySubscribe<TMessage>();
         }
 
         /// <summary>
@@ -114,11 +125,12 @@ namespace Meta.Lib.Modules.PubSub
             where TMessage : class, IPubSubMessage
         {
             _messageHub.Unsubscribe(handler);
+            //return Task.CompletedTask;
 
-            if (_proxy != null)
-                return _proxy.Unsubscribe(typeof(TMessage));
-            else
-                return Task.CompletedTask;
+            //if (_proxy != null)
+            return _proxy.Unsubscribe(typeof(TMessage));
+            //else
+            //     return Task.CompletedTask;
         }
 
         /// <summary>
@@ -136,8 +148,8 @@ namespace Meta.Lib.Modules.PubSub
 
         public Task PublishOnServer(IPubSubMessage message)
         {
-            if (_proxy == null)
-                throw new Exception("Not connected to server");
+            //  if (_proxy == null)
+            //      throw new Exception("Not connected to server");
 
             return _proxy.SendMessage(message, PipeMessageType.Message);
         }

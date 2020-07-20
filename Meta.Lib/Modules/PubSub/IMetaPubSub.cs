@@ -7,7 +7,7 @@ namespace Meta.Lib.Modules.PubSub
 {
     public interface IMetaPubSub
     {
-        Task ConnectToServer(string pipeName, string serverName = ".");
+        Task ConnectToServer(string pipeName, int millisecondsTimeout = 5000, string serverName = ".");
 
         void DisconnectFromServer();
 

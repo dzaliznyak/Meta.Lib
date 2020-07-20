@@ -52,7 +52,7 @@ namespace Meta.Lib.Modules.PubSub
             _hub = hub;
         }
 
-        protected void Init(PipeStream pipe)
+        protected void InitPipeConnection(PipeStream pipe)
         {
             if (_pipe != null || _reader != null || _writer != null)
                 throw new InvalidOperationException();
@@ -97,7 +97,7 @@ namespace Meta.Lib.Modules.PubSub
             });
         }
 
-        public void Disconnect()
+        public virtual void Disconnect()
         {
             lock (_lock)
             {

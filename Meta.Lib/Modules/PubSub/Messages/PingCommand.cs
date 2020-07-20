@@ -2,9 +2,9 @@
 {
     public class PingCommand : IPubSubMessage
     {
-        public bool DeliverAtLeastOnce => true;
+        public bool DeliverAtLeastOnce { get; set; } = true;
 
-        public int Timeout => 1000;
+        public int Timeout { get; set; } = 1000;
 
         public string RemoteConnectionId { get; set; }
         
