@@ -11,11 +11,14 @@
     <Copyright>Copyright © 2020 Denys Zaliznyak</Copyright>
     <Authors>Denys Zaliznyak</Authors>
     <RepositoryUrl>https://github.com/dzaliznyak/Meta.Lib.git</RepositoryUrl>
-    <Description>A set of classes and modules for .Net development including MetaPubSub - a Publish-Subscribe pattern implementation with RPC channel</Description>
-    <PackageReleaseNotes>Implemented interprocess communication between server and clients hubs</PackageReleaseNotes>
+    <Description>A set of classes and modules for .Net development including MetaPubSub - a Publish-Subscribe pattern implementation with an interprocess communication channel</Description>
+    <PackageReleaseNotes>- Added TryConnectToServer &amp; TrySubscribeOnServer
+- Added a match predicate to SubscribeOnServer method
+- Added Connected/Disconnected built-in messages
+- Added a delegate method to create a pipe with non-default parameters</PackageReleaseNotes>
     <PackageTags>publish-subscribe utility csharp event-driven event-hub publisher-subscriber library pubsub IPC named-pipe RPC interprocess</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
