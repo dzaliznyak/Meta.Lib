@@ -11,7 +11,7 @@ namespace Meta.Lib.Modules.PubSub
 
         Task<bool> TryConnectToServer(string pipeName, int millisecondsTimeout = 1_000, int reconnectionPeriod = 5_000, string serverName = ".");
 
-        void DisconnectFromServer();
+        Task DisconnectFromServer();
 
         void StartServer(string pipeName, Func<NamedPipeServerStream> configure = null);
 

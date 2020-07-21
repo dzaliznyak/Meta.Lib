@@ -2,9 +2,9 @@
 
 namespace Meta.Lib.Modules.PubSub.Messages
 {
-    public class RemoteClientConnectedEvent : PubSubMessageBase
+    public class DisconnectedFromServerEvent : PubSubMessageBase
     {
         public DateTime Timestamp { get; internal set; }
-        public int TotalClientsCount { get; internal set; }
+        public bool LostConnection { get; internal set; }
     }
 }

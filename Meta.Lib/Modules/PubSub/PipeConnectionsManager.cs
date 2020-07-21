@@ -1,4 +1,5 @@
 ﻿using Meta.Lib.Modules.Logger;
+using Meta.Lib.Modules.PubSub.Messages;
 using Meta.Lib.Utils;
 using System;
 using System.Collections.Generic;
@@ -57,21 +58,49 @@ namespace Meta.Lib.Modules.PubSub
         {
             _pendingServer = new PipeServer(_hub, _logger, _onNewPipeSubscriber);
 
-            _pendingServer.Connected += (s, a) =>
+            _pendingServer.Connected += async (s, a) =>
             {
-                lock (_serversLock)
-                    _servers = _servers.Add((PipeServer)s);
-                _logger.Info($"Client connected, total count: {_servers.Count}");
+                try
+                {
+                    lock (_serversLock)
+                        _servers = _servers.Add((PipeServer)s);
 
-                // start waiting for the next connection
-                StartNext(pipeName, configure);
+                    _logger.Info($"Client connected, total count: {_servers.Count}");
+
+                    // start waiting for the next connection
+                    StartNext(pipeName, configure);
+
+                    await _hub.Publish(new RemoteClientConnectedEvent()
+                    {
+                        Timestamp = DateTime.Now,
+                        TotalClientsCount = _servers.Count
+                    });
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex);
+                }
             };
 
-            _pendingServer.Disconnected += (s, a) =>
+            _pendingServer.Disconnected += async (s, a) =>
             {
-                lock (_serversLock)
-                    _servers = _servers.Remove((PipeServer)s);
-                _logger.Info($"Client disconnected, remained: {_servers.Count}");
+                try
+                {
+                    lock (_serversLock)
+                        _servers = _servers.Remove((PipeServer)s);
+
+                    _logger.Info($"Client disconnected, remained: {_servers.Count}");
+
+                    await _hub.Publish(new RemoteClientDisconnectedEvent() 
+                    {
+                        Timestamp = DateTime.Now,
+                        TotalClientsCount = _servers.Count
+                    });
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex);
+                }
             };
 
             Task.Run(async () =>

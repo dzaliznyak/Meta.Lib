@@ -339,7 +339,7 @@ namespace Meta.Lib.Tests
                 await hub.PublishOnServer(new PingCommand());
 
                 await hub.Unsubscribe<PingReplay>(Handler);
-                hub.DisconnectFromServer();
+                await hub.DisconnectFromServer();
             }
 
             Assert.IsTrue(receivedCount == loopCount);
@@ -508,7 +508,7 @@ namespace Meta.Lib.Tests
             var hub = new MetaPubSub();
             await hub.TryConnectToServer(pipeName, 1_000, 100);
             await hub.TrySubscribeOnServer<PingCommand>(Handler);
-            hub.DisconnectFromServer();
+            await hub.DisconnectFromServer();
 
             // server ------------------------
             var serverHub = CreateServerHub(pipeName);
@@ -530,7 +530,7 @@ namespace Meta.Lib.Tests
             var hub = new MetaPubSub();
             try
             {
-                hub.DisconnectFromServer();
+                await hub.DisconnectFromServer();
                 Assert.IsTrue(false);
             }
             catch (InvalidOperationException ex)
@@ -555,7 +555,7 @@ namespace Meta.Lib.Tests
         public async Task TryConnect()
         {
             var pipeName = Guid.NewGuid().ToString();
-            
+
             var hub = new MetaPubSub();
             var res = await hub.TryConnectToServer(pipeName, 10, 500);
             Assert.IsFalse(res);
@@ -584,7 +584,7 @@ namespace Meta.Lib.Tests
                 await hub.SubscribeOnServer<PingCommand>(Handler);
                 Assert.IsTrue(false);
             }
-            catch (InvalidOperationException ex)
+            catch (NotConnectedToServerException ex)
             {
                 Trace.WriteLine(ex.Message);
             }
@@ -692,7 +692,7 @@ namespace Meta.Lib.Tests
             await hub.ConnectToServer(pipeName);
             await hub.SubscribeOnServer<PingCommand>(Handler1);
             await hub.SubscribeOnServer<PingCommand>(Handler2);
-          
+
 
             await serverHub.Publish(new PingCommand());
             Assert.IsTrue(receivedCount == 2);
@@ -761,9 +761,9 @@ namespace Meta.Lib.Tests
 
             async Task Handler(MyMessage x)
             {
-                await serverHub.Publish(new MyMessageReplay() { SomeId = x.SomeId });
+                await serverHub.Publish(new MyMessageReplay() { SomeId = x.SomeId, Version = x.Version });
             }
-            
+
             static bool Predicate(MyMessageReplay message)
             {
                 return message.SomeId == 456;
@@ -817,7 +817,7 @@ namespace Meta.Lib.Tests
             catch (NotConnectedToServerException)
             {
             }
-            
+
             await hub.ConnectToServer(serverHub.PipeName);
 
             try
@@ -839,6 +839,59 @@ namespace Meta.Lib.Tests
             serverHub.Subscribe<PingCommand>(Handler);
 
             await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, Timeout = 100 });
+        }
+
+
+        [TestMethod]
+        public async Task ConnectedDisconnectedEvents()
+        {
+            // server ------------------------
+            var serverHub = CreateServerHub();
+
+            serverHub.Subscribe<RemoteClientConnectedEvent>(ConnectedHandler);
+            serverHub.Subscribe<RemoteClientDisconnectedEvent>(DisconnectedHandler);
+
+            bool hasBeenConnected = false;
+            Task ConnectedHandler(RemoteClientConnectedEvent x)
+            {
+                hasBeenConnected = true;
+                return Task.CompletedTask;
+            }
+
+            bool hasBeenDisconnected = false;
+            Task DisconnectedHandler(RemoteClientDisconnectedEvent x)
+            {
+                hasBeenDisconnected = true;
+                return Task.CompletedTask;
+            }
+
+            bool hasBeenConnectedToServer = false;
+            Task ConnectedToServerHandler(ConnectedToServerEvent x)
+            {
+                hasBeenConnectedToServer = true;
+                return Task.CompletedTask;
+            }
+
+            bool hasBeenDisconnectedFromServer = false;
+            Task DisconnectedFromServerHandler(DisconnectedFromServerEvent x)
+            {
+                hasBeenDisconnectedFromServer = true;
+                return Task.CompletedTask;
+            }
+
+            // local hub creation
+            var hub = new MetaPubSub();
+
+            hub.Subscribe<ConnectedToServerEvent>(ConnectedToServerHandler);
+            hub.Subscribe<DisconnectedFromServerEvent>(DisconnectedFromServerHandler);
+
+            await hub.ConnectToServer(serverHub.PipeName);
+            await hub.DisconnectFromServer();
+
+            await Task.Delay(300);
+
+            Assert.IsTrue(hasBeenConnected && hasBeenDisconnected &&
+                          hasBeenConnectedToServer && hasBeenDisconnectedFromServer);
         }
 
     }

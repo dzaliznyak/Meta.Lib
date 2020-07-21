@@ -11,6 +11,7 @@ namespace Meta.Lib.Examples.Shared
         public MetaLogErrorSeverity LogSeverity { get; set; }
         public string Message { get; set; }
         public byte[] Data { get; set; }
+        public Version Version { get; set; }
 
         public MyMessage()
         {
@@ -29,6 +30,7 @@ namespace Meta.Lib.Examples.Shared
         public MetaLogErrorSeverity LogSeverity { get; set; }
         public string Message { get; set; }
         public byte[] Data { get; set; }
+        public Version Version { get; set; }
 
         public MyMessageReplay()
         {

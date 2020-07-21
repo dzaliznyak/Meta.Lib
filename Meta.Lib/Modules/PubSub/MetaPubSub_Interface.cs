@@ -45,9 +45,9 @@ namespace Meta.Lib.Modules.PubSub
         /// <summary>
         /// Disconnects from the server hub.
         /// </summary>
-        public void DisconnectFromServer()
+        public Task DisconnectFromServer()
         {
-            _proxy.Disconnect();
+            return _proxy.Disconnect();
         }
 
         /// <summary>

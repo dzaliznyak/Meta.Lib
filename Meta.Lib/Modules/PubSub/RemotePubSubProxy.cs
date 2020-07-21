@@ -1,4 +1,5 @@
 ﻿using Meta.Lib.Modules.Logger;
+using Meta.Lib.Modules.PubSub.Messages;
 using System;
 using System.Collections.Generic;
 using System.IO.Pipes;
@@ -33,8 +34,11 @@ namespace Meta.Lib.Modules.PubSub
         }
 
         #region Connection
-        internal async Task<bool> Connect(string pipeName,
-            int millisecondsTimeout = 5_000, int reconnectionPeriod = 5_000, string serverName = ".")
+        internal async Task<bool> Connect(
+            string pipeName,
+            int millisecondsTimeout = 5_000, 
+            int reconnectionPeriod = 5_000, 
+            string serverName = ".")
         {
             ConnectionScope scope;
             lock (_connectionLock)
@@ -75,9 +79,21 @@ namespace Meta.Lib.Modules.PubSub
 
             await ResubscribeAllMessages();
 
+            _logger.Info($"Connected to server '{_connectionScope.ServerName}{_connectionScope.PipeName}'");
+            
             FireConnectedEvent();
 
-            _logger.Info($"Connected to server '{_connectionScope.ServerName}{_connectionScope.PipeName}'");
+            try
+            {
+                await _hub.Publish(new ConnectedToServerEvent()
+                {
+                    Timestamp = DateTime.Now
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Some of the subscribers of ConnectedToServerEvent generated exception: ", ex);
+            }
         }
 
         async Task<NamedPipeClientStream> ConnectPipe(ConnectionScope connectionScope)
@@ -105,7 +121,7 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        internal override void Disconnect()
+        internal override async Task Disconnect()
         {
             ConnectionScope scope = null;
             lock (_connectionLock)
@@ -120,21 +136,45 @@ namespace Meta.Lib.Modules.PubSub
             scope.Cts.Cancel();
 
             Disconnected -= RemotePubSubProxy_Disconnected;
-            base.Disconnect();
+            await base.Disconnect();
+
+            try
+            {
+                await _hub.Publish(new DisconnectedFromServerEvent()
+                {
+                    Timestamp = DateTime.Now
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Some of the subscribers of DisconnectedFromServerEvent generated exception: ", ex);
+            }
         }
 
-        void RemotePubSubProxy_Disconnected(object sender, EventArgs e)
+        async void RemotePubSubProxy_Disconnected(object sender, EventArgs e)
         {
             var scope = _connectionScope;
             if (scope != null)
+            {
                 StartReconnectionLoop(scope);
+
+                try
+                {
+                    await _hub.Publish(new DisconnectedFromServerEvent()
+                    {
+                        Timestamp = DateTime.Now,
+                        LostConnection = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error("Some of the subscribers of DisconnectedFromServerEvent generated exception: ", ex);
+                }
+            }
         }
 
         internal void StartReconnectionLoop(ConnectionScope scope)
         {
-            if (IsConnected)
-                throw new InvalidOperationException("Already connected");
-
             if (Interlocked.CompareExchange(ref _isReconnecting, 1, 0) == 0)
             {
                 _logger.Info($"Starting reconnection loop to the server '{scope.ServerName}{scope.PipeName}'");

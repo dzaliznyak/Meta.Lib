@@ -7,7 +7,7 @@
         public int Timeout { get; set; } = 1000;
 
         public string RemoteConnectionId { get; set; }
-        
+
         public string Id { get; set; }
 
         public byte[] Data { get; set; }
