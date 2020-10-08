@@ -17,7 +17,7 @@ namespace Meta.Lib.Modules.PubSub
 
         void StopServer();
 
-        void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match)
+        void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
             where TMessage : class, IPubSubMessage;
 
         Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
@@ -37,11 +37,11 @@ namespace Meta.Lib.Modules.PubSub
             CancellationToken cancellationToken = default)
             where TMessage : class, IPubSubMessage;
 
-        Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout,
+        Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout = 5_000,
             Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage;
 
-        Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message, int millisecondsTimeout,
+        Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message, int millisecondsTimeout = 5_000,
             Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage;
 

@@ -18,7 +18,7 @@
 - Added a delegate method to create a pipe with non-default parameters</PackageReleaseNotes>
     <PackageTags>publish-subscribe utility csharp event-driven event-hub publisher-subscriber library pubsub IPC named-pipe RPC interprocess</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

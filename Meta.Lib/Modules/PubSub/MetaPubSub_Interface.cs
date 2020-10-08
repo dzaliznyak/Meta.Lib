@@ -109,6 +109,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <typeparam name="TMessage">Type of a message to subscribe to</typeparam>
         /// <param name="handler">Client defined function that will be called when the message has arrived</param>
         /// <param name="match">The delegate that defines the conditions of the message to subscribe for. If null all messages of the specified type will be received</param>
+        /// <returns>Returns false if the server is not connected otherwise returns true.</returns>
         /// <exception cref="ArgumentNullException" />
         /// <exception cref="InvalidOperationException" />
         public Task<bool> TrySubscribeOnServer<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
@@ -184,7 +185,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <param name="millisecondsTimeout">Time interval during which the response message must be received otherwise the TimeoutException will be thrown</param>
         /// <param name="cancellationToken">The cancellation token that can be used to discard awaiting the response message</param>
         /// <returns>A Task that can be awaited until the response message has been arrived</returns>
-        public Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout,
+        public Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout = 5_000,
             Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {
@@ -199,7 +200,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <param name="millisecondsTimeout">Time interval during which the response message must be received otherwise the TimeoutException will be thrown</param>
         /// <param name="cancellationToken">The cancellation token that can be used to discard awaiting the response message</param>
         /// <returns>A Task that can be awaited until the response message has been arrived</returns>
-        public Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message, int millisecondsTimeout,
+        public Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message, int millisecondsTimeout = 5_000,
             Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {
