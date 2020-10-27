@@ -126,7 +126,7 @@ namespace Meta.Lib.Modules.PubSub
             List<Exception> exceptions = null;
 
             // server.Id != message.RemoteConnectionId - should not send the  
-            // message to the same pipe from which it has been received
+            // message to the same pipe from which it has been received (no echo)
             foreach (var server in _servers)
             {
                 try

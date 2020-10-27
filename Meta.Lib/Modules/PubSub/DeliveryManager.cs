@@ -66,9 +66,9 @@ namespace Meta.Lib.Modules.PubSub
 
             if (message.DeliverAtLeastOnce && !hasAtLeastOneSubscriber)
             {
-                if (message.Timeout > 0)
+                if (message.WaitForSubscriberTimeout > 0)
                 {
-                    _logger.Debug($"Delayed <<<{message.GetType().Name}>>> for {message.Timeout} ms");
+                    _logger.Debug($"Delayed <<<{message.GetType().Name}>>> for {message.WaitForSubscriberTimeout} ms");
                     await _onDelayedMessage(message);
                 }
                 else

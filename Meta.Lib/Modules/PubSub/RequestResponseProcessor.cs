@@ -42,7 +42,6 @@ namespace Meta.Lib.Modules.PubSub
 
         public async Task<TResponse> Process<TResponse>(
             IPubSubMessage message, 
-            int millisecondsTimeout,
             Predicate<TResponse> match = null,
             CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
@@ -59,8 +58,9 @@ namespace Meta.Lib.Modules.PubSub
 
             try
             {
+                //todo - calculate remaining timeout
                 await _hub.Publish(message);
-                return await tcs.Task.TimeoutAfter(millisecondsTimeout, cancellationToken);
+                return await tcs.Task.TimeoutAfter(message.ResponseTimeout, cancellationToken);
             }
             finally
             {
@@ -70,7 +70,6 @@ namespace Meta.Lib.Modules.PubSub
 
         public async Task<TResponse> ProcessOnServer<TResponse>(
             IPubSubMessage message,
-            int millisecondsTimeout,
             Predicate<TResponse> match = null,
             CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
@@ -87,8 +86,9 @@ namespace Meta.Lib.Modules.PubSub
 
             try
             {
+                //todo - calculate remaining timeout
                 await _hub.PublishOnServer(message);
-                return await tcs.Task.TimeoutAfter(millisecondsTimeout, cancellationToken);
+                return await tcs.Task.TimeoutAfter(message.ResponseTimeout, cancellationToken);
             }
             finally
             {

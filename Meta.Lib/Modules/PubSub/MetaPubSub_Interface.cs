@@ -55,6 +55,7 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         /// <param name="pipeName">Unique name for this server. The same name should be used to call ConnectToServer() method.</param>
         /// <param name="configure">Delegate wich can be used to create NamedPipeServerStream with non-default parameters.</param>
+        /// <exception cref="InvalidOperationException" />
         public void StartServer(string pipeName, Func<NamedPipeServerStream> configure = null)
         {
             if (_proxy.ConnectedOrConnecting)
@@ -153,10 +154,14 @@ namespace Meta.Lib.Modules.PubSub
         /// <exception cref="TimeoutException" />
         /// <exception cref="NoSubscribersException" />
         /// <exception cref="NotConnectedToServerException" />
+        /// <exception cref="ArgumentException" />
         public Task PublishOnServer(IPubSubMessage message)
         {
             if (!_proxy.IsConnected)
                 throw new NotConnectedToServerException("Not connected to server");
+
+            if (message.ResponseTimeout <= 0)
+                throw new ArgumentException("Message response timeout must be greater than zero");
 
             return _proxy.SendMessage(message, PipeMessageType.Message);
         }
@@ -170,10 +175,14 @@ namespace Meta.Lib.Modules.PubSub
         /// <returns>A Task that can be awaited until the message has been arrived</returns>
         /// <exception cref="TimeoutException"></exception>
         /// <exception cref="OperationCanceledException"></exception>
+        /// <exception cref="ArgumentException"></exception>
         public Task<TMessage> When<TMessage>(int millisecondsTimeout, Predicate<TMessage> match = null,
             CancellationToken cancellationToken = default)
             where TMessage : class, IPubSubMessage
         {
+            if (millisecondsTimeout <= 0)
+                throw new ArgumentException("millisecondsTimeout must be greater than zero");
+
             return _requestResponseProcessor.When(millisecondsTimeout, match, cancellationToken);
         }
 
@@ -182,14 +191,19 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         /// <typeparam name="TResponse">Type of the response message to wait for</typeparam>
         /// <param name="message">An instance of any class derived from IPubSubMessage</param>
-        /// <param name="millisecondsTimeout">Time interval during which the response message must be received otherwise the TimeoutException will be thrown</param>
         /// <param name="cancellationToken">The cancellation token that can be used to discard awaiting the response message</param>
         /// <returns>A Task that can be awaited until the response message has been arrived</returns>
-        public Task<TResponse> Process<TResponse>(IPubSubMessage message, int millisecondsTimeout = 5_000,
+        /// <exception cref="TimeoutException"></exception>
+        /// <exception cref="OperationCanceledException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public Task<TResponse> Process<TResponse>(IPubSubMessage message,
             Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {
-            return _requestResponseProcessor.Process(message, millisecondsTimeout, match, cancellationToken);
+            if (message.ResponseTimeout <= 0)
+                throw new ArgumentException("Message response timeout must be greater than zero");
+
+            return _requestResponseProcessor.Process(message, match, cancellationToken);
         }
 
         /// <summary>
@@ -197,14 +211,19 @@ namespace Meta.Lib.Modules.PubSub
         /// </summary>
         /// <typeparam name="TResponse">Type of the response message to wait for</typeparam>
         /// <param name="message">An instance of any class derived from IPubSubMessage</param>
-        /// <param name="millisecondsTimeout">Time interval during which the response message must be received otherwise the TimeoutException will be thrown</param>
         /// <param name="cancellationToken">The cancellation token that can be used to discard awaiting the response message</param>
         /// <returns>A Task that can be awaited until the response message has been arrived</returns>
-        public Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message, int millisecondsTimeout = 5_000,
+        /// <exception cref="TimeoutException"></exception>
+        /// <exception cref="OperationCanceledException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message,
             Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
             where TResponse : class, IPubSubMessage
         {
-            return _requestResponseProcessor.ProcessOnServer(message, millisecondsTimeout, match, cancellationToken);
+            if (message.ResponseTimeout <= 0)
+                throw new ArgumentException("Message response timeout must be greater than zero");
+
+            return _requestResponseProcessor.ProcessOnServer(message, match, cancellationToken);
         }
 
         /// <summary>
@@ -213,8 +232,12 @@ namespace Meta.Lib.Modules.PubSub
         /// <param name="message">An instance of any class derived from IPubSubMessage</param>
         /// <param name="millisecondsDelay">The time delay before publishing the message</param>
         /// <param name="cancellationToken">The cancellation token that can be used to discard publishing the message</param>
+        /// <exception cref="ArgumentException"></exception>
         public void Schedule(IPubSubMessage message, int millisecondsDelay, CancellationToken cancellationToken = default)
         {
+            if (millisecondsDelay <= 0)
+                throw new ArgumentException("millisecondsDelay must be greater than zero");
+
             _messageScheduler.Schedule(message, millisecondsDelay, cancellationToken);
         }
 

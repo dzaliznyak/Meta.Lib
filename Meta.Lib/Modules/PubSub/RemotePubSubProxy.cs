@@ -216,7 +216,10 @@ namespace Meta.Lib.Modules.PubSub
                 nodes = _nodes.Keys.ToList();
 
             foreach (var item in nodes)
-                await SendMessage(item.AssemblyQualifiedName, PipeMessageType.Subscribe);
+                await SendMessage(
+                    item.AssemblyQualifiedName, 
+                    PipeMessageType.Subscribe, 
+                    PubSubSettings.Default.SubscribeOnServerTimeout);
         }
 
         public async Task Subscribe<TMessage>(Func<TMessage, Task> handler)
@@ -244,7 +247,10 @@ namespace Meta.Lib.Modules.PubSub
 
                 if (node.Subscribers.Count == 1)
                 {
-                    await SendMessage(typeof(TMessage).AssemblyQualifiedName, PipeMessageType.Subscribe);
+                    await SendMessage(
+                        typeof(TMessage).AssemblyQualifiedName, 
+                        PipeMessageType.Subscribe,
+                        PubSubSettings.Default.SubscribeOnServerTimeout);
                     _logger.Trace($"Subscribed on server: '{typeof(TMessage).Name}'");
                 }
             }
@@ -280,7 +286,10 @@ namespace Meta.Lib.Modules.PubSub
 
                 if (node.Subscribers.Count == 0)
                 {
-                    await SendMessage(typeof(TMessage).AssemblyQualifiedName, PipeMessageType.Unsubscribe);
+                    await SendMessage(
+                        typeof(TMessage).AssemblyQualifiedName, 
+                        PipeMessageType.Unsubscribe,
+                        PubSubSettings.Default.UnsubscribeOnServerTimeout);
                     _logger.Trace($"Unsubscribed on server: '{typeof(TMessage).Name}'");
                 }
             }

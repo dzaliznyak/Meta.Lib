@@ -14,14 +14,14 @@ namespace Meta.Lib.Modules.PubSub
         public string Packet { get; }
         public int Timeout { get; }
 
-        public PipeTransmit(IPubSubMessage message, PipeMessageType pipeMessageType, int millisecondsTimeout = 5_000)
+        public PipeTransmit(IPubSubMessage message, PipeMessageType pipeMessageType)
         {
-            Timeout = millisecondsTimeout;
+            Timeout = message.ResponseTimeout;
             var serializedMessage = JsonConvert.SerializeObject(message);
             Packet = $"{(char)pipeMessageType}\t{Id}\t{message.GetType().AssemblyQualifiedName}\t{serializedMessage}";
         }
 
-        public PipeTransmit(string message, PipeMessageType pipeMessageType, int millisecondsTimeout = 5_000)
+        public PipeTransmit(string message, PipeMessageType pipeMessageType, int millisecondsTimeout)
         {
             Timeout = millisecondsTimeout;
             Packet = $"{(char)pipeMessageType}\t{Id}\t{message}";

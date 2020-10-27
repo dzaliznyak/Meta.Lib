@@ -259,12 +259,12 @@ namespace Meta.Lib.Modules.PubSub
             return transmit.Tcs.Task;
         }
 
-        internal Task<bool> SendMessage(string message, PipeMessageType pipeMessageType)
+        internal Task<bool> SendMessage(string message, PipeMessageType pipeMessageType, int millisecondsTimeout)
         {
             if (!IsConnected)
                 throw new Exception("Pipe is not connected");
 
-            var transmit = new PipeTransmit(message, pipeMessageType);
+            var transmit = new PipeTransmit(message, pipeMessageType, millisecondsTimeout);
             _transmits.TryAdd(transmit.Id, transmit);
 
             SendTransmit(transmit);

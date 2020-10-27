@@ -31,7 +31,7 @@ namespace Meta.Lib.Modules.PubSub
 
             try
             {
-                await scope.Tcs.Task.TimeoutAfter(message.Timeout);
+                await scope.Tcs.Task.TimeoutAfter(message.WaitForSubscriberTimeout);
             }
             catch (TimeoutException)
             {

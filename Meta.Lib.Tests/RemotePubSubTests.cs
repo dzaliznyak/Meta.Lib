@@ -127,7 +127,7 @@ namespace Meta.Lib.Tests
                 serverHub.StartServer(pipeName);
 
                 // publishing a message at the remote hub
-                await serverHub.Publish(new MyMessage() { DeliverAtLeastOnce = true, Timeout = 20_000 });
+                await serverHub.Publish(new MyMessage() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 20_000 });
             });
 
             await Task.Delay(1_000);
@@ -454,14 +454,16 @@ namespace Meta.Lib.Tests
             {
                 await serverHub.Publish(new PingReplay() { Id = x.Id });
             }
+            serverHub.Subscribe<PingCommand>(Handler);
 
             // local hub creation
             var hub = new MetaPubSub();
             await hub.ConnectToServer(serverHub.PipeName);
-            await hub.SubscribeOnServer<PingCommand>(Handler);
 
-            var ping = await hub.ProcessOnServer<PingReplay>(new PingCommand() { Id = "123" }, 1000);
-            Assert.IsTrue(ping.Id == "123");
+            var ping = new PingCommand() { Id = "123", ResponseTimeout = 1000 };
+            var pingReply = await hub.ProcessOnServer<PingReplay>(ping);
+
+            Assert.IsTrue(pingReply.Id == "123");
         }
 
         [TestMethod]
@@ -776,8 +778,7 @@ namespace Meta.Lib.Tests
             try
             {
                 await hub.ProcessOnServer<MyMessageReplay>(
-                    new MyMessage() { SomeId = 123 },
-                    millisecondsTimeout: 1_000,
+                    new MyMessage() { SomeId = 123, ResponseTimeout = 1_000 },
                     Predicate);
 
                 // prev call must throw TimeoutException
@@ -788,8 +789,7 @@ namespace Meta.Lib.Tests
             }
 
             var replay = await hub.ProcessOnServer<MyMessageReplay>(
-                    new MyMessage() { SomeId = 456 },
-                    millisecondsTimeout: 1_000,
+                    new MyMessage() { SomeId = 456, ResponseTimeout = 1_000 },
                     Predicate);
 
             Assert.IsTrue(replay.SomeId == 456);
@@ -822,7 +822,7 @@ namespace Meta.Lib.Tests
 
             try
             {
-                await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, Timeout = 0 });
+                await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 0 });
             }
             catch (NoSubscribersException)
             {
@@ -830,7 +830,7 @@ namespace Meta.Lib.Tests
 
             try
             {
-                await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, Timeout = 100 });
+                await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 });
             }
             catch (TimeoutException)
             {
@@ -838,7 +838,7 @@ namespace Meta.Lib.Tests
 
             serverHub.Subscribe<PingCommand>(Handler);
 
-            await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, Timeout = 100 });
+            await hub.PublishOnServer(new PingCommand() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 });
         }
 
 
