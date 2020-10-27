@@ -24,7 +24,7 @@ PM> Install-Package Meta.Lib
 
 # [How to use examples](https://github.com/dzaliznyak/Meta.Lib/wiki/HowTo)
 
-# [FAQ](wiki/FAQ)
+# [FAQ](https://github.com/dzaliznyak/Meta.Lib/wiki/FAQ)
 
 # Changelog
 
