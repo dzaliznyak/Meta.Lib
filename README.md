@@ -22,9 +22,9 @@ To install the [Meta.Lib](https://www.nuget.org/packages/Meta.Lib/) run the foll
 PM> Install-Package Meta.Lib 
 ```
 
-# [How to use examples](HowTo)
+# [How to use examples](https://github.com/dzaliznyak/Meta.Lib/wiki/HowTo)
 
-# [FAQ](FAQ)
+# [FAQ](wiki/FAQ)
 
 # Changelog
 
