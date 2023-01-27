@@ -82,12 +82,35 @@ namespace Meta.Lib.Examples
         async Task ExceptionHandlingExample()
         {
             var hub = new MetaPubSub();
-            hub.Subscribe<MyMessage>(OnMyMessageHandlerWithException);
 
             try
             {
+                var message = new MyMessage
+                {
+                    DeliverAtLeastOnce = true,
+                };
+
+                // publishing a message when no one subscribed - NoSubscribersException
+                //await hub.Publish(message);
+
+                // publishing a message when no one subscribed and Timeout > 0 - TimeoutException
+                //message.Timeout = 100;
+                //await hub.Publish(message);
+
+                hub.Subscribe<MyMessage>(OnMyMessageHandlerWithException);
+
                 // publishing a message
-                await hub.Publish(new MyMessage());
+                await hub.Publish(message);
+            }
+            catch (NoSubscribersException ex)
+            {
+                // No one is subscribed to this message and (message.DeliverAtLeastOnce == true and message.Timeout == 0)
+                Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
+            }
+            catch (TimeoutException ex)
+            {
+                // No one is subscribed to this message and (message.DeliverAtLeastOnce == true and message.Timeout > 0)
+                Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
             }
             catch (AggregateException ex)
             {
@@ -175,7 +198,7 @@ namespace Meta.Lib.Examples
             var message = new MyMessage
             {
                 DeliverAtLeastOnce = true, // this must be set to true
-                Timeout = 10_000
+                WaitForSubscriberTimeout = 10_000
             };
 
             Console.WriteLine($"Start publishing and awaiting at {DateTime.Now:HH:mm:ss.fff}");
@@ -196,7 +219,7 @@ namespace Meta.Lib.Examples
             var message = new MyMessage
             {
                 DeliverAtLeastOnce = true,
-                Timeout = 1500
+                WaitForSubscriberTimeout = 1500
             };
 
             // The message will be published after 3 seconds delay and after that, it can wait another 500 ms for a subscriber.
@@ -239,7 +262,6 @@ namespace Meta.Lib.Examples
         {
             var hub = new MetaPubSub();
 
-
             // This handler should be placed somewhere in another module.
             // It processes MyMessage and publishes a MyEvent as a result. 
             Task Handler(MyMessage x)
@@ -249,14 +271,18 @@ namespace Meta.Lib.Examples
             }
             hub.Subscribe<MyMessage>(Handler);
 
-
             try
             {
                 // This method will publish MyMessage and wait for MyEvent one second.
                 // If the event will not arrive in a specified timeout the TimeoutException will be thrown.
 
-                var message = new MyMessage { DeliverAtLeastOnce = true, Timeout = 100 };
-                MyEvent res = await hub.Process<MyEvent>(message, millisecondsTimeout: 1000);
+                var message = new MyMessage 
+                { 
+                    DeliverAtLeastOnce = true, 
+                    WaitForSubscriberTimeout = 100, 
+                    ResponseTimeout = 1_000
+                };
+                MyEvent res = await hub.Process<MyEvent>(message);
                 Console.WriteLine($"Received MyEvent at {DateTime.Now:HH:mm:ss.fff}");
             }
             catch (NoSubscribersException ex)

@@ -9,8 +9,8 @@ namespace Meta.Lib.Examples
             var remote = new RemotePubSubExample();
             remote.RunAllExamples();
 
-            //var examples = new PubSubExample();
-            //examples.RunAllExamples();
+            var examples = new PubSubExample();
+            examples.RunAllExamples();
 
             Console.ReadLine();
         }

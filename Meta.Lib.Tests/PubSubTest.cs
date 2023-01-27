@@ -135,7 +135,7 @@ namespace Meta.Lib.Tests
                 hub.Subscribe<MyMessage>(OnMyMessageHandler3);
             });
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, Timeout = 200000 };
+            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 200000 };
             // the message has a timeout and can wait until the second subscriber come
             await hub.Publish(message);
 
@@ -166,7 +166,7 @@ namespace Meta.Lib.Tests
                 await hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
             });
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, Timeout = 100 };
+            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 };
             try
             {
                 // the message has a timeout and can wait until the second subscriber come
@@ -250,14 +250,18 @@ namespace Meta.Lib.Tests
 
             Task Handler(MyMessage x)
             {
-                hub.Publish(new MyEvent());
+                Task.Run(async () =>
+                {
+                    await Task.Delay(10);
+                    await hub.Publish(new MyEvent());
+                });
                 return Task.CompletedTask;
             }
 
             hub.Subscribe<MyMessage>(Handler);
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, Timeout = 100 };
-            var res = await hub.Process<MyEvent>(message, 100);
+            var message = new MyMessage { ResponseTimeout = 2000 };
+            var res = await hub.Process<MyEvent>(message);
             Assert.IsNotNull(res);
         }
 
@@ -278,8 +282,12 @@ namespace Meta.Lib.Tests
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    var message = new MyMessage { SomeId = i, DeliverAtLeastOnce = true, Timeout = 100 };
-                    var res = await hub.Process<MyEvent>(message, 1000, x => x.SomeId == i);
+                    var message = new MyMessage
+                    {
+                        SomeId = i,
+                        ResponseTimeout = 1000
+                    };
+                    var res = await hub.Process<MyEvent>(message, x => x.SomeId == i);
                     Assert.IsNotNull(res);
                     Assert.IsTrue(res.SomeId == i);
                 }
@@ -289,8 +297,12 @@ namespace Meta.Lib.Tests
             {
                 for (int i = 100; i < 200; i++)
                 {
-                    var message = new MyMessage { SomeId = i, DeliverAtLeastOnce = true, Timeout = 100 };
-                    var res = await hub.Process<MyEvent>(message, 1000, x => x.SomeId == i);
+                    var message = new MyMessage
+                    {
+                        SomeId = i,
+                        ResponseTimeout = 1000
+                    };
+                    var res = await hub.Process<MyEvent>(message, x => x.SomeId == i);
                     Assert.IsNotNull(res);
                     Assert.IsTrue(res.SomeId == i);
                 }
@@ -313,7 +325,7 @@ namespace Meta.Lib.Tests
 
             hub.Subscribe<MyMessage>(Handler);
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, Timeout = 100 };
+            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 };
             hub.Schedule(message, 100);
 
             await Task.Delay(50);

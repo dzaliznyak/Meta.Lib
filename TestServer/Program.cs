@@ -2,6 +2,9 @@
 using Meta.Lib.Modules.PubSub.Messages;
 using NLog;
 using System;
+using System.IO.Pipes;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Threading.Tasks;
 
 namespace TestServer
@@ -43,7 +46,23 @@ namespace TestServer
             var nLog = LogManager.GetLogger("MetaPubSub");
             logger = new NLogAdapter(nLog);
             hub = new MetaPubSub(logger);
-            hub.StartServer("Meta");
+
+            // Servers started on the Windows process with elevated permissions need to
+            // set up security to allow non-elevated processes to access the pipe.
+            // Otherwise just use hub.StartServer("Meta") call
+            hub.StartServer("Meta", () =>
+            {
+                var pipeSecurity = new PipeSecurity();
+                pipeSecurity.AddAccessRule(new PipeAccessRule(
+                    new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null),
+                    PipeAccessRights.FullControl,
+                    AccessControlType.Allow));
+
+                var pipe = new NamedPipeServerStream("Meta", PipeDirection.InOut, 32,
+                    PipeTransmissionMode.Message, PipeOptions.Asynchronous, 4096, 4096, pipeSecurity);
+
+                return pipe;
+            });
             hub.Subscribe<PingCommand>(OnPing);
         }
 
@@ -52,6 +71,5 @@ namespace TestServer
             logger.Info($"ping {ping.Id}");
             await hub.Publish(new PingReplay() { Id = ping.Id });
         }
-
     }
 }

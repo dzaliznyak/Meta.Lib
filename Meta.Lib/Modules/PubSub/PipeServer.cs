@@ -22,13 +22,18 @@ namespace Meta.Lib.Modules.PubSub
             _onNewPipeSubscriber = onNewPipeSubscriber;
         }
 
-        internal async Task Start(string pipeName)
+        internal async Task Start(string pipeName, Func<NamedPipeServerStream> configure)
         {
             if (IsStarted)
                 throw new InvalidOperationException("Pipe server already started");
 
-            var pipe = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 32,
-                PipeTransmissionMode.Message, PipeOptions.Asynchronous, 4096, 4096);
+            NamedPipeServerStream pipe = configure?.Invoke();
+
+            if (pipe == null)
+            {
+                pipe = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 32,
+                        PipeTransmissionMode.Message, PipeOptions.Asynchronous, 4096, 4096);
+            }
 
             try
             {
@@ -40,7 +45,7 @@ namespace Meta.Lib.Modules.PubSub
                 throw;
             }
 
-            Init(pipe);
+            InitPipeConnection(pipe);
 
             StartReadLoop();
 

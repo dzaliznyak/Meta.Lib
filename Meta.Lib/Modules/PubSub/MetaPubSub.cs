@@ -12,8 +12,7 @@ namespace Meta.Lib.Modules.PubSub
         readonly RequestResponseProcessor _requestResponseProcessor;
         readonly MessageScheduler _messageScheduler;
         readonly PipeConnectionsManager _pipeConections;
-
-        RemotePubSubProxy _proxy;
+        readonly RemotePubSubProxy _proxy;
 
         public MetaPubSub(IMetaLogger logger = null)
         {
@@ -25,6 +24,7 @@ namespace Meta.Lib.Modules.PubSub
             _pipeConections = new PipeConnectionsManager(_messageHub, _logger, _delayedMessages.OnNewPipeSubscriber);
             _requestResponseProcessor = new RequestResponseProcessor(this);
             _messageScheduler = new MessageScheduler(_messageHub.Publish);
+            _proxy = new RemotePubSubProxy(_messageHub, _logger);
         }
 
         Task<bool> PipeConections_Put(IPubSubMessage arg0)

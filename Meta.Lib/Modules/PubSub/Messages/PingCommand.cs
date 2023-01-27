@@ -1,15 +1,17 @@
 ﻿namespace Meta.Lib.Modules.PubSub.Messages
 {
-    public class PingCommand : IPubSubMessage
+    public class PingCommand : PubSubMessageBase
     {
-        public bool DeliverAtLeastOnce => true;
-
-        public int Timeout => 1000;
-
-        public string RemoteConnectionId { get; set; }
-        
         public string Id { get; set; }
 
         public byte[] Data { get; set; }
+
+        public PingCommand()
+        {
+            DeliverAtLeastOnce = true;
+            WaitForSubscriberTimeout = 1_000;
+            ResponseTimeout = 5_000;
+        }
+
     }
 }

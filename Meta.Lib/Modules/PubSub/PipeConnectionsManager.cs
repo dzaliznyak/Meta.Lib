@@ -1,8 +1,10 @@
 ﻿using Meta.Lib.Modules.Logger;
+using Meta.Lib.Modules.PubSub.Messages;
 using Meta.Lib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.IO.Pipes;
 using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
@@ -28,13 +30,13 @@ namespace Meta.Lib.Modules.PubSub
             _onNewPipeSubscriber = onNewPipeSubscriber;
         }
 
-        internal void Start(string pipeName)
+        internal void Start(string pipeName, Func<NamedPipeServerStream> configure)
         {
             if (PipeName != null)
                 throw new InvalidOperationException("Already started");
 
             PipeName = pipeName;
-            StartNext(pipeName);
+            StartNext(pipeName, configure);
 
             _logger.Info($"Started server '{pipeName}', waiting for connections...");
         }
@@ -52,32 +54,60 @@ namespace Meta.Lib.Modules.PubSub
             _servers = ImmutableList<PipeServer>.Empty;
         }
 
-        void StartNext(string pipeName)
+        void StartNext(string pipeName, Func<NamedPipeServerStream> configure)
         {
             _pendingServer = new PipeServer(_hub, _logger, _onNewPipeSubscriber);
 
-            _pendingServer.Connected += (s, a) =>
+            _pendingServer.Connected += async (s, a) =>
             {
-                lock (_serversLock)
-                    _servers = _servers.Add((PipeServer)s);
-                _logger.Info($"Client connected, total count: {_servers.Count}");
+                try
+                {
+                    lock (_serversLock)
+                        _servers = _servers.Add((PipeServer)s);
 
-                // start waiting for the next connection
-                StartNext(pipeName);
+                    _logger.Info($"Client connected, total count: {_servers.Count}");
+
+                    // start waiting for the next connection
+                    StartNext(pipeName, configure);
+
+                    await _hub.Publish(new RemoteClientConnectedEvent()
+                    {
+                        Timestamp = DateTime.Now,
+                        TotalClientsCount = _servers.Count
+                    });
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex);
+                }
             };
 
-            _pendingServer.Disconnected += (s, a) =>
+            _pendingServer.Disconnected += async (s, a) =>
             {
-                lock (_serversLock)
-                    _servers = _servers.Remove((PipeServer)s);
-                _logger.Info($"Client disconnected, remained: {_servers.Count}");
+                try
+                {
+                    lock (_serversLock)
+                        _servers = _servers.Remove((PipeServer)s);
+
+                    _logger.Info($"Client disconnected, remained: {_servers.Count}");
+
+                    await _hub.Publish(new RemoteClientDisconnectedEvent() 
+                    {
+                        Timestamp = DateTime.Now,
+                        TotalClientsCount = _servers.Count
+                    });
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex);
+                }
             };
 
             Task.Run(async () =>
             {
                 try
                 {
-                    await _pendingServer.Start(pipeName);
+                    await _pendingServer.Start(pipeName, configure);
                 }
                 catch (OperationCanceledException)
                 {
@@ -96,7 +126,7 @@ namespace Meta.Lib.Modules.PubSub
             List<Exception> exceptions = null;
 
             // server.Id != message.RemoteConnectionId - should not send the  
-            // message to the same pipe from which it has been received
+            // message to the same pipe from which it has been received (no echo)
             foreach (var server in _servers)
             {
                 try

@@ -3,7 +3,6 @@ using Meta.Lib.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
@@ -37,13 +36,13 @@ namespace Meta.Lib.Modules.PubSub
         readonly ConcurrentDictionary<string, PipeTransmit> _transmits =
             new ConcurrentDictionary<string, PipeTransmit>();
 
-        public event EventHandler<EventArgs> Connected;
-        public event EventHandler<EventArgs> Disconnected;
+        internal event EventHandler<EventArgs> Connected;
+        internal event EventHandler<EventArgs> Disconnected;
 
-        public string Id { get; } = (++InstanceNo).ToString();
+        internal string Id { get; } = (++InstanceNo).ToString();
 
-        public bool IsConnected => _pipe?.IsConnected ?? false;
-        public bool IsStarted => _pipe != null;
+        internal bool IsConnected => _pipe?.IsConnected ?? false;
+        internal bool IsStarted => _pipe != null;
 
 
         public PipeConnection(MessageHub hub, IMetaLogger logger)
@@ -52,7 +51,7 @@ namespace Meta.Lib.Modules.PubSub
             _hub = hub;
         }
 
-        protected void Init(PipeStream pipe)
+        protected void InitPipeConnection(PipeStream pipe)
         {
             if (_pipe != null || _reader != null || _writer != null)
                 throw new InvalidOperationException();
@@ -97,7 +96,7 @@ namespace Meta.Lib.Modules.PubSub
             });
         }
 
-        public void Disconnect()
+        internal virtual Task Disconnect()
         {
             lock (_lock)
             {
@@ -105,6 +104,7 @@ namespace Meta.Lib.Modules.PubSub
                 try { _pipe?.Dispose(); } catch (Exception) { }
                 _pipe = null;
             }
+            return Task.CompletedTask;
         }
 
         void OnDisconnected()
@@ -226,8 +226,10 @@ namespace Meta.Lib.Modules.PubSub
                     {
                         var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
                         var aggException = JsonConvert.DeserializeObject<AggregateException>(parts[3], settings);
+
                         if (aggException.InnerExceptions.Count == 1 &&
-                            aggException.InnerException is NoSubscribersException)
+                            (aggException.InnerException is NoSubscribersException ||
+                             aggException.InnerException is TimeoutException))
                         {
                             transmit.Tcs.SetException(aggException.InnerException);
                         }
@@ -257,12 +259,12 @@ namespace Meta.Lib.Modules.PubSub
             return transmit.Tcs.Task;
         }
 
-        internal Task<bool> SendMessage(string message, PipeMessageType pipeMessageType)
+        internal Task<bool> SendMessage(string message, PipeMessageType pipeMessageType, int millisecondsTimeout)
         {
             if (!IsConnected)
                 throw new Exception("Pipe is not connected");
 
-            var transmit = new PipeTransmit(message, pipeMessageType);
+            var transmit = new PipeTransmit(message, pipeMessageType, millisecondsTimeout);
             _transmits.TryAdd(transmit.Id, transmit);
 
             SendTransmit(transmit);

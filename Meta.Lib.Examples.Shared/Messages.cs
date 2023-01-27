@@ -11,12 +11,32 @@ namespace Meta.Lib.Examples.Shared
         public MetaLogErrorSeverity LogSeverity { get; set; }
         public string Message { get; set; }
         public byte[] Data { get; set; }
+        public Version Version { get; set; }
 
         public MyMessage()
         {
         }
 
         public MyMessage(string message)
+        {
+            Message = message;
+        }
+    }
+
+    public class MyMessageReplay : PubSubMessageBase
+    {
+        public int SomeId { get; set; }
+        public int DeliveredCount { get; set; }
+        public MetaLogErrorSeverity LogSeverity { get; set; }
+        public string Message { get; set; }
+        public byte[] Data { get; set; }
+        public Version Version { get; set; }
+
+        public MyMessageReplay()
+        {
+        }
+
+        public MyMessageReplay(string message)
         {
             Message = message;
         }
