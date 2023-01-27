@@ -40,7 +40,7 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        internal void OnNewSubscriber(Type messageType, Subscriber subscriber)
+        internal void OnNewSubscriber(Type messageType, ISubscription subscriber)
         {
             Task.Run(async () =>
             {
@@ -53,9 +53,9 @@ namespace Meta.Lib.Modules.PubSub
                         {
                             if (!scope.IsTimedOut)
                             {
-                                if (subscriber.Subscription.ShouldDeliver(scope.Message))
+                                if (subscriber.ShouldDeliver(scope.Message))
                                 {
-                                    await subscriber.Subscription.Deliver(scope.Message);
+                                    await subscriber.Deliver(scope.Message);
                                     scope.Tcs.SetResult(true);
                                 }
                                 else

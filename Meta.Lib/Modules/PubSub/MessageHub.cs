@@ -6,92 +6,16 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSub
 {
-    internal interface ISubscription
-    {
-        bool ActionEquals(object action);
-        Task Deliver(IPubSubMessage message);
-        bool ShouldDeliver(IPubSubMessage message);
-    }
-
-    internal class Subscriber
-    {
-        public ISubscription Subscription { get; }
-
-        public Subscriber(ISubscription subscription)
-        {
-            Subscription = subscription;
-        }
-    }
-
-    internal class Subscription<TMessage> : ISubscription
-            where TMessage : class, IPubSubMessage
-    {
-        readonly Func<TMessage, Task> _action;
-        readonly Predicate<TMessage> _predicate;
-
-        public Subscription(Func<TMessage, Task> action, Predicate<TMessage> predicate)
-        {
-            _action = action;
-            _predicate = predicate;
-        }
-
-        public bool ActionEquals(object action)
-        {
-            return _action.Equals(action);
-        }
-
-        public Task Deliver(IPubSubMessage message)
-        {
-            return _action(message as TMessage);
-        }
-
-        public bool ShouldDeliver(IPubSubMessage message)
-        {
-            if (_predicate == null)
-                return true;
-            return _predicate(message as TMessage);
-        }
-    }
-
-    internal class Node
-    {
-        readonly object _lock = new object();
-        ImmutableList<Subscriber> _subscribers = ImmutableList<Subscriber>.Empty;
-
-        public IReadOnlyCollection<Subscriber> Subscribers => _subscribers;
-
-        public void Add(Subscriber subscriber)
-        {
-            lock (_lock)
-            {
-                _subscribers = _subscribers.Add(subscriber);
-            }
-        }
-
-        public void Remove(Subscriber subscriber)
-        {
-            lock (_lock)
-            {
-                _subscribers = _subscribers.Remove(subscriber);
-            }
-        }
-
-        public Subscriber Find(Predicate<Subscriber> match)
-        {
-            return _subscribers.Find(match);
-        }
-    }
-
     internal class MessageHub
     {
         readonly Dictionary<Type, Node> _nodes = new Dictionary<Type, Node>();
         readonly IMetaLogger _logger;
-        readonly Func<IReadOnlyCollection<Subscriber>, IPubSubMessage, Task> _onPublished;
-        readonly Action<Type, Subscriber> _onNewSubscriber;
+        readonly Func<IReadOnlyCollection<ISubscription>, IPubSubMessage, Task> _onPublished;
+        readonly Action<Type, ISubscription> _onNewSubscriber;
 
         public MessageHub(IMetaLogger logger,
-                          Func<IReadOnlyCollection<Subscriber>, IPubSubMessage, Task> onPublished,
-                          Action<Type, Subscriber> onNewSubscriber)
+                          Func<IReadOnlyCollection<ISubscription>, IPubSubMessage, Task> onPublished,
+                          Action<Type, ISubscription> onNewSubscriber)
         {
             _logger = logger;
             _onPublished = onPublished;
@@ -106,6 +30,7 @@ namespace Meta.Lib.Modules.PubSub
 
             if (!_nodes.TryGetValue(typeof(TMessage), out Node node))
             {
+                // create node for this TMessage, if not exists
                 lock (_nodes)
                 {
                     if (!_nodes.TryGetValue(typeof(TMessage), out node))
@@ -116,11 +41,9 @@ namespace Meta.Lib.Modules.PubSub
                 }
             }
 
-            if (node.Find(x => x.Subscription.ActionEquals(action)) == null)
+            if (node.TryAdd(action, predicate, out ISubscription subscription))
             {
-                var subscriber = new Subscriber(new Subscription<TMessage>(action, predicate));
-                node.Add(subscriber);
-                _onNewSubscriber(typeof(TMessage), subscriber);
+                _onNewSubscriber(typeof(TMessage), subscription);
             }
         }
 
@@ -132,10 +55,7 @@ namespace Meta.Lib.Modules.PubSub
 
             if (_nodes.TryGetValue(typeof(TMessage), out Node node))
             {
-                var subscriber = node.Find(x => x.Subscription.ActionEquals(action));
-
-                if (subscriber != null)
-                    node.Remove(subscriber);
+                node.TryRemove(action);
             }
         }
 
@@ -147,7 +67,7 @@ namespace Meta.Lib.Modules.PubSub
             if (_nodes.TryGetValue(message.GetType(), out Node node))
                 return _onPublished(node.Subscribers, message);
             else
-                return _onPublished(ImmutableList<Subscriber>.Empty, message);
+                return _onPublished(ImmutableArray<ISubscription>.Empty, message);
         }
 
     }

@@ -36,8 +36,8 @@ namespace Meta.Lib.Modules.PubSub
         #region Connection
         internal async Task<bool> Connect(
             string pipeName,
-            int millisecondsTimeout = 5_000, 
-            int reconnectionPeriod = 5_000, 
+            int millisecondsTimeout = 5_000,
+            int reconnectionPeriod = 5_000,
             string serverName = ".")
         {
             ConnectionScope scope;
@@ -80,7 +80,7 @@ namespace Meta.Lib.Modules.PubSub
             await ResubscribeAllMessages();
 
             _logger.Info($"Connected to server '{_connectionScope.ServerName}{_connectionScope.PipeName}'");
-            
+
             FireConnectedEvent();
 
             try
@@ -217,8 +217,8 @@ namespace Meta.Lib.Modules.PubSub
 
             foreach (var item in nodes)
                 await SendMessage(
-                    item.AssemblyQualifiedName, 
-                    PipeMessageType.Subscribe, 
+                    item.AssemblyQualifiedName,
+                    PipeMessageType.Subscribe,
                     PubSubSettings.Default.SubscribeOnServerTimeout);
         }
 
@@ -240,15 +240,12 @@ namespace Meta.Lib.Modules.PubSub
                 }
             }
 
-            if (node.Find(x => x.Subscription.ActionEquals(handler)) == null)
+            if (node.TryAdd(handler, filter: null, out _))
             {
-                var subscriber = new Subscriber(new Subscription<TMessage>(handler, null));
-                node.Add(subscriber);
-
                 if (node.Subscribers.Count == 1)
                 {
                     await SendMessage(
-                        typeof(TMessage).AssemblyQualifiedName, 
+                        typeof(TMessage).AssemblyQualifiedName,
                         PipeMessageType.Subscribe,
                         PubSubSettings.Default.SubscribeOnServerTimeout);
                     _logger.Trace($"Subscribed on server: '{typeof(TMessage).Name}'");
@@ -279,15 +276,12 @@ namespace Meta.Lib.Modules.PubSub
 
             if (_nodes.TryGetValue(typeof(TMessage), out Node node))
             {
-                var subscriber = node.Find(x => x.Subscription.ActionEquals(handler));
-
-                if (subscriber != null)
-                    node.Remove(subscriber);
+                node.TryRemove(handler);
 
                 if (node.Subscribers.Count == 0)
                 {
                     await SendMessage(
-                        typeof(TMessage).AssemblyQualifiedName, 
+                        typeof(TMessage).AssemblyQualifiedName,
                         PipeMessageType.Unsubscribe,
                         PubSubSettings.Default.UnsubscribeOnServerTimeout);
                     _logger.Trace($"Unsubscribed on server: '{typeof(TMessage).Name}'");

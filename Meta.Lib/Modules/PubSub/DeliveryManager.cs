@@ -21,7 +21,7 @@ namespace Meta.Lib.Modules.PubSub
             _onRemoteDeliver = onRemoteDeliver;
         }
 
-        internal async Task Put(IReadOnlyCollection<Subscriber> subscribers, IPubSubMessage message)
+        internal async Task Put(IReadOnlyCollection<ISubscription> subscribers, IPubSubMessage message)
         {
             bool hasAtLeastOneSubscriber = false;
             List<Exception> exceptions = null;
@@ -31,10 +31,10 @@ namespace Meta.Lib.Modules.PubSub
             {
                 try
                 {
-                    if (item.Subscription.ShouldDeliver(message))
+                    if (item.ShouldDeliver(message))
                     {
                         hasAtLeastOneSubscriber = true;
-                        await item.Subscription.Deliver(message);
+                        await item.Deliver(message);
                     }
                 }
                 catch (Exception ex)
@@ -72,7 +72,9 @@ namespace Meta.Lib.Modules.PubSub
                     await _onDelayedMessage(message);
                 }
                 else
+                {
                     throw new NoSubscribersException("Failed to deliver the message - no one is listening");
+                }
             }
         }
     }
