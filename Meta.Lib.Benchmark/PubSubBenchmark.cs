@@ -1,5 +1,4 @@
 ﻿using BenchmarkDotNet.Attributes;
-using Meta.Lib.Modules.Logger;
 using Meta.Lib.Modules.PubSub;
 using Meta.Lib.Test;
 
@@ -9,7 +8,6 @@ namespace Meta.Lib.Benchmark
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }
-        public MetaLogErrorSeverity LogSeverity { get; set; }
         public string Message { get; set; }
         public byte[] Data { get; set; }
         public Version Version { get; set; }

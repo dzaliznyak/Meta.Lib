@@ -8,6 +8,7 @@ namespace TestClient
     class Program
     {
         private static MetaPubSub hub;
+        private static int pingId;
 
         static void Main(string[] args)
         {
@@ -15,8 +16,8 @@ namespace TestClient
             string line;
             while ((line = Console.ReadLine()) != "exit")
             {
-                if (line == "ping")
-                    hub.PublishOnServer(new PingCommand());
+                if (line == "ping" || line == "")
+                    hub.PublishOnServer(new PingCommand() { Id = pingId++.ToString() }) ;
             }
         }
 

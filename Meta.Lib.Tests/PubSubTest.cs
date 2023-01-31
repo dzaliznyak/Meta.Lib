@@ -1,5 +1,4 @@
 ﻿using Meta.Lib.Examples.Shared;
-using Meta.Lib.Modules.Logger;
 using Meta.Lib.Modules.PubSub;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -40,7 +39,8 @@ namespace Meta.Lib.Tests
 
         bool OnMyMessagePredicate(MyMessage message)
         {
-            return message.LogSeverity != MetaLogErrorSeverity.Info;
+            //return message.LogSeverity != MetaLogErrorSeverity.Info;
+            return message.Version > new Version(1, 0);
         }
 
         [TestMethod]
@@ -75,11 +75,11 @@ namespace Meta.Lib.Tests
 
             hub.Subscribe<MyMessage>(OnMyMessageHandler, OnMyMessagePredicate);
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info };
+            var message = new MyMessage { Version = new Version(1, 0) };
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 0);
 
-            message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Error };
+            message = new MyMessage { Version = new Version(1, 1) };
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 1);
 
@@ -95,7 +95,7 @@ namespace Meta.Lib.Tests
 
             hub.Subscribe<MyMessage>(OnMyMessageHandler, OnMyMessagePredicate);
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true };
+            var message = new MyMessage { Version = new Version(1, 0), DeliverAtLeastOnce = true };
             try
             {
                 await hub.Publish(message);
@@ -135,7 +135,7 @@ namespace Meta.Lib.Tests
                 hub.Subscribe<MyMessage>(OnMyMessageHandler3);
             });
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 200000 };
+            var message = new MyMessage { Version = new Version(1, 0), DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 200000 };
             // the message has a timeout and can wait until the second subscriber come
             await hub.Publish(message);
 
@@ -166,7 +166,7 @@ namespace Meta.Lib.Tests
                 await hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
             });
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 };
+            var message = new MyMessage { Version = new Version(1, 0), DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 };
             try
             {
                 // the message has a timeout and can wait until the second subscriber come
@@ -325,7 +325,7 @@ namespace Meta.Lib.Tests
 
             hub.Subscribe<MyMessage>(Handler);
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info, DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 };
+            var message = new MyMessage { Version = new Version(1, 0), DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 };
             hub.Schedule(message, 100);
 
             await Task.Delay(50);

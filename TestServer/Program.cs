@@ -1,6 +1,6 @@
 ﻿using Meta.Lib.Modules.PubSub;
 using Meta.Lib.Modules.PubSub.Messages;
-using NLog;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO.Pipes;
 using System.Security.AccessControl;
@@ -11,11 +11,25 @@ namespace TestServer
 {
     class Program
     {
-        static NLogAdapter logger;
         static MetaPubSub hub;
+        static ILogger logger;
 
         static void Main(string[] args)
         {
+            using (var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder
+                    .AddFilter("Microsoft", LogLevel.Trace)
+                    .AddFilter("System", LogLevel.Trace)
+                    .AddFilter("TestServer.Program", LogLevel.Trace)
+                    .AddConsole()
+                    .AddDebug();
+            }))
+            {
+                logger = loggerFactory.CreateLogger<Program>();
+                logger.LogInformation("Logger created");
+            }
+
             RunServer();
 
             Console.Write(">");
@@ -34,7 +48,7 @@ namespace TestServer
                 }
                 catch (Exception ex)
                 {
-                    logger.Error(ex);
+                    logger.LogError(ex, "Exception: ");
                 }
 
                 Console.Write(">");
@@ -43,8 +57,6 @@ namespace TestServer
 
         static void RunServer()
         {
-            var nLog = LogManager.GetLogger("MetaPubSub");
-            logger = new NLogAdapter(nLog);
             hub = new MetaPubSub(logger);
 
             // Servers started on the Windows process with elevated permissions need to
@@ -68,7 +80,7 @@ namespace TestServer
 
         static async Task OnPing(PingCommand ping)
         {
-            logger.Info($"ping {ping.Id}");
+            logger.LogInformation("ping received: {ping.Id}", ping.Id);
             await hub.Publish(new PingReplay() { Id = ping.Id });
         }
     }

@@ -1,4 +1,4 @@
-﻿using Meta.Lib.Modules.Logger;
+﻿using Microsoft.Extensions.Logging;
 using Meta.Lib.Modules.PubSub.Messages;
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace Meta.Lib.Modules.PubSub
         ConnectionScope _connectionScope;
         int _isReconnecting;
 
-        public RemotePubSubProxy(MessageHub hub, IMetaLogger logger)
+        public RemotePubSubProxy(MessageHub hub, ILogger logger)
             : base(hub, logger)
         {
         }
@@ -56,7 +56,7 @@ namespace Meta.Lib.Modules.PubSub
                 };
             }
 
-            _logger.Info($"Connecting to server '{_connectionScope.ServerName}{_connectionScope.PipeName}'... ");
+            _logger?.LogInformation("Connecting to server '{ServerName}{PipeName}'... ", _connectionScope.ServerName, _connectionScope.PipeName);
 
             var pipe = await ConnectPipe(scope);
 
@@ -79,7 +79,7 @@ namespace Meta.Lib.Modules.PubSub
 
             await ResubscribeAllMessages();
 
-            _logger.Info($"Connected to server '{_connectionScope.ServerName}{_connectionScope.PipeName}'");
+            _logger?.LogInformation("Connected to server '{ServerName}{PipeName}'", _connectionScope.ServerName, _connectionScope.PipeName);
 
             FireConnectedEvent();
 
@@ -92,7 +92,7 @@ namespace Meta.Lib.Modules.PubSub
             }
             catch (Exception ex)
             {
-                _logger.Error("Some of the subscribers of ConnectedToServerEvent generated exception: ", ex);
+                _logger?.LogError(ex, "Some of the subscribers of ConnectedToServerEvent generated exception: ");
             }
         }
 
@@ -147,7 +147,7 @@ namespace Meta.Lib.Modules.PubSub
             }
             catch (Exception ex)
             {
-                _logger.Error("Some of the subscribers of DisconnectedFromServerEvent generated exception: ", ex);
+                _logger?.LogError(ex, "Some of the subscribers of DisconnectedFromServerEvent generated exception: ");
             }
         }
 
@@ -168,7 +168,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error("Some of the subscribers of DisconnectedFromServerEvent generated exception: ", ex);
+                    _logger?.LogError(ex, "Some of the subscribers of DisconnectedFromServerEvent generated exception: ");
                 }
             }
         }
@@ -177,7 +177,7 @@ namespace Meta.Lib.Modules.PubSub
         {
             if (Interlocked.CompareExchange(ref _isReconnecting, 1, 0) == 0)
             {
-                _logger.Info($"Starting reconnection loop to the server '{scope.ServerName}{scope.PipeName}'");
+                _logger?.LogInformation("Starting reconnection loop to the server '{ServerName}{PipeName}'", scope.ServerName, scope.PipeName);
 
                 Task.Run(async () =>
                 {
@@ -201,7 +201,7 @@ namespace Meta.Lib.Modules.PubSub
                         }
                     }
 
-                    _logger.Info($"Finished reconnection loop to the server '{scope.ServerName}{scope.PipeName}'");
+                    _logger?.LogInformation("Finished reconnection loop to the server '{ServerName}{PipeName}'", scope.ServerName, scope.PipeName);
 
                     Interlocked.Exchange(ref _isReconnecting, 0);
                 });
@@ -248,7 +248,7 @@ namespace Meta.Lib.Modules.PubSub
                         typeof(TMessage).AssemblyQualifiedName,
                         PipeMessageType.Subscribe,
                         PubSubSettings.Default.SubscribeOnServerTimeout);
-                    _logger.Trace($"Subscribed on server: '{typeof(TMessage).Name}'");
+                    _logger?.LogTrace("Subscribed on server: '{MessageType}'", typeof(TMessage).Name);
                 }
             }
         }
@@ -263,7 +263,7 @@ namespace Meta.Lib.Modules.PubSub
             }
             catch (Exception ex)
             {
-                _logger.Trace($"Failed to subscribe to '{typeof(TMessage).Name}': {ex.Message}");
+                _logger?.LogTrace(ex, "Failed to subscribe to '{MessageType}': {Message}", typeof(TMessage).Name, ex.Message);
                 return false;
             }
         }
@@ -284,7 +284,7 @@ namespace Meta.Lib.Modules.PubSub
                         typeof(TMessage).AssemblyQualifiedName,
                         PipeMessageType.Unsubscribe,
                         PubSubSettings.Default.UnsubscribeOnServerTimeout);
-                    _logger.Trace($"Unsubscribed on server: '{typeof(TMessage).Name}'");
+                    _logger?.LogTrace("Unsubscribed on server: '{MessageType}'", typeof(TMessage).Name);
                 }
             }
         }

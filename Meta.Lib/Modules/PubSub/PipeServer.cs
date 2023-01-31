@@ -1,4 +1,4 @@
-﻿using Meta.Lib.Modules.Logger;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
 using System.IO.Pipes;
@@ -16,7 +16,7 @@ namespace Meta.Lib.Modules.PubSub
         readonly CancellationTokenSource _cts = new CancellationTokenSource();
 
 
-        public PipeServer(MessageHub hub, IMetaLogger logger, Action<Type, PipeServer> onNewPipeSubscriber)
+        public PipeServer(MessageHub hub, ILogger logger, Action<Type, PipeServer> onNewPipeSubscriber)
             : base(hub, logger)
         {
             _onNewPipeSubscriber = onNewPipeSubscriber;
@@ -70,7 +70,7 @@ namespace Meta.Lib.Modules.PubSub
             if (_subscribedTypes.TryAdd(type, type))
             {
                 _onNewPipeSubscriber(type, this);
-                _logger.Trace($"Client subscribed to {type}");
+                _logger?.LogInformation("Client subscribed to {Type}", type);
             }
             await SendOkResponse(id);
         }
@@ -80,7 +80,7 @@ namespace Meta.Lib.Modules.PubSub
             string id = parts[1];
             Type type = Type.GetType(parts[2]);
             _subscribedTypes.TryRemove(type, out var _);
-            _logger.Trace($"Client unsubscribed from {type}");
+            _logger?.LogInformation("Client unsubscribed from {Type}", type);
             await SendOkResponse(id);
         }
 

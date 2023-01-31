@@ -1,8 +1,6 @@
 ﻿using Meta.Lib.Examples.Shared;
-using Meta.Lib.Modules.Logger;
 using Meta.Lib.Modules.PubSub;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -161,21 +159,19 @@ namespace Meta.Lib.Examples
             var hub = new MetaPubSub();
 
             // subscribing to MyMessage with a predicate that selects only error and critical messages
-            hub.Subscribe<MyMessage>(OnMyMessage, m =>
-                m.LogSeverity == MetaLogErrorSeverity.Error ||
-                m.LogSeverity == MetaLogErrorSeverity.Critical);
+            hub.Subscribe<MyMessage>(OnMyMessage, m => m.Version > new Version(1, 0));
 
             // this message will be filtered and not handled
             var message1 = new MyMessage
             {
-                LogSeverity = MetaLogErrorSeverity.Info
+                Version = new Version(1, 0)
             };
             await hub.Publish(message1);
 
             // this message will be handled
             var message2 = new MyMessage
             {
-                LogSeverity = MetaLogErrorSeverity.Error
+                Version = new Version(1, 1)
             };
 
             await hub.Publish(message2);
@@ -276,10 +272,10 @@ namespace Meta.Lib.Examples
                 // This method will publish MyMessage and wait for MyEvent one second.
                 // If the event will not arrive in a specified timeout the TimeoutException will be thrown.
 
-                var message = new MyMessage 
-                { 
-                    DeliverAtLeastOnce = true, 
-                    WaitForSubscriberTimeout = 100, 
+                var message = new MyMessage
+                {
+                    DeliverAtLeastOnce = true,
+                    WaitForSubscriberTimeout = 100,
                     ResponseTimeout = 1_000
                 };
                 MyEvent res = await hub.Process<MyEvent>(message);

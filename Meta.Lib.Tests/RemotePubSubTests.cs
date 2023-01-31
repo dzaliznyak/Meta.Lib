@@ -1,5 +1,4 @@
 ﻿using Meta.Lib.Examples.Shared;
-using Meta.Lib.Modules.Logger;
 using Meta.Lib.Modules.PubSub;
 using Meta.Lib.Modules.PubSub.Messages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -728,7 +727,8 @@ namespace Meta.Lib.Tests
 
             static bool Predicate(MyMessage message)
             {
-                return message.LogSeverity != MetaLogErrorSeverity.Info;
+                //return message.LogSeverity != MetaLogErrorSeverity.Info;
+                return message.Version > new Version(1, 0);
             }
 
             Task Handler2(MyMessage x)
@@ -744,12 +744,12 @@ namespace Meta.Lib.Tests
             await hub.SubscribeOnServer<MyMessage>(Handler2);
 
 
-            var message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Info };
+            var message = new MyMessage { Version = new Version(1, 0) };
             await serverHub.Publish(message);
             Assert.IsTrue(receivedCount == 1);
 
 
-            message = new MyMessage { LogSeverity = MetaLogErrorSeverity.Error };
+            message = new MyMessage { Version = new Version(1, 1) };
             await serverHub.Publish(message);
             Assert.IsTrue(receivedCount == 3);
         }

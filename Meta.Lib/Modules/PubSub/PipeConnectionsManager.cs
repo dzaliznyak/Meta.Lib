@@ -1,6 +1,6 @@
-﻿using Meta.Lib.Modules.Logger;
-using Meta.Lib.Modules.PubSub.Messages;
+﻿using Meta.Lib.Modules.PubSub.Messages;
 using Meta.Lib.Utils;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -11,7 +11,7 @@ namespace Meta.Lib.Modules.PubSub
 {
     public class PipeConnectionsManager
     {
-        readonly IMetaLogger _logger;
+        readonly ILogger _logger;
         readonly MessageHub _hub;
         readonly Action<Type, PipeServer> _onNewPipeSubscriber;
         readonly object _serversLock = new object();
@@ -22,7 +22,7 @@ namespace Meta.Lib.Modules.PubSub
         public string PipeName { get; private set; }
 
         internal PipeConnectionsManager(MessageHub hub,
-            IMetaLogger logger,
+            ILogger logger,
             Action<Type, PipeServer> onNewPipeSubscriber)
         {
             _logger = logger;
@@ -38,7 +38,7 @@ namespace Meta.Lib.Modules.PubSub
             PipeName = pipeName;
             StartNext(pipeName, configure);
 
-            _logger.Info($"Started server '{pipeName}', waiting for connections...");
+            _logger?.LogInformation("Started server '{Name}', waiting for connections...", pipeName);
         }
 
         internal void Stop()
@@ -62,10 +62,12 @@ namespace Meta.Lib.Modules.PubSub
             {
                 try
                 {
-                    lock (_serversLock)
+                    lock (_serversLock) //todo
+                    {
                         _servers = _servers.Add((PipeServer)s);
+                    }
 
-                    _logger.Info($"Client connected, total count: {_servers.Count}");
+                    _logger?.LogInformation("Client connected, total count: {Count}", _servers.Count);
 
                     // start waiting for the next connection
                     StartNext(pipeName, configure);
@@ -78,7 +80,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error(ex);
+                    _logger?.LogError(ex, "PipeServer.Connected() error");
                 }
             };
 
@@ -89,9 +91,9 @@ namespace Meta.Lib.Modules.PubSub
                     lock (_serversLock)
                         _servers = _servers.Remove((PipeServer)s);
 
-                    _logger.Info($"Client disconnected, remained: {_servers.Count}");
+                    _logger?.LogInformation("Client disconnected, remained: {Count}", _servers.Count);
 
-                    await _hub.Publish(new RemoteClientDisconnectedEvent() 
+                    await _hub.Publish(new RemoteClientDisconnectedEvent()
                     {
                         Timestamp = DateTime.Now,
                         TotalClientsCount = _servers.Count
@@ -99,7 +101,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error(ex);
+                    _logger?.LogError(ex, "PipeServer.Disconnected() error");
                 }
             };
 
@@ -114,7 +116,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error(ex);
+                    _logger?.LogError(ex, "Failed to start a pipe server");
                 }
             });
         }

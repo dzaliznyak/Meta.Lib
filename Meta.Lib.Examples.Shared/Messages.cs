@@ -1,5 +1,4 @@
-﻿using Meta.Lib.Modules.Logger;
-using Meta.Lib.Modules.PubSub;
+﻿using Meta.Lib.Modules.PubSub;
 using System;
 
 namespace Meta.Lib.Examples.Shared
@@ -8,7 +7,6 @@ namespace Meta.Lib.Examples.Shared
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }
-        public MetaLogErrorSeverity LogSeverity { get; set; }
         public string Message { get; set; }
         public byte[] Data { get; set; }
         public Version Version { get; set; }
@@ -27,7 +25,6 @@ namespace Meta.Lib.Examples.Shared
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }
-        public MetaLogErrorSeverity LogSeverity { get; set; }
         public string Message { get; set; }
         public byte[] Data { get; set; }
         public Version Version { get; set; }
@@ -46,7 +43,6 @@ namespace Meta.Lib.Examples.Shared
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }
-        public MetaLogErrorSeverity LogSeverity { get; set; }
     }
 
     public class MyEvent : MyMessage

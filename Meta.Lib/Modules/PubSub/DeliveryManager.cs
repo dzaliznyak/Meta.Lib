@@ -1,5 +1,5 @@
-﻿using Meta.Lib.Modules.Logger;
-using Meta.Lib.Utils;
+﻿using Meta.Lib.Utils;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,11 +8,11 @@ namespace Meta.Lib.Modules.PubSub
 {
     internal class DeliveryManager
     {
-        readonly IMetaLogger _logger;
+        readonly ILogger _logger;
         readonly Func<IPubSubMessage, Task> _onDelayedMessage;
         readonly Func<IPubSubMessage, Task<bool>> _onRemoteDeliver;
 
-        public DeliveryManager(IMetaLogger logger, 
+        public DeliveryManager(ILogger logger,
                                Func<IPubSubMessage, Task> onDelayedMessage,
                                Func<IPubSubMessage, Task<bool>> onRemoteDeliver)
         {
@@ -59,8 +59,6 @@ namespace Meta.Lib.Modules.PubSub
                 exceptions.Add(ex);
             }
 
-            //WriteDebugLine($"Published <<<{message.GetType().Name}>>> Subs: {subscribers.Count}, Remote: {remoteDeliver}, Ex: {exceptions?.Count ?? 0}");
-
             if (exceptions != null)
                 throw new AggregateException(exceptions).Fix();
 
@@ -68,7 +66,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 if (message.WaitForSubscriberTimeout > 0)
                 {
-                    _logger.Debug($"Delayed <<<{message.GetType().Name}>>> for {message.WaitForSubscriberTimeout} ms");
+                    _logger?.LogDebug("Delayed <<<{Message}>>> for {Timeout} ms", message.GetType().Name, message.WaitForSubscriberTimeout);
                     await _onDelayedMessage(message);
                 }
                 else

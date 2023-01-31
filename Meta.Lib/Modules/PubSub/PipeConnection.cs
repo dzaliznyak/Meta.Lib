@@ -1,5 +1,5 @@
-﻿using Meta.Lib.Modules.Logger;
-using Meta.Lib.Utils;
+﻿using Meta.Lib.Utils;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
@@ -25,7 +25,7 @@ namespace Meta.Lib.Modules.PubSub
 
         readonly object _lock = new object();
 
-        protected readonly IMetaLogger _logger;
+        protected readonly ILogger _logger;
         protected readonly MessageHub _hub;
 
         PipeStream _pipe;
@@ -45,7 +45,7 @@ namespace Meta.Lib.Modules.PubSub
         internal bool IsStarted => _pipe != null;
 
 
-        public PipeConnection(MessageHub hub, IMetaLogger logger)
+        public PipeConnection(MessageHub hub, ILogger logger)
         {
             _logger = logger;
             _hub = hub;
@@ -90,7 +90,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error(ex);
+                    _logger?.LogError(ex, "Failed to start pipe read loop");
                     OnDisconnected();
                 }
             });
@@ -109,7 +109,7 @@ namespace Meta.Lib.Modules.PubSub
 
         void OnDisconnected()
         {
-            _logger.Info($"Pipe disconnected");
+            _logger?.LogInformation("Pipe disconnected");
 
             lock (_lock)
             {
@@ -134,7 +134,7 @@ namespace Meta.Lib.Modules.PubSub
             {
                 if (_transmits.TryRemove(kvp, out var removed))
                 {
-                    _logger.Info($"Cancelled transmit '{removed.Packet}'");
+                    _logger?.LogInformation("Cancelled transmit '{Packet}'", removed.Packet);
                     removed.Tcs.TrySetCanceled();
                 }
             }
@@ -175,7 +175,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error(ex);
+                    _logger?.LogError(ex, "Pipe connection failed to process a packet");
                 }
             });
         }
@@ -204,7 +204,7 @@ namespace Meta.Lib.Modules.PubSub
             }
             catch (Exception ex)
             {
-                _logger.Debug(ex);
+                _logger?.LogDebug(ex, "Exception while processing the message");
                 await SendErrorResponse(id, ex);
             }
         }
@@ -283,7 +283,7 @@ namespace Meta.Lib.Modules.PubSub
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error($"Send transmit error: '{ex.Message}, packet: {transmit.Packet}'");
+                    _logger?.LogError("Send transmit error: '{Message}, packet: {Packet}'", ex.Message, transmit.Packet);
                     if (_transmits.TryRemove(transmit.Id, out var removed))
                         removed.Tcs.SetException(ex);
                 }

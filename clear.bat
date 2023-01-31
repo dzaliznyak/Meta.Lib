@@ -12,3 +12,6 @@ RD /S /Q Meta.Lib.Tests\bin
 RD /S /Q Meta.Lib.Examples.Shared\obj
 RD /S /Q Meta.Lib.Examples.Shared\bin
 
+
+RD /S /Q Meta.Lib.Benchmark\obj
+RD /S /Q Meta.Lib.Benchmark\bin

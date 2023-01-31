@@ -1,4 +1,4 @@
-﻿using Meta.Lib.Modules.Logger;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -9,11 +9,11 @@ namespace Meta.Lib.Modules.PubSub
     internal class MessageHub
     {
         readonly Dictionary<Type, Node> _nodes = new Dictionary<Type, Node>();
-        readonly IMetaLogger _logger;
+        readonly ILogger _logger;
         readonly Func<IReadOnlyCollection<ISubscription>, IPubSubMessage, Task> _onPublished;
         readonly Action<Type, ISubscription> _onNewSubscriber;
 
-        public MessageHub(IMetaLogger logger,
+        public MessageHub(ILogger logger,
                           Func<IReadOnlyCollection<ISubscription>, IPubSubMessage, Task> onPublished,
                           Action<Type, ISubscription> onNewSubscriber)
         {

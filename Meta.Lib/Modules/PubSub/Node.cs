@@ -56,9 +56,10 @@ namespace Meta.Lib.Modules.PubSub
 
                 var newArray = snapshot.Add(subscription);
 
-                var exchengeRes = ImmutableInterlocked.InterlockedCompareExchange(ref _subscribers, newArray, snapshot);
-                success = snapshot == exchengeRes;
-                snapshot = exchengeRes;
+                var exchangeRes = ImmutableInterlocked.InterlockedCompareExchange(ref _subscribers, newArray, snapshot);
+                success = snapshot == exchangeRes;
+                if (!success)
+                    snapshot = exchangeRes;
             }
             while (!success);
 
@@ -80,9 +81,10 @@ namespace Meta.Lib.Modules.PubSub
 
                 var newArray = snapshot.Remove(subscription);
 
-                var exchengeRes = ImmutableInterlocked.InterlockedCompareExchange(ref _subscribers, newArray, snapshot);
-                success = snapshot == exchengeRes;
-                snapshot = exchengeRes;
+                var exchangeRes = ImmutableInterlocked.InterlockedCompareExchange(ref _subscribers, newArray, snapshot);
+                success = snapshot == exchangeRes;
+                if (!success)
+                    snapshot = exchangeRes;
             }
             while (!success);
 
