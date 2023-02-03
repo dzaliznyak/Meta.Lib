@@ -242,7 +242,7 @@ namespace Meta.Lib.Modules.PubSub
 
             if (node.TryAdd(handler, filter: null, out _))
             {
-                if (node.Subscribers.Count == 1)
+                if (node.Subscribers.Count == 1) //todo
                 {
                     await SendMessage(
                         typeof(TMessage).AssemblyQualifiedName,
@@ -256,6 +256,9 @@ namespace Meta.Lib.Modules.PubSub
         public async Task<bool> TrySubscribe<TMessage>(Func<TMessage, Task> handler)
             where TMessage : class, IPubSubMessage
         {
+            if (handler == null)
+                throw new ArgumentNullException(nameof(handler));
+
             try
             {
                 await Subscribe(handler);

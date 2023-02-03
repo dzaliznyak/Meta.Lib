@@ -727,7 +727,6 @@ namespace Meta.Lib.Tests
 
             static bool Predicate(MyMessage message)
             {
-                //return message.LogSeverity != MetaLogErrorSeverity.Info;
                 return message.Version > new Version(1, 0);
             }
 

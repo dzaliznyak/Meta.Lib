@@ -39,7 +39,6 @@ namespace Meta.Lib.Tests
 
         bool OnMyMessagePredicate(MyMessage message)
         {
-            //return message.LogSeverity != MetaLogErrorSeverity.Info;
             return message.Version > new Version(1, 0);
         }
 

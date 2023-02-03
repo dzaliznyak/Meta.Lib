@@ -70,7 +70,7 @@ namespace Meta.Lib.Modules.PubSub
             if (_subscribedTypes.TryAdd(type, type))
             {
                 _onNewPipeSubscriber(type, this);
-                _logger?.LogInformation("Client subscribed to {Type}", type);
+                _logger?.LogInformation("Client subscribed to {MessageType}", type);
             }
             await SendOkResponse(id);
         }
@@ -80,7 +80,7 @@ namespace Meta.Lib.Modules.PubSub
             string id = parts[1];
             Type type = Type.GetType(parts[2]);
             _subscribedTypes.TryRemove(type, out var _);
-            _logger?.LogInformation("Client unsubscribed from {Type}", type);
+            _logger?.LogInformation("Client unsubscribed from {MessageType}", type);
             await SendOkResponse(id);
         }
 
