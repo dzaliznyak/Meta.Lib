@@ -1,10 +1,10 @@
-﻿using Meta.Lib.Modules.Pipe;
+﻿using Meta.Lib.Examples.Shared;
+using Meta.Lib.Modules.Pipe;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -51,6 +51,39 @@ namespace Meta.Lib.Tests
             server.Stop();
         }
 
+        [TestMethod]
+        public async Task SendGeneric()
+        {
+            ILogger<PipeTests> logger = CreateLogger();
+            string pipeName = NewPipeName();
+            using AutoResetEvent receiveEvent = new(false);
+            var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
+            MyMessage receivedMessage = null;
+
+            void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
+            {
+                receivedMessage = (MyMessage)e.Obj;
+                receiveEvent.Set();
+            }
+
+            using var server = new MetaPipeServer(pipeName, logger);
+            server.ClientConnected += (sender, e) =>
+            {
+                e.Connection.MessageReceived += Connection_MessageReceived;
+            };
+            server.Start();
+
+            using var client = new MetaPipeConnection(pipeName, logger);
+            await client.Connect();
+            await client.Send(sentMessage, Guid.NewGuid());
+
+            bool waitResult = receiveEvent.WaitOne(1000);
+            Assert.IsTrue(waitResult);
+            Assert.AreEqual(sentMessage.Message, receivedMessage.Message);
+            Assert.AreEqual(sentMessage.SomeId, receivedMessage.SomeId);
+            Assert.AreEqual(sentMessage.Version, receivedMessage.Version);
+        }
+
 
         [TestMethod]
         public async Task ClientConnectAndSend()
@@ -61,9 +94,9 @@ namespace Meta.Lib.Tests
             string sentMessage = "12345678";
             string receivedMessage = null;
 
-            void Connection_MessageReceived(object sender, PipeConnectionMessageEventArgs e)
+            void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
             {
-                receivedMessage = Encoding.UTF8.GetString(e.Data);
+                receivedMessage = e.Str;
                 receiveEvent.Set();
             }
 
@@ -123,11 +156,11 @@ namespace Meta.Lib.Tests
 
             long receivedSum = 0;
             int receivedCount = 0;
-            void Connection_MessageReceived(object sender, PipeConnectionMessageEventArgs e)
+            void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
             {
                 lock (receiveEvent)
                 {
-                    var receivedMessage = Encoding.UTF8.GetString(e.Data);
+                    var receivedMessage = e.Str;
                     receivedSum += Convert.ToInt32(receivedMessage);
 
                     if (++receivedCount == COUNT)
@@ -175,9 +208,9 @@ namespace Meta.Lib.Tests
             string sentMessage = "12345678";
             string receivedMessage = null;
 
-            void Client_MessageReceived(object sender, PipeConnectionMessageEventArgs e)
+            void Client_MessageReceived(object sender, PipeMessageEventArgs e)
             {
-                receivedMessage = Encoding.UTF8.GetString(e.Data);
+                receivedMessage = e.Str;
                 receiveEvent.Set();
             }
 
@@ -214,16 +247,16 @@ namespace Meta.Lib.Tests
             int receivedCount2 = 0;
             long receivedSum2 = 0;
 
-            void Connection_MessageReceived(object sender, PipeConnectionMessageEventArgs e)
+            void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
             {
-                string receivedMessage = Encoding.UTF8.GetString(e.Data);
+                string receivedMessage = e.Str;
                 receivedSum += Convert.ToInt32(receivedMessage);
                 ++receivedCount;
             }
 
-            void Connection_MessageReceived2(object sender, PipeConnectionMessageEventArgs e)
+            void Connection_MessageReceived2(object sender, PipeMessageEventArgs e)
             {
-                string receivedMessage = Encoding.UTF8.GetString(e.Data);
+                string receivedMessage = e.Str;
                 receivedSum2 += Convert.ToInt32(receivedMessage);
                 if (++receivedCount2 == COUNT * 2)
                     allReceivedEvent.Set();
@@ -287,9 +320,9 @@ namespace Meta.Lib.Tests
             // server side receive
             int serverReceivedCount = 0;
             long serverReceivedSum = 0;
-            void Connection_MessageReceived(object sender, PipeConnectionMessageEventArgs e)
+            void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
             {
-                string receivedMessage = Encoding.UTF8.GetString(e.Data);
+                string receivedMessage = e.Str;
                 serverReceivedSum += Convert.ToInt32(receivedMessage);
 
                 if (++serverReceivedCount == COUNT * 2)
@@ -299,9 +332,9 @@ namespace Meta.Lib.Tests
             // client side receive
             int clientReceivedCount = 0;
             long clientReceivedSum = 0;
-            void Client_MessageReceived(object sender, PipeConnectionMessageEventArgs e)
+            void Client_MessageReceived(object sender, PipeMessageEventArgs e)
             {
-                string receivedMessage = Encoding.UTF8.GetString(e.Data);
+                string receivedMessage = e.Str;
                 clientReceivedSum += Convert.ToInt32(receivedMessage);
 
                 if (++clientReceivedCount == COUNT * 2)
@@ -386,7 +419,7 @@ namespace Meta.Lib.Tests
             int connectedClients2 = 0;
             using AutoResetEvent receiveEvent = new(false);
 
-            void Connection_MessageReceived(object sender, PipeConnectionMessageEventArgs e)
+            void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
             {
                 receiveEvent.Set();
             }
@@ -413,7 +446,7 @@ namespace Meta.Lib.Tests
                 await client.Connect();
 
                 await client.Send(i.ToString());
-                if (!receiveEvent.WaitOne(1000))
+                if (!receiveEvent.WaitOne(5000))
                     Assert.Fail("send failed");
 
                 server.Stop();

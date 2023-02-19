@@ -2,19 +2,22 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.IO.Pipes;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.Pipe
 {
     public enum ConnectionType { None, Server, Client }
+    public enum PayloadType : byte { None, ByteArray, String, Object }
 
     public class MetaPipeConnection : IDisposable
     {
-        const int HeaderSize = 4;
+        const int HeaderSize = 24;
         static int ConnectionNo = 0;
 
         enum State { NotConnected, Connected, Disconnected, Reconnecting, Disposed }
@@ -24,18 +27,18 @@ namespace Meta.Lib.Modules.Pipe
         readonly ConcurrentStateMachine<State, Input> _sm;
         readonly ConnectionType _connectionType;
         readonly SemaphoreSlim _writeLock = new SemaphoreSlim(1, 1);
-        readonly byte[] _sendHeaderBuf = new byte[HeaderSize];
+        readonly MemoryStream _sendStream = new MemoryStream(256);
         readonly string _serverName;
         readonly string _pipeName;
         readonly int _timeout;
-        readonly bool _autoreconnect;
+        readonly bool _autoReconnect;
 
         PipeStream _pipe;
         CancellationTokenSource _cts;
         long _bytesReceived;
         long _bytesSent;
 
-        public event EventHandler<PipeConnectionMessageEventArgs> MessageReceived;
+        public event EventHandler<PipeMessageEventArgs> MessageReceived;
         public event EventHandler Connected;
         public event EventHandler Disconnected;
 
@@ -44,13 +47,13 @@ namespace Meta.Lib.Modules.Pipe
         public long BytesReceived => _bytesReceived;
         public long BytesSent => _bytesSent;
 
-        public MetaPipeConnection(string pipeName, ILogger logger = null, int timeout = 1000, bool autoreconnect = true, string serverName = ".")
+        public MetaPipeConnection(string pipeName, ILogger logger = null, int timeout = 1000, bool autoReconnect = true, string serverName = ".")
             : this(logger, State.NotConnected, $"ClientPipe_{pipeName}_{Interlocked.Increment(ref ConnectionNo)}")
         {
             _connectionType = ConnectionType.Client;
             _pipeName = pipeName;
             _timeout = timeout;
-            _autoreconnect = autoreconnect;
+            _autoReconnect = autoReconnect;
             _serverName = serverName;
         }
 
@@ -229,7 +232,7 @@ namespace Meta.Lib.Modules.Pipe
                     if (readLen == 0)
                         break;
 
-                    int expectedLength = ParseHeader(header);
+                    int expectedLength = GetDataLength(header);
                     if (buffer.Length < expectedLength)
                     {
                         int newSize = (expectedLength / 4096 + 1) * 4096;
@@ -244,7 +247,8 @@ namespace Meta.Lib.Modules.Pipe
                         throw new Exception("Read byte count not equal to expected");
 
                     _bytesReceived += readLen;
-                    FireMessageReceivedEvent(buffer.AsMemory(0, expectedLength));
+
+                    ProcessReceivedMessage(header, buffer, expectedLength);
                 }
                 catch (Exception ex)
                 {
@@ -260,16 +264,57 @@ namespace Meta.Lib.Modules.Pipe
             {
                 Disconnect();
 
-                if (_autoreconnect)
+                if (_autoReconnect)
                     Reconnect();
             }
         }
 
-        void FireMessageReceivedEvent(ReadOnlyMemory<byte> message)
+        void ProcessReceivedMessage(ReadOnlySpan<byte> header, byte[] buffer, int dataLength)
         {
             try
             {
-                MessageReceived?.Invoke(this, new PipeConnectionMessageEventArgs(message.ToArray()));
+                var flags = Unsafe.ReadUnaligned<byte>(ref Unsafe.AsRef(header[4]));
+                var payloadType = (PayloadType)Unsafe.ReadUnaligned<byte>(ref Unsafe.AsRef(header[5]));
+                var typeNameLength = Unsafe.ReadUnaligned<short>(ref Unsafe.AsRef(header[6]));
+                var correlationId = Unsafe.ReadUnaligned<Guid>(ref Unsafe.AsRef(header[8]));
+
+                if (typeNameLength > 0)
+                {
+                    var span = new ReadOnlySpan<byte>(buffer);
+                    var typeNameBuf = span.Slice(0, typeNameLength);
+                    string typeName = JsonSerializer.Deserialize<string>(typeNameBuf);
+                    Type objType = Type.GetType(typeName);
+
+                    var payloadBuf = span.Slice(typeNameLength, dataLength - typeNameLength);
+                    var payload = JsonSerializer.Deserialize(payloadBuf, objType);
+
+                    FireMessageReceivedEvent(new PipeMessageEventArgs(payload, objType));
+                }
+                else if (payloadType == PayloadType.String)
+                {
+                    var str = Encoding.UTF8.GetString(buffer, 0, dataLength);
+
+                    FireMessageReceivedEvent(new PipeMessageEventArgs(str));
+                }
+                else if (payloadType == PayloadType.ByteArray)
+                {
+                    var copy = new byte[dataLength];
+                    Array.Copy(buffer, 0, copy, 0, dataLength);
+
+                    FireMessageReceivedEvent(new PipeMessageEventArgs(copy));
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogCritical(ex, "Failed to process received message");
+            }
+        }
+
+        void FireMessageReceivedEvent(PipeMessageEventArgs args)
+        {
+            try
+            {
+                MessageReceived?.Invoke(this, args);
             }
             catch (Exception ex)
             {
@@ -277,9 +322,9 @@ namespace Meta.Lib.Modules.Pipe
             }
         }
 
-        static int ParseHeader(ReadOnlySpan<byte> buf)
+        static int GetDataLength(ReadOnlySpan<byte> buffer)
         {
-            return Unsafe.ReadUnaligned<int>(ref Unsafe.AsRef(buf[0]));
+            return Unsafe.ReadUnaligned<int>(ref Unsafe.AsRef(buffer[0]));
         }
 
         void Reconnect()
@@ -313,29 +358,44 @@ namespace Meta.Lib.Modules.Pipe
             while (!IsConnected && _sm.State == State.Reconnecting);
         }
 
-        public Task Send(string message)
-        {
-            var buf = Encoding.UTF8.GetBytes(message);
-            return Send(buf);
-        }
-
-        public async Task Send(byte[] buf)
+        public Task Send(string message, Guid correlationId = default)
         {
             if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
+            if (_cts == null || _cts.IsCancellationRequested) throw new InvalidOperationException("Pipe is closed");
 
+            var buf = Encoding.UTF8.GetBytes(message);
+            return SendAsBuffer(buf, correlationId, PayloadType.String);
+        }
+
+        public Task Send(byte[] buf, Guid correlationId = default)
+        {
+            if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
+            if (_cts == null || _cts.IsCancellationRequested) throw new InvalidOperationException("Pipe is closed");
+
+            return SendAsBuffer(buf, correlationId, PayloadType.ByteArray);
+        }
+
+        async Task SendAsBuffer(byte[] buf, Guid correlationId, PayloadType payloadType)
+        {
             try
             {
-                if (_cts == null || _cts.IsCancellationRequested)
-                    throw new InvalidOperationException("Pipe is closed");
-
                 await _writeLock.WaitAsync();
 
-                Unsafe.WriteUnaligned(ref _sendHeaderBuf[0], buf.Length);
+                _sendStream.Position = HeaderSize;
+                _sendStream.Write(buf, 0, buf.Length);
 
-                await _pipe.WriteAsync(_sendHeaderBuf, 0, HeaderSize);
-                await _pipe.WriteAsync(buf, 0, buf.Length);
+                var sendBuf = _sendStream.GetBuffer();
 
-                _bytesSent += buf.Length;
+                // header
+                Unsafe.WriteUnaligned(ref sendBuf[0], buf.Length); //DataLength
+                Unsafe.WriteUnaligned(ref sendBuf[4], (byte)0x00); // Flags
+                Unsafe.WriteUnaligned(ref sendBuf[5], (byte)payloadType); // PayloadType
+                Unsafe.WriteUnaligned(ref sendBuf[6], (short)0); // TypeNameLength
+                Unsafe.WriteUnaligned(ref sendBuf[8], correlationId); // CorrelationId
+
+                await _pipe.WriteAsync(sendBuf, 0, (int)_sendStream.Position);
+
+                _bytesSent += (int)_sendStream.Position;
             }
             finally
             {
@@ -343,6 +403,43 @@ namespace Meta.Lib.Modules.Pipe
             }
         }
 
+        // HEADER (24b len)  [DataLength - 4b] [Flags - 1b] [PayloadType - 1b] [TypeNameLength - 2b] [CorrelationId - 16b]
+        public async Task Send<T>(T obj, Guid correlationId = default)
+        {
+            if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
+            if (_cts == null || _cts.IsCancellationRequested) throw new InvalidOperationException("Pipe is closed");
+
+            try
+            {
+                await _writeLock.WaitAsync();
+
+                _sendStream.Position = HeaderSize;
+
+                // type name serialization
+                long prevPosition = _sendStream.Position;
+                JsonSerializer.Serialize(_sendStream, typeof(T).AssemblyQualifiedName);
+                short typeNameLength = (short)(_sendStream.Position - prevPosition);
+
+                // object serialization
+                JsonSerializer.Serialize(_sendStream, obj);
+
+                // header
+                var buf = _sendStream.GetBuffer();
+                Unsafe.WriteUnaligned(ref buf[0], (int)_sendStream.Position - HeaderSize); //DataLength
+                Unsafe.WriteUnaligned(ref buf[4], (byte)0x00); // Flags
+                Unsafe.WriteUnaligned(ref buf[5], (byte)PayloadType.Object); // PayloadType
+                Unsafe.WriteUnaligned(ref buf[6], typeNameLength); // TypeNameLength
+                Unsafe.WriteUnaligned(ref buf[8], correlationId); // CorrelationId
+
+                await _pipe.WriteAsync(buf, 0, (int)_sendStream.Position);
+
+                _bytesSent += (int)_sendStream.Position;
+            }
+            finally
+            {
+                _writeLock.Release();
+            }
+        }
 
     }
 }
