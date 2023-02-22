@@ -10,15 +10,15 @@ namespace Meta.Lib.Modules.PubSub
     {
         readonly ILogger _logger;
         readonly Func<IPubSubMessage, Task> _onDelayedMessage;
-        readonly Func<IPubSubMessage, Task<bool>> _onRemoteDeliver;
+        //readonly Func<IPubSubMessage, Task<bool>> _onRemoteDeliver;
 
         public DeliveryManager(ILogger logger,
-                               Func<IPubSubMessage, Task> onDelayedMessage,
-                               Func<IPubSubMessage, Task<bool>> onRemoteDeliver)
+                               Func<IPubSubMessage, Task> onDelayedMessage
+                               /*Func<IPubSubMessage, Task<bool>> onRemoteDeliver*/)
         {
             _logger = logger;
             _onDelayedMessage = onDelayedMessage;
-            _onRemoteDeliver = onRemoteDeliver;
+           // _onRemoteDeliver = onRemoteDeliver;
         }
 
         internal async Task Put(IReadOnlyCollection<ISubscription> subscribers, IPubSubMessage message)
@@ -45,19 +45,19 @@ namespace Meta.Lib.Modules.PubSub
                 }
             }
 
-            // deliver to remote subscribers
-            bool remoteDeliver = false;
-            try
-            {
-                if (await _onRemoteDeliver(message))
-                    remoteDeliver = hasAtLeastOneSubscriber = true;
-            }
-            catch (Exception ex)
-            {
-                if (exceptions == null)
-                    exceptions = new List<Exception>();
-                exceptions.Add(ex);
-            }
+            //// deliver to remote subscribers
+            //bool remoteDeliver = false;
+            //try
+            //{
+            //    if (await _onRemoteDeliver(message))
+            //        remoteDeliver = hasAtLeastOneSubscriber = true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    if (exceptions == null)
+            //        exceptions = new List<Exception>();
+            //    exceptions.Add(ex);
+            //}
 
             if (exceptions != null)
                 throw new AggregateException(exceptions).Fix();

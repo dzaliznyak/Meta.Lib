@@ -11,25 +11,25 @@ namespace Meta.Lib.Modules.PubSub
         readonly DeliveryManager _deliveryManager;
         readonly RequestResponseProcessor _requestResponseProcessor;
         readonly MessageScheduler _messageScheduler;
-        readonly PipeConnectionsManager _pipeConections;
-        readonly RemotePubSubProxy _proxy;
+        //readonly PipeConnectionsManager _pipeConections;
+        //readonly RemotePubSubProxy _proxy;
 
         public MetaPubSub(ILogger logger = null)
         {
             //_logger = logger ?? MetaLogger.Default;
 
             _delayedMessages = new DelayedMessages();
-            _deliveryManager = new DeliveryManager(logger, _delayedMessages.Put, PipeConections_Put);
+            _deliveryManager = new DeliveryManager(logger, _delayedMessages.Put/*, PipeConections_Put*/);
             _messageHub = new MessageHub(logger, _deliveryManager.Put, _delayedMessages.OnNewSubscriber);
-            _pipeConections = new PipeConnectionsManager(_messageHub, logger, _delayedMessages.OnNewPipeSubscriber);
+            //_pipeConections = new PipeConnectionsManager(_messageHub, logger, _delayedMessages.OnNewPipeSubscriber);
             _requestResponseProcessor = new RequestResponseProcessor(this);
             _messageScheduler = new MessageScheduler(_messageHub.Publish);
-            _proxy = new RemotePubSubProxy(_messageHub, logger);
+            //_proxy = new RemotePubSubProxy(_messageHub, logger);
         }
 
-        Task<bool> PipeConections_Put(IPubSubMessage arg0)
-        {
-            return _pipeConections.Put(arg0);
-        }
+        //Task<bool> PipeConections_Put(IPubSubMessage arg0)
+        //{
+        //    return _pipeConections.Put(arg0);
+        //}
     }
 }

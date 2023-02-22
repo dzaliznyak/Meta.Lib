@@ -21,7 +21,7 @@ namespace Meta.Lib.Examples.Shared
         }
     }
 
-    public class MyMessageReplay : PubSubMessageBase
+    public class MyMessageResponse : PubSubMessageBase
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }
@@ -29,11 +29,11 @@ namespace Meta.Lib.Examples.Shared
         public byte[] Data { get; set; }
         public Version Version { get; set; }
 
-        public MyMessageReplay()
+        public MyMessageResponse()
         {
         }
 
-        public MyMessageReplay(string message)
+        public MyMessageResponse(string message)
         {
             Message = message;
         }

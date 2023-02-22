@@ -68,33 +68,33 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        public async Task<TResponse> ProcessOnServer<TResponse>(
-            IPubSubMessage message,
-            Predicate<TResponse> match = null,
-            CancellationToken cancellationToken = default)
-            where TResponse : class, IPubSubMessage
-        {
-            var tcs = new TaskCompletionSource<TResponse>();
+        //public async Task<TResponse> ProcessOnServer<TResponse>(
+        //    IPubSubMessage message,
+        //    Predicate<TResponse> match = null,
+        //    CancellationToken cancellationToken = default)
+        //    where TResponse : class, IPubSubMessage
+        //{
+        //    var tcs = new TaskCompletionSource<TResponse>();
 
-            Task Handler(TResponse response)
-            {
-                tcs.TrySetResult(response);
-                return Task.CompletedTask;
-            }
+        //    Task Handler(TResponse response)
+        //    {
+        //        tcs.TrySetResult(response);
+        //        return Task.CompletedTask;
+        //    }
 
-            await _hub.SubscribeOnServer(Handler, match);
+        //    await _hub.SubscribeOnServer(Handler, match);
 
-            try
-            {
-                //todo - calculate remaining timeout
-                await _hub.PublishOnServer(message);
-                return await tcs.Task.TimeoutAfter(message.ResponseTimeout, cancellationToken);
-            }
-            finally
-            {
-                await _hub.Unsubscribe((Func<TResponse, Task>)Handler);
-            }
-        }
+        //    try
+        //    {
+        //        //todo - calculate remaining timeout
+        //        //todo await _hub.PublishOnServer(message);
+        //        return await tcs.Task.TimeoutAfter(message.ResponseTimeout, cancellationToken);
+        //    }
+        //    finally
+        //    {
+        //        await _hub.Unsubscribe((Func<TResponse, Task>)Handler);
+        //    }
+        //}
 
     }
 }

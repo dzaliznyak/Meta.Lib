@@ -84,6 +84,131 @@ namespace Meta.Lib.Tests
             Assert.AreEqual(sentMessage.Version, receivedMessage.Version);
         }
 
+        [TestMethod]
+        public async Task SendAndWaitResponseAsObject()
+        {
+            ILogger<PipeTests> logger = CreateLogger();
+            string pipeName = NewPipeName();
+            var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
+            MyMessageResponse receivedMessage = null;
+
+            async void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
+            {
+                var connection = (MetaPipeConnection)sender;
+                var request = (MyMessage)e.Obj;
+                var response = new MyMessageResponse() { Message = request.Message, SomeId = request.SomeId, Version = request.Version };
+                await connection.Send(response, e.CorrelationId);
+            }
+
+            using var server = new MetaPipeServer(pipeName, logger);
+            server.ClientConnected += (sender, e) =>
+            {
+                e.Connection.MessageReceived += Connection_MessageReceived;
+            };
+            server.Start();
+
+            using var client = new MetaPipeConnection(pipeName, logger);
+            await client.Connect();
+            receivedMessage = await client.SendAndWaitResponse<MyMessage, MyMessageResponse>(sentMessage, Guid.NewGuid());
+
+            Assert.AreEqual(sentMessage.Message, receivedMessage.Message);
+            Assert.AreEqual(sentMessage.SomeId, receivedMessage.SomeId);
+            Assert.AreEqual(sentMessage.Version, receivedMessage.Version);
+        }
+
+        [TestMethod]
+        public async Task SendAndWaitResponseAsArray()
+        {
+            ILogger<PipeTests> logger = CreateLogger();
+            string pipeName = NewPipeName();
+            var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
+            byte[] receivedMessage = null;
+
+            async void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
+            {
+                var connection = (MetaPipeConnection)sender;
+                var request = (MyMessage)e.Obj;
+                var response = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05 };
+                await connection.Send(response, e.CorrelationId);
+            }
+
+            using var server = new MetaPipeServer(pipeName, logger);
+            server.ClientConnected += (sender, e) =>
+            {
+                e.Connection.MessageReceived += Connection_MessageReceived;
+            };
+            server.Start();
+
+            using var client = new MetaPipeConnection(pipeName, logger);
+            await client.Connect();
+            receivedMessage = await client.SendAndWaitResponse<MyMessage, byte[]>(sentMessage, Guid.NewGuid());
+
+            Assert.AreEqual(0x01, receivedMessage[0]);
+            Assert.AreEqual(0x02, receivedMessage[1]);
+            Assert.AreEqual(0x03, receivedMessage[2]);
+            Assert.AreEqual(0x04, receivedMessage[3]);
+            Assert.AreEqual(0x05, receivedMessage[4]);
+        }
+
+        [TestMethod]
+        public async Task SendAndWaitResponseTimeout()
+        {
+            ILogger<PipeTests> logger = CreateLogger();
+            string pipeName = NewPipeName();
+            var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
+
+            using var server = new MetaPipeServer(pipeName, logger);
+            server.Start();
+
+            using var client = new MetaPipeConnection(pipeName, logger);
+            await client.Connect();
+
+            try
+            {
+                var receivedMessage = await client.SendAndWaitResponse<MyMessage, byte[]>(sentMessage, Guid.NewGuid(), 100);
+                Assert.IsTrue(false);
+            }
+            catch (TimeoutException)
+            {
+            }
+        }
+
+        [TestMethod]
+        public async Task SendAndWaitResponseWithError()
+        {
+            ILogger<PipeTests> logger = CreateLogger();
+            string pipeName = NewPipeName();
+            var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
+            byte[] receivedMessage = null;
+
+            async void Connection_MessageReceived(object sender, PipeMessageEventArgs e)
+            {
+                var connection = (MetaPipeConnection)sender;
+                var error = new ErrorDescription("some error message", 123);
+                await connection.Send(error, e.CorrelationId);
+            }
+
+            using var server = new MetaPipeServer(pipeName, logger);
+            server.ClientConnected += (sender, e) =>
+            {
+                e.Connection.MessageReceived += Connection_MessageReceived;
+            };
+            server.Start();
+
+            using var client = new MetaPipeConnection(pipeName, logger);
+            await client.Connect();
+
+            try
+            {
+                receivedMessage = await client.SendAndWaitResponse<MyMessage, byte[]>(sentMessage, Guid.NewGuid());
+                Assert.IsTrue(false);
+            }
+            catch (RemoteException ex)
+            {
+                Assert.AreEqual("some error message", ex.Error.Message);
+                Assert.AreEqual(123, ex.Error.ErrorCode);
+            }
+        }
 
         [TestMethod]
         public async Task ClientConnectAndSend()

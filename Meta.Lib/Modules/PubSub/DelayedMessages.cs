@@ -80,45 +80,46 @@ namespace Meta.Lib.Modules.PubSub
             });
         }
 
-        internal void OnNewPipeSubscriber(Type messageType, PipeServer pipe)
-        {
-            Task.Run(async () =>
-            {
-                if (_dict.TryGetValue(messageType, out var queue))
-                {
-                    List<DelayedMessageScope> filteredMessages = null;
-                    while (queue.TryDequeue(out DelayedMessageScope scope))
-                    {
-                        try
-                        {
-                            if (!scope.IsTimedOut)
-                            {
-                                if (pipe.IsShouldSend(scope.Message) &&
-                                    await pipe.SendMessage(scope.Message, PipeMessageType.Message))
-                                {
-                                    scope.Tcs.SetResult(true);
-                                }
-                                else
-                                {
-                                    if (filteredMessages == null)
-                                        filteredMessages = new List<DelayedMessageScope>();
-                                    filteredMessages.Add(scope);
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            scope.Tcs.SetException(ex);
-                        }
-                    }
+        //todo
+        //internal void OnNewPipeSubscriber(Type messageType, RemoteClientConnection pipe)
+        //{
+            //Task.Run(async () =>
+            //{
+            //    if (_dict.TryGetValue(messageType, out var queue))
+            //    {
+            //        List<DelayedMessageScope> filteredMessages = null;
+            //        while (queue.TryDequeue(out DelayedMessageScope scope))
+            //        {
+            //            try
+            //            {
+            //                if (!scope.IsTimedOut)
+            //                {
+            //                    if (pipe.IsShouldSend(scope.Message) &&
+            //                        await pipe.SendMessage(scope.Message, PipeMessageType.Message))
+            //                    {
+            //                        scope.Tcs.SetResult(true);
+            //                    }
+            //                    else
+            //                    {
+            //                        if (filteredMessages == null)
+            //                            filteredMessages = new List<DelayedMessageScope>();
+            //                        filteredMessages.Add(scope);
+            //                    }
+            //                }
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                scope.Tcs.SetException(ex);
+            //            }
+            //        }
 
-                    // put to the queue again all messages that are not sent
-                    if (filteredMessages != null)
-                        foreach (var item in filteredMessages)
-                            queue.Enqueue(item);
-                }
-            });
-        }
+            //        // put to the queue again all messages that are not sent
+            //        if (filteredMessages != null)
+            //            foreach (var item in filteredMessages)
+            //                queue.Enqueue(item);
+            //    }
+            //});
+        //}
 
     }
 }
