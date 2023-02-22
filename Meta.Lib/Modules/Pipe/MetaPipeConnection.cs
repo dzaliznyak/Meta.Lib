@@ -1,6 +1,8 @@
 ﻿using Meta.Lib.Modules.StateMachine;
+using Meta.Lib.Utils;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
@@ -13,7 +15,7 @@ using System.Threading.Tasks;
 namespace Meta.Lib.Modules.Pipe
 {
     public enum ConnectionType { None, Server, Client }
-    public enum PayloadType : byte { None, ByteArray, String, Object }
+    public enum PayloadType : byte { None, ByteArray, String, Object, Error }
 
     public class MetaPipeConnection : IDisposable
     {
@@ -32,6 +34,8 @@ namespace Meta.Lib.Modules.Pipe
         readonly string _pipeName;
         readonly int _timeout;
         readonly bool _autoReconnect;
+        readonly ConcurrentDictionary<Guid, IResponseAwaiter> _responseAwaiters =
+            new ConcurrentDictionary<Guid, IResponseAwaiter>();
 
         PipeStream _pipe;
         CancellationTokenSource _cts;
@@ -278,7 +282,7 @@ namespace Meta.Lib.Modules.Pipe
                 var typeNameLength = Unsafe.ReadUnaligned<short>(ref Unsafe.AsRef(header[6]));
                 var correlationId = Unsafe.ReadUnaligned<Guid>(ref Unsafe.AsRef(header[8]));
 
-                if (typeNameLength > 0)
+                if (payloadType == PayloadType.Object && typeNameLength > 0)
                 {
                     var span = new ReadOnlySpan<byte>(buffer);
                     var typeNameBuf = span.Slice(0, typeNameLength);
@@ -288,20 +292,40 @@ namespace Meta.Lib.Modules.Pipe
                     var payloadBuf = span.Slice(typeNameLength, dataLength - typeNameLength);
                     var payload = JsonSerializer.Deserialize(payloadBuf, objType);
 
-                    FireMessageReceivedEvent(new PipeMessageEventArgs(payload, objType));
+                    CompleteAwaiter(correlationId, payload);
+
+                    FireMessageReceivedEvent(new PipeMessageEventArgs(payload, objType) { CorrelationId = correlationId });
                 }
                 else if (payloadType == PayloadType.String)
                 {
                     var str = Encoding.UTF8.GetString(buffer, 0, dataLength);
 
-                    FireMessageReceivedEvent(new PipeMessageEventArgs(str));
+                    CompleteAwaiter(correlationId, str);
+
+                    FireMessageReceivedEvent(new PipeMessageEventArgs(str) { CorrelationId = correlationId });
                 }
                 else if (payloadType == PayloadType.ByteArray)
                 {
-                    var copy = new byte[dataLength];
-                    Array.Copy(buffer, 0, copy, 0, dataLength);
+                    var data = new byte[dataLength];
+                    Array.Copy(buffer, 0, data, 0, dataLength);
 
-                    FireMessageReceivedEvent(new PipeMessageEventArgs(copy));
+                    CompleteAwaiter(correlationId, data);
+
+                    FireMessageReceivedEvent(new PipeMessageEventArgs(data) { CorrelationId = correlationId });
+                }
+                else if (payloadType == PayloadType.Error)
+                {
+                    var span = new ReadOnlySpan<byte>(buffer);
+                    var dataBuf = span.Slice(0, dataLength);
+                    var error = JsonSerializer.Deserialize<ErrorDescription>(dataBuf);
+
+                    CompleteAwaiterWithError(correlationId, error);
+
+                    FireMessageReceivedEvent(new PipeMessageEventArgs(error) { CorrelationId = correlationId });
+                }
+                else
+                {
+                    Debug.Assert(false);
                 }
             }
             catch (Exception ex)
@@ -438,6 +462,68 @@ namespace Meta.Lib.Modules.Pipe
             finally
             {
                 _writeLock.Release();
+            }
+        }
+
+        public async Task Send(ErrorDescription error, Guid correlationId)
+        {
+            if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
+            if (_cts == null || _cts.IsCancellationRequested) throw new InvalidOperationException("Pipe is closed");
+
+            try
+            {
+                await _writeLock.WaitAsync();
+
+                _sendStream.Position = HeaderSize;
+
+                // error description serialization
+                JsonSerializer.Serialize(_sendStream, error);
+
+                // header
+                var buf = _sendStream.GetBuffer();
+                Unsafe.WriteUnaligned(ref buf[0], (int)_sendStream.Position - HeaderSize); //DataLength
+                Unsafe.WriteUnaligned(ref buf[4], (byte)0x00); // Flags
+                Unsafe.WriteUnaligned(ref buf[5], (byte)PayloadType.Error); // PayloadType
+                Unsafe.WriteUnaligned(ref buf[6], (short)0); // TypeNameLength
+                Unsafe.WriteUnaligned(ref buf[8], correlationId); // CorrelationId
+
+                await _pipe.WriteAsync(buf, 0, (int)_sendStream.Position);
+
+                _bytesSent += (int)_sendStream.Position;
+            }
+            finally
+            {
+                _writeLock.Release();
+            }
+        }
+
+        public async Task<TResp> SendAndWaitResponse<T, TResp>(T obj, Guid correlationId, int timeout = 5000, CancellationToken cancellationToken = default)
+        {
+            if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
+            if (_cts == null || _cts.IsCancellationRequested) throw new InvalidOperationException("Pipe is closed");
+
+            var awaiter = new ResponseAwaiter<TResp>();
+            if (!_responseAwaiters.TryAdd(correlationId, awaiter))
+                throw new InvalidOperationException("Request with the same correlation ID is already running");
+
+            await Send(obj, correlationId);
+
+            return await awaiter.Tcs.Task.TimeoutAfter(timeout, cancellationToken);
+        }
+
+        void CompleteAwaiter(Guid correlationId, object result)
+        {
+            if (_responseAwaiters.TryRemove(correlationId, out var awaiter))
+            {
+                awaiter.SetResult(result);
+            }
+        }
+
+        void CompleteAwaiterWithError(Guid correlationId, ErrorDescription error)
+        {
+            if (_responseAwaiters.TryRemove(correlationId, out var awaiter))
+            {
+                awaiter.SetException(new RemoteException(error));
             }
         }
 

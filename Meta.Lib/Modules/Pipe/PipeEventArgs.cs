@@ -14,11 +14,14 @@ namespace Meta.Lib.Modules.Pipe
 
     public class PipeMessageEventArgs : EventArgs
     {
+
+        public Guid CorrelationId { get; set; }
         public PayloadType PayloadType { get; }
-        public Type ObjectType { get; }
+        public Type ObjectType { get; } //todo - used?
         public byte[] Data { get; }
         public object Obj { get; }
         public string Str { get; }
+        public ErrorDescription Error { get; }
 
         public PipeMessageEventArgs(byte[] data)
         {
@@ -41,5 +44,10 @@ namespace Meta.Lib.Modules.Pipe
             ObjectType = typeof(string);
         }
 
+        public PipeMessageEventArgs(ErrorDescription error)
+        {
+            Error = error ?? throw new ArgumentNullException(nameof(error));
+            PayloadType = PayloadType.Error;
+        }
     }
 }
