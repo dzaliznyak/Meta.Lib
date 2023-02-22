@@ -1,9 +1,8 @@
-﻿using Meta.Lib.Modules.PubSub;
-using System;
+﻿using System;
 
 namespace Meta.Lib.Examples.Shared
 {
-    public class MyMessage : PubSubMessageBase
+    public class MyMessage
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }
@@ -21,7 +20,7 @@ namespace Meta.Lib.Examples.Shared
         }
     }
 
-    public class MyMessageResponse : PubSubMessageBase
+    public class MyMessageResponse
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }
@@ -39,7 +38,7 @@ namespace Meta.Lib.Examples.Shared
         }
     }
 
-    public class MyMessage2 : PubSubMessageBase
+    public class MyMessage2
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }

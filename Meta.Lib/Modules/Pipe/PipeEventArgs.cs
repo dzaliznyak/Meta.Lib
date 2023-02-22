@@ -17,7 +17,6 @@ namespace Meta.Lib.Modules.Pipe
 
         public Guid CorrelationId { get; set; }
         public PayloadType PayloadType { get; }
-        public Type ObjectType { get; } //todo - used?
         public byte[] Data { get; }
         public object Obj { get; }
         public string Str { get; }
@@ -27,21 +26,18 @@ namespace Meta.Lib.Modules.Pipe
         {
             Data = data ?? throw new ArgumentNullException(nameof(data));
             PayloadType = PayloadType.ByteArray;
-            ObjectType = typeof(byte[]);
         }
 
-        public PipeMessageEventArgs(object obj, Type objectType)
+        public PipeMessageEventArgs(object obj)
         {
             Obj = obj ?? throw new ArgumentNullException(nameof(obj));
             PayloadType = PayloadType.Object;
-            ObjectType = objectType;
         }
 
         public PipeMessageEventArgs(string str)
         {
             Str = str ?? throw new ArgumentNullException(nameof(str));
             PayloadType = PayloadType.String;
-            ObjectType = typeof(string);
         }
 
         public PipeMessageEventArgs(ErrorDescription error)

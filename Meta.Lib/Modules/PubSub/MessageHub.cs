@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Meta.Lib.Exceptions;
+using Meta.Lib.Utils;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -8,22 +10,17 @@ namespace Meta.Lib.Modules.PubSub
 {
     internal class MessageHub
     {
-        readonly Dictionary<Type, Node> _nodes = new Dictionary<Type, Node>();
         readonly ILogger _logger;
-        readonly Func<IReadOnlyCollection<ISubscription>, IPubSubMessage, Task> _onPublished;
-        readonly Action<Type, ISubscription> _onNewSubscriber;
+        readonly Dictionary<Type, Node> _nodes = new Dictionary<Type, Node>();
+        readonly DelayedMessages _delayedMessages;
 
-        public MessageHub(ILogger logger,
-                          Func<IReadOnlyCollection<ISubscription>, IPubSubMessage, Task> onPublished,
-                          Action<Type, ISubscription> onNewSubscriber)
+        internal MessageHub(ILogger logger, DelayedMessages delayedMessages)
         {
             _logger = logger;
-            _onPublished = onPublished;
-            _onNewSubscriber = onNewSubscriber;
+            _delayedMessages = delayedMessages;
         }
 
-        public void Subscribe<TMessage>(Func<TMessage, Task> action, Predicate<TMessage> predicate)
-            where TMessage : class, IPubSubMessage
+        internal void Subscribe<TMessage>(Func<TMessage, Task> action, Predicate<TMessage> predicate)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -43,12 +40,11 @@ namespace Meta.Lib.Modules.PubSub
 
             if (node.TryAdd(action, predicate, out ISubscription subscription))
             {
-                _onNewSubscriber(typeof(TMessage), subscription);
+                _delayedMessages.OnNewSubscriber(typeof(TMessage), subscription);
             }
         }
 
-        public void Unsubscribe<TMessage>(Func<TMessage, Task> action)
-            where TMessage : class, IPubSubMessage
+        internal void Unsubscribe<TMessage>(Func<TMessage, Task> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -59,16 +55,59 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        public Task Publish(IPubSubMessage message)
+        internal Task Publish<TMessage>(TMessage message, PubSubOptions options)
         {
             if (message == null)
                 throw new ArgumentNullException(nameof(message));
 
             if (_nodes.TryGetValue(message.GetType(), out Node node))
-                return _onPublished(node.Subscribers, message);
+                return Deliver(node.Subscribers, message, options);
             else
-                return _onPublished(ImmutableArray<ISubscription>.Empty, message);
+                return Deliver(ImmutableArray<ISubscription>.Empty, message, options);
         }
+
+        async Task Deliver(IReadOnlyCollection<ISubscription> subscribers, object message, PubSubOptions options)
+        {
+            bool hasAtLeastOneSubscriber = false;
+            List<Exception> exceptions = null;
+
+            // deliver to subscribers
+            foreach (var item in subscribers)
+            {
+                try
+                {
+                    if (item.ShouldDeliver(message))
+                    {
+                        hasAtLeastOneSubscriber = true;
+                        await item.Deliver(message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (exceptions == null)
+                        exceptions = new List<Exception>();
+                    exceptions.Add(ex);
+                }
+            }
+
+            if (exceptions != null)
+                throw new AggregateException(exceptions).Fix();
+
+            // if no one processed the message, store it and wait for subscriber to come
+            if (options.DeliverAtLeastOnce && !hasAtLeastOneSubscriber)
+            {
+                if (options.WaitForSubscriberTimeout > 0)
+                {
+                    _logger?.LogDebug("Delayed <<<{Message}>>> for {Timeout} ms", message.GetType().Name, options.WaitForSubscriberTimeout);
+                    await _delayedMessages.Enqueue(message, options);
+                }
+                else
+                {
+                    throw new NoSubscribersException("Failed to deliver the message - no one is listening");
+                }
+            }
+        }
+
 
     }
 }

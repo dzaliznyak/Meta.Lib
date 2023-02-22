@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,45 +6,25 @@ namespace Meta.Lib.Modules.PubSub
 {
     public interface IMetaPubSub
     {
-        //Task ConnectToServer(string pipeName, int millisecondsTimeout = 5_000, string serverName = ".");
+        void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null);
 
-        //Task<bool> TryConnectToServer(string pipeName, int millisecondsTimeout = 1_000, int reconnectionPeriod = 5_000, string serverName = ".");
+        Task Unsubscribe<TMessage>(Func<TMessage, Task> handler);
 
-        //Task DisconnectFromServer();
+        Task Publish<TMessage>(TMessage message, PubSubOptions options = null);
 
-        //void StartServer(string pipeName, Func<NamedPipeServerStream> configure = null);
+        Task<TMessage> When<TMessage>(int millisecondsTimeout, 
+            Predicate<TMessage> match = null,
+            CancellationToken cancellationToken = default);
 
-        //void StopServer();
+        Task<TResponse> Process<TMessage, TResponse>(TMessage message, 
+            int responseTimeoutMs = 5000, 
+            PubSubOptions options = null,
+            Predicate<TResponse> match = null, 
+            CancellationToken cancellationToken = default);
 
-        void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
-            where TMessage : class, IPubSubMessage;
-
-        //Task SubscribeOnServer<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
-        //    where TMessage : class, IPubSubMessage;
-
-        //Task<bool> TrySubscribeOnServer<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null)
-        //    where TMessage : class, IPubSubMessage;
-
-        Task Unsubscribe<TMessage>(Func<TMessage, Task> handler)
-                    where TMessage : class, IPubSubMessage;
-
-        Task Publish(IPubSubMessage message);
-
-        //Task PublishOnServer(IPubSubMessage message);
-        //Task PublishOnServer<T, TResp>(T message);
-
-        Task<TMessage> When<TMessage>(int millisecondsTimeout, Predicate<TMessage> match = null,
-            CancellationToken cancellationToken = default)
-            where TMessage : class, IPubSubMessage;
-
-        Task<TResponse> Process<TResponse>(IPubSubMessage message,
-            Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
-            where TResponse : class, IPubSubMessage;
-
-        //Task<TResponse> ProcessOnServer<TResponse>(IPubSubMessage message,
-        //    Predicate<TResponse> match = null, CancellationToken cancellationToken = default)
-        //    where TResponse : class, IPubSubMessage;
-
-        void Schedule(IPubSubMessage message, int millisecondsDelay, CancellationToken cancellationToken = default);
+        void Schedule<TMessage>(TMessage message, 
+            int millisecondsDelay, 
+            PubSubOptions options = null, 
+            CancellationToken cancellationToken = default);
     }
 }

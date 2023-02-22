@@ -48,7 +48,6 @@ namespace Meta.Lib.Examples
     //        await clientHub.Publish(new MyMessage());
 
     //        // Client hub sends a message to the server where it will be published and sent back.
-    //        //todo - check is it works
     //        await clientHub.PublishOnServer<MyMessage, MyMessageResponse>(new MyMessage());
 
     //        // All three messages should be received.

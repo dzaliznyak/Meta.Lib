@@ -1,4 +1,5 @@
 ﻿using Meta.Lib.Examples.Shared;
+using Meta.Lib.Exceptions;
 using Meta.Lib.Modules.PubSub;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -94,10 +95,10 @@ namespace Meta.Lib.Tests
 
             hub.Subscribe<MyMessage>(OnMyMessageHandler, OnMyMessagePredicate);
 
-            var message = new MyMessage { Version = new Version(1, 0), DeliverAtLeastOnce = true };
+            var message = new MyMessage { Version = new Version(1, 0) };
             try
             {
-                await hub.Publish(message);
+                await hub.Publish(message, new PubSubOptions() { DeliverAtLeastOnce = true });
             }
             catch (NoSubscribersException)
             {
@@ -134,9 +135,9 @@ namespace Meta.Lib.Tests
                 hub.Subscribe<MyMessage>(OnMyMessageHandler3);
             });
 
-            var message = new MyMessage { Version = new Version(1, 0), DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 200000 };
+            var message = new MyMessage { Version = new Version(1, 0) };
             // the message has a timeout and can wait until the second subscriber come
-            await hub.Publish(message);
+            await hub.Publish(message, new PubSubOptions() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 200000 });
 
             Assert.IsTrue(message.DeliveredCount == 1);
 
@@ -165,11 +166,11 @@ namespace Meta.Lib.Tests
                 await hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
             });
 
-            var message = new MyMessage { Version = new Version(1, 0), DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 };
+            var message = new MyMessage { Version = new Version(1, 0) };
             try
             {
                 // the message has a timeout and can wait until the second subscriber come
-                await hub.Publish(message);
+                await hub.Publish(message, new PubSubOptions() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 });
             }
             catch (TimeoutException)
             {
@@ -259,8 +260,7 @@ namespace Meta.Lib.Tests
 
             hub.Subscribe<MyMessage>(Handler);
 
-            var message = new MyMessage { ResponseTimeout = 2000 };
-            var res = await hub.Process<MyEvent>(message);
+            var res = await hub.Process<MyMessage, MyEvent>(new MyMessage(), responseTimeoutMs: 2000);
             Assert.IsNotNull(res);
         }
 
@@ -284,9 +284,8 @@ namespace Meta.Lib.Tests
                     var message = new MyMessage
                     {
                         SomeId = i,
-                        ResponseTimeout = 1000
                     };
-                    var res = await hub.Process<MyEvent>(message, x => x.SomeId == i);
+                    var res = await hub.Process<MyMessage, MyEvent>(message, responseTimeoutMs: 1000, PubSubOptions.Default, x => x.SomeId == i);
                     Assert.IsNotNull(res);
                     Assert.IsTrue(res.SomeId == i);
                 }
@@ -298,10 +297,9 @@ namespace Meta.Lib.Tests
                 {
                     var message = new MyMessage
                     {
-                        SomeId = i,
-                        ResponseTimeout = 1000
+                        SomeId = i
                     };
-                    var res = await hub.Process<MyEvent>(message, x => x.SomeId == i);
+                    var res = await hub.Process<MyMessage, MyEvent>(message, responseTimeoutMs: 1000, PubSubOptions.Default, x => x.SomeId == i);
                     Assert.IsNotNull(res);
                     Assert.IsTrue(res.SomeId == i);
                 }
@@ -324,8 +322,8 @@ namespace Meta.Lib.Tests
 
             hub.Subscribe<MyMessage>(Handler);
 
-            var message = new MyMessage { Version = new Version(1, 0), DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 };
-            hub.Schedule(message, 100);
+            var message = new MyMessage { Version = new Version(1, 0) };
+            hub.Schedule(message, 100, new PubSubOptions() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 });
 
             await Task.Delay(50);
             Assert.IsFalse(received);

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 namespace Meta.Lib.Modules.PubSub
 {
     internal class Subscription<TMessage> : ISubscription
-            where TMessage : class, IPubSubMessage
     {
         readonly Func<TMessage, Task> _handler;
         readonly Predicate<TMessage> _filter;
@@ -20,16 +19,16 @@ namespace Meta.Lib.Modules.PubSub
             return _handler.Equals(handler);
         }
 
-        public Task Deliver(IPubSubMessage message)
+        public Task Deliver(object message)
         {
-            return _handler(message as TMessage);
+            return _handler((TMessage)message);
         }
 
-        public bool ShouldDeliver(IPubSubMessage message)
+        public bool ShouldDeliver(object message)
         {
             if (_filter == null)
                 return true;
-            return _filter(message as TMessage);
+            return _filter((TMessage)message);
         }
     }
 }

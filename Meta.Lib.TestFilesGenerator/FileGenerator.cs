@@ -19,7 +19,7 @@
             {
                 txt =
                     $$"""
-                        public class TestMessage{{i}} : PubSubMessageBase
+                        public class TestMessage{{i}}
                         {
                             public int IntProperty { get; set; }
                             public string StringProperty { get; set; }

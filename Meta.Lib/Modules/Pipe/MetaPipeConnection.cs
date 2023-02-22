@@ -294,7 +294,7 @@ namespace Meta.Lib.Modules.Pipe
 
                     CompleteAwaiter(correlationId, payload);
 
-                    FireMessageReceivedEvent(new PipeMessageEventArgs(payload, objType) { CorrelationId = correlationId });
+                    FireMessageReceivedEvent(new PipeMessageEventArgs(payload) { CorrelationId = correlationId });
                 }
                 else if (payloadType == PayloadType.String)
                 {

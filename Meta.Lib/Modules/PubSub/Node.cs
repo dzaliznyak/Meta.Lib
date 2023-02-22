@@ -40,7 +40,6 @@ namespace Meta.Lib.Modules.PubSub
         }
 
         public bool TryAdd<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> filter, out ISubscription subscription)
-            where TMessage : class, IPubSubMessage
         {
             subscription = null;
             var snapshot = _subscribers;
@@ -67,7 +66,6 @@ namespace Meta.Lib.Modules.PubSub
         }
 
         public bool TryRemove<TMessage>(Func<TMessage, Task> handler)
-            where TMessage : class, IPubSubMessage
         {
             var snapshot = _subscribers;
 
@@ -104,7 +102,6 @@ namespace Meta.Lib.Modules.PubSub
         public IEnumerable<ISubscription> Subscribers => _subscribers.Values;
 
         public bool TryAdd<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> filter, out ISubscription subscription)
-            where TMessage : class, IPubSubMessage
         {
             bool added = false;
             subscription = ImmutableInterlocked.AddOrUpdate(ref _subscribers, handler,
@@ -119,7 +116,6 @@ namespace Meta.Lib.Modules.PubSub
         }
 
         public bool TryRemove<TMessage>(Func<TMessage, Task> action)
-            where TMessage : class, IPubSubMessage
         {
             return ImmutableInterlocked.TryRemove(ref _subscribers, action, out _);
         }
@@ -131,7 +127,6 @@ namespace Meta.Lib.Modules.PubSub
         public ICollection<ISubscription> Subscribers => _subscribers.Values;
 
         public bool TryAdd<TMessage>(Func<TMessage, Task> action, Predicate<TMessage> filter, out ISubscription subscription)
-            where TMessage : class, IPubSubMessage
         {
             bool added = false;
             subscription = _subscribers.GetOrAdd(action, a =>
@@ -143,7 +138,6 @@ namespace Meta.Lib.Modules.PubSub
         }
 
         public bool TryRemove<TMessage>(Func<TMessage, Task> action)
-            where TMessage : class, IPubSubMessage
         {
             return _subscribers.TryRemove(action, out _);
         }

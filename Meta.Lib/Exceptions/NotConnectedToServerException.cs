@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Meta.Lib.Modules.PubSub
+namespace Meta.Lib.Exceptions
 {
     [Serializable]
     public class NotConnectedToServerException : Exception

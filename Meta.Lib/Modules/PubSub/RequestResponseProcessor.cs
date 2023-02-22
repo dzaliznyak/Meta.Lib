@@ -18,7 +18,6 @@ namespace Meta.Lib.Modules.PubSub
             int millisecondsTimeout, 
             Predicate<TMessage> match = null,
             CancellationToken cancellationToken = default)
-            where TMessage : class, IPubSubMessage
         {
             var tcs = new TaskCompletionSource<TMessage>();
 
@@ -40,11 +39,12 @@ namespace Meta.Lib.Modules.PubSub
             }
         }
 
-        public async Task<TResponse> Process<TResponse>(
-            IPubSubMessage message, 
+        internal async Task<TResponse> Process<TMessage, TResponse>(
+            TMessage message, 
+            int responseTimeoutMs,
+            PubSubOptions options,
             Predicate<TResponse> match = null,
             CancellationToken cancellationToken = default)
-            where TResponse : class, IPubSubMessage
         {
             var tcs = new TaskCompletionSource<TResponse>();
 
@@ -59,42 +59,14 @@ namespace Meta.Lib.Modules.PubSub
             try
             {
                 //todo - calculate remaining timeout
-                await _hub.Publish(message);
-                return await tcs.Task.TimeoutAfter(message.ResponseTimeout, cancellationToken);
+                await _hub.Publish(message, options);
+                return await tcs.Task.TimeoutAfter(responseTimeoutMs, cancellationToken);
             }
             finally
             {
                 await _hub.Unsubscribe((Func<TResponse, Task>)Handler);
             }
         }
-
-        //public async Task<TResponse> ProcessOnServer<TResponse>(
-        //    IPubSubMessage message,
-        //    Predicate<TResponse> match = null,
-        //    CancellationToken cancellationToken = default)
-        //    where TResponse : class, IPubSubMessage
-        //{
-        //    var tcs = new TaskCompletionSource<TResponse>();
-
-        //    Task Handler(TResponse response)
-        //    {
-        //        tcs.TrySetResult(response);
-        //        return Task.CompletedTask;
-        //    }
-
-        //    await _hub.SubscribeOnServer(Handler, match);
-
-        //    try
-        //    {
-        //        //todo - calculate remaining timeout
-        //        //todo await _hub.PublishOnServer(message);
-        //        return await tcs.Task.TimeoutAfter(message.ResponseTimeout, cancellationToken);
-        //    }
-        //    finally
-        //    {
-        //        await _hub.Unsubscribe((Func<TResponse, Task>)Handler);
-        //    }
-        //}
 
     }
 }

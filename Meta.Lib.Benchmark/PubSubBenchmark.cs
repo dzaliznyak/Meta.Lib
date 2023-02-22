@@ -4,7 +4,7 @@ using Meta.Lib.Test;
 
 namespace Meta.Lib.Benchmark
 {
-    public class MyMessage : PubSubMessageBase
+    public class MyMessage
     {
         public int SomeId { get; set; }
         public int DeliveredCount { get; set; }

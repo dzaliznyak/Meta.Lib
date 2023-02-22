@@ -10,7 +10,7 @@ namespace Meta.Lib.Modules.PubSub
     {
         class DelayedMessageScope
         {
-            public IPubSubMessage Message { get; set; }
+            public object Message { get; set; }
             public TaskCompletionSource<bool> Tcs { get; set; }
             public bool IsTimedOut { get; set; }
         }
@@ -18,7 +18,7 @@ namespace Meta.Lib.Modules.PubSub
         readonly ConcurrentDictionary<Type, ConcurrentQueue<DelayedMessageScope>> _dict =
             new ConcurrentDictionary<Type, ConcurrentQueue<DelayedMessageScope>>();
 
-        internal async Task Put(IPubSubMessage message)
+        internal async Task Enqueue(object message, PubSubOptions options)
         {
             var queue = _dict.GetOrAdd(message.GetType(), m => new ConcurrentQueue<DelayedMessageScope>());
 
@@ -31,7 +31,7 @@ namespace Meta.Lib.Modules.PubSub
 
             try
             {
-                await scope.Tcs.Task.TimeoutAfter(message.WaitForSubscriberTimeout);
+                await scope.Tcs.Task.TimeoutAfter(options.WaitForSubscriberTimeout);
             }
             catch (TimeoutException)
             {
@@ -79,47 +79,6 @@ namespace Meta.Lib.Modules.PubSub
                 }
             });
         }
-
-        //todo
-        //internal void OnNewPipeSubscriber(Type messageType, RemoteClientConnection pipe)
-        //{
-            //Task.Run(async () =>
-            //{
-            //    if (_dict.TryGetValue(messageType, out var queue))
-            //    {
-            //        List<DelayedMessageScope> filteredMessages = null;
-            //        while (queue.TryDequeue(out DelayedMessageScope scope))
-            //        {
-            //            try
-            //            {
-            //                if (!scope.IsTimedOut)
-            //                {
-            //                    if (pipe.IsShouldSend(scope.Message) &&
-            //                        await pipe.SendMessage(scope.Message, PipeMessageType.Message))
-            //                    {
-            //                        scope.Tcs.SetResult(true);
-            //                    }
-            //                    else
-            //                    {
-            //                        if (filteredMessages == null)
-            //                            filteredMessages = new List<DelayedMessageScope>();
-            //                        filteredMessages.Add(scope);
-            //                    }
-            //                }
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                scope.Tcs.SetException(ex);
-            //            }
-            //        }
-
-            //        // put to the queue again all messages that are not sent
-            //        if (filteredMessages != null)
-            //            foreach (var item in filteredMessages)
-            //                queue.Enqueue(item);
-            //    }
-            //});
-        //}
 
     }
 }
