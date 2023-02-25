@@ -35,7 +35,7 @@ namespace Meta.Lib.Modules.PubSub
             }
             finally
             {
-                await _hub.Unsubscribe((Func<TMessage, Task>)Handler);
+                _hub.Unsubscribe<TMessage>(Handler);
             }
         }
 
@@ -64,7 +64,7 @@ namespace Meta.Lib.Modules.PubSub
             }
             finally
             {
-                await _hub.Unsubscribe((Func<TResponse, Task>)Handler);
+                _hub.Unsubscribe<TResponse>(Handler);
             }
         }
 

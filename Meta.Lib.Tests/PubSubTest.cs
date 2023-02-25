@@ -60,11 +60,37 @@ namespace Meta.Lib.Tests
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
 
             message = new MyMessage();
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 0);
+        }
+
+        [TestMethod]
+        public async Task SubscribeNonGeneric()
+        {
+            Task Handler(object obj)
+            {
+                var message = (MyMessage)obj;
+                message.DeliveredCount++;
+                return Task.CompletedTask;
+            }
+
+            var hub = new MetaPubSub();
+
+            hub.Subscribe(typeof(MyMessage), Handler);
+
+            var message = new MyMessage { Version = new Version(1, 0) };
+            await hub.Publish(message);
+            Assert.IsTrue(message.DeliveredCount == 1);
+
+            hub.Unsubscribe(typeof(MyMessage), Handler);
+
+            message = new MyMessage { Version = new Version(1, 0) };
+            await hub.Publish(message);
+            Assert.IsTrue(message.DeliveredCount == 0);
+
         }
 
 
@@ -83,7 +109,7 @@ namespace Meta.Lib.Tests
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
         }
 
         [TestMethod]
@@ -107,7 +133,7 @@ namespace Meta.Lib.Tests
             Assert.IsTrue(noSubscriberException);
             Assert.IsTrue(message.DeliveredCount == 0);
 
-            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
         }
 
         [TestMethod]
@@ -141,7 +167,7 @@ namespace Meta.Lib.Tests
 
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
             //hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
             //hub.Unsubscribe<MyMessage>(OnMyMessageHandler3);
         }
@@ -163,7 +189,7 @@ namespace Meta.Lib.Tests
             {
                 await Task.Delay(50);
                 hub.Subscribe<MyMessage>(OnMyMessageHandler2, OnMyMessagePredicate);
-                await hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
+                hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
             });
 
             var message = new MyMessage { Version = new Version(1, 0) };
@@ -179,7 +205,7 @@ namespace Meta.Lib.Tests
             Assert.IsTrue(timeoutException);
             Assert.IsTrue(message.DeliveredCount == 0);
 
-            await hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
         }
 
         [TestMethod]

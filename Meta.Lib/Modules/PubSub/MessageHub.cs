@@ -20,10 +20,9 @@ namespace Meta.Lib.Modules.PubSub
             _delayedMessages = delayedMessages;
         }
 
-        internal void Subscribe<TMessage>(Func<TMessage, Task> action, Predicate<TMessage> predicate)
+        internal void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> predicate)
         {
-            if (action == null)
-                throw new ArgumentNullException(nameof(action));
+            if (handler == null) throw new ArgumentNullException(nameof(handler));
 
             if (!_nodes.TryGetValue(typeof(TMessage), out Node node))
             {
@@ -38,27 +37,60 @@ namespace Meta.Lib.Modules.PubSub
                 }
             }
 
-            if (node.TryAdd(action, predicate, out ISubscription subscription))
+            if (node.TryAdd(handler, predicate, out ISubscription subscription))
             {
                 _delayedMessages.OnNewSubscriber(typeof(TMessage), subscription);
             }
         }
 
-        internal void Unsubscribe<TMessage>(Func<TMessage, Task> action)
+        internal void Subscribe(Type type, Func<object, Task> handler, Predicate<object> predicate)
         {
-            if (action == null)
-                throw new ArgumentNullException(nameof(action));
+            if (handler == null) throw new ArgumentNullException(nameof(handler));
+            if (type == null) throw new ArgumentNullException(nameof(type));
+
+            if (!_nodes.TryGetValue(type, out Node node))
+            {
+                // create node for this Type, if not exists
+                lock (_nodes)
+                {
+                    if (!_nodes.TryGetValue(type, out node))
+                    {
+                        node = new Node();
+                        _nodes.Add(type, node);
+                    }
+                }
+            }
+
+            if (node.TryAdd(handler, predicate, out ISubscription subscription))
+            {
+                _delayedMessages.OnNewSubscriber(type, subscription);
+            }
+        }
+
+        internal void Unsubscribe<TMessage>(Func<TMessage, Task> handler)
+        {
+            if (handler == null) throw new ArgumentNullException(nameof(handler));
 
             if (_nodes.TryGetValue(typeof(TMessage), out Node node))
             {
-                node.TryRemove(action);
+                node.TryRemove(handler);
+            }
+        }
+
+        internal void Unsubscribe(Type type, Func<object, Task> handler)
+        {
+            if (handler == null) throw new ArgumentNullException(nameof(handler));
+            if (type == null) throw new ArgumentNullException(nameof(type));
+
+            if (_nodes.TryGetValue(type, out Node node))
+            {
+                node.TryRemove(handler);
             }
         }
 
         internal Task Publish<TMessage>(TMessage message, PubSubOptions options)
         {
-            if (message == null)
-                throw new ArgumentNullException(nameof(message));
+            if (message == null) throw new ArgumentNullException(nameof(message));
 
             if (_nodes.TryGetValue(message.GetType(), out Node node))
                 return Deliver(node.Subscribers, message, options);

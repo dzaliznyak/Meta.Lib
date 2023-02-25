@@ -43,7 +43,7 @@ namespace Meta.Lib.Tests
                     await hub.Publish(message);
                     totalDeliveryCount2 += message.DeliveredCount;
 
-                    await hub.Unsubscribe<MyMessage>(subscriber.Handler);
+                    hub.Unsubscribe<MyMessage>(subscriber.Handler);
                 }
             });
 

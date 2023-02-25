@@ -34,15 +34,24 @@ namespace Meta.Lib.Modules.PubSub
             _messageHub.Subscribe(handler, match);
         }
 
+        public void Subscribe(Type type, Func<object, Task> handler, Predicate<object> match = null)
+        {
+            _messageHub.Subscribe(type, handler, match);
+        }
+
         /// <summary>
         /// Unsubscribe from a message of TMessage type
         /// </summary>
         /// <typeparam name="TMessage">Type of message to unsubscribe from</typeparam>
         /// <param name="handler">The same callback function that was passed to the Subscribe method</param>
-        public Task Unsubscribe<TMessage>(Func<TMessage, Task> handler)
+        public void Unsubscribe<TMessage>(Func<TMessage, Task> handler)
         {
             _messageHub.Unsubscribe(handler);
-            return Task.CompletedTask; // _proxy.Unsubscribe(handler);
+        }
+
+        public void Unsubscribe(Type type, Func<object, Task> handler)
+        {
+            _messageHub.Unsubscribe(type, handler);
         }
 
         /// <summary>

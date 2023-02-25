@@ -8,7 +8,11 @@ namespace Meta.Lib.Modules.PubSub
     {
         void Subscribe<TMessage>(Func<TMessage, Task> handler, Predicate<TMessage> match = null);
 
-        Task Unsubscribe<TMessage>(Func<TMessage, Task> handler);
+        void Subscribe(Type type, Func<object, Task> handler, Predicate<object> match = null);
+
+        void Unsubscribe<TMessage>(Func<TMessage, Task> handler);
+
+        void Unsubscribe(Type type, Func<object, Task> handler);
 
         Task Publish<TMessage>(TMessage message, PubSubOptions options = null);
 
