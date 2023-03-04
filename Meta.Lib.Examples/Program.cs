@@ -6,11 +6,11 @@ namespace Meta.Lib.Examples
     {
         static void Main(string[] args)
         {
-            //var remote = new RemotePubSubExample();
-            //remote.RunAllExamples();
+            var remote = new RemotePubSubExample();
+            remote.RunAllExamples();
 
-            var examples = new PubSubExample();
-            examples.RunAllExamples();
+            //var examples = new PubSubExample();
+            //examples.RunAllExamples();
 
             Console.ReadLine();
         }

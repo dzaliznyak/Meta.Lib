@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Meta.Lib.Modules.Pipe;
+using System;
 
-namespace Meta.Lib.Modules.Pipe
+namespace Meta.Lib.Exceptions
 {
     public class RemoteException : Exception
     {

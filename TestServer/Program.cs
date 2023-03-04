@@ -1,5 +1,6 @@
-﻿using Meta.Lib.Modules.PubSub;
-using Meta.Lib.Modules.PubSub.Messages;
+﻿using Meta.Lib.Messages;
+using Meta.Lib.Modules.PubSub;
+using Meta.Lib.Modules.PubSubPipe;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO.Pipes;
@@ -12,6 +13,7 @@ namespace TestServer
     class Program
     {
         static MetaPubSub hub;
+        static PubSubPipeServer pipeServer;
         static ILogger logger;
 
         static void Main(string[] args)
@@ -39,10 +41,10 @@ namespace TestServer
                 try
                 {
                     if (line == "stop")
-                        hub.StopServer();
+                        pipeServer.StopServer();
                     else if (line == "start")
                     {
-                        hub.StartServer("Meta");
+                        pipeServer.StartServer();
                         hub.Subscribe<PingCommand>(OnPing);
                     }
                 }
@@ -58,11 +60,12 @@ namespace TestServer
         static void RunServer()
         {
             hub = new MetaPubSub(logger);
+            pipeServer = new PubSubPipeServer("Meta", hub, logger);
 
             // Servers started on the Windows process with elevated permissions need to
             // set up security to allow non-elevated processes to access the pipe.
-            // Otherwise just use hub.StartServer("Meta") call
-            hub.StartServer("Meta", () =>
+            // Otherwise just use hub.StartServer() call
+            pipeServer.StartServer(() =>
             {
                 var pipeSecurity = new PipeSecurity();
                 pipeSecurity.AddAccessRule(new PipeAccessRule(
@@ -80,8 +83,8 @@ namespace TestServer
 
         static async Task OnPing(PingCommand ping)
         {
-            logger.LogInformation("ping received: {ping.Id}", ping.Id);
-            await hub.Publish(new PingReplay() { Id = ping.Id });
+            logger.LogInformation("ping received: {Id}", ping.Id);
+            await hub.Publish(new PingResponse() { Id = ping.Id });
         }
     }
 }

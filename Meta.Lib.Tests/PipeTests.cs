@@ -1,4 +1,5 @@
 ﻿using Meta.Lib.Examples.Shared;
+using Meta.Lib.Exceptions;
 using Meta.Lib.Modules.Pipe;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

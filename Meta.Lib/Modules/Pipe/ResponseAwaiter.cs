@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Meta.Lib.Exceptions;
+using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.Pipe
 {

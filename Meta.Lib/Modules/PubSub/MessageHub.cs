@@ -126,7 +126,7 @@ namespace Meta.Lib.Modules.PubSub
                 throw new AggregateException(exceptions).Fix();
 
             // if no one processed the message, store it and wait for subscriber to come
-            if (options.DeliverAtLeastOnce && !hasAtLeastOneSubscriber)
+            if (options != null && options.DeliverAtLeastOnce && !hasAtLeastOneSubscriber)
             {
                 if (options.WaitForSubscriberTimeout > 0)
                 {

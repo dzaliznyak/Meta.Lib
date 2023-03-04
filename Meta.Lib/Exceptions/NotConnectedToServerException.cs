@@ -1,29 +1,12 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace Meta.Lib.Exceptions
 {
-    [Serializable]
     public class NotConnectedToServerException : Exception
     {
-        public NotConnectedToServerException(string message)
-            : base(message)
-        {
-        }
-
-        public NotConnectedToServerException(string message, Exception innerException)
-            : base(message, innerException)
-        {
-        }
-
         public NotConnectedToServerException()
+            : base("Not connected to the server")
         {
         }
-
-        public NotConnectedToServerException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
-
     }
 }

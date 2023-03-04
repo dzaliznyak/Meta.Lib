@@ -1,5 +1,6 @@
-﻿using Meta.Lib.Modules.PubSub;
-using Meta.Lib.Modules.PubSub.Messages;
+﻿using Meta.Lib.Messages;
+using Meta.Lib.Modules.PubSub;
+using Meta.Lib.Modules.PubSubPipe;
 using System;
 using System.Threading.Tasks;
 
@@ -7,8 +8,9 @@ namespace TestClient
 {
     class Program
     {
-        private static MetaPubSub hub;
-        private static int pingId;
+        static MetaPubSub hub;
+        static PubSubPipeClient pipe;
+        static int pingId;
 
         static void Main(string[] args)
         {
@@ -17,7 +19,19 @@ namespace TestClient
             while ((line = Console.ReadLine()) != "exit")
             {
                 if (line == "ping" || line == "")
-                    hub.PublishOnServer(new PingCommand() { Id = pingId++.ToString() }) ;
+                {
+                    Task.Run(async () =>
+                    {
+                        try
+                        {
+                            await pipe.PublishOnServer(new PingCommand() { Id = pingId++.ToString() });
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"PublishOnServer error: {ex.Message}");
+                        }
+                    });
+                }
             }
         }
 
@@ -29,20 +43,22 @@ namespace TestClient
                 hub = new MetaPubSub();
 
                 // connecting the remote server
-                await hub.ConnectToServer("Meta");
+                pipe = new PubSubPipeClient(hub, "Meta");
+                await pipe.ConnectToServer();
+                await pipe.SubscribeOnServer<PingResponse>();
 
                 // subscribing
-                await hub.SubscribeOnServer<PingCommand>(OnPingCommand);
+                hub.Subscribe<PingResponse>(OnPingResponse);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
 
-        static Task OnPingCommand(PingCommand arg)
+        static Task OnPingResponse(PingResponse response)
         {
-            Console.WriteLine($"Client >>>: ping {DateTime.Now:HH:mm:ss.fff}");
+            Console.WriteLine($"Client >>>: ping response {response.Id} {DateTime.Now:HH:mm:ss.fff}");
             return Task.CompletedTask;
         }
     }

@@ -1,4 +1,5 @@
-﻿using Meta.Lib.Modules.StateMachine;
+﻿using Meta.Lib.Exceptions;
+using Meta.Lib.Modules.StateMachine;
 using Meta.Lib.Utils;
 using Microsoft.Extensions.Logging;
 using System;
@@ -90,6 +91,7 @@ namespace Meta.Lib.Modules.Pipe
                 .Set(State.Disconnected);
 
             builder.On(Input.Reconnect)
+                .In(State.NotConnected).Do(ReconnectInternal).Set(State.Reconnecting)
                 .In(State.Disconnected).Do(ReconnectInternal).Set(State.Reconnecting)
                 .In(State.Connected).Do(() => throw new InvalidOperationException("Pipe already connected"));
 
@@ -154,6 +156,37 @@ namespace Meta.Lib.Modules.Pipe
 
                 throw;
             }
+        }
+
+        public void Reconnect()
+        {
+            _sm.Fire(Input.Reconnect);
+        }
+
+        void ReconnectInternal()
+        {
+            Debug.Assert(_cts == null);
+            Task.Run(() => ReconnectionLoop());
+        }
+
+        async Task ReconnectionLoop()
+        {
+            do
+            {
+                try
+                {
+                    await Connect();
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    _logger?.LogInformation(ex, "Reconnection error");
+                }
+            }
+            while (!IsConnected && _sm.State == State.Reconnecting);
         }
 
         public void Disconnect()
@@ -351,37 +384,6 @@ namespace Meta.Lib.Modules.Pipe
             return Unsafe.ReadUnaligned<int>(ref Unsafe.AsRef(buffer[0]));
         }
 
-        void Reconnect()
-        {
-            _sm.Fire(Input.Reconnect);
-        }
-
-        void ReconnectInternal()
-        {
-            Debug.Assert(_cts == null);
-            Task.Run(() => ReconnectionLoop());
-        }
-
-        async Task ReconnectionLoop()
-        {
-            do
-            {
-                try
-                {
-                    await Connect();
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    _logger?.LogInformation(ex, "Reconnection error");
-                }
-            }
-            while (!IsConnected && _sm.State == State.Reconnecting);
-        }
-
         public Task Send(string message, Guid correlationId = default)
         {
             if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
@@ -465,6 +467,43 @@ namespace Meta.Lib.Modules.Pipe
             }
         }
 
+        public async Task Send(Type type, object obj, Guid correlationId = default)
+        {
+            if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
+            if (_cts == null || _cts.IsCancellationRequested) throw new InvalidOperationException("Pipe is closed");
+
+            try
+            {
+                await _writeLock.WaitAsync();
+
+                _sendStream.Position = HeaderSize;
+
+                // type name serialization
+                long prevPosition = _sendStream.Position;
+                JsonSerializer.Serialize(_sendStream, type.AssemblyQualifiedName);
+                short typeNameLength = (short)(_sendStream.Position - prevPosition);
+
+                // object serialization
+                JsonSerializer.Serialize(_sendStream, obj, type);
+
+                // header
+                var buf = _sendStream.GetBuffer();
+                Unsafe.WriteUnaligned(ref buf[0], (int)_sendStream.Position - HeaderSize); //DataLength
+                Unsafe.WriteUnaligned(ref buf[4], (byte)0x00); // Flags
+                Unsafe.WriteUnaligned(ref buf[5], (byte)PayloadType.Object); // PayloadType
+                Unsafe.WriteUnaligned(ref buf[6], typeNameLength); // TypeNameLength
+                Unsafe.WriteUnaligned(ref buf[8], correlationId); // CorrelationId
+
+                await _pipe.WriteAsync(buf, 0, (int)_sendStream.Position);
+
+                _bytesSent += (int)_sendStream.Position;
+            }
+            finally
+            {
+                _writeLock.Release();
+            }
+        }
+
         public async Task Send(ErrorDescription error, Guid correlationId)
         {
             if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
@@ -507,6 +546,20 @@ namespace Meta.Lib.Modules.Pipe
                 throw new InvalidOperationException("Request with the same correlation ID is already running");
 
             await Send(obj, correlationId);
+
+            return await awaiter.Tcs.Task.TimeoutAfter(timeout, cancellationToken);
+        }
+
+        public async Task<TResp> SendAndWaitResponse<TResp>(Type type, object obj, Guid correlationId, int timeout = 5000, CancellationToken cancellationToken = default)
+        {
+            if (_sm.State == State.Disposed) throw new ObjectDisposedException(nameof(MetaPipeConnection));
+            if (_cts == null || _cts.IsCancellationRequested) throw new InvalidOperationException("Pipe is closed");
+
+            var awaiter = new ResponseAwaiter<TResp>();
+            if (!_responseAwaiters.TryAdd(correlationId, awaiter))
+                throw new InvalidOperationException("Request with the same correlation ID is already running");
+
+            await Send(type, obj, correlationId);
 
             return await awaiter.Tcs.Task.TimeoutAfter(timeout, cancellationToken);
         }

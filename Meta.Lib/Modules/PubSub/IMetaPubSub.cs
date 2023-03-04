@@ -16,19 +16,25 @@ namespace Meta.Lib.Modules.PubSub
 
         Task Publish<TMessage>(TMessage message, PubSubOptions options = null);
 
-        Task<TMessage> When<TMessage>(int millisecondsTimeout, 
+        Task<TMessage> When<TMessage>(int millisecondsTimeout,
             Predicate<TMessage> match = null,
             CancellationToken cancellationToken = default);
 
-        Task<TResponse> Process<TMessage, TResponse>(TMessage message, 
-            int responseTimeoutMs = 5000, 
+        Task<TResponse> Process<TMessage, TResponse>(TMessage message,
+            int responseTimeoutMs = 5000,
             PubSubOptions options = null,
-            Predicate<TResponse> match = null, 
+            Predicate<TResponse> match = null,
             CancellationToken cancellationToken = default);
 
-        void Schedule<TMessage>(TMessage message, 
-            int millisecondsDelay, 
-            PubSubOptions options = null, 
+        Task<object> Process(Type messageType,
+            object message,
+            int responseTimeoutMs = 5000,
+            PubSubOptions options = null,
+            CancellationToken cancellationToken = default);
+
+        void Schedule<TMessage>(TMessage message,
+            int millisecondsDelay,
+            PubSubOptions options = null,
             CancellationToken cancellationToken = default);
     }
 }

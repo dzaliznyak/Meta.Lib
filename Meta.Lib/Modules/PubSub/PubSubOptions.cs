@@ -2,8 +2,6 @@
 {
     public class PubSubOptions
     {
-        public static PubSubOptions Default { get; internal set; } = new PubSubOptions();
-
         /// at least once delivery check - you can opt in to have an exception if no one subscribed to your message 
         public bool DeliverAtLeastOnce { get; set; } = false;
 

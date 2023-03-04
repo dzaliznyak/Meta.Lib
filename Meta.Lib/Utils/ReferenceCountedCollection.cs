@@ -1,40 +1,52 @@
 ﻿using System.Collections.Generic;
 
-public class ReferenceCountedCollection<T>
+namespace Meta.Lib.Utils
 {
-    readonly Dictionary<T, int> _referenceCounts = new Dictionary<T, int>();
-
-    public void Add(T item)
+    public class ReferenceCountedCollection<T>
     {
-        if (!_referenceCounts.ContainsKey(item))
-        {
-            _referenceCounts[item] = 1;
-        }
-        else
-        {
-            _referenceCounts[item]++;
-        }
-    }
+        readonly Dictionary<T, int> _dict = new Dictionary<T, int>();
 
-    public void Remove(T item)
-    {
-        if (_referenceCounts.ContainsKey(item))
+        public bool Add(T item)
         {
-            _referenceCounts[item]--;
-            if (_referenceCounts[item] == 0)
+            if (!_dict.ContainsKey(item))
             {
-                _referenceCounts.Remove(item);
+                _dict[item] = 1;
+                return true;
+            }
+            else
+            {
+                _dict[item]++;
+                return false;
             }
         }
-    }
 
-    public IEnumerable<T> GetItems()
-    {
-        return _referenceCounts.Keys;
-    }
+        public bool Remove(T item)
+        {
+            if (_dict.ContainsKey(item))
+            {
+                _dict[item]--;
+                if (_dict[item] == 0)
+                {
+                    _dict.Remove(item);
+                    return true;
+                }
+            }
+            return false;
+        }
 
-    public int GetReferenceCount(T item)
-    {
-        return _referenceCounts.TryGetValue(item, out int count) ? count : 0;
+        public IEnumerable<T> GetItems()
+        {
+            return _dict.Keys;
+        }
+
+        public int GetReferenceCount(T item)
+        {
+            return _dict.TryGetValue(item, out int count) ? count : 0;
+        }
+
+        public void Clear()
+        {
+            _dict.Clear();
+        }
     }
 }

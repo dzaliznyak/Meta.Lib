@@ -64,7 +64,7 @@ namespace Meta.Lib.Modules.PubSub
         /// <exception cref="NoSubscribersException" />
         public Task Publish<TMessage>(TMessage message, PubSubOptions options = null)
         {
-            return _messageHub.Publish(message, options ?? PubSubOptions.Default);
+            return _messageHub.Publish(message, options);
         }
 
         /// <summary>
@@ -103,7 +103,16 @@ namespace Meta.Lib.Modules.PubSub
             if (responseTimeoutMs <= 0)
                 throw new ArgumentException("Message response timeout must be greater than zero");
 
-            return _requestResponseProcessor.Process(message, responseTimeoutMs, options ?? PubSubOptions.Default, match, cancellationToken);
+            return _requestResponseProcessor.Process(message, responseTimeoutMs, options, match, cancellationToken);
+        }
+
+        public Task<object> Process(Type responseType, object message, int responseTimeoutMs = 5000, PubSubOptions options = null,
+            CancellationToken cancellationToken = default)
+        {
+            if (responseTimeoutMs <= 0)
+                throw new ArgumentException("Message response timeout must be greater than zero");
+
+            return _requestResponseProcessor.Process(responseType, message, responseTimeoutMs, options, cancellationToken);
         }
 
         /// <summary>
