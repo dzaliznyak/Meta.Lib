@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Examples
 {
-    public class RemotePubSubExample
+    public class PubSubPipeExample
     {
         internal async void RunAllExamples()
         {
@@ -36,7 +36,7 @@ namespace Meta.Lib.Examples
 
             // Client hub creation. There are can be several hubs connected to the same server.
             var clientHub = new MetaPubSub();
-            using var pipeClient = new PubSubPipeClient(clientHub, "Meta");
+            using var pipeClient = new PubSubPipeClient("Meta", clientHub);
 
             // Connecting to the remote server.
             await pipeClient.ConnectToServer();

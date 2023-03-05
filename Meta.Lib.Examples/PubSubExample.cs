@@ -2,8 +2,10 @@
 using Meta.Lib.Exceptions;
 using Meta.Lib.Modules.PubSub;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Meta.Lib.Examples
 {
@@ -77,11 +79,11 @@ namespace Meta.Lib.Examples
             hub.Unsubscribe<MyMessage>(OnMyMessage);
         }
 
-        // exceptions handling - all exceptions raised when a message processing by subscribers can be caught by the publisher as an AggregateException
+        // exceptions handling
         async Task ExceptionHandlingExample()
         {
             var hub = new MetaPubSub();
-            var options = new PubSubOptions() { DeliverAtLeastOnce = true };
+            var options = new PubSubOptions() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 0 };
             var message = new MyMessage();
 
             try
@@ -91,20 +93,20 @@ namespace Meta.Lib.Examples
             }
             catch (NoSubscribersException ex)
             {
-                // No one is subscribed to this message and (message.DeliverAtLeastOnce == true and message.Timeout == 0)
+                // No one is subscribed to this message and (DeliverAtLeastOnce == true and WaitForSubscriberTimeout == 0)
                 Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
             }
 
 
             try
             {
-                // publishing a message when no one subscribed and Timeout > 0 - TimeoutException
+                // publishing a message when no one subscribed and WaitForSubscriberTimeout > 0 - TimeoutException
                 options.WaitForSubscriberTimeout = 100;
                 await hub.Publish(message, options);
             }
             catch (TimeoutException ex)
             {
-                // No one is subscribed to this message and (message.DeliverAtLeastOnce == true and message.Timeout > 0)
+                // No one is subscribed to this message and (DeliverAtLeastOnce == true and WaitForSubscriberTimeout > 0)
                 Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
             }
 
@@ -118,10 +120,10 @@ namespace Meta.Lib.Examples
             }
             catch (AggregateException ex)
             {
-                // All exceptions raised when a message processing by subscribers 
+                // When a message is processed by subscribers, any exceptions that are raised
                 // can be caught by the publisher as an AggregateException.
-                // If some of the subscribers throw an exception, other subscribers 
-                // continues to process the message.
+                // Even if some subscribers throw an exception, the others
+                // will still continue to process the message.
                 Console.WriteLine($"Exception {ex.GetType()}: {ex.Message}");
                 foreach (var innerEx in ex.InnerExceptions)
                 {
@@ -163,7 +165,7 @@ namespace Meta.Lib.Examples
         {
             var hub = new MetaPubSub();
 
-            // subscribing to MyMessage with a predicate that selects only error and critical messages
+            // subscribing to MyMessage with a predicate
             hub.Subscribe<MyMessage>(OnMyMessage, m => m.Version > new Version(1, 0));
 
             // this message will be filtered and not handled
@@ -182,7 +184,7 @@ namespace Meta.Lib.Examples
             await hub.Publish(message2);
         }
 
-        // timeout to wait for a subscriber - your message can be queued and wait until someone subscribed and processed it
+        // timeout to wait for a subscriber - Your message can be added to a queue and will wait there until someone subscribes to it and processes it.
         public async Task DeliverAtLeastOnceDelayedExample()
         {
             var hub = new MetaPubSub();
@@ -235,7 +237,7 @@ namespace Meta.Lib.Examples
             try
             {
                 // This method will wait for MyEvent one second.
-                // If the event will not arrive in a specified timeout the TimeoutException will be thrown.
+                // If the event will not arrive in a specified time period the TimeoutException will be thrown.
                 MyEvent res = await hub.When<MyEvent>(millisecondsTimeout: 1000);
                 Console.WriteLine($"Received MyEvent at {DateTime.Now:HH:mm:ss.fff}");
             }

@@ -43,7 +43,7 @@ namespace TestClient
                 hub = new MetaPubSub();
 
                 // connecting the remote server
-                pipe = new PubSubPipeClient(hub, "Meta");
+                pipe = new PubSubPipeClient("Meta", hub);
                 await pipe.ConnectToServer();
                 await pipe.SubscribeOnServer<PingResponse>();
 

@@ -311,7 +311,7 @@ namespace Meta.Lib.Tests
                     {
                         SomeId = i,
                     };
-                    var res = await hub.Process<MyMessage, MyEvent>(message, responseTimeoutMs: 1000, PubSubOptions.Default, x => x.SomeId == i);
+                    var res = await hub.Process<MyMessage, MyEvent>(message, responseTimeoutMs: 1000, options: null, x => x.SomeId == i);
                     Assert.IsNotNull(res);
                     Assert.IsTrue(res.SomeId == i);
                 }
@@ -325,7 +325,7 @@ namespace Meta.Lib.Tests
                     {
                         SomeId = i
                     };
-                    var res = await hub.Process<MyMessage, MyEvent>(message, responseTimeoutMs: 1000, PubSubOptions.Default, x => x.SomeId == i);
+                    var res = await hub.Process<MyMessage, MyEvent>(message, responseTimeoutMs: 1000, options: null, x => x.SomeId == i);
                     Assert.IsNotNull(res);
                     Assert.IsTrue(res.SomeId == i);
                 }

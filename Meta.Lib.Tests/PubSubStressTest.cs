@@ -10,7 +10,7 @@ namespace Meta.Lib.Tests
     {
 
         [TestMethod]
-        public async Task Basic()
+        public async Task MultiThread_Publish()
         {
             var hub = new MetaPubSub();
 
@@ -55,7 +55,7 @@ namespace Meta.Lib.Tests
 
         [TestMethod]
         // two threads subscribe the same handler to the same message in a loop. 
-        public async Task Test_MultiThread_Subscribe()
+        public async Task MultiThread_Subscribe()
         {
             var hub = new MetaPubSub();
 

@@ -26,8 +26,8 @@ namespace Meta.Lib.Modules.PubSubPipe
         public bool IsConnected => _pipe.IsConnected;
 
         public PubSubPipeClient(
-            IMetaPubSub pubSub,
             string pipeName,
+            IMetaPubSub pubSub,
             ILogger logger = null,
             int connectTimeout = 5000,
             bool autoReconnect = true,

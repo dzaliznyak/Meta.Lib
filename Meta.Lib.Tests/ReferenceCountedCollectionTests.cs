@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Meta.Lib.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Meta.Lib.Tests

@@ -22,11 +22,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wiki", "Wiki", "{A398BB0C-2
 		..\Meta.Lib.Wiki\FAQ.md = ..\Meta.Lib.Wiki\FAQ.md
 		..\Meta.Lib.Wiki\Home.md = ..\Meta.Lib.Wiki\Home.md
 		..\Meta.Lib.Wiki\HowTo.md = ..\Meta.Lib.Wiki\HowTo.md
+		..\Meta.Lib.Wiki\MigrationTo20.md = ..\Meta.Lib.Wiki\MigrationTo20.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meta.Lib.Benchmark", "Meta.Lib.Benchmark\Meta.Lib.Benchmark.csproj", "{E32A5254-24B8-46C6-8516-6DACAE43EA5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meta.Lib.TestFilesGenerator", "Meta.Lib.TestFilesGenerator\Meta.Lib.TestFilesGenerator.csproj", "{D23F088C-2D35-4E4E-9A68-E17645FC6712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meta.Lib.TestFilesGenerator", "Meta.Lib.TestFilesGenerator\Meta.Lib.TestFilesGenerator.csproj", "{D23F088C-2D35-4E4E-9A68-E17645FC6712}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -62,7 +62,7 @@ namespace Meta.Lib.Tests
         internal IPubSubPipeClient CreatePubSubPipeClient(int connectTimeout = 1000)
         {
             _clientPubSub = new MetaPubSub(_logger);
-            _pubSubPipeClient = new PubSubPipeClient(_clientPubSub, PipeName, _logger, connectTimeout);
+            _pubSubPipeClient = new PubSubPipeClient(PipeName, _clientPubSub, _logger, connectTimeout);
             return _pubSubPipeClient;
         }
     }
@@ -393,7 +393,7 @@ namespace Meta.Lib.Tests
 
 
         [TestMethod]
-        public async Task _Server_Stop_ClientReceivesMessageAfterReConnection()
+        public async Task Server_Stop_ClientReceivesMessageAfterReConnection()
         {
             MyMessage sentMessage = new() { Message = "test" };
             MyMessage receivedMessage = null;
@@ -430,6 +430,50 @@ namespace Meta.Lib.Tests
 
             Assert.AreEqual(sentMessage.Message, receivedMessage.Message);
         }
+
+        [TestMethod]
+        public async Task Client_Unsubscribe_SecondHandlerContinueToReceiveMessages()
+        {
+            int receivedCount = 0;
+            Task Handler1(MyMessage x)
+            {
+                receivedCount++;
+                return Task.CompletedTask;
+            }
+
+            Task Handler2(MyMessage x)
+            {
+                receivedCount++;
+                return Task.CompletedTask;
+            }
+            
+            using var host = new HostHelper();
+            var server = host.CreatePubSubPipeServer();
+            var client = host.CreatePubSubPipeClient();
+
+            // client hub
+            await client.ConnectToServer();
+            await client.SubscribeOnServer<MyMessage>();
+            host.ClientPubSub.Subscribe<MyMessage>(Handler1);
+            host.ClientPubSub.Subscribe<MyMessage>(Handler2);
+
+
+            await host.ServerPubSub.Publish(new MyMessage());
+            Assert.IsTrue(receivedCount == 2);
+
+            // unsubscribe first handler
+            host.ClientPubSub.Unsubscribe<MyMessage>(Handler1);
+
+            await host.ServerPubSub.Publish(new MyMessage());
+            Assert.IsTrue(receivedCount == 3);
+
+            // unsubscribe second handler
+            host.ClientPubSub.Unsubscribe<MyMessage>(Handler2);
+
+            await host.ServerPubSub.Publish(new MyMessage());
+            Assert.IsTrue(receivedCount == 3);
+        }
+
 
     }
 }
