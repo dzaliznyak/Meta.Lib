@@ -34,7 +34,7 @@ namespace Meta.Lib.Tests
             PipeName = NewPipeName();
 
             _host = Host.CreateDefaultBuilder().Build();
-            var factory = _host.Services.GetService<ILoggerFactory>();
+            using var factory = _host.Services.GetService<ILoggerFactory>();
             _logger = factory.CreateLogger<PubSubPipeTests>();
         }
 

@@ -7,6 +7,7 @@ using System.IO.Pipes;
 
 namespace Meta.Lib.Modules.PubSubPipe
 {
+    /// <inheritdoc />
     public class PubSubPipeServer : IPubSubPipeServer, IDisposable
     {
         readonly IMetaPubSub _pubSub;

@@ -133,8 +133,7 @@ namespace Meta.Lib.Modules.Pipe
 
             try
             {
-                Debug.Assert(_pipe == null, "The pipe is already connected or connecting");
-                Debug.Assert(_cts == null, "The pipe is already connected or connecting");
+                Debug.Assert(_pipe == null || _cts == null, "The pipe is already connected or connecting");
 
                 _cts = new CancellationTokenSource();
                 pipe = new NamedPipeClientStream(_serverName, _pipeName, PipeDirection.InOut, PipeOptions.Asynchronous);

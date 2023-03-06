@@ -10,9 +10,7 @@ using System.Threading.Tasks;
 
 namespace Meta.Lib.Modules.PubSubPipe
 {
-    /// <summary>
-    /// Client pipe connection to the server PubSub
-    /// </summary>
+    /// <inheritdoc />
     public class PubSubPipeClient : IPubSubPipeClient, IDisposable
     {
         readonly IMetaPubSub _pubSub;
@@ -243,6 +241,7 @@ namespace Meta.Lib.Modules.PubSubPipe
 
         public async Task PublishOnServer<TMessage>(TMessage message, PubSubOptions options = null)
         {
+            if (message == null) throw new ArgumentNullException(nameof(message));
             if (!IsConnected) throw new NotConnectedToServerException();
 
             var request = new RemotePublishRequest(message, options);

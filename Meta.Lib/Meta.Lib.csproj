@@ -8,18 +8,19 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/dzaliznyak/Meta.Lib</PackageProjectUrl>
     <PackageLicenseFile></PackageLicenseFile>
-    <Copyright>Copyright © 2020 Denys Zaliznyak</Copyright>
+    <Copyright>Copyright © 2023 Denys Zaliznyak</Copyright>
     <Authors>Denys Zaliznyak</Authors>
     <RepositoryUrl>https://github.com/dzaliznyak/Meta.Lib.git</RepositoryUrl>
     <Description>A set of classes and modules for .Net development including MetaPubSub - a Publish-Subscribe pattern implementation with an interprocess communication channel</Description>
-    <PackageReleaseNotes>- `IPubSubMessage.Timeout` renamed to `WaitForSubscriberTimeout`
-- Added `IPubSubMessage.ResponseTimeout` - Time interval during which the response message must be received otherwise the `TimeoutException` will be thrown. Used in `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()`
-- Removed parameter `millisecondsTimeout` from `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()`. Use `IPubSubMessage.ResponseTimeout` instead
-- Fixed bug: timeout in `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()` always use it's default value of 5 sec.
+    <PackageReleaseNotes>- MetaPubSub has been separated into three modules - local `PubSub`, `Pipe`, and `PubSubPipe`. `PubSub` – is a local publisher/subscriber implementation. `Pipe` – is a wrapper on `NamedPipeServerStream` and `NamedPipeClientStream` to simplify interprocess communication. `PubSubPipe` – is a wrapper on both `PubSub` and `Pipe` which adds interprocess communication ability for `PubSub` via `Pipe`.
+- Added `ConcurrentStateMachine`.
+- Custom `Logger` implementation replaced with `ILogger` from the `Microsoft.Extensions.Logging` namespace.
+- Removed `IPubSubMessage` interface. You don't need to derive your message classes from this interface anymore.
+- Performance improvements.
 </PackageReleaseNotes>
-    <PackageTags>publish-subscribe utility csharp event-driven event-hub publisher-subscriber library pubsub IPC named-pipe RPC interprocess</PackageTags>
+    <PackageTags>publish-subscribe utility csharp event-driven event-hub publisher-subscriber library pubsub IPC named-pipe RPC interprocess state-machine</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.1.3</Version>
+    <Version>2.0.0-beta</Version>
   </PropertyGroup>
 
   <ItemGroup>

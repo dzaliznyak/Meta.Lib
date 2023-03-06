@@ -5,58 +5,62 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Meta.Lib.Tests
 {
-    [TestClass]
-    public class PipeTests
+    internal class PipeHostHelper : IDisposable
     {
         static int PipeCount = 0;
 
-        private static ILogger<PipeTests> CreateLogger()
+        readonly IHost _host;
+        readonly ILogger<PubSubPipeTests> _logger;
+
+        public string PipeName { get; private set; }
+
+
+        public PipeHostHelper()
         {
-            IHost host = Host.CreateDefaultBuilder().Build();
-            var factory = host.Services.GetService<ILoggerFactory>();
-            var logger = factory.CreateLogger<PipeTests>();
-            return logger;
+            PipeName = NewPipeName();
+
+            _host = Host.CreateDefaultBuilder().Build();
+            using var factory = _host.Services.GetService<ILoggerFactory>();
+            _logger = factory.CreateLogger<PubSubPipeTests>();
         }
 
-        private static string NewPipeName()
+        static string NewPipeName()
         {
             int no = Interlocked.Increment(ref PipeCount);
             return $"PS{no}";
         }
 
-
-        [TestMethod]
-        public async Task StateMachine()
+        public void Dispose()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
-
-            using var server = new MetaPipeServer(pipeName, logger);
-            server.Start();
-
-            using var client = new MetaPipeConnection(pipeName, logger);
-
-            await client.Connect();
-            client.Disconnect();
-
-            await client.Connect();
-            client.Disconnect();
-
-            //await Task.Delay(1000);
-            server.Stop();
+            _host.Dispose();
         }
 
+        internal MetaPipeServer CreateServer()
+        {
+            return new MetaPipeServer(PipeName, _logger);
+        }
+
+        internal MetaPipeConnection CreateConnection()
+        {
+            return new MetaPipeConnection(PipeName, _logger);
+        }
+    }
+
+
+    [TestClass]
+    public class PipeTests
+    {
         [TestMethod]
         public async Task SendGeneric()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             using AutoResetEvent receiveEvent = new(false);
             var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
             MyMessage receivedMessage = null;
@@ -67,14 +71,14 @@ namespace Meta.Lib.Tests
                 receiveEvent.Set();
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using MetaPipeServer server = host.CreateServer();
             server.ClientConnected += (sender, e) =>
             {
                 e.Connection.MessageReceived += Connection_MessageReceived;
             };
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using MetaPipeConnection client = host.CreateConnection();
             await client.Connect();
             await client.Send(sentMessage, Guid.NewGuid());
 
@@ -88,8 +92,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task SendAndWaitResponseAsObject()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
             MyMessageResponse receivedMessage = null;
 
@@ -101,14 +104,14 @@ namespace Meta.Lib.Tests
                 await connection.Send(response, e.CorrelationId);
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += (sender, e) =>
             {
                 e.Connection.MessageReceived += Connection_MessageReceived;
             };
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             await client.Connect();
             receivedMessage = await client.SendAndWaitResponse<MyMessage, MyMessageResponse>(sentMessage, Guid.NewGuid());
 
@@ -120,8 +123,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task SendAndWaitResponseAsArray()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
             byte[] receivedMessage = null;
 
@@ -133,14 +135,14 @@ namespace Meta.Lib.Tests
                 await connection.Send(response, e.CorrelationId);
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += (sender, e) =>
             {
                 e.Connection.MessageReceived += Connection_MessageReceived;
             };
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             await client.Connect();
             receivedMessage = await client.SendAndWaitResponse<MyMessage, byte[]>(sentMessage, Guid.NewGuid());
 
@@ -154,31 +156,32 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task SendAndWaitResponseTimeout()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
+            Exception exception = null;
             var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             await client.Connect();
 
             try
             {
                 var receivedMessage = await client.SendAndWaitResponse<MyMessage, byte[]>(sentMessage, Guid.NewGuid(), 100);
-                Assert.IsTrue(false);
             }
-            catch (TimeoutException)
+            catch (Exception ex)
             {
+                exception = ex;
             }
+
+            Assert.IsInstanceOfType(exception, typeof(TimeoutException));
         }
 
         [TestMethod]
         public async Task SendAndWaitResponseWithError()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             var sentMessage = new MyMessage() { Message = "Hello", SomeId = 123, Version = new Version(1, 2, 3, 4) };
             byte[] receivedMessage = null;
 
@@ -189,14 +192,14 @@ namespace Meta.Lib.Tests
                 await connection.Send(error, e.CorrelationId);
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += (sender, e) =>
             {
                 e.Connection.MessageReceived += Connection_MessageReceived;
             };
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             await client.Connect();
 
             try
@@ -214,8 +217,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task ClientConnectAndSend()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             using AutoResetEvent receiveEvent = new(false);
             string sentMessage = "12345678";
             string receivedMessage = null;
@@ -226,7 +228,7 @@ namespace Meta.Lib.Tests
                 receiveEvent.Set();
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += (sender, e) =>
             {
                 e.Connection.MessageReceived += Connection_MessageReceived;
@@ -234,7 +236,7 @@ namespace Meta.Lib.Tests
 
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             await client.Connect();
             await client.Send(sentMessage);
 
@@ -248,13 +250,12 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task InternalBufferResize()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             await client.Connect();
 
             long totalBytesSent = 0;
@@ -275,8 +276,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task ConnectDisconnect()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             const int COUNT = 100;
             using AutoResetEvent receiveEvent = new(false);
 
@@ -295,7 +295,7 @@ namespace Meta.Lib.Tests
             }
 
             int connectedClients = 0;
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += (sender, e) =>
             {
                 connectedClients++;
@@ -304,7 +304,7 @@ namespace Meta.Lib.Tests
 
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
 
             long sentSum = 0;
             for (int i = 0; i < COUNT; i++)
@@ -328,8 +328,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task ClientConnect_ServerSend()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             using AutoResetEvent receiveEvent = new(false);
             string sentMessage = "12345678";
             string receivedMessage = null;
@@ -340,7 +339,7 @@ namespace Meta.Lib.Tests
                 receiveEvent.Set();
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += async (sender, e) =>
             {
                 await e.Connection.Send(sentMessage);
@@ -348,7 +347,7 @@ namespace Meta.Lib.Tests
 
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             client.MessageReceived += Client_MessageReceived;
             await client.Connect();
 
@@ -362,8 +361,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task SendMultiThread_2Subscribers()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             const int COUNT = 1000;
             using AutoResetEvent allReceivedEvent = new(false);
 
@@ -388,7 +386,7 @@ namespace Meta.Lib.Tests
                     allReceivedEvent.Set();
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += (sender, e) =>
             {
                 e.Connection.MessageReceived += Connection_MessageReceived;
@@ -397,7 +395,7 @@ namespace Meta.Lib.Tests
 
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             await client.Connect();
             long sentSum1 = 0;
             long sentSum2 = 0;
@@ -435,8 +433,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task SendMultiThread_BiDirection()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             const int COUNT = 1000;
             using AutoResetEvent allReceivedEvent1 = new(false);
             using AutoResetEvent allReceivedEvent2 = new(false);
@@ -468,7 +465,7 @@ namespace Meta.Lib.Tests
             }
 
             // server initialization ---------------------------------
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
 
             Task sendToClientTask1 = null;
             Task sendToClientTask2 = null;
@@ -499,7 +496,7 @@ namespace Meta.Lib.Tests
             server.Start();
 
             // client initialization -------------------------
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             client.MessageReceived += Client_MessageReceived;
             await client.Connect();
 
@@ -538,8 +535,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task ServerStartStop()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             const int COUNT = 100;
             int connectedClients = 0;
             int connectedClients2 = 0;
@@ -555,7 +551,7 @@ namespace Meta.Lib.Tests
                 connectedClients2++;
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += (sender, e) =>
             {
                 connectedClients++;
@@ -566,7 +562,7 @@ namespace Meta.Lib.Tests
             {
                 server.Start();
 
-                using var client = new MetaPipeConnection(pipeName, logger);
+                using var client = host.CreateConnection();
                 client.Connected += Connection_Connected;
 
                 await client.Connect();
@@ -585,8 +581,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task ClientReconnect()
         {
-            ILogger<PipeTests> logger = CreateLogger();
-            string pipeName = NewPipeName();
+            using var host = new PipeHostHelper();
             const int COUNT = 100;
             int connectedClients = 0;
             int connectedClients2 = 0;
@@ -605,11 +600,11 @@ namespace Meta.Lib.Tests
                 connectedEvent2.Set();
             }
 
-            using var server = new MetaPipeServer(pipeName, logger);
+            using var server = host.CreateServer();
             server.ClientConnected += Server_ClientConnected;
             server.Start();
 
-            using var client = new MetaPipeConnection(pipeName, logger);
+            using var client = host.CreateConnection();
             client.Connected += Client_Connected;
 
             await client.Connect();

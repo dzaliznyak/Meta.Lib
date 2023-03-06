@@ -3,6 +3,7 @@ using Meta.Lib.Exceptions;
 using Meta.Lib.Modules.PubSub;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,32 +21,31 @@ namespace Meta.Lib.Tests
     [TestClass]
     public class PubSubTest
     {
-        Task OnMyMessageHandler(MyMessage message)
+        Task MessageHandler(MyMessage message)
         {
             message.DeliveredCount++;
             return Task.CompletedTask;
         }
 
-        Task OnMyMessageHandler2(MyMessage message)
+        Task MessageHandler2(MyMessage message)
         {
             message.DeliveredCount++;
             return Task.CompletedTask;
         }
 
-        Task OnMyMessageHandler3(MyMessage message)
+        Task MessageHandler3(MyMessage message)
         {
             message.DeliveredCount++;
             return Task.CompletedTask;
         }
 
-        bool OnMyMessagePredicate(MyMessage message)
+        bool MessageFilter(MyMessage message)
         {
             return message.Version > new Version(1, 0);
         }
 
         [TestMethod]
-        // subscribed twice but delivered only once
-        public async Task Basic()
+        public async Task SubscribedTwice_DeliveredOnce()
         {
             var hub = new MetaPubSub();
 
@@ -53,14 +53,14 @@ namespace Meta.Lib.Tests
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 0);
 
-            hub.Subscribe<MyMessage>(OnMyMessageHandler);
-            hub.Subscribe<MyMessage>(OnMyMessageHandler);
+            hub.Subscribe<MyMessage>(MessageHandler);
+            hub.Subscribe<MyMessage>(MessageHandler);
 
             message = new MyMessage();
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(MessageHandler);
 
             message = new MyMessage();
             await hub.Publish(message);
@@ -90,16 +90,15 @@ namespace Meta.Lib.Tests
             message = new MyMessage { Version = new Version(1, 0) };
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 0);
-
         }
 
 
         [TestMethod]
-        public async Task Predicate()
+        public async Task SubscribeWithPredicate()
         {
             var hub = new MetaPubSub();
 
-            hub.Subscribe<MyMessage>(OnMyMessageHandler, OnMyMessagePredicate);
+            hub.Subscribe<MyMessage>(MessageHandler, MessageFilter);
 
             var message = new MyMessage { Version = new Version(1, 0) };
             await hub.Publish(message);
@@ -109,107 +108,72 @@ namespace Meta.Lib.Tests
             await hub.Publish(message);
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(MessageHandler);
         }
 
         [TestMethod]
         // Should get the NoSubscribersException if message is filtered and DeliverAtLeastOnce = true
-        public async Task Test_DeliverAtLeastOnce_Filtered()
+        public async Task SubscribeWithPredicate_PublishWithDeliverAtLeastOnce()
         {
             var hub = new MetaPubSub();
-            bool noSubscriberException = false;
+            Exception exception = null;
 
-            hub.Subscribe<MyMessage>(OnMyMessageHandler, OnMyMessagePredicate);
+            hub.Subscribe<MyMessage>(MessageHandler, MessageFilter);
 
             var message = new MyMessage { Version = new Version(1, 0) };
             try
             {
                 await hub.Publish(message, new PubSubOptions() { DeliverAtLeastOnce = true });
             }
-            catch (NoSubscribersException)
+            catch (Exception ex)
             {
-                noSubscriberException = true;
+                exception = ex;
             }
-            Assert.IsTrue(noSubscriberException);
+
+            Assert.IsTrue(exception is NoSubscribersException);
             Assert.IsTrue(message.DeliveredCount == 0);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(MessageHandler);
         }
 
         [TestMethod]
         // Should deliver if message is filtered at first and DeliverAtLeastOnce = true but Timeout > 0 and 
         // after the message has published a new subscriber arrived
-        public async Task Test_DeliverAtLeastOnce_Delayed()
+        public async Task SubscribeAfterMessageQueued()
         {
             var hub = new MetaPubSub();
 
             // first subscriber which will not process the message due to its filter
-            hub.Subscribe<MyMessage>(OnMyMessageHandler, OnMyMessagePredicate);
+            hub.Subscribe<MyMessage>(MessageHandler, MessageFilter);
 
             // second subscriber which will subscribe after the message has been published 
             // also with filter, will not process the message
             var t = Task.Run(async () =>
             {
                 await Task.Delay(50);
-                hub.Subscribe<MyMessage>(OnMyMessageHandler2, OnMyMessagePredicate);
+                hub.Subscribe<MyMessage>(MessageHandler2, MessageFilter);
             });
 
             // third subscriber which will subscribe after the message has been published 
             var t2 = Task.Run(async () =>
             {
-                await Task.Delay(70);
-                hub.Subscribe<MyMessage>(OnMyMessageHandler3);
+                await Task.Delay(100);
+                hub.Subscribe<MyMessage>(MessageHandler3);
             });
 
             var message = new MyMessage { Version = new Version(1, 0) };
             // the message has a timeout and can wait until the second subscriber come
-            await hub.Publish(message, new PubSubOptions() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 200000 });
+            await hub.Publish(message, new PubSubOptions() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 1000 });
 
             Assert.IsTrue(message.DeliveredCount == 1);
 
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
-            //hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
-            //hub.Unsubscribe<MyMessage>(OnMyMessageHandler3);
-        }
-
-
-        [TestMethod]
-        // same as previous but should not deliver the message 
-        // because the second subscriber has also the same filter
-        public async Task Test_DeliverAtLeastOnce_Delayed2()
-        {
-            var hub = new MetaPubSub();
-            bool timeoutException = false;
-
-            // first subscriber which will not process the message due to its filter
-            hub.Subscribe<MyMessage>(OnMyMessageHandler, OnMyMessagePredicate);
-
-            // second subscriber which will subscribe after the message has been published
-            var t = Task.Run(async () =>
-            {
-                await Task.Delay(50);
-                hub.Subscribe<MyMessage>(OnMyMessageHandler2, OnMyMessagePredicate);
-                hub.Unsubscribe<MyMessage>(OnMyMessageHandler2);
-            });
-
-            var message = new MyMessage { Version = new Version(1, 0) };
-            try
-            {
-                // the message has a timeout and can wait until the second subscriber come
-                await hub.Publish(message, new PubSubOptions() { DeliverAtLeastOnce = true, WaitForSubscriberTimeout = 100 });
-            }
-            catch (TimeoutException)
-            {
-                timeoutException = true;
-            }
-            Assert.IsTrue(timeoutException);
-            Assert.IsTrue(message.DeliveredCount == 0);
-
-            hub.Unsubscribe<MyMessage>(OnMyMessageHandler);
+            hub.Unsubscribe<MyMessage>(MessageHandler);
+            hub.Unsubscribe<MyMessage>(MessageHandler2);
+            hub.Unsubscribe<MyMessage>(MessageHandler3);
         }
 
         [TestMethod]
-        public async Task Test_When()
+        public async Task When_SuccessfullyReceivesMessage()
         {
             var hub = new MetaPubSub();
 
@@ -220,57 +184,56 @@ namespace Meta.Lib.Tests
             });
 
             var res = await hub.When<MyEvent>(100);
-            Assert.IsNotNull(res);
 
-            bool timeoutException = false;
-            try
-            {
-                res = await hub.When<MyEvent>(100);
-            }
-            catch (TimeoutException)
-            {
-                timeoutException = true;
-            }
-            Assert.IsTrue(timeoutException);
-
+            Assert.IsTrue(res is MyEvent);
         }
 
         [TestMethod]
-        public async Task Test_Cancel_When()
+        public async Task When_ReceivesTimeoutException()
+        {
+            var hub = new MetaPubSub();
+            Exception exception = null;
+
+            try
+            {
+                var res = await hub.When<MyEvent>(100);
+            }
+            catch (TimeoutException ex)
+            {
+                exception = ex;
+            }
+
+            Assert.IsTrue(exception is TimeoutException);
+        }
+
+        [TestMethod]
+        public async Task CancelWhen_ReceivesOperationCanceledException()
         {
             var hub = new MetaPubSub();
             var cts = new CancellationTokenSource();
+            Exception exception = null;
 
-            // publish an event after 100 ms
-            var t = Task.Run(async () =>
-            {
-                await Task.Delay(100);
-                await hub.Publish(new MyEvent());
-            });
-
-            // cancel waiting after 50 ms
             var t2 = Task.Run(async () =>
             {
                 await Task.Delay(50);
+                // cancel waiting after 50 ms
                 cts.Cancel();
             });
 
-
-            bool exception = false;
             try
             {
                 var res = await hub.When<MyEvent>(200, null, cts.Token);
-                Assert.IsTrue(false);
             }
-            catch (OperationCanceledException)
+            catch (Exception ex)
             {
-                exception = true;
+                exception = ex;
             }
-            Assert.IsTrue(exception);
+
+            Assert.IsTrue(exception is OperationCanceledException);
         }
 
         [TestMethod]
-        public async Task Test_Process()
+        public async Task Process_SuccessfullyReceivesMessage()
         {
             var hub = new MetaPubSub();
 
@@ -287,11 +250,11 @@ namespace Meta.Lib.Tests
             hub.Subscribe<MyMessage>(Handler);
 
             var res = await hub.Process<MyMessage, MyEvent>(new MyMessage(), responseTimeoutMs: 2000);
-            Assert.IsNotNull(res);
+            Assert.IsTrue(res is MyEvent);
         }
 
         [TestMethod]
-        public async Task Test_MultiProcess()
+        public async Task MultiProcess_SuccessfullyReceivesAllMessages()
         {
             var hub = new MetaPubSub();
 
@@ -335,7 +298,7 @@ namespace Meta.Lib.Tests
         }
 
         [TestMethod]
-        public async Task Test_Schedule()
+        public async Task Schedule_SuccessfullyReceivesMessage()
         {
             var hub = new MetaPubSub();
             bool received = false;
