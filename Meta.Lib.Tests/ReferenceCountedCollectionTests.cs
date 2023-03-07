@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using Meta.Lib.Utils;
+﻿using Meta.Lib.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace Meta.Lib.Tests
 {

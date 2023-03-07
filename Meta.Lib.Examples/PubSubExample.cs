@@ -2,10 +2,8 @@
 using Meta.Lib.Exceptions;
 using Meta.Lib.Modules.PubSub;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Meta.Lib.Examples
 {

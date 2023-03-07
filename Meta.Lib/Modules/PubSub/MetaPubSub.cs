@@ -86,7 +86,11 @@ namespace Meta.Lib.Modules.PubSub
             return _requestResponseProcessor.Process(responseType, message, responseTimeoutMs, options, cancellationToken);
         }
 
-        public void Schedule<TMessage>(TMessage message, int millisecondsDelay, PubSubOptions options = null, CancellationToken cancellationToken = default)
+        public void Schedule<TMessage>(
+            TMessage message,
+            int millisecondsDelay,
+            PubSubOptions options = null,
+            CancellationToken cancellationToken = default)
         {
             if (millisecondsDelay <= 0)
                 throw new ArgumentException("millisecondsDelay must be greater than zero");

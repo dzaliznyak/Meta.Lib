@@ -446,7 +446,7 @@ namespace Meta.Lib.Tests
                 receivedCount++;
                 return Task.CompletedTask;
             }
-            
+
             using var host = new HostHelper();
             var server = host.CreatePubSubPipeServer();
             var client = host.CreatePubSubPipeClient();

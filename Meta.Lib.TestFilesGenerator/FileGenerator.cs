@@ -57,12 +57,12 @@
             {
                 txt =
                     $$"""
-                            protected Task OnTestMessage{{i}}(TestMessage{{i}} message)
+                            protected static Task OnTestMessage{{i}}(TestMessage{{i}} message)
                             {
                                 message.IntProperty++;
                                 return Task.CompletedTask;
                             }
-                            protected Task OnTestMessage0_{{i}}(TestMessage0 message)
+                            protected static Task OnTestMessage0_{{i}}(TestMessage0 message)
                             {
                                 message.IntProperty++;
                                 return Task.CompletedTask;

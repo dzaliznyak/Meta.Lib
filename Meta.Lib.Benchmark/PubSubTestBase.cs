@@ -9,10002 +9,10002 @@ namespace Meta.Lib.Benchmark
 
 
         #region Handlers
-        protected Task OnTestMessage0(TestMessage0 message)
+        protected static Task OnTestMessage0(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_0(TestMessage0 message)
+        protected static Task OnTestMessage0_0(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage1(TestMessage1 message)
+        protected static Task OnTestMessage1(TestMessage1 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_1(TestMessage0 message)
+        protected static Task OnTestMessage0_1(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage2(TestMessage2 message)
+        protected static Task OnTestMessage2(TestMessage2 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_2(TestMessage0 message)
+        protected static Task OnTestMessage0_2(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage3(TestMessage3 message)
+        protected static Task OnTestMessage3(TestMessage3 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_3(TestMessage0 message)
+        protected static Task OnTestMessage0_3(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage4(TestMessage4 message)
+        protected static Task OnTestMessage4(TestMessage4 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_4(TestMessage0 message)
+        protected static Task OnTestMessage0_4(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage5(TestMessage5 message)
+        protected static Task OnTestMessage5(TestMessage5 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_5(TestMessage0 message)
+        protected static Task OnTestMessage0_5(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage6(TestMessage6 message)
+        protected static Task OnTestMessage6(TestMessage6 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_6(TestMessage0 message)
+        protected static Task OnTestMessage0_6(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage7(TestMessage7 message)
+        protected static Task OnTestMessage7(TestMessage7 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_7(TestMessage0 message)
+        protected static Task OnTestMessage0_7(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage8(TestMessage8 message)
+        protected static Task OnTestMessage8(TestMessage8 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_8(TestMessage0 message)
+        protected static Task OnTestMessage0_8(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage9(TestMessage9 message)
+        protected static Task OnTestMessage9(TestMessage9 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_9(TestMessage0 message)
+        protected static Task OnTestMessage0_9(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage10(TestMessage10 message)
+        protected static Task OnTestMessage10(TestMessage10 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_10(TestMessage0 message)
+        protected static Task OnTestMessage0_10(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage11(TestMessage11 message)
+        protected static Task OnTestMessage11(TestMessage11 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_11(TestMessage0 message)
+        protected static Task OnTestMessage0_11(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage12(TestMessage12 message)
+        protected static Task OnTestMessage12(TestMessage12 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_12(TestMessage0 message)
+        protected static Task OnTestMessage0_12(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage13(TestMessage13 message)
+        protected static Task OnTestMessage13(TestMessage13 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_13(TestMessage0 message)
+        protected static Task OnTestMessage0_13(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage14(TestMessage14 message)
+        protected static Task OnTestMessage14(TestMessage14 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_14(TestMessage0 message)
+        protected static Task OnTestMessage0_14(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage15(TestMessage15 message)
+        protected static Task OnTestMessage15(TestMessage15 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_15(TestMessage0 message)
+        protected static Task OnTestMessage0_15(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage16(TestMessage16 message)
+        protected static Task OnTestMessage16(TestMessage16 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_16(TestMessage0 message)
+        protected static Task OnTestMessage0_16(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage17(TestMessage17 message)
+        protected static Task OnTestMessage17(TestMessage17 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_17(TestMessage0 message)
+        protected static Task OnTestMessage0_17(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage18(TestMessage18 message)
+        protected static Task OnTestMessage18(TestMessage18 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_18(TestMessage0 message)
+        protected static Task OnTestMessage0_18(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage19(TestMessage19 message)
+        protected static Task OnTestMessage19(TestMessage19 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_19(TestMessage0 message)
+        protected static Task OnTestMessage0_19(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage20(TestMessage20 message)
+        protected static Task OnTestMessage20(TestMessage20 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_20(TestMessage0 message)
+        protected static Task OnTestMessage0_20(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage21(TestMessage21 message)
+        protected static Task OnTestMessage21(TestMessage21 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_21(TestMessage0 message)
+        protected static Task OnTestMessage0_21(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage22(TestMessage22 message)
+        protected static Task OnTestMessage22(TestMessage22 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_22(TestMessage0 message)
+        protected static Task OnTestMessage0_22(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage23(TestMessage23 message)
+        protected static Task OnTestMessage23(TestMessage23 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_23(TestMessage0 message)
+        protected static Task OnTestMessage0_23(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage24(TestMessage24 message)
+        protected static Task OnTestMessage24(TestMessage24 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_24(TestMessage0 message)
+        protected static Task OnTestMessage0_24(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage25(TestMessage25 message)
+        protected static Task OnTestMessage25(TestMessage25 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_25(TestMessage0 message)
+        protected static Task OnTestMessage0_25(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage26(TestMessage26 message)
+        protected static Task OnTestMessage26(TestMessage26 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_26(TestMessage0 message)
+        protected static Task OnTestMessage0_26(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage27(TestMessage27 message)
+        protected static Task OnTestMessage27(TestMessage27 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_27(TestMessage0 message)
+        protected static Task OnTestMessage0_27(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage28(TestMessage28 message)
+        protected static Task OnTestMessage28(TestMessage28 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_28(TestMessage0 message)
+        protected static Task OnTestMessage0_28(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage29(TestMessage29 message)
+        protected static Task OnTestMessage29(TestMessage29 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_29(TestMessage0 message)
+        protected static Task OnTestMessage0_29(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage30(TestMessage30 message)
+        protected static Task OnTestMessage30(TestMessage30 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_30(TestMessage0 message)
+        protected static Task OnTestMessage0_30(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage31(TestMessage31 message)
+        protected static Task OnTestMessage31(TestMessage31 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_31(TestMessage0 message)
+        protected static Task OnTestMessage0_31(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage32(TestMessage32 message)
+        protected static Task OnTestMessage32(TestMessage32 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_32(TestMessage0 message)
+        protected static Task OnTestMessage0_32(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage33(TestMessage33 message)
+        protected static Task OnTestMessage33(TestMessage33 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_33(TestMessage0 message)
+        protected static Task OnTestMessage0_33(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage34(TestMessage34 message)
+        protected static Task OnTestMessage34(TestMessage34 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_34(TestMessage0 message)
+        protected static Task OnTestMessage0_34(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage35(TestMessage35 message)
+        protected static Task OnTestMessage35(TestMessage35 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_35(TestMessage0 message)
+        protected static Task OnTestMessage0_35(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage36(TestMessage36 message)
+        protected static Task OnTestMessage36(TestMessage36 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_36(TestMessage0 message)
+        protected static Task OnTestMessage0_36(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage37(TestMessage37 message)
+        protected static Task OnTestMessage37(TestMessage37 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_37(TestMessage0 message)
+        protected static Task OnTestMessage0_37(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage38(TestMessage38 message)
+        protected static Task OnTestMessage38(TestMessage38 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_38(TestMessage0 message)
+        protected static Task OnTestMessage0_38(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage39(TestMessage39 message)
+        protected static Task OnTestMessage39(TestMessage39 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_39(TestMessage0 message)
+        protected static Task OnTestMessage0_39(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage40(TestMessage40 message)
+        protected static Task OnTestMessage40(TestMessage40 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_40(TestMessage0 message)
+        protected static Task OnTestMessage0_40(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage41(TestMessage41 message)
+        protected static Task OnTestMessage41(TestMessage41 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_41(TestMessage0 message)
+        protected static Task OnTestMessage0_41(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage42(TestMessage42 message)
+        protected static Task OnTestMessage42(TestMessage42 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_42(TestMessage0 message)
+        protected static Task OnTestMessage0_42(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage43(TestMessage43 message)
+        protected static Task OnTestMessage43(TestMessage43 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_43(TestMessage0 message)
+        protected static Task OnTestMessage0_43(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage44(TestMessage44 message)
+        protected static Task OnTestMessage44(TestMessage44 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_44(TestMessage0 message)
+        protected static Task OnTestMessage0_44(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage45(TestMessage45 message)
+        protected static Task OnTestMessage45(TestMessage45 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_45(TestMessage0 message)
+        protected static Task OnTestMessage0_45(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage46(TestMessage46 message)
+        protected static Task OnTestMessage46(TestMessage46 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_46(TestMessage0 message)
+        protected static Task OnTestMessage0_46(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage47(TestMessage47 message)
+        protected static Task OnTestMessage47(TestMessage47 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_47(TestMessage0 message)
+        protected static Task OnTestMessage0_47(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage48(TestMessage48 message)
+        protected static Task OnTestMessage48(TestMessage48 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_48(TestMessage0 message)
+        protected static Task OnTestMessage0_48(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage49(TestMessage49 message)
+        protected static Task OnTestMessage49(TestMessage49 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_49(TestMessage0 message)
+        protected static Task OnTestMessage0_49(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage50(TestMessage50 message)
+        protected static Task OnTestMessage50(TestMessage50 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_50(TestMessage0 message)
+        protected static Task OnTestMessage0_50(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage51(TestMessage51 message)
+        protected static Task OnTestMessage51(TestMessage51 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_51(TestMessage0 message)
+        protected static Task OnTestMessage0_51(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage52(TestMessage52 message)
+        protected static Task OnTestMessage52(TestMessage52 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_52(TestMessage0 message)
+        protected static Task OnTestMessage0_52(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage53(TestMessage53 message)
+        protected static Task OnTestMessage53(TestMessage53 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_53(TestMessage0 message)
+        protected static Task OnTestMessage0_53(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage54(TestMessage54 message)
+        protected static Task OnTestMessage54(TestMessage54 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_54(TestMessage0 message)
+        protected static Task OnTestMessage0_54(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage55(TestMessage55 message)
+        protected static Task OnTestMessage55(TestMessage55 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_55(TestMessage0 message)
+        protected static Task OnTestMessage0_55(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage56(TestMessage56 message)
+        protected static Task OnTestMessage56(TestMessage56 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_56(TestMessage0 message)
+        protected static Task OnTestMessage0_56(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage57(TestMessage57 message)
+        protected static Task OnTestMessage57(TestMessage57 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_57(TestMessage0 message)
+        protected static Task OnTestMessage0_57(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage58(TestMessage58 message)
+        protected static Task OnTestMessage58(TestMessage58 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_58(TestMessage0 message)
+        protected static Task OnTestMessage0_58(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage59(TestMessage59 message)
+        protected static Task OnTestMessage59(TestMessage59 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_59(TestMessage0 message)
+        protected static Task OnTestMessage0_59(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage60(TestMessage60 message)
+        protected static Task OnTestMessage60(TestMessage60 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_60(TestMessage0 message)
+        protected static Task OnTestMessage0_60(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage61(TestMessage61 message)
+        protected static Task OnTestMessage61(TestMessage61 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_61(TestMessage0 message)
+        protected static Task OnTestMessage0_61(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage62(TestMessage62 message)
+        protected static Task OnTestMessage62(TestMessage62 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_62(TestMessage0 message)
+        protected static Task OnTestMessage0_62(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage63(TestMessage63 message)
+        protected static Task OnTestMessage63(TestMessage63 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_63(TestMessage0 message)
+        protected static Task OnTestMessage0_63(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage64(TestMessage64 message)
+        protected static Task OnTestMessage64(TestMessage64 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_64(TestMessage0 message)
+        protected static Task OnTestMessage0_64(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage65(TestMessage65 message)
+        protected static Task OnTestMessage65(TestMessage65 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_65(TestMessage0 message)
+        protected static Task OnTestMessage0_65(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage66(TestMessage66 message)
+        protected static Task OnTestMessage66(TestMessage66 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_66(TestMessage0 message)
+        protected static Task OnTestMessage0_66(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage67(TestMessage67 message)
+        protected static Task OnTestMessage67(TestMessage67 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_67(TestMessage0 message)
+        protected static Task OnTestMessage0_67(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage68(TestMessage68 message)
+        protected static Task OnTestMessage68(TestMessage68 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_68(TestMessage0 message)
+        protected static Task OnTestMessage0_68(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage69(TestMessage69 message)
+        protected static Task OnTestMessage69(TestMessage69 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_69(TestMessage0 message)
+        protected static Task OnTestMessage0_69(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage70(TestMessage70 message)
+        protected static Task OnTestMessage70(TestMessage70 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_70(TestMessage0 message)
+        protected static Task OnTestMessage0_70(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage71(TestMessage71 message)
+        protected static Task OnTestMessage71(TestMessage71 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_71(TestMessage0 message)
+        protected static Task OnTestMessage0_71(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage72(TestMessage72 message)
+        protected static Task OnTestMessage72(TestMessage72 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_72(TestMessage0 message)
+        protected static Task OnTestMessage0_72(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage73(TestMessage73 message)
+        protected static Task OnTestMessage73(TestMessage73 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_73(TestMessage0 message)
+        protected static Task OnTestMessage0_73(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage74(TestMessage74 message)
+        protected static Task OnTestMessage74(TestMessage74 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_74(TestMessage0 message)
+        protected static Task OnTestMessage0_74(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage75(TestMessage75 message)
+        protected static Task OnTestMessage75(TestMessage75 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_75(TestMessage0 message)
+        protected static Task OnTestMessage0_75(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage76(TestMessage76 message)
+        protected static Task OnTestMessage76(TestMessage76 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_76(TestMessage0 message)
+        protected static Task OnTestMessage0_76(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage77(TestMessage77 message)
+        protected static Task OnTestMessage77(TestMessage77 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_77(TestMessage0 message)
+        protected static Task OnTestMessage0_77(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage78(TestMessage78 message)
+        protected static Task OnTestMessage78(TestMessage78 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_78(TestMessage0 message)
+        protected static Task OnTestMessage0_78(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage79(TestMessage79 message)
+        protected static Task OnTestMessage79(TestMessage79 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_79(TestMessage0 message)
+        protected static Task OnTestMessage0_79(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage80(TestMessage80 message)
+        protected static Task OnTestMessage80(TestMessage80 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_80(TestMessage0 message)
+        protected static Task OnTestMessage0_80(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage81(TestMessage81 message)
+        protected static Task OnTestMessage81(TestMessage81 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_81(TestMessage0 message)
+        protected static Task OnTestMessage0_81(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage82(TestMessage82 message)
+        protected static Task OnTestMessage82(TestMessage82 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_82(TestMessage0 message)
+        protected static Task OnTestMessage0_82(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage83(TestMessage83 message)
+        protected static Task OnTestMessage83(TestMessage83 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_83(TestMessage0 message)
+        protected static Task OnTestMessage0_83(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage84(TestMessage84 message)
+        protected static Task OnTestMessage84(TestMessage84 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_84(TestMessage0 message)
+        protected static Task OnTestMessage0_84(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage85(TestMessage85 message)
+        protected static Task OnTestMessage85(TestMessage85 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_85(TestMessage0 message)
+        protected static Task OnTestMessage0_85(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage86(TestMessage86 message)
+        protected static Task OnTestMessage86(TestMessage86 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_86(TestMessage0 message)
+        protected static Task OnTestMessage0_86(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage87(TestMessage87 message)
+        protected static Task OnTestMessage87(TestMessage87 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_87(TestMessage0 message)
+        protected static Task OnTestMessage0_87(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage88(TestMessage88 message)
+        protected static Task OnTestMessage88(TestMessage88 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_88(TestMessage0 message)
+        protected static Task OnTestMessage0_88(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage89(TestMessage89 message)
+        protected static Task OnTestMessage89(TestMessage89 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_89(TestMessage0 message)
+        protected static Task OnTestMessage0_89(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage90(TestMessage90 message)
+        protected static Task OnTestMessage90(TestMessage90 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_90(TestMessage0 message)
+        protected static Task OnTestMessage0_90(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage91(TestMessage91 message)
+        protected static Task OnTestMessage91(TestMessage91 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_91(TestMessage0 message)
+        protected static Task OnTestMessage0_91(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage92(TestMessage92 message)
+        protected static Task OnTestMessage92(TestMessage92 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_92(TestMessage0 message)
+        protected static Task OnTestMessage0_92(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage93(TestMessage93 message)
+        protected static Task OnTestMessage93(TestMessage93 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_93(TestMessage0 message)
+        protected static Task OnTestMessage0_93(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage94(TestMessage94 message)
+        protected static Task OnTestMessage94(TestMessage94 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_94(TestMessage0 message)
+        protected static Task OnTestMessage0_94(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage95(TestMessage95 message)
+        protected static Task OnTestMessage95(TestMessage95 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_95(TestMessage0 message)
+        protected static Task OnTestMessage0_95(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage96(TestMessage96 message)
+        protected static Task OnTestMessage96(TestMessage96 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_96(TestMessage0 message)
+        protected static Task OnTestMessage0_96(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage97(TestMessage97 message)
+        protected static Task OnTestMessage97(TestMessage97 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_97(TestMessage0 message)
+        protected static Task OnTestMessage0_97(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage98(TestMessage98 message)
+        protected static Task OnTestMessage98(TestMessage98 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_98(TestMessage0 message)
+        protected static Task OnTestMessage0_98(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage99(TestMessage99 message)
+        protected static Task OnTestMessage99(TestMessage99 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_99(TestMessage0 message)
+        protected static Task OnTestMessage0_99(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage100(TestMessage100 message)
+        protected static Task OnTestMessage100(TestMessage100 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_100(TestMessage0 message)
+        protected static Task OnTestMessage0_100(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage101(TestMessage101 message)
+        protected static Task OnTestMessage101(TestMessage101 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_101(TestMessage0 message)
+        protected static Task OnTestMessage0_101(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage102(TestMessage102 message)
+        protected static Task OnTestMessage102(TestMessage102 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_102(TestMessage0 message)
+        protected static Task OnTestMessage0_102(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage103(TestMessage103 message)
+        protected static Task OnTestMessage103(TestMessage103 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_103(TestMessage0 message)
+        protected static Task OnTestMessage0_103(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage104(TestMessage104 message)
+        protected static Task OnTestMessage104(TestMessage104 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_104(TestMessage0 message)
+        protected static Task OnTestMessage0_104(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage105(TestMessage105 message)
+        protected static Task OnTestMessage105(TestMessage105 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_105(TestMessage0 message)
+        protected static Task OnTestMessage0_105(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage106(TestMessage106 message)
+        protected static Task OnTestMessage106(TestMessage106 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_106(TestMessage0 message)
+        protected static Task OnTestMessage0_106(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage107(TestMessage107 message)
+        protected static Task OnTestMessage107(TestMessage107 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_107(TestMessage0 message)
+        protected static Task OnTestMessage0_107(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage108(TestMessage108 message)
+        protected static Task OnTestMessage108(TestMessage108 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_108(TestMessage0 message)
+        protected static Task OnTestMessage0_108(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage109(TestMessage109 message)
+        protected static Task OnTestMessage109(TestMessage109 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_109(TestMessage0 message)
+        protected static Task OnTestMessage0_109(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage110(TestMessage110 message)
+        protected static Task OnTestMessage110(TestMessage110 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_110(TestMessage0 message)
+        protected static Task OnTestMessage0_110(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage111(TestMessage111 message)
+        protected static Task OnTestMessage111(TestMessage111 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_111(TestMessage0 message)
+        protected static Task OnTestMessage0_111(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage112(TestMessage112 message)
+        protected static Task OnTestMessage112(TestMessage112 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_112(TestMessage0 message)
+        protected static Task OnTestMessage0_112(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage113(TestMessage113 message)
+        protected static Task OnTestMessage113(TestMessage113 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_113(TestMessage0 message)
+        protected static Task OnTestMessage0_113(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage114(TestMessage114 message)
+        protected static Task OnTestMessage114(TestMessage114 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_114(TestMessage0 message)
+        protected static Task OnTestMessage0_114(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage115(TestMessage115 message)
+        protected static Task OnTestMessage115(TestMessage115 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_115(TestMessage0 message)
+        protected static Task OnTestMessage0_115(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage116(TestMessage116 message)
+        protected static Task OnTestMessage116(TestMessage116 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_116(TestMessage0 message)
+        protected static Task OnTestMessage0_116(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage117(TestMessage117 message)
+        protected static Task OnTestMessage117(TestMessage117 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_117(TestMessage0 message)
+        protected static Task OnTestMessage0_117(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage118(TestMessage118 message)
+        protected static Task OnTestMessage118(TestMessage118 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_118(TestMessage0 message)
+        protected static Task OnTestMessage0_118(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage119(TestMessage119 message)
+        protected static Task OnTestMessage119(TestMessage119 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_119(TestMessage0 message)
+        protected static Task OnTestMessage0_119(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage120(TestMessage120 message)
+        protected static Task OnTestMessage120(TestMessage120 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_120(TestMessage0 message)
+        protected static Task OnTestMessage0_120(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage121(TestMessage121 message)
+        protected static Task OnTestMessage121(TestMessage121 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_121(TestMessage0 message)
+        protected static Task OnTestMessage0_121(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage122(TestMessage122 message)
+        protected static Task OnTestMessage122(TestMessage122 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_122(TestMessage0 message)
+        protected static Task OnTestMessage0_122(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage123(TestMessage123 message)
+        protected static Task OnTestMessage123(TestMessage123 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_123(TestMessage0 message)
+        protected static Task OnTestMessage0_123(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage124(TestMessage124 message)
+        protected static Task OnTestMessage124(TestMessage124 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_124(TestMessage0 message)
+        protected static Task OnTestMessage0_124(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage125(TestMessage125 message)
+        protected static Task OnTestMessage125(TestMessage125 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_125(TestMessage0 message)
+        protected static Task OnTestMessage0_125(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage126(TestMessage126 message)
+        protected static Task OnTestMessage126(TestMessage126 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_126(TestMessage0 message)
+        protected static Task OnTestMessage0_126(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage127(TestMessage127 message)
+        protected static Task OnTestMessage127(TestMessage127 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_127(TestMessage0 message)
+        protected static Task OnTestMessage0_127(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage128(TestMessage128 message)
+        protected static Task OnTestMessage128(TestMessage128 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_128(TestMessage0 message)
+        protected static Task OnTestMessage0_128(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage129(TestMessage129 message)
+        protected static Task OnTestMessage129(TestMessage129 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_129(TestMessage0 message)
+        protected static Task OnTestMessage0_129(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage130(TestMessage130 message)
+        protected static Task OnTestMessage130(TestMessage130 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_130(TestMessage0 message)
+        protected static Task OnTestMessage0_130(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage131(TestMessage131 message)
+        protected static Task OnTestMessage131(TestMessage131 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_131(TestMessage0 message)
+        protected static Task OnTestMessage0_131(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage132(TestMessage132 message)
+        protected static Task OnTestMessage132(TestMessage132 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_132(TestMessage0 message)
+        protected static Task OnTestMessage0_132(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage133(TestMessage133 message)
+        protected static Task OnTestMessage133(TestMessage133 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_133(TestMessage0 message)
+        protected static Task OnTestMessage0_133(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage134(TestMessage134 message)
+        protected static Task OnTestMessage134(TestMessage134 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_134(TestMessage0 message)
+        protected static Task OnTestMessage0_134(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage135(TestMessage135 message)
+        protected static Task OnTestMessage135(TestMessage135 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_135(TestMessage0 message)
+        protected static Task OnTestMessage0_135(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage136(TestMessage136 message)
+        protected static Task OnTestMessage136(TestMessage136 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_136(TestMessage0 message)
+        protected static Task OnTestMessage0_136(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage137(TestMessage137 message)
+        protected static Task OnTestMessage137(TestMessage137 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_137(TestMessage0 message)
+        protected static Task OnTestMessage0_137(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage138(TestMessage138 message)
+        protected static Task OnTestMessage138(TestMessage138 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_138(TestMessage0 message)
+        protected static Task OnTestMessage0_138(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage139(TestMessage139 message)
+        protected static Task OnTestMessage139(TestMessage139 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_139(TestMessage0 message)
+        protected static Task OnTestMessage0_139(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage140(TestMessage140 message)
+        protected static Task OnTestMessage140(TestMessage140 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_140(TestMessage0 message)
+        protected static Task OnTestMessage0_140(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage141(TestMessage141 message)
+        protected static Task OnTestMessage141(TestMessage141 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_141(TestMessage0 message)
+        protected static Task OnTestMessage0_141(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage142(TestMessage142 message)
+        protected static Task OnTestMessage142(TestMessage142 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_142(TestMessage0 message)
+        protected static Task OnTestMessage0_142(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage143(TestMessage143 message)
+        protected static Task OnTestMessage143(TestMessage143 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_143(TestMessage0 message)
+        protected static Task OnTestMessage0_143(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage144(TestMessage144 message)
+        protected static Task OnTestMessage144(TestMessage144 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_144(TestMessage0 message)
+        protected static Task OnTestMessage0_144(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage145(TestMessage145 message)
+        protected static Task OnTestMessage145(TestMessage145 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_145(TestMessage0 message)
+        protected static Task OnTestMessage0_145(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage146(TestMessage146 message)
+        protected static Task OnTestMessage146(TestMessage146 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_146(TestMessage0 message)
+        protected static Task OnTestMessage0_146(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage147(TestMessage147 message)
+        protected static Task OnTestMessage147(TestMessage147 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_147(TestMessage0 message)
+        protected static Task OnTestMessage0_147(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage148(TestMessage148 message)
+        protected static Task OnTestMessage148(TestMessage148 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_148(TestMessage0 message)
+        protected static Task OnTestMessage0_148(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage149(TestMessage149 message)
+        protected static Task OnTestMessage149(TestMessage149 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_149(TestMessage0 message)
+        protected static Task OnTestMessage0_149(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage150(TestMessage150 message)
+        protected static Task OnTestMessage150(TestMessage150 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_150(TestMessage0 message)
+        protected static Task OnTestMessage0_150(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage151(TestMessage151 message)
+        protected static Task OnTestMessage151(TestMessage151 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_151(TestMessage0 message)
+        protected static Task OnTestMessage0_151(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage152(TestMessage152 message)
+        protected static Task OnTestMessage152(TestMessage152 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_152(TestMessage0 message)
+        protected static Task OnTestMessage0_152(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage153(TestMessage153 message)
+        protected static Task OnTestMessage153(TestMessage153 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_153(TestMessage0 message)
+        protected static Task OnTestMessage0_153(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage154(TestMessage154 message)
+        protected static Task OnTestMessage154(TestMessage154 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_154(TestMessage0 message)
+        protected static Task OnTestMessage0_154(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage155(TestMessage155 message)
+        protected static Task OnTestMessage155(TestMessage155 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_155(TestMessage0 message)
+        protected static Task OnTestMessage0_155(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage156(TestMessage156 message)
+        protected static Task OnTestMessage156(TestMessage156 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_156(TestMessage0 message)
+        protected static Task OnTestMessage0_156(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage157(TestMessage157 message)
+        protected static Task OnTestMessage157(TestMessage157 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_157(TestMessage0 message)
+        protected static Task OnTestMessage0_157(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage158(TestMessage158 message)
+        protected static Task OnTestMessage158(TestMessage158 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_158(TestMessage0 message)
+        protected static Task OnTestMessage0_158(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage159(TestMessage159 message)
+        protected static Task OnTestMessage159(TestMessage159 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_159(TestMessage0 message)
+        protected static Task OnTestMessage0_159(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage160(TestMessage160 message)
+        protected static Task OnTestMessage160(TestMessage160 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_160(TestMessage0 message)
+        protected static Task OnTestMessage0_160(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage161(TestMessage161 message)
+        protected static Task OnTestMessage161(TestMessage161 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_161(TestMessage0 message)
+        protected static Task OnTestMessage0_161(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage162(TestMessage162 message)
+        protected static Task OnTestMessage162(TestMessage162 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_162(TestMessage0 message)
+        protected static Task OnTestMessage0_162(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage163(TestMessage163 message)
+        protected static Task OnTestMessage163(TestMessage163 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_163(TestMessage0 message)
+        protected static Task OnTestMessage0_163(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage164(TestMessage164 message)
+        protected static Task OnTestMessage164(TestMessage164 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_164(TestMessage0 message)
+        protected static Task OnTestMessage0_164(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage165(TestMessage165 message)
+        protected static Task OnTestMessage165(TestMessage165 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_165(TestMessage0 message)
+        protected static Task OnTestMessage0_165(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage166(TestMessage166 message)
+        protected static Task OnTestMessage166(TestMessage166 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_166(TestMessage0 message)
+        protected static Task OnTestMessage0_166(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage167(TestMessage167 message)
+        protected static Task OnTestMessage167(TestMessage167 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_167(TestMessage0 message)
+        protected static Task OnTestMessage0_167(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage168(TestMessage168 message)
+        protected static Task OnTestMessage168(TestMessage168 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_168(TestMessage0 message)
+        protected static Task OnTestMessage0_168(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage169(TestMessage169 message)
+        protected static Task OnTestMessage169(TestMessage169 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_169(TestMessage0 message)
+        protected static Task OnTestMessage0_169(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage170(TestMessage170 message)
+        protected static Task OnTestMessage170(TestMessage170 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_170(TestMessage0 message)
+        protected static Task OnTestMessage0_170(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage171(TestMessage171 message)
+        protected static Task OnTestMessage171(TestMessage171 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_171(TestMessage0 message)
+        protected static Task OnTestMessage0_171(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage172(TestMessage172 message)
+        protected static Task OnTestMessage172(TestMessage172 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_172(TestMessage0 message)
+        protected static Task OnTestMessage0_172(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage173(TestMessage173 message)
+        protected static Task OnTestMessage173(TestMessage173 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_173(TestMessage0 message)
+        protected static Task OnTestMessage0_173(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage174(TestMessage174 message)
+        protected static Task OnTestMessage174(TestMessage174 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_174(TestMessage0 message)
+        protected static Task OnTestMessage0_174(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage175(TestMessage175 message)
+        protected static Task OnTestMessage175(TestMessage175 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_175(TestMessage0 message)
+        protected static Task OnTestMessage0_175(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage176(TestMessage176 message)
+        protected static Task OnTestMessage176(TestMessage176 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_176(TestMessage0 message)
+        protected static Task OnTestMessage0_176(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage177(TestMessage177 message)
+        protected static Task OnTestMessage177(TestMessage177 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_177(TestMessage0 message)
+        protected static Task OnTestMessage0_177(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage178(TestMessage178 message)
+        protected static Task OnTestMessage178(TestMessage178 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_178(TestMessage0 message)
+        protected static Task OnTestMessage0_178(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage179(TestMessage179 message)
+        protected static Task OnTestMessage179(TestMessage179 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_179(TestMessage0 message)
+        protected static Task OnTestMessage0_179(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage180(TestMessage180 message)
+        protected static Task OnTestMessage180(TestMessage180 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_180(TestMessage0 message)
+        protected static Task OnTestMessage0_180(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage181(TestMessage181 message)
+        protected static Task OnTestMessage181(TestMessage181 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_181(TestMessage0 message)
+        protected static Task OnTestMessage0_181(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage182(TestMessage182 message)
+        protected static Task OnTestMessage182(TestMessage182 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_182(TestMessage0 message)
+        protected static Task OnTestMessage0_182(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage183(TestMessage183 message)
+        protected static Task OnTestMessage183(TestMessage183 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_183(TestMessage0 message)
+        protected static Task OnTestMessage0_183(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage184(TestMessage184 message)
+        protected static Task OnTestMessage184(TestMessage184 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_184(TestMessage0 message)
+        protected static Task OnTestMessage0_184(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage185(TestMessage185 message)
+        protected static Task OnTestMessage185(TestMessage185 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_185(TestMessage0 message)
+        protected static Task OnTestMessage0_185(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage186(TestMessage186 message)
+        protected static Task OnTestMessage186(TestMessage186 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_186(TestMessage0 message)
+        protected static Task OnTestMessage0_186(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage187(TestMessage187 message)
+        protected static Task OnTestMessage187(TestMessage187 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_187(TestMessage0 message)
+        protected static Task OnTestMessage0_187(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage188(TestMessage188 message)
+        protected static Task OnTestMessage188(TestMessage188 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_188(TestMessage0 message)
+        protected static Task OnTestMessage0_188(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage189(TestMessage189 message)
+        protected static Task OnTestMessage189(TestMessage189 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_189(TestMessage0 message)
+        protected static Task OnTestMessage0_189(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage190(TestMessage190 message)
+        protected static Task OnTestMessage190(TestMessage190 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_190(TestMessage0 message)
+        protected static Task OnTestMessage0_190(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage191(TestMessage191 message)
+        protected static Task OnTestMessage191(TestMessage191 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_191(TestMessage0 message)
+        protected static Task OnTestMessage0_191(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage192(TestMessage192 message)
+        protected static Task OnTestMessage192(TestMessage192 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_192(TestMessage0 message)
+        protected static Task OnTestMessage0_192(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage193(TestMessage193 message)
+        protected static Task OnTestMessage193(TestMessage193 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_193(TestMessage0 message)
+        protected static Task OnTestMessage0_193(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage194(TestMessage194 message)
+        protected static Task OnTestMessage194(TestMessage194 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_194(TestMessage0 message)
+        protected static Task OnTestMessage0_194(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage195(TestMessage195 message)
+        protected static Task OnTestMessage195(TestMessage195 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_195(TestMessage0 message)
+        protected static Task OnTestMessage0_195(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage196(TestMessage196 message)
+        protected static Task OnTestMessage196(TestMessage196 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_196(TestMessage0 message)
+        protected static Task OnTestMessage0_196(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage197(TestMessage197 message)
+        protected static Task OnTestMessage197(TestMessage197 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_197(TestMessage0 message)
+        protected static Task OnTestMessage0_197(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage198(TestMessage198 message)
+        protected static Task OnTestMessage198(TestMessage198 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_198(TestMessage0 message)
+        protected static Task OnTestMessage0_198(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage199(TestMessage199 message)
+        protected static Task OnTestMessage199(TestMessage199 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_199(TestMessage0 message)
+        protected static Task OnTestMessage0_199(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage200(TestMessage200 message)
+        protected static Task OnTestMessage200(TestMessage200 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_200(TestMessage0 message)
+        protected static Task OnTestMessage0_200(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage201(TestMessage201 message)
+        protected static Task OnTestMessage201(TestMessage201 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_201(TestMessage0 message)
+        protected static Task OnTestMessage0_201(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage202(TestMessage202 message)
+        protected static Task OnTestMessage202(TestMessage202 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_202(TestMessage0 message)
+        protected static Task OnTestMessage0_202(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage203(TestMessage203 message)
+        protected static Task OnTestMessage203(TestMessage203 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_203(TestMessage0 message)
+        protected static Task OnTestMessage0_203(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage204(TestMessage204 message)
+        protected static Task OnTestMessage204(TestMessage204 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_204(TestMessage0 message)
+        protected static Task OnTestMessage0_204(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage205(TestMessage205 message)
+        protected static Task OnTestMessage205(TestMessage205 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_205(TestMessage0 message)
+        protected static Task OnTestMessage0_205(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage206(TestMessage206 message)
+        protected static Task OnTestMessage206(TestMessage206 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_206(TestMessage0 message)
+        protected static Task OnTestMessage0_206(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage207(TestMessage207 message)
+        protected static Task OnTestMessage207(TestMessage207 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_207(TestMessage0 message)
+        protected static Task OnTestMessage0_207(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage208(TestMessage208 message)
+        protected static Task OnTestMessage208(TestMessage208 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_208(TestMessage0 message)
+        protected static Task OnTestMessage0_208(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage209(TestMessage209 message)
+        protected static Task OnTestMessage209(TestMessage209 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_209(TestMessage0 message)
+        protected static Task OnTestMessage0_209(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage210(TestMessage210 message)
+        protected static Task OnTestMessage210(TestMessage210 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_210(TestMessage0 message)
+        protected static Task OnTestMessage0_210(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage211(TestMessage211 message)
+        protected static Task OnTestMessage211(TestMessage211 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_211(TestMessage0 message)
+        protected static Task OnTestMessage0_211(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage212(TestMessage212 message)
+        protected static Task OnTestMessage212(TestMessage212 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_212(TestMessage0 message)
+        protected static Task OnTestMessage0_212(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage213(TestMessage213 message)
+        protected static Task OnTestMessage213(TestMessage213 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_213(TestMessage0 message)
+        protected static Task OnTestMessage0_213(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage214(TestMessage214 message)
+        protected static Task OnTestMessage214(TestMessage214 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_214(TestMessage0 message)
+        protected static Task OnTestMessage0_214(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage215(TestMessage215 message)
+        protected static Task OnTestMessage215(TestMessage215 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_215(TestMessage0 message)
+        protected static Task OnTestMessage0_215(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage216(TestMessage216 message)
+        protected static Task OnTestMessage216(TestMessage216 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_216(TestMessage0 message)
+        protected static Task OnTestMessage0_216(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage217(TestMessage217 message)
+        protected static Task OnTestMessage217(TestMessage217 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_217(TestMessage0 message)
+        protected static Task OnTestMessage0_217(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage218(TestMessage218 message)
+        protected static Task OnTestMessage218(TestMessage218 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_218(TestMessage0 message)
+        protected static Task OnTestMessage0_218(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage219(TestMessage219 message)
+        protected static Task OnTestMessage219(TestMessage219 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_219(TestMessage0 message)
+        protected static Task OnTestMessage0_219(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage220(TestMessage220 message)
+        protected static Task OnTestMessage220(TestMessage220 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_220(TestMessage0 message)
+        protected static Task OnTestMessage0_220(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage221(TestMessage221 message)
+        protected static Task OnTestMessage221(TestMessage221 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_221(TestMessage0 message)
+        protected static Task OnTestMessage0_221(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage222(TestMessage222 message)
+        protected static Task OnTestMessage222(TestMessage222 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_222(TestMessage0 message)
+        protected static Task OnTestMessage0_222(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage223(TestMessage223 message)
+        protected static Task OnTestMessage223(TestMessage223 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_223(TestMessage0 message)
+        protected static Task OnTestMessage0_223(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage224(TestMessage224 message)
+        protected static Task OnTestMessage224(TestMessage224 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_224(TestMessage0 message)
+        protected static Task OnTestMessage0_224(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage225(TestMessage225 message)
+        protected static Task OnTestMessage225(TestMessage225 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_225(TestMessage0 message)
+        protected static Task OnTestMessage0_225(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage226(TestMessage226 message)
+        protected static Task OnTestMessage226(TestMessage226 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_226(TestMessage0 message)
+        protected static Task OnTestMessage0_226(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage227(TestMessage227 message)
+        protected static Task OnTestMessage227(TestMessage227 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_227(TestMessage0 message)
+        protected static Task OnTestMessage0_227(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage228(TestMessage228 message)
+        protected static Task OnTestMessage228(TestMessage228 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_228(TestMessage0 message)
+        protected static Task OnTestMessage0_228(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage229(TestMessage229 message)
+        protected static Task OnTestMessage229(TestMessage229 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_229(TestMessage0 message)
+        protected static Task OnTestMessage0_229(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage230(TestMessage230 message)
+        protected static Task OnTestMessage230(TestMessage230 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_230(TestMessage0 message)
+        protected static Task OnTestMessage0_230(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage231(TestMessage231 message)
+        protected static Task OnTestMessage231(TestMessage231 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_231(TestMessage0 message)
+        protected static Task OnTestMessage0_231(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage232(TestMessage232 message)
+        protected static Task OnTestMessage232(TestMessage232 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_232(TestMessage0 message)
+        protected static Task OnTestMessage0_232(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage233(TestMessage233 message)
+        protected static Task OnTestMessage233(TestMessage233 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_233(TestMessage0 message)
+        protected static Task OnTestMessage0_233(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage234(TestMessage234 message)
+        protected static Task OnTestMessage234(TestMessage234 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_234(TestMessage0 message)
+        protected static Task OnTestMessage0_234(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage235(TestMessage235 message)
+        protected static Task OnTestMessage235(TestMessage235 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_235(TestMessage0 message)
+        protected static Task OnTestMessage0_235(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage236(TestMessage236 message)
+        protected static Task OnTestMessage236(TestMessage236 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_236(TestMessage0 message)
+        protected static Task OnTestMessage0_236(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage237(TestMessage237 message)
+        protected static Task OnTestMessage237(TestMessage237 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_237(TestMessage0 message)
+        protected static Task OnTestMessage0_237(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage238(TestMessage238 message)
+        protected static Task OnTestMessage238(TestMessage238 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_238(TestMessage0 message)
+        protected static Task OnTestMessage0_238(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage239(TestMessage239 message)
+        protected static Task OnTestMessage239(TestMessage239 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_239(TestMessage0 message)
+        protected static Task OnTestMessage0_239(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage240(TestMessage240 message)
+        protected static Task OnTestMessage240(TestMessage240 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_240(TestMessage0 message)
+        protected static Task OnTestMessage0_240(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage241(TestMessage241 message)
+        protected static Task OnTestMessage241(TestMessage241 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_241(TestMessage0 message)
+        protected static Task OnTestMessage0_241(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage242(TestMessage242 message)
+        protected static Task OnTestMessage242(TestMessage242 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_242(TestMessage0 message)
+        protected static Task OnTestMessage0_242(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage243(TestMessage243 message)
+        protected static Task OnTestMessage243(TestMessage243 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_243(TestMessage0 message)
+        protected static Task OnTestMessage0_243(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage244(TestMessage244 message)
+        protected static Task OnTestMessage244(TestMessage244 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_244(TestMessage0 message)
+        protected static Task OnTestMessage0_244(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage245(TestMessage245 message)
+        protected static Task OnTestMessage245(TestMessage245 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_245(TestMessage0 message)
+        protected static Task OnTestMessage0_245(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage246(TestMessage246 message)
+        protected static Task OnTestMessage246(TestMessage246 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_246(TestMessage0 message)
+        protected static Task OnTestMessage0_246(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage247(TestMessage247 message)
+        protected static Task OnTestMessage247(TestMessage247 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_247(TestMessage0 message)
+        protected static Task OnTestMessage0_247(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage248(TestMessage248 message)
+        protected static Task OnTestMessage248(TestMessage248 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_248(TestMessage0 message)
+        protected static Task OnTestMessage0_248(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage249(TestMessage249 message)
+        protected static Task OnTestMessage249(TestMessage249 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_249(TestMessage0 message)
+        protected static Task OnTestMessage0_249(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage250(TestMessage250 message)
+        protected static Task OnTestMessage250(TestMessage250 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_250(TestMessage0 message)
+        protected static Task OnTestMessage0_250(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage251(TestMessage251 message)
+        protected static Task OnTestMessage251(TestMessage251 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_251(TestMessage0 message)
+        protected static Task OnTestMessage0_251(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage252(TestMessage252 message)
+        protected static Task OnTestMessage252(TestMessage252 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_252(TestMessage0 message)
+        protected static Task OnTestMessage0_252(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage253(TestMessage253 message)
+        protected static Task OnTestMessage253(TestMessage253 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_253(TestMessage0 message)
+        protected static Task OnTestMessage0_253(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage254(TestMessage254 message)
+        protected static Task OnTestMessage254(TestMessage254 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_254(TestMessage0 message)
+        protected static Task OnTestMessage0_254(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage255(TestMessage255 message)
+        protected static Task OnTestMessage255(TestMessage255 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_255(TestMessage0 message)
+        protected static Task OnTestMessage0_255(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage256(TestMessage256 message)
+        protected static Task OnTestMessage256(TestMessage256 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_256(TestMessage0 message)
+        protected static Task OnTestMessage0_256(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage257(TestMessage257 message)
+        protected static Task OnTestMessage257(TestMessage257 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_257(TestMessage0 message)
+        protected static Task OnTestMessage0_257(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage258(TestMessage258 message)
+        protected static Task OnTestMessage258(TestMessage258 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_258(TestMessage0 message)
+        protected static Task OnTestMessage0_258(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage259(TestMessage259 message)
+        protected static Task OnTestMessage259(TestMessage259 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_259(TestMessage0 message)
+        protected static Task OnTestMessage0_259(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage260(TestMessage260 message)
+        protected static Task OnTestMessage260(TestMessage260 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_260(TestMessage0 message)
+        protected static Task OnTestMessage0_260(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage261(TestMessage261 message)
+        protected static Task OnTestMessage261(TestMessage261 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_261(TestMessage0 message)
+        protected static Task OnTestMessage0_261(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage262(TestMessage262 message)
+        protected static Task OnTestMessage262(TestMessage262 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_262(TestMessage0 message)
+        protected static Task OnTestMessage0_262(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage263(TestMessage263 message)
+        protected static Task OnTestMessage263(TestMessage263 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_263(TestMessage0 message)
+        protected static Task OnTestMessage0_263(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage264(TestMessage264 message)
+        protected static Task OnTestMessage264(TestMessage264 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_264(TestMessage0 message)
+        protected static Task OnTestMessage0_264(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage265(TestMessage265 message)
+        protected static Task OnTestMessage265(TestMessage265 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_265(TestMessage0 message)
+        protected static Task OnTestMessage0_265(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage266(TestMessage266 message)
+        protected static Task OnTestMessage266(TestMessage266 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_266(TestMessage0 message)
+        protected static Task OnTestMessage0_266(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage267(TestMessage267 message)
+        protected static Task OnTestMessage267(TestMessage267 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_267(TestMessage0 message)
+        protected static Task OnTestMessage0_267(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage268(TestMessage268 message)
+        protected static Task OnTestMessage268(TestMessage268 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_268(TestMessage0 message)
+        protected static Task OnTestMessage0_268(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage269(TestMessage269 message)
+        protected static Task OnTestMessage269(TestMessage269 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_269(TestMessage0 message)
+        protected static Task OnTestMessage0_269(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage270(TestMessage270 message)
+        protected static Task OnTestMessage270(TestMessage270 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_270(TestMessage0 message)
+        protected static Task OnTestMessage0_270(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage271(TestMessage271 message)
+        protected static Task OnTestMessage271(TestMessage271 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_271(TestMessage0 message)
+        protected static Task OnTestMessage0_271(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage272(TestMessage272 message)
+        protected static Task OnTestMessage272(TestMessage272 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_272(TestMessage0 message)
+        protected static Task OnTestMessage0_272(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage273(TestMessage273 message)
+        protected static Task OnTestMessage273(TestMessage273 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_273(TestMessage0 message)
+        protected static Task OnTestMessage0_273(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage274(TestMessage274 message)
+        protected static Task OnTestMessage274(TestMessage274 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_274(TestMessage0 message)
+        protected static Task OnTestMessage0_274(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage275(TestMessage275 message)
+        protected static Task OnTestMessage275(TestMessage275 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_275(TestMessage0 message)
+        protected static Task OnTestMessage0_275(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage276(TestMessage276 message)
+        protected static Task OnTestMessage276(TestMessage276 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_276(TestMessage0 message)
+        protected static Task OnTestMessage0_276(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage277(TestMessage277 message)
+        protected static Task OnTestMessage277(TestMessage277 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_277(TestMessage0 message)
+        protected static Task OnTestMessage0_277(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage278(TestMessage278 message)
+        protected static Task OnTestMessage278(TestMessage278 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_278(TestMessage0 message)
+        protected static Task OnTestMessage0_278(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage279(TestMessage279 message)
+        protected static Task OnTestMessage279(TestMessage279 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_279(TestMessage0 message)
+        protected static Task OnTestMessage0_279(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage280(TestMessage280 message)
+        protected static Task OnTestMessage280(TestMessage280 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_280(TestMessage0 message)
+        protected static Task OnTestMessage0_280(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage281(TestMessage281 message)
+        protected static Task OnTestMessage281(TestMessage281 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_281(TestMessage0 message)
+        protected static Task OnTestMessage0_281(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage282(TestMessage282 message)
+        protected static Task OnTestMessage282(TestMessage282 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_282(TestMessage0 message)
+        protected static Task OnTestMessage0_282(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage283(TestMessage283 message)
+        protected static Task OnTestMessage283(TestMessage283 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_283(TestMessage0 message)
+        protected static Task OnTestMessage0_283(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage284(TestMessage284 message)
+        protected static Task OnTestMessage284(TestMessage284 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_284(TestMessage0 message)
+        protected static Task OnTestMessage0_284(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage285(TestMessage285 message)
+        protected static Task OnTestMessage285(TestMessage285 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_285(TestMessage0 message)
+        protected static Task OnTestMessage0_285(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage286(TestMessage286 message)
+        protected static Task OnTestMessage286(TestMessage286 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_286(TestMessage0 message)
+        protected static Task OnTestMessage0_286(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage287(TestMessage287 message)
+        protected static Task OnTestMessage287(TestMessage287 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_287(TestMessage0 message)
+        protected static Task OnTestMessage0_287(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage288(TestMessage288 message)
+        protected static Task OnTestMessage288(TestMessage288 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_288(TestMessage0 message)
+        protected static Task OnTestMessage0_288(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage289(TestMessage289 message)
+        protected static Task OnTestMessage289(TestMessage289 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_289(TestMessage0 message)
+        protected static Task OnTestMessage0_289(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage290(TestMessage290 message)
+        protected static Task OnTestMessage290(TestMessage290 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_290(TestMessage0 message)
+        protected static Task OnTestMessage0_290(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage291(TestMessage291 message)
+        protected static Task OnTestMessage291(TestMessage291 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_291(TestMessage0 message)
+        protected static Task OnTestMessage0_291(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage292(TestMessage292 message)
+        protected static Task OnTestMessage292(TestMessage292 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_292(TestMessage0 message)
+        protected static Task OnTestMessage0_292(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage293(TestMessage293 message)
+        protected static Task OnTestMessage293(TestMessage293 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_293(TestMessage0 message)
+        protected static Task OnTestMessage0_293(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage294(TestMessage294 message)
+        protected static Task OnTestMessage294(TestMessage294 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_294(TestMessage0 message)
+        protected static Task OnTestMessage0_294(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage295(TestMessage295 message)
+        protected static Task OnTestMessage295(TestMessage295 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_295(TestMessage0 message)
+        protected static Task OnTestMessage0_295(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage296(TestMessage296 message)
+        protected static Task OnTestMessage296(TestMessage296 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_296(TestMessage0 message)
+        protected static Task OnTestMessage0_296(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage297(TestMessage297 message)
+        protected static Task OnTestMessage297(TestMessage297 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_297(TestMessage0 message)
+        protected static Task OnTestMessage0_297(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage298(TestMessage298 message)
+        protected static Task OnTestMessage298(TestMessage298 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_298(TestMessage0 message)
+        protected static Task OnTestMessage0_298(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage299(TestMessage299 message)
+        protected static Task OnTestMessage299(TestMessage299 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_299(TestMessage0 message)
+        protected static Task OnTestMessage0_299(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage300(TestMessage300 message)
+        protected static Task OnTestMessage300(TestMessage300 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_300(TestMessage0 message)
+        protected static Task OnTestMessage0_300(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage301(TestMessage301 message)
+        protected static Task OnTestMessage301(TestMessage301 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_301(TestMessage0 message)
+        protected static Task OnTestMessage0_301(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage302(TestMessage302 message)
+        protected static Task OnTestMessage302(TestMessage302 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_302(TestMessage0 message)
+        protected static Task OnTestMessage0_302(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage303(TestMessage303 message)
+        protected static Task OnTestMessage303(TestMessage303 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_303(TestMessage0 message)
+        protected static Task OnTestMessage0_303(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage304(TestMessage304 message)
+        protected static Task OnTestMessage304(TestMessage304 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_304(TestMessage0 message)
+        protected static Task OnTestMessage0_304(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage305(TestMessage305 message)
+        protected static Task OnTestMessage305(TestMessage305 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_305(TestMessage0 message)
+        protected static Task OnTestMessage0_305(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage306(TestMessage306 message)
+        protected static Task OnTestMessage306(TestMessage306 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_306(TestMessage0 message)
+        protected static Task OnTestMessage0_306(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage307(TestMessage307 message)
+        protected static Task OnTestMessage307(TestMessage307 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_307(TestMessage0 message)
+        protected static Task OnTestMessage0_307(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage308(TestMessage308 message)
+        protected static Task OnTestMessage308(TestMessage308 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_308(TestMessage0 message)
+        protected static Task OnTestMessage0_308(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage309(TestMessage309 message)
+        protected static Task OnTestMessage309(TestMessage309 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_309(TestMessage0 message)
+        protected static Task OnTestMessage0_309(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage310(TestMessage310 message)
+        protected static Task OnTestMessage310(TestMessage310 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_310(TestMessage0 message)
+        protected static Task OnTestMessage0_310(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage311(TestMessage311 message)
+        protected static Task OnTestMessage311(TestMessage311 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_311(TestMessage0 message)
+        protected static Task OnTestMessage0_311(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage312(TestMessage312 message)
+        protected static Task OnTestMessage312(TestMessage312 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_312(TestMessage0 message)
+        protected static Task OnTestMessage0_312(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage313(TestMessage313 message)
+        protected static Task OnTestMessage313(TestMessage313 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_313(TestMessage0 message)
+        protected static Task OnTestMessage0_313(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage314(TestMessage314 message)
+        protected static Task OnTestMessage314(TestMessage314 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_314(TestMessage0 message)
+        protected static Task OnTestMessage0_314(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage315(TestMessage315 message)
+        protected static Task OnTestMessage315(TestMessage315 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_315(TestMessage0 message)
+        protected static Task OnTestMessage0_315(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage316(TestMessage316 message)
+        protected static Task OnTestMessage316(TestMessage316 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_316(TestMessage0 message)
+        protected static Task OnTestMessage0_316(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage317(TestMessage317 message)
+        protected static Task OnTestMessage317(TestMessage317 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_317(TestMessage0 message)
+        protected static Task OnTestMessage0_317(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage318(TestMessage318 message)
+        protected static Task OnTestMessage318(TestMessage318 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_318(TestMessage0 message)
+        protected static Task OnTestMessage0_318(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage319(TestMessage319 message)
+        protected static Task OnTestMessage319(TestMessage319 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_319(TestMessage0 message)
+        protected static Task OnTestMessage0_319(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage320(TestMessage320 message)
+        protected static Task OnTestMessage320(TestMessage320 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_320(TestMessage0 message)
+        protected static Task OnTestMessage0_320(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage321(TestMessage321 message)
+        protected static Task OnTestMessage321(TestMessage321 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_321(TestMessage0 message)
+        protected static Task OnTestMessage0_321(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage322(TestMessage322 message)
+        protected static Task OnTestMessage322(TestMessage322 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_322(TestMessage0 message)
+        protected static Task OnTestMessage0_322(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage323(TestMessage323 message)
+        protected static Task OnTestMessage323(TestMessage323 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_323(TestMessage0 message)
+        protected static Task OnTestMessage0_323(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage324(TestMessage324 message)
+        protected static Task OnTestMessage324(TestMessage324 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_324(TestMessage0 message)
+        protected static Task OnTestMessage0_324(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage325(TestMessage325 message)
+        protected static Task OnTestMessage325(TestMessage325 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_325(TestMessage0 message)
+        protected static Task OnTestMessage0_325(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage326(TestMessage326 message)
+        protected static Task OnTestMessage326(TestMessage326 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_326(TestMessage0 message)
+        protected static Task OnTestMessage0_326(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage327(TestMessage327 message)
+        protected static Task OnTestMessage327(TestMessage327 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_327(TestMessage0 message)
+        protected static Task OnTestMessage0_327(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage328(TestMessage328 message)
+        protected static Task OnTestMessage328(TestMessage328 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_328(TestMessage0 message)
+        protected static Task OnTestMessage0_328(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage329(TestMessage329 message)
+        protected static Task OnTestMessage329(TestMessage329 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_329(TestMessage0 message)
+        protected static Task OnTestMessage0_329(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage330(TestMessage330 message)
+        protected static Task OnTestMessage330(TestMessage330 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_330(TestMessage0 message)
+        protected static Task OnTestMessage0_330(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage331(TestMessage331 message)
+        protected static Task OnTestMessage331(TestMessage331 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_331(TestMessage0 message)
+        protected static Task OnTestMessage0_331(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage332(TestMessage332 message)
+        protected static Task OnTestMessage332(TestMessage332 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_332(TestMessage0 message)
+        protected static Task OnTestMessage0_332(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage333(TestMessage333 message)
+        protected static Task OnTestMessage333(TestMessage333 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_333(TestMessage0 message)
+        protected static Task OnTestMessage0_333(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage334(TestMessage334 message)
+        protected static Task OnTestMessage334(TestMessage334 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_334(TestMessage0 message)
+        protected static Task OnTestMessage0_334(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage335(TestMessage335 message)
+        protected static Task OnTestMessage335(TestMessage335 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_335(TestMessage0 message)
+        protected static Task OnTestMessage0_335(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage336(TestMessage336 message)
+        protected static Task OnTestMessage336(TestMessage336 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_336(TestMessage0 message)
+        protected static Task OnTestMessage0_336(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage337(TestMessage337 message)
+        protected static Task OnTestMessage337(TestMessage337 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_337(TestMessage0 message)
+        protected static Task OnTestMessage0_337(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage338(TestMessage338 message)
+        protected static Task OnTestMessage338(TestMessage338 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_338(TestMessage0 message)
+        protected static Task OnTestMessage0_338(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage339(TestMessage339 message)
+        protected static Task OnTestMessage339(TestMessage339 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_339(TestMessage0 message)
+        protected static Task OnTestMessage0_339(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage340(TestMessage340 message)
+        protected static Task OnTestMessage340(TestMessage340 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_340(TestMessage0 message)
+        protected static Task OnTestMessage0_340(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage341(TestMessage341 message)
+        protected static Task OnTestMessage341(TestMessage341 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_341(TestMessage0 message)
+        protected static Task OnTestMessage0_341(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage342(TestMessage342 message)
+        protected static Task OnTestMessage342(TestMessage342 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_342(TestMessage0 message)
+        protected static Task OnTestMessage0_342(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage343(TestMessage343 message)
+        protected static Task OnTestMessage343(TestMessage343 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_343(TestMessage0 message)
+        protected static Task OnTestMessage0_343(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage344(TestMessage344 message)
+        protected static Task OnTestMessage344(TestMessage344 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_344(TestMessage0 message)
+        protected static Task OnTestMessage0_344(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage345(TestMessage345 message)
+        protected static Task OnTestMessage345(TestMessage345 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_345(TestMessage0 message)
+        protected static Task OnTestMessage0_345(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage346(TestMessage346 message)
+        protected static Task OnTestMessage346(TestMessage346 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_346(TestMessage0 message)
+        protected static Task OnTestMessage0_346(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage347(TestMessage347 message)
+        protected static Task OnTestMessage347(TestMessage347 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_347(TestMessage0 message)
+        protected static Task OnTestMessage0_347(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage348(TestMessage348 message)
+        protected static Task OnTestMessage348(TestMessage348 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_348(TestMessage0 message)
+        protected static Task OnTestMessage0_348(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage349(TestMessage349 message)
+        protected static Task OnTestMessage349(TestMessage349 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_349(TestMessage0 message)
+        protected static Task OnTestMessage0_349(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage350(TestMessage350 message)
+        protected static Task OnTestMessage350(TestMessage350 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_350(TestMessage0 message)
+        protected static Task OnTestMessage0_350(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage351(TestMessage351 message)
+        protected static Task OnTestMessage351(TestMessage351 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_351(TestMessage0 message)
+        protected static Task OnTestMessage0_351(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage352(TestMessage352 message)
+        protected static Task OnTestMessage352(TestMessage352 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_352(TestMessage0 message)
+        protected static Task OnTestMessage0_352(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage353(TestMessage353 message)
+        protected static Task OnTestMessage353(TestMessage353 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_353(TestMessage0 message)
+        protected static Task OnTestMessage0_353(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage354(TestMessage354 message)
+        protected static Task OnTestMessage354(TestMessage354 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_354(TestMessage0 message)
+        protected static Task OnTestMessage0_354(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage355(TestMessage355 message)
+        protected static Task OnTestMessage355(TestMessage355 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_355(TestMessage0 message)
+        protected static Task OnTestMessage0_355(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage356(TestMessage356 message)
+        protected static Task OnTestMessage356(TestMessage356 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_356(TestMessage0 message)
+        protected static Task OnTestMessage0_356(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage357(TestMessage357 message)
+        protected static Task OnTestMessage357(TestMessage357 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_357(TestMessage0 message)
+        protected static Task OnTestMessage0_357(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage358(TestMessage358 message)
+        protected static Task OnTestMessage358(TestMessage358 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_358(TestMessage0 message)
+        protected static Task OnTestMessage0_358(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage359(TestMessage359 message)
+        protected static Task OnTestMessage359(TestMessage359 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_359(TestMessage0 message)
+        protected static Task OnTestMessage0_359(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage360(TestMessage360 message)
+        protected static Task OnTestMessage360(TestMessage360 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_360(TestMessage0 message)
+        protected static Task OnTestMessage0_360(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage361(TestMessage361 message)
+        protected static Task OnTestMessage361(TestMessage361 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_361(TestMessage0 message)
+        protected static Task OnTestMessage0_361(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage362(TestMessage362 message)
+        protected static Task OnTestMessage362(TestMessage362 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_362(TestMessage0 message)
+        protected static Task OnTestMessage0_362(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage363(TestMessage363 message)
+        protected static Task OnTestMessage363(TestMessage363 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_363(TestMessage0 message)
+        protected static Task OnTestMessage0_363(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage364(TestMessage364 message)
+        protected static Task OnTestMessage364(TestMessage364 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_364(TestMessage0 message)
+        protected static Task OnTestMessage0_364(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage365(TestMessage365 message)
+        protected static Task OnTestMessage365(TestMessage365 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_365(TestMessage0 message)
+        protected static Task OnTestMessage0_365(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage366(TestMessage366 message)
+        protected static Task OnTestMessage366(TestMessage366 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_366(TestMessage0 message)
+        protected static Task OnTestMessage0_366(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage367(TestMessage367 message)
+        protected static Task OnTestMessage367(TestMessage367 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_367(TestMessage0 message)
+        protected static Task OnTestMessage0_367(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage368(TestMessage368 message)
+        protected static Task OnTestMessage368(TestMessage368 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_368(TestMessage0 message)
+        protected static Task OnTestMessage0_368(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage369(TestMessage369 message)
+        protected static Task OnTestMessage369(TestMessage369 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_369(TestMessage0 message)
+        protected static Task OnTestMessage0_369(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage370(TestMessage370 message)
+        protected static Task OnTestMessage370(TestMessage370 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_370(TestMessage0 message)
+        protected static Task OnTestMessage0_370(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage371(TestMessage371 message)
+        protected static Task OnTestMessage371(TestMessage371 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_371(TestMessage0 message)
+        protected static Task OnTestMessage0_371(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage372(TestMessage372 message)
+        protected static Task OnTestMessage372(TestMessage372 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_372(TestMessage0 message)
+        protected static Task OnTestMessage0_372(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage373(TestMessage373 message)
+        protected static Task OnTestMessage373(TestMessage373 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_373(TestMessage0 message)
+        protected static Task OnTestMessage0_373(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage374(TestMessage374 message)
+        protected static Task OnTestMessage374(TestMessage374 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_374(TestMessage0 message)
+        protected static Task OnTestMessage0_374(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage375(TestMessage375 message)
+        protected static Task OnTestMessage375(TestMessage375 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_375(TestMessage0 message)
+        protected static Task OnTestMessage0_375(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage376(TestMessage376 message)
+        protected static Task OnTestMessage376(TestMessage376 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_376(TestMessage0 message)
+        protected static Task OnTestMessage0_376(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage377(TestMessage377 message)
+        protected static Task OnTestMessage377(TestMessage377 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_377(TestMessage0 message)
+        protected static Task OnTestMessage0_377(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage378(TestMessage378 message)
+        protected static Task OnTestMessage378(TestMessage378 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_378(TestMessage0 message)
+        protected static Task OnTestMessage0_378(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage379(TestMessage379 message)
+        protected static Task OnTestMessage379(TestMessage379 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_379(TestMessage0 message)
+        protected static Task OnTestMessage0_379(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage380(TestMessage380 message)
+        protected static Task OnTestMessage380(TestMessage380 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_380(TestMessage0 message)
+        protected static Task OnTestMessage0_380(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage381(TestMessage381 message)
+        protected static Task OnTestMessage381(TestMessage381 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_381(TestMessage0 message)
+        protected static Task OnTestMessage0_381(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage382(TestMessage382 message)
+        protected static Task OnTestMessage382(TestMessage382 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_382(TestMessage0 message)
+        protected static Task OnTestMessage0_382(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage383(TestMessage383 message)
+        protected static Task OnTestMessage383(TestMessage383 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_383(TestMessage0 message)
+        protected static Task OnTestMessage0_383(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage384(TestMessage384 message)
+        protected static Task OnTestMessage384(TestMessage384 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_384(TestMessage0 message)
+        protected static Task OnTestMessage0_384(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage385(TestMessage385 message)
+        protected static Task OnTestMessage385(TestMessage385 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_385(TestMessage0 message)
+        protected static Task OnTestMessage0_385(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage386(TestMessage386 message)
+        protected static Task OnTestMessage386(TestMessage386 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_386(TestMessage0 message)
+        protected static Task OnTestMessage0_386(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage387(TestMessage387 message)
+        protected static Task OnTestMessage387(TestMessage387 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_387(TestMessage0 message)
+        protected static Task OnTestMessage0_387(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage388(TestMessage388 message)
+        protected static Task OnTestMessage388(TestMessage388 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_388(TestMessage0 message)
+        protected static Task OnTestMessage0_388(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage389(TestMessage389 message)
+        protected static Task OnTestMessage389(TestMessage389 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_389(TestMessage0 message)
+        protected static Task OnTestMessage0_389(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage390(TestMessage390 message)
+        protected static Task OnTestMessage390(TestMessage390 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_390(TestMessage0 message)
+        protected static Task OnTestMessage0_390(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage391(TestMessage391 message)
+        protected static Task OnTestMessage391(TestMessage391 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_391(TestMessage0 message)
+        protected static Task OnTestMessage0_391(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage392(TestMessage392 message)
+        protected static Task OnTestMessage392(TestMessage392 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_392(TestMessage0 message)
+        protected static Task OnTestMessage0_392(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage393(TestMessage393 message)
+        protected static Task OnTestMessage393(TestMessage393 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_393(TestMessage0 message)
+        protected static Task OnTestMessage0_393(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage394(TestMessage394 message)
+        protected static Task OnTestMessage394(TestMessage394 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_394(TestMessage0 message)
+        protected static Task OnTestMessage0_394(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage395(TestMessage395 message)
+        protected static Task OnTestMessage395(TestMessage395 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_395(TestMessage0 message)
+        protected static Task OnTestMessage0_395(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage396(TestMessage396 message)
+        protected static Task OnTestMessage396(TestMessage396 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_396(TestMessage0 message)
+        protected static Task OnTestMessage0_396(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage397(TestMessage397 message)
+        protected static Task OnTestMessage397(TestMessage397 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_397(TestMessage0 message)
+        protected static Task OnTestMessage0_397(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage398(TestMessage398 message)
+        protected static Task OnTestMessage398(TestMessage398 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_398(TestMessage0 message)
+        protected static Task OnTestMessage0_398(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage399(TestMessage399 message)
+        protected static Task OnTestMessage399(TestMessage399 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_399(TestMessage0 message)
+        protected static Task OnTestMessage0_399(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage400(TestMessage400 message)
+        protected static Task OnTestMessage400(TestMessage400 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_400(TestMessage0 message)
+        protected static Task OnTestMessage0_400(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage401(TestMessage401 message)
+        protected static Task OnTestMessage401(TestMessage401 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_401(TestMessage0 message)
+        protected static Task OnTestMessage0_401(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage402(TestMessage402 message)
+        protected static Task OnTestMessage402(TestMessage402 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_402(TestMessage0 message)
+        protected static Task OnTestMessage0_402(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage403(TestMessage403 message)
+        protected static Task OnTestMessage403(TestMessage403 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_403(TestMessage0 message)
+        protected static Task OnTestMessage0_403(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage404(TestMessage404 message)
+        protected static Task OnTestMessage404(TestMessage404 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_404(TestMessage0 message)
+        protected static Task OnTestMessage0_404(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage405(TestMessage405 message)
+        protected static Task OnTestMessage405(TestMessage405 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_405(TestMessage0 message)
+        protected static Task OnTestMessage0_405(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage406(TestMessage406 message)
+        protected static Task OnTestMessage406(TestMessage406 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_406(TestMessage0 message)
+        protected static Task OnTestMessage0_406(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage407(TestMessage407 message)
+        protected static Task OnTestMessage407(TestMessage407 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_407(TestMessage0 message)
+        protected static Task OnTestMessage0_407(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage408(TestMessage408 message)
+        protected static Task OnTestMessage408(TestMessage408 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_408(TestMessage0 message)
+        protected static Task OnTestMessage0_408(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage409(TestMessage409 message)
+        protected static Task OnTestMessage409(TestMessage409 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_409(TestMessage0 message)
+        protected static Task OnTestMessage0_409(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage410(TestMessage410 message)
+        protected static Task OnTestMessage410(TestMessage410 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_410(TestMessage0 message)
+        protected static Task OnTestMessage0_410(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage411(TestMessage411 message)
+        protected static Task OnTestMessage411(TestMessage411 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_411(TestMessage0 message)
+        protected static Task OnTestMessage0_411(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage412(TestMessage412 message)
+        protected static Task OnTestMessage412(TestMessage412 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_412(TestMessage0 message)
+        protected static Task OnTestMessage0_412(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage413(TestMessage413 message)
+        protected static Task OnTestMessage413(TestMessage413 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_413(TestMessage0 message)
+        protected static Task OnTestMessage0_413(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage414(TestMessage414 message)
+        protected static Task OnTestMessage414(TestMessage414 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_414(TestMessage0 message)
+        protected static Task OnTestMessage0_414(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage415(TestMessage415 message)
+        protected static Task OnTestMessage415(TestMessage415 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_415(TestMessage0 message)
+        protected static Task OnTestMessage0_415(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage416(TestMessage416 message)
+        protected static Task OnTestMessage416(TestMessage416 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_416(TestMessage0 message)
+        protected static Task OnTestMessage0_416(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage417(TestMessage417 message)
+        protected static Task OnTestMessage417(TestMessage417 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_417(TestMessage0 message)
+        protected static Task OnTestMessage0_417(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage418(TestMessage418 message)
+        protected static Task OnTestMessage418(TestMessage418 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_418(TestMessage0 message)
+        protected static Task OnTestMessage0_418(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage419(TestMessage419 message)
+        protected static Task OnTestMessage419(TestMessage419 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_419(TestMessage0 message)
+        protected static Task OnTestMessage0_419(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage420(TestMessage420 message)
+        protected static Task OnTestMessage420(TestMessage420 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_420(TestMessage0 message)
+        protected static Task OnTestMessage0_420(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage421(TestMessage421 message)
+        protected static Task OnTestMessage421(TestMessage421 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_421(TestMessage0 message)
+        protected static Task OnTestMessage0_421(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage422(TestMessage422 message)
+        protected static Task OnTestMessage422(TestMessage422 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_422(TestMessage0 message)
+        protected static Task OnTestMessage0_422(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage423(TestMessage423 message)
+        protected static Task OnTestMessage423(TestMessage423 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_423(TestMessage0 message)
+        protected static Task OnTestMessage0_423(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage424(TestMessage424 message)
+        protected static Task OnTestMessage424(TestMessage424 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_424(TestMessage0 message)
+        protected static Task OnTestMessage0_424(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage425(TestMessage425 message)
+        protected static Task OnTestMessage425(TestMessage425 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_425(TestMessage0 message)
+        protected static Task OnTestMessage0_425(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage426(TestMessage426 message)
+        protected static Task OnTestMessage426(TestMessage426 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_426(TestMessage0 message)
+        protected static Task OnTestMessage0_426(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage427(TestMessage427 message)
+        protected static Task OnTestMessage427(TestMessage427 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_427(TestMessage0 message)
+        protected static Task OnTestMessage0_427(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage428(TestMessage428 message)
+        protected static Task OnTestMessage428(TestMessage428 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_428(TestMessage0 message)
+        protected static Task OnTestMessage0_428(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage429(TestMessage429 message)
+        protected static Task OnTestMessage429(TestMessage429 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_429(TestMessage0 message)
+        protected static Task OnTestMessage0_429(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage430(TestMessage430 message)
+        protected static Task OnTestMessage430(TestMessage430 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_430(TestMessage0 message)
+        protected static Task OnTestMessage0_430(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage431(TestMessage431 message)
+        protected static Task OnTestMessage431(TestMessage431 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_431(TestMessage0 message)
+        protected static Task OnTestMessage0_431(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage432(TestMessage432 message)
+        protected static Task OnTestMessage432(TestMessage432 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_432(TestMessage0 message)
+        protected static Task OnTestMessage0_432(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage433(TestMessage433 message)
+        protected static Task OnTestMessage433(TestMessage433 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_433(TestMessage0 message)
+        protected static Task OnTestMessage0_433(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage434(TestMessage434 message)
+        protected static Task OnTestMessage434(TestMessage434 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_434(TestMessage0 message)
+        protected static Task OnTestMessage0_434(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage435(TestMessage435 message)
+        protected static Task OnTestMessage435(TestMessage435 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_435(TestMessage0 message)
+        protected static Task OnTestMessage0_435(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage436(TestMessage436 message)
+        protected static Task OnTestMessage436(TestMessage436 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_436(TestMessage0 message)
+        protected static Task OnTestMessage0_436(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage437(TestMessage437 message)
+        protected static Task OnTestMessage437(TestMessage437 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_437(TestMessage0 message)
+        protected static Task OnTestMessage0_437(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage438(TestMessage438 message)
+        protected static Task OnTestMessage438(TestMessage438 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_438(TestMessage0 message)
+        protected static Task OnTestMessage0_438(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage439(TestMessage439 message)
+        protected static Task OnTestMessage439(TestMessage439 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_439(TestMessage0 message)
+        protected static Task OnTestMessage0_439(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage440(TestMessage440 message)
+        protected static Task OnTestMessage440(TestMessage440 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_440(TestMessage0 message)
+        protected static Task OnTestMessage0_440(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage441(TestMessage441 message)
+        protected static Task OnTestMessage441(TestMessage441 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_441(TestMessage0 message)
+        protected static Task OnTestMessage0_441(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage442(TestMessage442 message)
+        protected static Task OnTestMessage442(TestMessage442 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_442(TestMessage0 message)
+        protected static Task OnTestMessage0_442(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage443(TestMessage443 message)
+        protected static Task OnTestMessage443(TestMessage443 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_443(TestMessage0 message)
+        protected static Task OnTestMessage0_443(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage444(TestMessage444 message)
+        protected static Task OnTestMessage444(TestMessage444 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_444(TestMessage0 message)
+        protected static Task OnTestMessage0_444(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage445(TestMessage445 message)
+        protected static Task OnTestMessage445(TestMessage445 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_445(TestMessage0 message)
+        protected static Task OnTestMessage0_445(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage446(TestMessage446 message)
+        protected static Task OnTestMessage446(TestMessage446 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_446(TestMessage0 message)
+        protected static Task OnTestMessage0_446(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage447(TestMessage447 message)
+        protected static Task OnTestMessage447(TestMessage447 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_447(TestMessage0 message)
+        protected static Task OnTestMessage0_447(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage448(TestMessage448 message)
+        protected static Task OnTestMessage448(TestMessage448 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_448(TestMessage0 message)
+        protected static Task OnTestMessage0_448(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage449(TestMessage449 message)
+        protected static Task OnTestMessage449(TestMessage449 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_449(TestMessage0 message)
+        protected static Task OnTestMessage0_449(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage450(TestMessage450 message)
+        protected static Task OnTestMessage450(TestMessage450 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_450(TestMessage0 message)
+        protected static Task OnTestMessage0_450(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage451(TestMessage451 message)
+        protected static Task OnTestMessage451(TestMessage451 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_451(TestMessage0 message)
+        protected static Task OnTestMessage0_451(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage452(TestMessage452 message)
+        protected static Task OnTestMessage452(TestMessage452 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_452(TestMessage0 message)
+        protected static Task OnTestMessage0_452(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage453(TestMessage453 message)
+        protected static Task OnTestMessage453(TestMessage453 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_453(TestMessage0 message)
+        protected static Task OnTestMessage0_453(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage454(TestMessage454 message)
+        protected static Task OnTestMessage454(TestMessage454 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_454(TestMessage0 message)
+        protected static Task OnTestMessage0_454(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage455(TestMessage455 message)
+        protected static Task OnTestMessage455(TestMessage455 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_455(TestMessage0 message)
+        protected static Task OnTestMessage0_455(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage456(TestMessage456 message)
+        protected static Task OnTestMessage456(TestMessage456 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_456(TestMessage0 message)
+        protected static Task OnTestMessage0_456(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage457(TestMessage457 message)
+        protected static Task OnTestMessage457(TestMessage457 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_457(TestMessage0 message)
+        protected static Task OnTestMessage0_457(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage458(TestMessage458 message)
+        protected static Task OnTestMessage458(TestMessage458 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_458(TestMessage0 message)
+        protected static Task OnTestMessage0_458(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage459(TestMessage459 message)
+        protected static Task OnTestMessage459(TestMessage459 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_459(TestMessage0 message)
+        protected static Task OnTestMessage0_459(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage460(TestMessage460 message)
+        protected static Task OnTestMessage460(TestMessage460 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_460(TestMessage0 message)
+        protected static Task OnTestMessage0_460(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage461(TestMessage461 message)
+        protected static Task OnTestMessage461(TestMessage461 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_461(TestMessage0 message)
+        protected static Task OnTestMessage0_461(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage462(TestMessage462 message)
+        protected static Task OnTestMessage462(TestMessage462 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_462(TestMessage0 message)
+        protected static Task OnTestMessage0_462(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage463(TestMessage463 message)
+        protected static Task OnTestMessage463(TestMessage463 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_463(TestMessage0 message)
+        protected static Task OnTestMessage0_463(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage464(TestMessage464 message)
+        protected static Task OnTestMessage464(TestMessage464 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_464(TestMessage0 message)
+        protected static Task OnTestMessage0_464(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage465(TestMessage465 message)
+        protected static Task OnTestMessage465(TestMessage465 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_465(TestMessage0 message)
+        protected static Task OnTestMessage0_465(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage466(TestMessage466 message)
+        protected static Task OnTestMessage466(TestMessage466 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_466(TestMessage0 message)
+        protected static Task OnTestMessage0_466(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage467(TestMessage467 message)
+        protected static Task OnTestMessage467(TestMessage467 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_467(TestMessage0 message)
+        protected static Task OnTestMessage0_467(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage468(TestMessage468 message)
+        protected static Task OnTestMessage468(TestMessage468 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_468(TestMessage0 message)
+        protected static Task OnTestMessage0_468(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage469(TestMessage469 message)
+        protected static Task OnTestMessage469(TestMessage469 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_469(TestMessage0 message)
+        protected static Task OnTestMessage0_469(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage470(TestMessage470 message)
+        protected static Task OnTestMessage470(TestMessage470 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_470(TestMessage0 message)
+        protected static Task OnTestMessage0_470(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage471(TestMessage471 message)
+        protected static Task OnTestMessage471(TestMessage471 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_471(TestMessage0 message)
+        protected static Task OnTestMessage0_471(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage472(TestMessage472 message)
+        protected static Task OnTestMessage472(TestMessage472 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_472(TestMessage0 message)
+        protected static Task OnTestMessage0_472(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage473(TestMessage473 message)
+        protected static Task OnTestMessage473(TestMessage473 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_473(TestMessage0 message)
+        protected static Task OnTestMessage0_473(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage474(TestMessage474 message)
+        protected static Task OnTestMessage474(TestMessage474 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_474(TestMessage0 message)
+        protected static Task OnTestMessage0_474(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage475(TestMessage475 message)
+        protected static Task OnTestMessage475(TestMessage475 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_475(TestMessage0 message)
+        protected static Task OnTestMessage0_475(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage476(TestMessage476 message)
+        protected static Task OnTestMessage476(TestMessage476 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_476(TestMessage0 message)
+        protected static Task OnTestMessage0_476(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage477(TestMessage477 message)
+        protected static Task OnTestMessage477(TestMessage477 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_477(TestMessage0 message)
+        protected static Task OnTestMessage0_477(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage478(TestMessage478 message)
+        protected static Task OnTestMessage478(TestMessage478 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_478(TestMessage0 message)
+        protected static Task OnTestMessage0_478(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage479(TestMessage479 message)
+        protected static Task OnTestMessage479(TestMessage479 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_479(TestMessage0 message)
+        protected static Task OnTestMessage0_479(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage480(TestMessage480 message)
+        protected static Task OnTestMessage480(TestMessage480 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_480(TestMessage0 message)
+        protected static Task OnTestMessage0_480(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage481(TestMessage481 message)
+        protected static Task OnTestMessage481(TestMessage481 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_481(TestMessage0 message)
+        protected static Task OnTestMessage0_481(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage482(TestMessage482 message)
+        protected static Task OnTestMessage482(TestMessage482 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_482(TestMessage0 message)
+        protected static Task OnTestMessage0_482(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage483(TestMessage483 message)
+        protected static Task OnTestMessage483(TestMessage483 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_483(TestMessage0 message)
+        protected static Task OnTestMessage0_483(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage484(TestMessage484 message)
+        protected static Task OnTestMessage484(TestMessage484 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_484(TestMessage0 message)
+        protected static Task OnTestMessage0_484(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage485(TestMessage485 message)
+        protected static Task OnTestMessage485(TestMessage485 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_485(TestMessage0 message)
+        protected static Task OnTestMessage0_485(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage486(TestMessage486 message)
+        protected static Task OnTestMessage486(TestMessage486 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_486(TestMessage0 message)
+        protected static Task OnTestMessage0_486(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage487(TestMessage487 message)
+        protected static Task OnTestMessage487(TestMessage487 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_487(TestMessage0 message)
+        protected static Task OnTestMessage0_487(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage488(TestMessage488 message)
+        protected static Task OnTestMessage488(TestMessage488 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_488(TestMessage0 message)
+        protected static Task OnTestMessage0_488(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage489(TestMessage489 message)
+        protected static Task OnTestMessage489(TestMessage489 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_489(TestMessage0 message)
+        protected static Task OnTestMessage0_489(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage490(TestMessage490 message)
+        protected static Task OnTestMessage490(TestMessage490 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_490(TestMessage0 message)
+        protected static Task OnTestMessage0_490(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage491(TestMessage491 message)
+        protected static Task OnTestMessage491(TestMessage491 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_491(TestMessage0 message)
+        protected static Task OnTestMessage0_491(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage492(TestMessage492 message)
+        protected static Task OnTestMessage492(TestMessage492 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_492(TestMessage0 message)
+        protected static Task OnTestMessage0_492(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage493(TestMessage493 message)
+        protected static Task OnTestMessage493(TestMessage493 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_493(TestMessage0 message)
+        protected static Task OnTestMessage0_493(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage494(TestMessage494 message)
+        protected static Task OnTestMessage494(TestMessage494 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_494(TestMessage0 message)
+        protected static Task OnTestMessage0_494(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage495(TestMessage495 message)
+        protected static Task OnTestMessage495(TestMessage495 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_495(TestMessage0 message)
+        protected static Task OnTestMessage0_495(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage496(TestMessage496 message)
+        protected static Task OnTestMessage496(TestMessage496 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_496(TestMessage0 message)
+        protected static Task OnTestMessage0_496(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage497(TestMessage497 message)
+        protected static Task OnTestMessage497(TestMessage497 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_497(TestMessage0 message)
+        protected static Task OnTestMessage0_497(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage498(TestMessage498 message)
+        protected static Task OnTestMessage498(TestMessage498 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_498(TestMessage0 message)
+        protected static Task OnTestMessage0_498(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage499(TestMessage499 message)
+        protected static Task OnTestMessage499(TestMessage499 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_499(TestMessage0 message)
+        protected static Task OnTestMessage0_499(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage500(TestMessage500 message)
+        protected static Task OnTestMessage500(TestMessage500 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_500(TestMessage0 message)
+        protected static Task OnTestMessage0_500(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage501(TestMessage501 message)
+        protected static Task OnTestMessage501(TestMessage501 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_501(TestMessage0 message)
+        protected static Task OnTestMessage0_501(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage502(TestMessage502 message)
+        protected static Task OnTestMessage502(TestMessage502 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_502(TestMessage0 message)
+        protected static Task OnTestMessage0_502(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage503(TestMessage503 message)
+        protected static Task OnTestMessage503(TestMessage503 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_503(TestMessage0 message)
+        protected static Task OnTestMessage0_503(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage504(TestMessage504 message)
+        protected static Task OnTestMessage504(TestMessage504 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_504(TestMessage0 message)
+        protected static Task OnTestMessage0_504(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage505(TestMessage505 message)
+        protected static Task OnTestMessage505(TestMessage505 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_505(TestMessage0 message)
+        protected static Task OnTestMessage0_505(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage506(TestMessage506 message)
+        protected static Task OnTestMessage506(TestMessage506 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_506(TestMessage0 message)
+        protected static Task OnTestMessage0_506(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage507(TestMessage507 message)
+        protected static Task OnTestMessage507(TestMessage507 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_507(TestMessage0 message)
+        protected static Task OnTestMessage0_507(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage508(TestMessage508 message)
+        protected static Task OnTestMessage508(TestMessage508 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_508(TestMessage0 message)
+        protected static Task OnTestMessage0_508(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage509(TestMessage509 message)
+        protected static Task OnTestMessage509(TestMessage509 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_509(TestMessage0 message)
+        protected static Task OnTestMessage0_509(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage510(TestMessage510 message)
+        protected static Task OnTestMessage510(TestMessage510 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_510(TestMessage0 message)
+        protected static Task OnTestMessage0_510(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage511(TestMessage511 message)
+        protected static Task OnTestMessage511(TestMessage511 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_511(TestMessage0 message)
+        protected static Task OnTestMessage0_511(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage512(TestMessage512 message)
+        protected static Task OnTestMessage512(TestMessage512 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_512(TestMessage0 message)
+        protected static Task OnTestMessage0_512(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage513(TestMessage513 message)
+        protected static Task OnTestMessage513(TestMessage513 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_513(TestMessage0 message)
+        protected static Task OnTestMessage0_513(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage514(TestMessage514 message)
+        protected static Task OnTestMessage514(TestMessage514 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_514(TestMessage0 message)
+        protected static Task OnTestMessage0_514(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage515(TestMessage515 message)
+        protected static Task OnTestMessage515(TestMessage515 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_515(TestMessage0 message)
+        protected static Task OnTestMessage0_515(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage516(TestMessage516 message)
+        protected static Task OnTestMessage516(TestMessage516 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_516(TestMessage0 message)
+        protected static Task OnTestMessage0_516(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage517(TestMessage517 message)
+        protected static Task OnTestMessage517(TestMessage517 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_517(TestMessage0 message)
+        protected static Task OnTestMessage0_517(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage518(TestMessage518 message)
+        protected static Task OnTestMessage518(TestMessage518 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_518(TestMessage0 message)
+        protected static Task OnTestMessage0_518(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage519(TestMessage519 message)
+        protected static Task OnTestMessage519(TestMessage519 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_519(TestMessage0 message)
+        protected static Task OnTestMessage0_519(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage520(TestMessage520 message)
+        protected static Task OnTestMessage520(TestMessage520 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_520(TestMessage0 message)
+        protected static Task OnTestMessage0_520(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage521(TestMessage521 message)
+        protected static Task OnTestMessage521(TestMessage521 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_521(TestMessage0 message)
+        protected static Task OnTestMessage0_521(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage522(TestMessage522 message)
+        protected static Task OnTestMessage522(TestMessage522 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_522(TestMessage0 message)
+        protected static Task OnTestMessage0_522(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage523(TestMessage523 message)
+        protected static Task OnTestMessage523(TestMessage523 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_523(TestMessage0 message)
+        protected static Task OnTestMessage0_523(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage524(TestMessage524 message)
+        protected static Task OnTestMessage524(TestMessage524 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_524(TestMessage0 message)
+        protected static Task OnTestMessage0_524(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage525(TestMessage525 message)
+        protected static Task OnTestMessage525(TestMessage525 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_525(TestMessage0 message)
+        protected static Task OnTestMessage0_525(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage526(TestMessage526 message)
+        protected static Task OnTestMessage526(TestMessage526 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_526(TestMessage0 message)
+        protected static Task OnTestMessage0_526(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage527(TestMessage527 message)
+        protected static Task OnTestMessage527(TestMessage527 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_527(TestMessage0 message)
+        protected static Task OnTestMessage0_527(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage528(TestMessage528 message)
+        protected static Task OnTestMessage528(TestMessage528 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_528(TestMessage0 message)
+        protected static Task OnTestMessage0_528(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage529(TestMessage529 message)
+        protected static Task OnTestMessage529(TestMessage529 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_529(TestMessage0 message)
+        protected static Task OnTestMessage0_529(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage530(TestMessage530 message)
+        protected static Task OnTestMessage530(TestMessage530 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_530(TestMessage0 message)
+        protected static Task OnTestMessage0_530(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage531(TestMessage531 message)
+        protected static Task OnTestMessage531(TestMessage531 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_531(TestMessage0 message)
+        protected static Task OnTestMessage0_531(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage532(TestMessage532 message)
+        protected static Task OnTestMessage532(TestMessage532 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_532(TestMessage0 message)
+        protected static Task OnTestMessage0_532(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage533(TestMessage533 message)
+        protected static Task OnTestMessage533(TestMessage533 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_533(TestMessage0 message)
+        protected static Task OnTestMessage0_533(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage534(TestMessage534 message)
+        protected static Task OnTestMessage534(TestMessage534 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_534(TestMessage0 message)
+        protected static Task OnTestMessage0_534(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage535(TestMessage535 message)
+        protected static Task OnTestMessage535(TestMessage535 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_535(TestMessage0 message)
+        protected static Task OnTestMessage0_535(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage536(TestMessage536 message)
+        protected static Task OnTestMessage536(TestMessage536 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_536(TestMessage0 message)
+        protected static Task OnTestMessage0_536(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage537(TestMessage537 message)
+        protected static Task OnTestMessage537(TestMessage537 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_537(TestMessage0 message)
+        protected static Task OnTestMessage0_537(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage538(TestMessage538 message)
+        protected static Task OnTestMessage538(TestMessage538 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_538(TestMessage0 message)
+        protected static Task OnTestMessage0_538(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage539(TestMessage539 message)
+        protected static Task OnTestMessage539(TestMessage539 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_539(TestMessage0 message)
+        protected static Task OnTestMessage0_539(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage540(TestMessage540 message)
+        protected static Task OnTestMessage540(TestMessage540 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_540(TestMessage0 message)
+        protected static Task OnTestMessage0_540(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage541(TestMessage541 message)
+        protected static Task OnTestMessage541(TestMessage541 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_541(TestMessage0 message)
+        protected static Task OnTestMessage0_541(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage542(TestMessage542 message)
+        protected static Task OnTestMessage542(TestMessage542 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_542(TestMessage0 message)
+        protected static Task OnTestMessage0_542(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage543(TestMessage543 message)
+        protected static Task OnTestMessage543(TestMessage543 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_543(TestMessage0 message)
+        protected static Task OnTestMessage0_543(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage544(TestMessage544 message)
+        protected static Task OnTestMessage544(TestMessage544 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_544(TestMessage0 message)
+        protected static Task OnTestMessage0_544(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage545(TestMessage545 message)
+        protected static Task OnTestMessage545(TestMessage545 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_545(TestMessage0 message)
+        protected static Task OnTestMessage0_545(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage546(TestMessage546 message)
+        protected static Task OnTestMessage546(TestMessage546 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_546(TestMessage0 message)
+        protected static Task OnTestMessage0_546(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage547(TestMessage547 message)
+        protected static Task OnTestMessage547(TestMessage547 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_547(TestMessage0 message)
+        protected static Task OnTestMessage0_547(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage548(TestMessage548 message)
+        protected static Task OnTestMessage548(TestMessage548 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_548(TestMessage0 message)
+        protected static Task OnTestMessage0_548(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage549(TestMessage549 message)
+        protected static Task OnTestMessage549(TestMessage549 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_549(TestMessage0 message)
+        protected static Task OnTestMessage0_549(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage550(TestMessage550 message)
+        protected static Task OnTestMessage550(TestMessage550 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_550(TestMessage0 message)
+        protected static Task OnTestMessage0_550(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage551(TestMessage551 message)
+        protected static Task OnTestMessage551(TestMessage551 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_551(TestMessage0 message)
+        protected static Task OnTestMessage0_551(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage552(TestMessage552 message)
+        protected static Task OnTestMessage552(TestMessage552 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_552(TestMessage0 message)
+        protected static Task OnTestMessage0_552(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage553(TestMessage553 message)
+        protected static Task OnTestMessage553(TestMessage553 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_553(TestMessage0 message)
+        protected static Task OnTestMessage0_553(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage554(TestMessage554 message)
+        protected static Task OnTestMessage554(TestMessage554 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_554(TestMessage0 message)
+        protected static Task OnTestMessage0_554(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage555(TestMessage555 message)
+        protected static Task OnTestMessage555(TestMessage555 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_555(TestMessage0 message)
+        protected static Task OnTestMessage0_555(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage556(TestMessage556 message)
+        protected static Task OnTestMessage556(TestMessage556 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_556(TestMessage0 message)
+        protected static Task OnTestMessage0_556(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage557(TestMessage557 message)
+        protected static Task OnTestMessage557(TestMessage557 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_557(TestMessage0 message)
+        protected static Task OnTestMessage0_557(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage558(TestMessage558 message)
+        protected static Task OnTestMessage558(TestMessage558 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_558(TestMessage0 message)
+        protected static Task OnTestMessage0_558(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage559(TestMessage559 message)
+        protected static Task OnTestMessage559(TestMessage559 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_559(TestMessage0 message)
+        protected static Task OnTestMessage0_559(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage560(TestMessage560 message)
+        protected static Task OnTestMessage560(TestMessage560 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_560(TestMessage0 message)
+        protected static Task OnTestMessage0_560(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage561(TestMessage561 message)
+        protected static Task OnTestMessage561(TestMessage561 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_561(TestMessage0 message)
+        protected static Task OnTestMessage0_561(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage562(TestMessage562 message)
+        protected static Task OnTestMessage562(TestMessage562 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_562(TestMessage0 message)
+        protected static Task OnTestMessage0_562(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage563(TestMessage563 message)
+        protected static Task OnTestMessage563(TestMessage563 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_563(TestMessage0 message)
+        protected static Task OnTestMessage0_563(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage564(TestMessage564 message)
+        protected static Task OnTestMessage564(TestMessage564 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_564(TestMessage0 message)
+        protected static Task OnTestMessage0_564(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage565(TestMessage565 message)
+        protected static Task OnTestMessage565(TestMessage565 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_565(TestMessage0 message)
+        protected static Task OnTestMessage0_565(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage566(TestMessage566 message)
+        protected static Task OnTestMessage566(TestMessage566 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_566(TestMessage0 message)
+        protected static Task OnTestMessage0_566(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage567(TestMessage567 message)
+        protected static Task OnTestMessage567(TestMessage567 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_567(TestMessage0 message)
+        protected static Task OnTestMessage0_567(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage568(TestMessage568 message)
+        protected static Task OnTestMessage568(TestMessage568 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_568(TestMessage0 message)
+        protected static Task OnTestMessage0_568(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage569(TestMessage569 message)
+        protected static Task OnTestMessage569(TestMessage569 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_569(TestMessage0 message)
+        protected static Task OnTestMessage0_569(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage570(TestMessage570 message)
+        protected static Task OnTestMessage570(TestMessage570 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_570(TestMessage0 message)
+        protected static Task OnTestMessage0_570(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage571(TestMessage571 message)
+        protected static Task OnTestMessage571(TestMessage571 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_571(TestMessage0 message)
+        protected static Task OnTestMessage0_571(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage572(TestMessage572 message)
+        protected static Task OnTestMessage572(TestMessage572 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_572(TestMessage0 message)
+        protected static Task OnTestMessage0_572(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage573(TestMessage573 message)
+        protected static Task OnTestMessage573(TestMessage573 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_573(TestMessage0 message)
+        protected static Task OnTestMessage0_573(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage574(TestMessage574 message)
+        protected static Task OnTestMessage574(TestMessage574 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_574(TestMessage0 message)
+        protected static Task OnTestMessage0_574(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage575(TestMessage575 message)
+        protected static Task OnTestMessage575(TestMessage575 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_575(TestMessage0 message)
+        protected static Task OnTestMessage0_575(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage576(TestMessage576 message)
+        protected static Task OnTestMessage576(TestMessage576 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_576(TestMessage0 message)
+        protected static Task OnTestMessage0_576(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage577(TestMessage577 message)
+        protected static Task OnTestMessage577(TestMessage577 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_577(TestMessage0 message)
+        protected static Task OnTestMessage0_577(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage578(TestMessage578 message)
+        protected static Task OnTestMessage578(TestMessage578 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_578(TestMessage0 message)
+        protected static Task OnTestMessage0_578(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage579(TestMessage579 message)
+        protected static Task OnTestMessage579(TestMessage579 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_579(TestMessage0 message)
+        protected static Task OnTestMessage0_579(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage580(TestMessage580 message)
+        protected static Task OnTestMessage580(TestMessage580 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_580(TestMessage0 message)
+        protected static Task OnTestMessage0_580(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage581(TestMessage581 message)
+        protected static Task OnTestMessage581(TestMessage581 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_581(TestMessage0 message)
+        protected static Task OnTestMessage0_581(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage582(TestMessage582 message)
+        protected static Task OnTestMessage582(TestMessage582 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_582(TestMessage0 message)
+        protected static Task OnTestMessage0_582(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage583(TestMessage583 message)
+        protected static Task OnTestMessage583(TestMessage583 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_583(TestMessage0 message)
+        protected static Task OnTestMessage0_583(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage584(TestMessage584 message)
+        protected static Task OnTestMessage584(TestMessage584 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_584(TestMessage0 message)
+        protected static Task OnTestMessage0_584(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage585(TestMessage585 message)
+        protected static Task OnTestMessage585(TestMessage585 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_585(TestMessage0 message)
+        protected static Task OnTestMessage0_585(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage586(TestMessage586 message)
+        protected static Task OnTestMessage586(TestMessage586 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_586(TestMessage0 message)
+        protected static Task OnTestMessage0_586(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage587(TestMessage587 message)
+        protected static Task OnTestMessage587(TestMessage587 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_587(TestMessage0 message)
+        protected static Task OnTestMessage0_587(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage588(TestMessage588 message)
+        protected static Task OnTestMessage588(TestMessage588 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_588(TestMessage0 message)
+        protected static Task OnTestMessage0_588(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage589(TestMessage589 message)
+        protected static Task OnTestMessage589(TestMessage589 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_589(TestMessage0 message)
+        protected static Task OnTestMessage0_589(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage590(TestMessage590 message)
+        protected static Task OnTestMessage590(TestMessage590 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_590(TestMessage0 message)
+        protected static Task OnTestMessage0_590(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage591(TestMessage591 message)
+        protected static Task OnTestMessage591(TestMessage591 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_591(TestMessage0 message)
+        protected static Task OnTestMessage0_591(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage592(TestMessage592 message)
+        protected static Task OnTestMessage592(TestMessage592 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_592(TestMessage0 message)
+        protected static Task OnTestMessage0_592(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage593(TestMessage593 message)
+        protected static Task OnTestMessage593(TestMessage593 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_593(TestMessage0 message)
+        protected static Task OnTestMessage0_593(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage594(TestMessage594 message)
+        protected static Task OnTestMessage594(TestMessage594 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_594(TestMessage0 message)
+        protected static Task OnTestMessage0_594(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage595(TestMessage595 message)
+        protected static Task OnTestMessage595(TestMessage595 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_595(TestMessage0 message)
+        protected static Task OnTestMessage0_595(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage596(TestMessage596 message)
+        protected static Task OnTestMessage596(TestMessage596 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_596(TestMessage0 message)
+        protected static Task OnTestMessage0_596(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage597(TestMessage597 message)
+        protected static Task OnTestMessage597(TestMessage597 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_597(TestMessage0 message)
+        protected static Task OnTestMessage0_597(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage598(TestMessage598 message)
+        protected static Task OnTestMessage598(TestMessage598 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_598(TestMessage0 message)
+        protected static Task OnTestMessage0_598(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage599(TestMessage599 message)
+        protected static Task OnTestMessage599(TestMessage599 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_599(TestMessage0 message)
+        protected static Task OnTestMessage0_599(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage600(TestMessage600 message)
+        protected static Task OnTestMessage600(TestMessage600 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_600(TestMessage0 message)
+        protected static Task OnTestMessage0_600(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage601(TestMessage601 message)
+        protected static Task OnTestMessage601(TestMessage601 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_601(TestMessage0 message)
+        protected static Task OnTestMessage0_601(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage602(TestMessage602 message)
+        protected static Task OnTestMessage602(TestMessage602 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_602(TestMessage0 message)
+        protected static Task OnTestMessage0_602(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage603(TestMessage603 message)
+        protected static Task OnTestMessage603(TestMessage603 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_603(TestMessage0 message)
+        protected static Task OnTestMessage0_603(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage604(TestMessage604 message)
+        protected static Task OnTestMessage604(TestMessage604 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_604(TestMessage0 message)
+        protected static Task OnTestMessage0_604(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage605(TestMessage605 message)
+        protected static Task OnTestMessage605(TestMessage605 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_605(TestMessage0 message)
+        protected static Task OnTestMessage0_605(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage606(TestMessage606 message)
+        protected static Task OnTestMessage606(TestMessage606 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_606(TestMessage0 message)
+        protected static Task OnTestMessage0_606(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage607(TestMessage607 message)
+        protected static Task OnTestMessage607(TestMessage607 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_607(TestMessage0 message)
+        protected static Task OnTestMessage0_607(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage608(TestMessage608 message)
+        protected static Task OnTestMessage608(TestMessage608 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_608(TestMessage0 message)
+        protected static Task OnTestMessage0_608(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage609(TestMessage609 message)
+        protected static Task OnTestMessage609(TestMessage609 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_609(TestMessage0 message)
+        protected static Task OnTestMessage0_609(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage610(TestMessage610 message)
+        protected static Task OnTestMessage610(TestMessage610 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_610(TestMessage0 message)
+        protected static Task OnTestMessage0_610(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage611(TestMessage611 message)
+        protected static Task OnTestMessage611(TestMessage611 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_611(TestMessage0 message)
+        protected static Task OnTestMessage0_611(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage612(TestMessage612 message)
+        protected static Task OnTestMessage612(TestMessage612 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_612(TestMessage0 message)
+        protected static Task OnTestMessage0_612(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage613(TestMessage613 message)
+        protected static Task OnTestMessage613(TestMessage613 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_613(TestMessage0 message)
+        protected static Task OnTestMessage0_613(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage614(TestMessage614 message)
+        protected static Task OnTestMessage614(TestMessage614 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_614(TestMessage0 message)
+        protected static Task OnTestMessage0_614(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage615(TestMessage615 message)
+        protected static Task OnTestMessage615(TestMessage615 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_615(TestMessage0 message)
+        protected static Task OnTestMessage0_615(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage616(TestMessage616 message)
+        protected static Task OnTestMessage616(TestMessage616 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_616(TestMessage0 message)
+        protected static Task OnTestMessage0_616(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage617(TestMessage617 message)
+        protected static Task OnTestMessage617(TestMessage617 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_617(TestMessage0 message)
+        protected static Task OnTestMessage0_617(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage618(TestMessage618 message)
+        protected static Task OnTestMessage618(TestMessage618 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_618(TestMessage0 message)
+        protected static Task OnTestMessage0_618(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage619(TestMessage619 message)
+        protected static Task OnTestMessage619(TestMessage619 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_619(TestMessage0 message)
+        protected static Task OnTestMessage0_619(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage620(TestMessage620 message)
+        protected static Task OnTestMessage620(TestMessage620 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_620(TestMessage0 message)
+        protected static Task OnTestMessage0_620(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage621(TestMessage621 message)
+        protected static Task OnTestMessage621(TestMessage621 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_621(TestMessage0 message)
+        protected static Task OnTestMessage0_621(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage622(TestMessage622 message)
+        protected static Task OnTestMessage622(TestMessage622 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_622(TestMessage0 message)
+        protected static Task OnTestMessage0_622(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage623(TestMessage623 message)
+        protected static Task OnTestMessage623(TestMessage623 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_623(TestMessage0 message)
+        protected static Task OnTestMessage0_623(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage624(TestMessage624 message)
+        protected static Task OnTestMessage624(TestMessage624 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_624(TestMessage0 message)
+        protected static Task OnTestMessage0_624(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage625(TestMessage625 message)
+        protected static Task OnTestMessage625(TestMessage625 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_625(TestMessage0 message)
+        protected static Task OnTestMessage0_625(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage626(TestMessage626 message)
+        protected static Task OnTestMessage626(TestMessage626 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_626(TestMessage0 message)
+        protected static Task OnTestMessage0_626(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage627(TestMessage627 message)
+        protected static Task OnTestMessage627(TestMessage627 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_627(TestMessage0 message)
+        protected static Task OnTestMessage0_627(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage628(TestMessage628 message)
+        protected static Task OnTestMessage628(TestMessage628 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_628(TestMessage0 message)
+        protected static Task OnTestMessage0_628(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage629(TestMessage629 message)
+        protected static Task OnTestMessage629(TestMessage629 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_629(TestMessage0 message)
+        protected static Task OnTestMessage0_629(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage630(TestMessage630 message)
+        protected static Task OnTestMessage630(TestMessage630 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_630(TestMessage0 message)
+        protected static Task OnTestMessage0_630(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage631(TestMessage631 message)
+        protected static Task OnTestMessage631(TestMessage631 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_631(TestMessage0 message)
+        protected static Task OnTestMessage0_631(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage632(TestMessage632 message)
+        protected static Task OnTestMessage632(TestMessage632 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_632(TestMessage0 message)
+        protected static Task OnTestMessage0_632(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage633(TestMessage633 message)
+        protected static Task OnTestMessage633(TestMessage633 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_633(TestMessage0 message)
+        protected static Task OnTestMessage0_633(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage634(TestMessage634 message)
+        protected static Task OnTestMessage634(TestMessage634 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_634(TestMessage0 message)
+        protected static Task OnTestMessage0_634(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage635(TestMessage635 message)
+        protected static Task OnTestMessage635(TestMessage635 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_635(TestMessage0 message)
+        protected static Task OnTestMessage0_635(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage636(TestMessage636 message)
+        protected static Task OnTestMessage636(TestMessage636 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_636(TestMessage0 message)
+        protected static Task OnTestMessage0_636(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage637(TestMessage637 message)
+        protected static Task OnTestMessage637(TestMessage637 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_637(TestMessage0 message)
+        protected static Task OnTestMessage0_637(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage638(TestMessage638 message)
+        protected static Task OnTestMessage638(TestMessage638 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_638(TestMessage0 message)
+        protected static Task OnTestMessage0_638(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage639(TestMessage639 message)
+        protected static Task OnTestMessage639(TestMessage639 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_639(TestMessage0 message)
+        protected static Task OnTestMessage0_639(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage640(TestMessage640 message)
+        protected static Task OnTestMessage640(TestMessage640 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_640(TestMessage0 message)
+        protected static Task OnTestMessage0_640(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage641(TestMessage641 message)
+        protected static Task OnTestMessage641(TestMessage641 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_641(TestMessage0 message)
+        protected static Task OnTestMessage0_641(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage642(TestMessage642 message)
+        protected static Task OnTestMessage642(TestMessage642 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_642(TestMessage0 message)
+        protected static Task OnTestMessage0_642(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage643(TestMessage643 message)
+        protected static Task OnTestMessage643(TestMessage643 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_643(TestMessage0 message)
+        protected static Task OnTestMessage0_643(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage644(TestMessage644 message)
+        protected static Task OnTestMessage644(TestMessage644 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_644(TestMessage0 message)
+        protected static Task OnTestMessage0_644(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage645(TestMessage645 message)
+        protected static Task OnTestMessage645(TestMessage645 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_645(TestMessage0 message)
+        protected static Task OnTestMessage0_645(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage646(TestMessage646 message)
+        protected static Task OnTestMessage646(TestMessage646 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_646(TestMessage0 message)
+        protected static Task OnTestMessage0_646(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage647(TestMessage647 message)
+        protected static Task OnTestMessage647(TestMessage647 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_647(TestMessage0 message)
+        protected static Task OnTestMessage0_647(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage648(TestMessage648 message)
+        protected static Task OnTestMessage648(TestMessage648 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_648(TestMessage0 message)
+        protected static Task OnTestMessage0_648(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage649(TestMessage649 message)
+        protected static Task OnTestMessage649(TestMessage649 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_649(TestMessage0 message)
+        protected static Task OnTestMessage0_649(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage650(TestMessage650 message)
+        protected static Task OnTestMessage650(TestMessage650 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_650(TestMessage0 message)
+        protected static Task OnTestMessage0_650(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage651(TestMessage651 message)
+        protected static Task OnTestMessage651(TestMessage651 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_651(TestMessage0 message)
+        protected static Task OnTestMessage0_651(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage652(TestMessage652 message)
+        protected static Task OnTestMessage652(TestMessage652 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_652(TestMessage0 message)
+        protected static Task OnTestMessage0_652(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage653(TestMessage653 message)
+        protected static Task OnTestMessage653(TestMessage653 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_653(TestMessage0 message)
+        protected static Task OnTestMessage0_653(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage654(TestMessage654 message)
+        protected static Task OnTestMessage654(TestMessage654 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_654(TestMessage0 message)
+        protected static Task OnTestMessage0_654(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage655(TestMessage655 message)
+        protected static Task OnTestMessage655(TestMessage655 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_655(TestMessage0 message)
+        protected static Task OnTestMessage0_655(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage656(TestMessage656 message)
+        protected static Task OnTestMessage656(TestMessage656 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_656(TestMessage0 message)
+        protected static Task OnTestMessage0_656(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage657(TestMessage657 message)
+        protected static Task OnTestMessage657(TestMessage657 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_657(TestMessage0 message)
+        protected static Task OnTestMessage0_657(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage658(TestMessage658 message)
+        protected static Task OnTestMessage658(TestMessage658 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_658(TestMessage0 message)
+        protected static Task OnTestMessage0_658(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage659(TestMessage659 message)
+        protected static Task OnTestMessage659(TestMessage659 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_659(TestMessage0 message)
+        protected static Task OnTestMessage0_659(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage660(TestMessage660 message)
+        protected static Task OnTestMessage660(TestMessage660 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_660(TestMessage0 message)
+        protected static Task OnTestMessage0_660(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage661(TestMessage661 message)
+        protected static Task OnTestMessage661(TestMessage661 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_661(TestMessage0 message)
+        protected static Task OnTestMessage0_661(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage662(TestMessage662 message)
+        protected static Task OnTestMessage662(TestMessage662 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_662(TestMessage0 message)
+        protected static Task OnTestMessage0_662(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage663(TestMessage663 message)
+        protected static Task OnTestMessage663(TestMessage663 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_663(TestMessage0 message)
+        protected static Task OnTestMessage0_663(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage664(TestMessage664 message)
+        protected static Task OnTestMessage664(TestMessage664 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_664(TestMessage0 message)
+        protected static Task OnTestMessage0_664(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage665(TestMessage665 message)
+        protected static Task OnTestMessage665(TestMessage665 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_665(TestMessage0 message)
+        protected static Task OnTestMessage0_665(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage666(TestMessage666 message)
+        protected static Task OnTestMessage666(TestMessage666 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_666(TestMessage0 message)
+        protected static Task OnTestMessage0_666(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage667(TestMessage667 message)
+        protected static Task OnTestMessage667(TestMessage667 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_667(TestMessage0 message)
+        protected static Task OnTestMessage0_667(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage668(TestMessage668 message)
+        protected static Task OnTestMessage668(TestMessage668 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_668(TestMessage0 message)
+        protected static Task OnTestMessage0_668(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage669(TestMessage669 message)
+        protected static Task OnTestMessage669(TestMessage669 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_669(TestMessage0 message)
+        protected static Task OnTestMessage0_669(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage670(TestMessage670 message)
+        protected static Task OnTestMessage670(TestMessage670 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_670(TestMessage0 message)
+        protected static Task OnTestMessage0_670(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage671(TestMessage671 message)
+        protected static Task OnTestMessage671(TestMessage671 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_671(TestMessage0 message)
+        protected static Task OnTestMessage0_671(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage672(TestMessage672 message)
+        protected static Task OnTestMessage672(TestMessage672 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_672(TestMessage0 message)
+        protected static Task OnTestMessage0_672(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage673(TestMessage673 message)
+        protected static Task OnTestMessage673(TestMessage673 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_673(TestMessage0 message)
+        protected static Task OnTestMessage0_673(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage674(TestMessage674 message)
+        protected static Task OnTestMessage674(TestMessage674 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_674(TestMessage0 message)
+        protected static Task OnTestMessage0_674(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage675(TestMessage675 message)
+        protected static Task OnTestMessage675(TestMessage675 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_675(TestMessage0 message)
+        protected static Task OnTestMessage0_675(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage676(TestMessage676 message)
+        protected static Task OnTestMessage676(TestMessage676 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_676(TestMessage0 message)
+        protected static Task OnTestMessage0_676(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage677(TestMessage677 message)
+        protected static Task OnTestMessage677(TestMessage677 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_677(TestMessage0 message)
+        protected static Task OnTestMessage0_677(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage678(TestMessage678 message)
+        protected static Task OnTestMessage678(TestMessage678 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_678(TestMessage0 message)
+        protected static Task OnTestMessage0_678(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage679(TestMessage679 message)
+        protected static Task OnTestMessage679(TestMessage679 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_679(TestMessage0 message)
+        protected static Task OnTestMessage0_679(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage680(TestMessage680 message)
+        protected static Task OnTestMessage680(TestMessage680 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_680(TestMessage0 message)
+        protected static Task OnTestMessage0_680(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage681(TestMessage681 message)
+        protected static Task OnTestMessage681(TestMessage681 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_681(TestMessage0 message)
+        protected static Task OnTestMessage0_681(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage682(TestMessage682 message)
+        protected static Task OnTestMessage682(TestMessage682 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_682(TestMessage0 message)
+        protected static Task OnTestMessage0_682(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage683(TestMessage683 message)
+        protected static Task OnTestMessage683(TestMessage683 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_683(TestMessage0 message)
+        protected static Task OnTestMessage0_683(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage684(TestMessage684 message)
+        protected static Task OnTestMessage684(TestMessage684 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_684(TestMessage0 message)
+        protected static Task OnTestMessage0_684(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage685(TestMessage685 message)
+        protected static Task OnTestMessage685(TestMessage685 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_685(TestMessage0 message)
+        protected static Task OnTestMessage0_685(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage686(TestMessage686 message)
+        protected static Task OnTestMessage686(TestMessage686 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_686(TestMessage0 message)
+        protected static Task OnTestMessage0_686(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage687(TestMessage687 message)
+        protected static Task OnTestMessage687(TestMessage687 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_687(TestMessage0 message)
+        protected static Task OnTestMessage0_687(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage688(TestMessage688 message)
+        protected static Task OnTestMessage688(TestMessage688 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_688(TestMessage0 message)
+        protected static Task OnTestMessage0_688(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage689(TestMessage689 message)
+        protected static Task OnTestMessage689(TestMessage689 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_689(TestMessage0 message)
+        protected static Task OnTestMessage0_689(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage690(TestMessage690 message)
+        protected static Task OnTestMessage690(TestMessage690 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_690(TestMessage0 message)
+        protected static Task OnTestMessage0_690(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage691(TestMessage691 message)
+        protected static Task OnTestMessage691(TestMessage691 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_691(TestMessage0 message)
+        protected static Task OnTestMessage0_691(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage692(TestMessage692 message)
+        protected static Task OnTestMessage692(TestMessage692 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_692(TestMessage0 message)
+        protected static Task OnTestMessage0_692(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage693(TestMessage693 message)
+        protected static Task OnTestMessage693(TestMessage693 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_693(TestMessage0 message)
+        protected static Task OnTestMessage0_693(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage694(TestMessage694 message)
+        protected static Task OnTestMessage694(TestMessage694 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_694(TestMessage0 message)
+        protected static Task OnTestMessage0_694(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage695(TestMessage695 message)
+        protected static Task OnTestMessage695(TestMessage695 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_695(TestMessage0 message)
+        protected static Task OnTestMessage0_695(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage696(TestMessage696 message)
+        protected static Task OnTestMessage696(TestMessage696 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_696(TestMessage0 message)
+        protected static Task OnTestMessage0_696(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage697(TestMessage697 message)
+        protected static Task OnTestMessage697(TestMessage697 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_697(TestMessage0 message)
+        protected static Task OnTestMessage0_697(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage698(TestMessage698 message)
+        protected static Task OnTestMessage698(TestMessage698 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_698(TestMessage0 message)
+        protected static Task OnTestMessage0_698(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage699(TestMessage699 message)
+        protected static Task OnTestMessage699(TestMessage699 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_699(TestMessage0 message)
+        protected static Task OnTestMessage0_699(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage700(TestMessage700 message)
+        protected static Task OnTestMessage700(TestMessage700 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_700(TestMessage0 message)
+        protected static Task OnTestMessage0_700(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage701(TestMessage701 message)
+        protected static Task OnTestMessage701(TestMessage701 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_701(TestMessage0 message)
+        protected static Task OnTestMessage0_701(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage702(TestMessage702 message)
+        protected static Task OnTestMessage702(TestMessage702 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_702(TestMessage0 message)
+        protected static Task OnTestMessage0_702(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage703(TestMessage703 message)
+        protected static Task OnTestMessage703(TestMessage703 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_703(TestMessage0 message)
+        protected static Task OnTestMessage0_703(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage704(TestMessage704 message)
+        protected static Task OnTestMessage704(TestMessage704 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_704(TestMessage0 message)
+        protected static Task OnTestMessage0_704(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage705(TestMessage705 message)
+        protected static Task OnTestMessage705(TestMessage705 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_705(TestMessage0 message)
+        protected static Task OnTestMessage0_705(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage706(TestMessage706 message)
+        protected static Task OnTestMessage706(TestMessage706 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_706(TestMessage0 message)
+        protected static Task OnTestMessage0_706(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage707(TestMessage707 message)
+        protected static Task OnTestMessage707(TestMessage707 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_707(TestMessage0 message)
+        protected static Task OnTestMessage0_707(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage708(TestMessage708 message)
+        protected static Task OnTestMessage708(TestMessage708 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_708(TestMessage0 message)
+        protected static Task OnTestMessage0_708(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage709(TestMessage709 message)
+        protected static Task OnTestMessage709(TestMessage709 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_709(TestMessage0 message)
+        protected static Task OnTestMessage0_709(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage710(TestMessage710 message)
+        protected static Task OnTestMessage710(TestMessage710 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_710(TestMessage0 message)
+        protected static Task OnTestMessage0_710(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage711(TestMessage711 message)
+        protected static Task OnTestMessage711(TestMessage711 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_711(TestMessage0 message)
+        protected static Task OnTestMessage0_711(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage712(TestMessage712 message)
+        protected static Task OnTestMessage712(TestMessage712 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_712(TestMessage0 message)
+        protected static Task OnTestMessage0_712(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage713(TestMessage713 message)
+        protected static Task OnTestMessage713(TestMessage713 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_713(TestMessage0 message)
+        protected static Task OnTestMessage0_713(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage714(TestMessage714 message)
+        protected static Task OnTestMessage714(TestMessage714 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_714(TestMessage0 message)
+        protected static Task OnTestMessage0_714(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage715(TestMessage715 message)
+        protected static Task OnTestMessage715(TestMessage715 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_715(TestMessage0 message)
+        protected static Task OnTestMessage0_715(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage716(TestMessage716 message)
+        protected static Task OnTestMessage716(TestMessage716 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_716(TestMessage0 message)
+        protected static Task OnTestMessage0_716(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage717(TestMessage717 message)
+        protected static Task OnTestMessage717(TestMessage717 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_717(TestMessage0 message)
+        protected static Task OnTestMessage0_717(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage718(TestMessage718 message)
+        protected static Task OnTestMessage718(TestMessage718 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_718(TestMessage0 message)
+        protected static Task OnTestMessage0_718(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage719(TestMessage719 message)
+        protected static Task OnTestMessage719(TestMessage719 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_719(TestMessage0 message)
+        protected static Task OnTestMessage0_719(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage720(TestMessage720 message)
+        protected static Task OnTestMessage720(TestMessage720 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_720(TestMessage0 message)
+        protected static Task OnTestMessage0_720(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage721(TestMessage721 message)
+        protected static Task OnTestMessage721(TestMessage721 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_721(TestMessage0 message)
+        protected static Task OnTestMessage0_721(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage722(TestMessage722 message)
+        protected static Task OnTestMessage722(TestMessage722 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_722(TestMessage0 message)
+        protected static Task OnTestMessage0_722(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage723(TestMessage723 message)
+        protected static Task OnTestMessage723(TestMessage723 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_723(TestMessage0 message)
+        protected static Task OnTestMessage0_723(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage724(TestMessage724 message)
+        protected static Task OnTestMessage724(TestMessage724 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_724(TestMessage0 message)
+        protected static Task OnTestMessage0_724(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage725(TestMessage725 message)
+        protected static Task OnTestMessage725(TestMessage725 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_725(TestMessage0 message)
+        protected static Task OnTestMessage0_725(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage726(TestMessage726 message)
+        protected static Task OnTestMessage726(TestMessage726 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_726(TestMessage0 message)
+        protected static Task OnTestMessage0_726(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage727(TestMessage727 message)
+        protected static Task OnTestMessage727(TestMessage727 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_727(TestMessage0 message)
+        protected static Task OnTestMessage0_727(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage728(TestMessage728 message)
+        protected static Task OnTestMessage728(TestMessage728 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_728(TestMessage0 message)
+        protected static Task OnTestMessage0_728(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage729(TestMessage729 message)
+        protected static Task OnTestMessage729(TestMessage729 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_729(TestMessage0 message)
+        protected static Task OnTestMessage0_729(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage730(TestMessage730 message)
+        protected static Task OnTestMessage730(TestMessage730 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_730(TestMessage0 message)
+        protected static Task OnTestMessage0_730(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage731(TestMessage731 message)
+        protected static Task OnTestMessage731(TestMessage731 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_731(TestMessage0 message)
+        protected static Task OnTestMessage0_731(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage732(TestMessage732 message)
+        protected static Task OnTestMessage732(TestMessage732 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_732(TestMessage0 message)
+        protected static Task OnTestMessage0_732(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage733(TestMessage733 message)
+        protected static Task OnTestMessage733(TestMessage733 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_733(TestMessage0 message)
+        protected static Task OnTestMessage0_733(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage734(TestMessage734 message)
+        protected static Task OnTestMessage734(TestMessage734 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_734(TestMessage0 message)
+        protected static Task OnTestMessage0_734(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage735(TestMessage735 message)
+        protected static Task OnTestMessage735(TestMessage735 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_735(TestMessage0 message)
+        protected static Task OnTestMessage0_735(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage736(TestMessage736 message)
+        protected static Task OnTestMessage736(TestMessage736 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_736(TestMessage0 message)
+        protected static Task OnTestMessage0_736(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage737(TestMessage737 message)
+        protected static Task OnTestMessage737(TestMessage737 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_737(TestMessage0 message)
+        protected static Task OnTestMessage0_737(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage738(TestMessage738 message)
+        protected static Task OnTestMessage738(TestMessage738 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_738(TestMessage0 message)
+        protected static Task OnTestMessage0_738(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage739(TestMessage739 message)
+        protected static Task OnTestMessage739(TestMessage739 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_739(TestMessage0 message)
+        protected static Task OnTestMessage0_739(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage740(TestMessage740 message)
+        protected static Task OnTestMessage740(TestMessage740 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_740(TestMessage0 message)
+        protected static Task OnTestMessage0_740(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage741(TestMessage741 message)
+        protected static Task OnTestMessage741(TestMessage741 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_741(TestMessage0 message)
+        protected static Task OnTestMessage0_741(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage742(TestMessage742 message)
+        protected static Task OnTestMessage742(TestMessage742 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_742(TestMessage0 message)
+        protected static Task OnTestMessage0_742(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage743(TestMessage743 message)
+        protected static Task OnTestMessage743(TestMessage743 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_743(TestMessage0 message)
+        protected static Task OnTestMessage0_743(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage744(TestMessage744 message)
+        protected static Task OnTestMessage744(TestMessage744 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_744(TestMessage0 message)
+        protected static Task OnTestMessage0_744(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage745(TestMessage745 message)
+        protected static Task OnTestMessage745(TestMessage745 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_745(TestMessage0 message)
+        protected static Task OnTestMessage0_745(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage746(TestMessage746 message)
+        protected static Task OnTestMessage746(TestMessage746 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_746(TestMessage0 message)
+        protected static Task OnTestMessage0_746(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage747(TestMessage747 message)
+        protected static Task OnTestMessage747(TestMessage747 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_747(TestMessage0 message)
+        protected static Task OnTestMessage0_747(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage748(TestMessage748 message)
+        protected static Task OnTestMessage748(TestMessage748 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_748(TestMessage0 message)
+        protected static Task OnTestMessage0_748(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage749(TestMessage749 message)
+        protected static Task OnTestMessage749(TestMessage749 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_749(TestMessage0 message)
+        protected static Task OnTestMessage0_749(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage750(TestMessage750 message)
+        protected static Task OnTestMessage750(TestMessage750 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_750(TestMessage0 message)
+        protected static Task OnTestMessage0_750(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage751(TestMessage751 message)
+        protected static Task OnTestMessage751(TestMessage751 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_751(TestMessage0 message)
+        protected static Task OnTestMessage0_751(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage752(TestMessage752 message)
+        protected static Task OnTestMessage752(TestMessage752 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_752(TestMessage0 message)
+        protected static Task OnTestMessage0_752(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage753(TestMessage753 message)
+        protected static Task OnTestMessage753(TestMessage753 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_753(TestMessage0 message)
+        protected static Task OnTestMessage0_753(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage754(TestMessage754 message)
+        protected static Task OnTestMessage754(TestMessage754 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_754(TestMessage0 message)
+        protected static Task OnTestMessage0_754(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage755(TestMessage755 message)
+        protected static Task OnTestMessage755(TestMessage755 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_755(TestMessage0 message)
+        protected static Task OnTestMessage0_755(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage756(TestMessage756 message)
+        protected static Task OnTestMessage756(TestMessage756 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_756(TestMessage0 message)
+        protected static Task OnTestMessage0_756(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage757(TestMessage757 message)
+        protected static Task OnTestMessage757(TestMessage757 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_757(TestMessage0 message)
+        protected static Task OnTestMessage0_757(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage758(TestMessage758 message)
+        protected static Task OnTestMessage758(TestMessage758 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_758(TestMessage0 message)
+        protected static Task OnTestMessage0_758(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage759(TestMessage759 message)
+        protected static Task OnTestMessage759(TestMessage759 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_759(TestMessage0 message)
+        protected static Task OnTestMessage0_759(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage760(TestMessage760 message)
+        protected static Task OnTestMessage760(TestMessage760 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_760(TestMessage0 message)
+        protected static Task OnTestMessage0_760(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage761(TestMessage761 message)
+        protected static Task OnTestMessage761(TestMessage761 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_761(TestMessage0 message)
+        protected static Task OnTestMessage0_761(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage762(TestMessage762 message)
+        protected static Task OnTestMessage762(TestMessage762 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_762(TestMessage0 message)
+        protected static Task OnTestMessage0_762(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage763(TestMessage763 message)
+        protected static Task OnTestMessage763(TestMessage763 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_763(TestMessage0 message)
+        protected static Task OnTestMessage0_763(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage764(TestMessage764 message)
+        protected static Task OnTestMessage764(TestMessage764 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_764(TestMessage0 message)
+        protected static Task OnTestMessage0_764(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage765(TestMessage765 message)
+        protected static Task OnTestMessage765(TestMessage765 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_765(TestMessage0 message)
+        protected static Task OnTestMessage0_765(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage766(TestMessage766 message)
+        protected static Task OnTestMessage766(TestMessage766 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_766(TestMessage0 message)
+        protected static Task OnTestMessage0_766(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage767(TestMessage767 message)
+        protected static Task OnTestMessage767(TestMessage767 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_767(TestMessage0 message)
+        protected static Task OnTestMessage0_767(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage768(TestMessage768 message)
+        protected static Task OnTestMessage768(TestMessage768 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_768(TestMessage0 message)
+        protected static Task OnTestMessage0_768(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage769(TestMessage769 message)
+        protected static Task OnTestMessage769(TestMessage769 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_769(TestMessage0 message)
+        protected static Task OnTestMessage0_769(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage770(TestMessage770 message)
+        protected static Task OnTestMessage770(TestMessage770 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_770(TestMessage0 message)
+        protected static Task OnTestMessage0_770(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage771(TestMessage771 message)
+        protected static Task OnTestMessage771(TestMessage771 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_771(TestMessage0 message)
+        protected static Task OnTestMessage0_771(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage772(TestMessage772 message)
+        protected static Task OnTestMessage772(TestMessage772 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_772(TestMessage0 message)
+        protected static Task OnTestMessage0_772(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage773(TestMessage773 message)
+        protected static Task OnTestMessage773(TestMessage773 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_773(TestMessage0 message)
+        protected static Task OnTestMessage0_773(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage774(TestMessage774 message)
+        protected static Task OnTestMessage774(TestMessage774 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_774(TestMessage0 message)
+        protected static Task OnTestMessage0_774(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage775(TestMessage775 message)
+        protected static Task OnTestMessage775(TestMessage775 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_775(TestMessage0 message)
+        protected static Task OnTestMessage0_775(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage776(TestMessage776 message)
+        protected static Task OnTestMessage776(TestMessage776 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_776(TestMessage0 message)
+        protected static Task OnTestMessage0_776(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage777(TestMessage777 message)
+        protected static Task OnTestMessage777(TestMessage777 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_777(TestMessage0 message)
+        protected static Task OnTestMessage0_777(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage778(TestMessage778 message)
+        protected static Task OnTestMessage778(TestMessage778 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_778(TestMessage0 message)
+        protected static Task OnTestMessage0_778(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage779(TestMessage779 message)
+        protected static Task OnTestMessage779(TestMessage779 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_779(TestMessage0 message)
+        protected static Task OnTestMessage0_779(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage780(TestMessage780 message)
+        protected static Task OnTestMessage780(TestMessage780 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_780(TestMessage0 message)
+        protected static Task OnTestMessage0_780(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage781(TestMessage781 message)
+        protected static Task OnTestMessage781(TestMessage781 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_781(TestMessage0 message)
+        protected static Task OnTestMessage0_781(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage782(TestMessage782 message)
+        protected static Task OnTestMessage782(TestMessage782 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_782(TestMessage0 message)
+        protected static Task OnTestMessage0_782(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage783(TestMessage783 message)
+        protected static Task OnTestMessage783(TestMessage783 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_783(TestMessage0 message)
+        protected static Task OnTestMessage0_783(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage784(TestMessage784 message)
+        protected static Task OnTestMessage784(TestMessage784 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_784(TestMessage0 message)
+        protected static Task OnTestMessage0_784(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage785(TestMessage785 message)
+        protected static Task OnTestMessage785(TestMessage785 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_785(TestMessage0 message)
+        protected static Task OnTestMessage0_785(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage786(TestMessage786 message)
+        protected static Task OnTestMessage786(TestMessage786 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_786(TestMessage0 message)
+        protected static Task OnTestMessage0_786(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage787(TestMessage787 message)
+        protected static Task OnTestMessage787(TestMessage787 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_787(TestMessage0 message)
+        protected static Task OnTestMessage0_787(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage788(TestMessage788 message)
+        protected static Task OnTestMessage788(TestMessage788 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_788(TestMessage0 message)
+        protected static Task OnTestMessage0_788(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage789(TestMessage789 message)
+        protected static Task OnTestMessage789(TestMessage789 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_789(TestMessage0 message)
+        protected static Task OnTestMessage0_789(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage790(TestMessage790 message)
+        protected static Task OnTestMessage790(TestMessage790 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_790(TestMessage0 message)
+        protected static Task OnTestMessage0_790(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage791(TestMessage791 message)
+        protected static Task OnTestMessage791(TestMessage791 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_791(TestMessage0 message)
+        protected static Task OnTestMessage0_791(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage792(TestMessage792 message)
+        protected static Task OnTestMessage792(TestMessage792 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_792(TestMessage0 message)
+        protected static Task OnTestMessage0_792(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage793(TestMessage793 message)
+        protected static Task OnTestMessage793(TestMessage793 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_793(TestMessage0 message)
+        protected static Task OnTestMessage0_793(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage794(TestMessage794 message)
+        protected static Task OnTestMessage794(TestMessage794 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_794(TestMessage0 message)
+        protected static Task OnTestMessage0_794(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage795(TestMessage795 message)
+        protected static Task OnTestMessage795(TestMessage795 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_795(TestMessage0 message)
+        protected static Task OnTestMessage0_795(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage796(TestMessage796 message)
+        protected static Task OnTestMessage796(TestMessage796 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_796(TestMessage0 message)
+        protected static Task OnTestMessage0_796(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage797(TestMessage797 message)
+        protected static Task OnTestMessage797(TestMessage797 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_797(TestMessage0 message)
+        protected static Task OnTestMessage0_797(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage798(TestMessage798 message)
+        protected static Task OnTestMessage798(TestMessage798 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_798(TestMessage0 message)
+        protected static Task OnTestMessage0_798(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage799(TestMessage799 message)
+        protected static Task OnTestMessage799(TestMessage799 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_799(TestMessage0 message)
+        protected static Task OnTestMessage0_799(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage800(TestMessage800 message)
+        protected static Task OnTestMessage800(TestMessage800 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_800(TestMessage0 message)
+        protected static Task OnTestMessage0_800(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage801(TestMessage801 message)
+        protected static Task OnTestMessage801(TestMessage801 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_801(TestMessage0 message)
+        protected static Task OnTestMessage0_801(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage802(TestMessage802 message)
+        protected static Task OnTestMessage802(TestMessage802 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_802(TestMessage0 message)
+        protected static Task OnTestMessage0_802(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage803(TestMessage803 message)
+        protected static Task OnTestMessage803(TestMessage803 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_803(TestMessage0 message)
+        protected static Task OnTestMessage0_803(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage804(TestMessage804 message)
+        protected static Task OnTestMessage804(TestMessage804 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_804(TestMessage0 message)
+        protected static Task OnTestMessage0_804(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage805(TestMessage805 message)
+        protected static Task OnTestMessage805(TestMessage805 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_805(TestMessage0 message)
+        protected static Task OnTestMessage0_805(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage806(TestMessage806 message)
+        protected static Task OnTestMessage806(TestMessage806 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_806(TestMessage0 message)
+        protected static Task OnTestMessage0_806(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage807(TestMessage807 message)
+        protected static Task OnTestMessage807(TestMessage807 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_807(TestMessage0 message)
+        protected static Task OnTestMessage0_807(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage808(TestMessage808 message)
+        protected static Task OnTestMessage808(TestMessage808 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_808(TestMessage0 message)
+        protected static Task OnTestMessage0_808(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage809(TestMessage809 message)
+        protected static Task OnTestMessage809(TestMessage809 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_809(TestMessage0 message)
+        protected static Task OnTestMessage0_809(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage810(TestMessage810 message)
+        protected static Task OnTestMessage810(TestMessage810 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_810(TestMessage0 message)
+        protected static Task OnTestMessage0_810(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage811(TestMessage811 message)
+        protected static Task OnTestMessage811(TestMessage811 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_811(TestMessage0 message)
+        protected static Task OnTestMessage0_811(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage812(TestMessage812 message)
+        protected static Task OnTestMessage812(TestMessage812 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_812(TestMessage0 message)
+        protected static Task OnTestMessage0_812(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage813(TestMessage813 message)
+        protected static Task OnTestMessage813(TestMessage813 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_813(TestMessage0 message)
+        protected static Task OnTestMessage0_813(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage814(TestMessage814 message)
+        protected static Task OnTestMessage814(TestMessage814 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_814(TestMessage0 message)
+        protected static Task OnTestMessage0_814(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage815(TestMessage815 message)
+        protected static Task OnTestMessage815(TestMessage815 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_815(TestMessage0 message)
+        protected static Task OnTestMessage0_815(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage816(TestMessage816 message)
+        protected static Task OnTestMessage816(TestMessage816 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_816(TestMessage0 message)
+        protected static Task OnTestMessage0_816(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage817(TestMessage817 message)
+        protected static Task OnTestMessage817(TestMessage817 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_817(TestMessage0 message)
+        protected static Task OnTestMessage0_817(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage818(TestMessage818 message)
+        protected static Task OnTestMessage818(TestMessage818 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_818(TestMessage0 message)
+        protected static Task OnTestMessage0_818(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage819(TestMessage819 message)
+        protected static Task OnTestMessage819(TestMessage819 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_819(TestMessage0 message)
+        protected static Task OnTestMessage0_819(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage820(TestMessage820 message)
+        protected static Task OnTestMessage820(TestMessage820 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_820(TestMessage0 message)
+        protected static Task OnTestMessage0_820(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage821(TestMessage821 message)
+        protected static Task OnTestMessage821(TestMessage821 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_821(TestMessage0 message)
+        protected static Task OnTestMessage0_821(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage822(TestMessage822 message)
+        protected static Task OnTestMessage822(TestMessage822 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_822(TestMessage0 message)
+        protected static Task OnTestMessage0_822(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage823(TestMessage823 message)
+        protected static Task OnTestMessage823(TestMessage823 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_823(TestMessage0 message)
+        protected static Task OnTestMessage0_823(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage824(TestMessage824 message)
+        protected static Task OnTestMessage824(TestMessage824 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_824(TestMessage0 message)
+        protected static Task OnTestMessage0_824(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage825(TestMessage825 message)
+        protected static Task OnTestMessage825(TestMessage825 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_825(TestMessage0 message)
+        protected static Task OnTestMessage0_825(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage826(TestMessage826 message)
+        protected static Task OnTestMessage826(TestMessage826 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_826(TestMessage0 message)
+        protected static Task OnTestMessage0_826(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage827(TestMessage827 message)
+        protected static Task OnTestMessage827(TestMessage827 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_827(TestMessage0 message)
+        protected static Task OnTestMessage0_827(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage828(TestMessage828 message)
+        protected static Task OnTestMessage828(TestMessage828 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_828(TestMessage0 message)
+        protected static Task OnTestMessage0_828(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage829(TestMessage829 message)
+        protected static Task OnTestMessage829(TestMessage829 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_829(TestMessage0 message)
+        protected static Task OnTestMessage0_829(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage830(TestMessage830 message)
+        protected static Task OnTestMessage830(TestMessage830 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_830(TestMessage0 message)
+        protected static Task OnTestMessage0_830(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage831(TestMessage831 message)
+        protected static Task OnTestMessage831(TestMessage831 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_831(TestMessage0 message)
+        protected static Task OnTestMessage0_831(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage832(TestMessage832 message)
+        protected static Task OnTestMessage832(TestMessage832 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_832(TestMessage0 message)
+        protected static Task OnTestMessage0_832(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage833(TestMessage833 message)
+        protected static Task OnTestMessage833(TestMessage833 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_833(TestMessage0 message)
+        protected static Task OnTestMessage0_833(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage834(TestMessage834 message)
+        protected static Task OnTestMessage834(TestMessage834 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_834(TestMessage0 message)
+        protected static Task OnTestMessage0_834(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage835(TestMessage835 message)
+        protected static Task OnTestMessage835(TestMessage835 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_835(TestMessage0 message)
+        protected static Task OnTestMessage0_835(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage836(TestMessage836 message)
+        protected static Task OnTestMessage836(TestMessage836 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_836(TestMessage0 message)
+        protected static Task OnTestMessage0_836(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage837(TestMessage837 message)
+        protected static Task OnTestMessage837(TestMessage837 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_837(TestMessage0 message)
+        protected static Task OnTestMessage0_837(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage838(TestMessage838 message)
+        protected static Task OnTestMessage838(TestMessage838 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_838(TestMessage0 message)
+        protected static Task OnTestMessage0_838(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage839(TestMessage839 message)
+        protected static Task OnTestMessage839(TestMessage839 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_839(TestMessage0 message)
+        protected static Task OnTestMessage0_839(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage840(TestMessage840 message)
+        protected static Task OnTestMessage840(TestMessage840 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_840(TestMessage0 message)
+        protected static Task OnTestMessage0_840(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage841(TestMessage841 message)
+        protected static Task OnTestMessage841(TestMessage841 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_841(TestMessage0 message)
+        protected static Task OnTestMessage0_841(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage842(TestMessage842 message)
+        protected static Task OnTestMessage842(TestMessage842 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_842(TestMessage0 message)
+        protected static Task OnTestMessage0_842(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage843(TestMessage843 message)
+        protected static Task OnTestMessage843(TestMessage843 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_843(TestMessage0 message)
+        protected static Task OnTestMessage0_843(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage844(TestMessage844 message)
+        protected static Task OnTestMessage844(TestMessage844 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_844(TestMessage0 message)
+        protected static Task OnTestMessage0_844(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage845(TestMessage845 message)
+        protected static Task OnTestMessage845(TestMessage845 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_845(TestMessage0 message)
+        protected static Task OnTestMessage0_845(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage846(TestMessage846 message)
+        protected static Task OnTestMessage846(TestMessage846 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_846(TestMessage0 message)
+        protected static Task OnTestMessage0_846(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage847(TestMessage847 message)
+        protected static Task OnTestMessage847(TestMessage847 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_847(TestMessage0 message)
+        protected static Task OnTestMessage0_847(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage848(TestMessage848 message)
+        protected static Task OnTestMessage848(TestMessage848 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_848(TestMessage0 message)
+        protected static Task OnTestMessage0_848(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage849(TestMessage849 message)
+        protected static Task OnTestMessage849(TestMessage849 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_849(TestMessage0 message)
+        protected static Task OnTestMessage0_849(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage850(TestMessage850 message)
+        protected static Task OnTestMessage850(TestMessage850 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_850(TestMessage0 message)
+        protected static Task OnTestMessage0_850(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage851(TestMessage851 message)
+        protected static Task OnTestMessage851(TestMessage851 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_851(TestMessage0 message)
+        protected static Task OnTestMessage0_851(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage852(TestMessage852 message)
+        protected static Task OnTestMessage852(TestMessage852 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_852(TestMessage0 message)
+        protected static Task OnTestMessage0_852(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage853(TestMessage853 message)
+        protected static Task OnTestMessage853(TestMessage853 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_853(TestMessage0 message)
+        protected static Task OnTestMessage0_853(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage854(TestMessage854 message)
+        protected static Task OnTestMessage854(TestMessage854 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_854(TestMessage0 message)
+        protected static Task OnTestMessage0_854(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage855(TestMessage855 message)
+        protected static Task OnTestMessage855(TestMessage855 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_855(TestMessage0 message)
+        protected static Task OnTestMessage0_855(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage856(TestMessage856 message)
+        protected static Task OnTestMessage856(TestMessage856 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_856(TestMessage0 message)
+        protected static Task OnTestMessage0_856(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage857(TestMessage857 message)
+        protected static Task OnTestMessage857(TestMessage857 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_857(TestMessage0 message)
+        protected static Task OnTestMessage0_857(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage858(TestMessage858 message)
+        protected static Task OnTestMessage858(TestMessage858 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_858(TestMessage0 message)
+        protected static Task OnTestMessage0_858(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage859(TestMessage859 message)
+        protected static Task OnTestMessage859(TestMessage859 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_859(TestMessage0 message)
+        protected static Task OnTestMessage0_859(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage860(TestMessage860 message)
+        protected static Task OnTestMessage860(TestMessage860 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_860(TestMessage0 message)
+        protected static Task OnTestMessage0_860(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage861(TestMessage861 message)
+        protected static Task OnTestMessage861(TestMessage861 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_861(TestMessage0 message)
+        protected static Task OnTestMessage0_861(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage862(TestMessage862 message)
+        protected static Task OnTestMessage862(TestMessage862 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_862(TestMessage0 message)
+        protected static Task OnTestMessage0_862(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage863(TestMessage863 message)
+        protected static Task OnTestMessage863(TestMessage863 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_863(TestMessage0 message)
+        protected static Task OnTestMessage0_863(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage864(TestMessage864 message)
+        protected static Task OnTestMessage864(TestMessage864 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_864(TestMessage0 message)
+        protected static Task OnTestMessage0_864(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage865(TestMessage865 message)
+        protected static Task OnTestMessage865(TestMessage865 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_865(TestMessage0 message)
+        protected static Task OnTestMessage0_865(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage866(TestMessage866 message)
+        protected static Task OnTestMessage866(TestMessage866 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_866(TestMessage0 message)
+        protected static Task OnTestMessage0_866(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage867(TestMessage867 message)
+        protected static Task OnTestMessage867(TestMessage867 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_867(TestMessage0 message)
+        protected static Task OnTestMessage0_867(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage868(TestMessage868 message)
+        protected static Task OnTestMessage868(TestMessage868 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_868(TestMessage0 message)
+        protected static Task OnTestMessage0_868(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage869(TestMessage869 message)
+        protected static Task OnTestMessage869(TestMessage869 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_869(TestMessage0 message)
+        protected static Task OnTestMessage0_869(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage870(TestMessage870 message)
+        protected static Task OnTestMessage870(TestMessage870 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_870(TestMessage0 message)
+        protected static Task OnTestMessage0_870(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage871(TestMessage871 message)
+        protected static Task OnTestMessage871(TestMessage871 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_871(TestMessage0 message)
+        protected static Task OnTestMessage0_871(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage872(TestMessage872 message)
+        protected static Task OnTestMessage872(TestMessage872 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_872(TestMessage0 message)
+        protected static Task OnTestMessage0_872(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage873(TestMessage873 message)
+        protected static Task OnTestMessage873(TestMessage873 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_873(TestMessage0 message)
+        protected static Task OnTestMessage0_873(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage874(TestMessage874 message)
+        protected static Task OnTestMessage874(TestMessage874 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_874(TestMessage0 message)
+        protected static Task OnTestMessage0_874(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage875(TestMessage875 message)
+        protected static Task OnTestMessage875(TestMessage875 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_875(TestMessage0 message)
+        protected static Task OnTestMessage0_875(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage876(TestMessage876 message)
+        protected static Task OnTestMessage876(TestMessage876 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_876(TestMessage0 message)
+        protected static Task OnTestMessage0_876(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage877(TestMessage877 message)
+        protected static Task OnTestMessage877(TestMessage877 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_877(TestMessage0 message)
+        protected static Task OnTestMessage0_877(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage878(TestMessage878 message)
+        protected static Task OnTestMessage878(TestMessage878 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_878(TestMessage0 message)
+        protected static Task OnTestMessage0_878(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage879(TestMessage879 message)
+        protected static Task OnTestMessage879(TestMessage879 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_879(TestMessage0 message)
+        protected static Task OnTestMessage0_879(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage880(TestMessage880 message)
+        protected static Task OnTestMessage880(TestMessage880 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_880(TestMessage0 message)
+        protected static Task OnTestMessage0_880(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage881(TestMessage881 message)
+        protected static Task OnTestMessage881(TestMessage881 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_881(TestMessage0 message)
+        protected static Task OnTestMessage0_881(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage882(TestMessage882 message)
+        protected static Task OnTestMessage882(TestMessage882 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_882(TestMessage0 message)
+        protected static Task OnTestMessage0_882(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage883(TestMessage883 message)
+        protected static Task OnTestMessage883(TestMessage883 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_883(TestMessage0 message)
+        protected static Task OnTestMessage0_883(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage884(TestMessage884 message)
+        protected static Task OnTestMessage884(TestMessage884 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_884(TestMessage0 message)
+        protected static Task OnTestMessage0_884(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage885(TestMessage885 message)
+        protected static Task OnTestMessage885(TestMessage885 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_885(TestMessage0 message)
+        protected static Task OnTestMessage0_885(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage886(TestMessage886 message)
+        protected static Task OnTestMessage886(TestMessage886 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_886(TestMessage0 message)
+        protected static Task OnTestMessage0_886(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage887(TestMessage887 message)
+        protected static Task OnTestMessage887(TestMessage887 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_887(TestMessage0 message)
+        protected static Task OnTestMessage0_887(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage888(TestMessage888 message)
+        protected static Task OnTestMessage888(TestMessage888 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_888(TestMessage0 message)
+        protected static Task OnTestMessage0_888(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage889(TestMessage889 message)
+        protected static Task OnTestMessage889(TestMessage889 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_889(TestMessage0 message)
+        protected static Task OnTestMessage0_889(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage890(TestMessage890 message)
+        protected static Task OnTestMessage890(TestMessage890 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_890(TestMessage0 message)
+        protected static Task OnTestMessage0_890(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage891(TestMessage891 message)
+        protected static Task OnTestMessage891(TestMessage891 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_891(TestMessage0 message)
+        protected static Task OnTestMessage0_891(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage892(TestMessage892 message)
+        protected static Task OnTestMessage892(TestMessage892 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_892(TestMessage0 message)
+        protected static Task OnTestMessage0_892(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage893(TestMessage893 message)
+        protected static Task OnTestMessage893(TestMessage893 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_893(TestMessage0 message)
+        protected static Task OnTestMessage0_893(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage894(TestMessage894 message)
+        protected static Task OnTestMessage894(TestMessage894 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_894(TestMessage0 message)
+        protected static Task OnTestMessage0_894(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage895(TestMessage895 message)
+        protected static Task OnTestMessage895(TestMessage895 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_895(TestMessage0 message)
+        protected static Task OnTestMessage0_895(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage896(TestMessage896 message)
+        protected static Task OnTestMessage896(TestMessage896 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_896(TestMessage0 message)
+        protected static Task OnTestMessage0_896(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage897(TestMessage897 message)
+        protected static Task OnTestMessage897(TestMessage897 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_897(TestMessage0 message)
+        protected static Task OnTestMessage0_897(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage898(TestMessage898 message)
+        protected static Task OnTestMessage898(TestMessage898 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_898(TestMessage0 message)
+        protected static Task OnTestMessage0_898(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage899(TestMessage899 message)
+        protected static Task OnTestMessage899(TestMessage899 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_899(TestMessage0 message)
+        protected static Task OnTestMessage0_899(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage900(TestMessage900 message)
+        protected static Task OnTestMessage900(TestMessage900 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_900(TestMessage0 message)
+        protected static Task OnTestMessage0_900(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage901(TestMessage901 message)
+        protected static Task OnTestMessage901(TestMessage901 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_901(TestMessage0 message)
+        protected static Task OnTestMessage0_901(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage902(TestMessage902 message)
+        protected static Task OnTestMessage902(TestMessage902 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_902(TestMessage0 message)
+        protected static Task OnTestMessage0_902(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage903(TestMessage903 message)
+        protected static Task OnTestMessage903(TestMessage903 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_903(TestMessage0 message)
+        protected static Task OnTestMessage0_903(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage904(TestMessage904 message)
+        protected static Task OnTestMessage904(TestMessage904 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_904(TestMessage0 message)
+        protected static Task OnTestMessage0_904(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage905(TestMessage905 message)
+        protected static Task OnTestMessage905(TestMessage905 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_905(TestMessage0 message)
+        protected static Task OnTestMessage0_905(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage906(TestMessage906 message)
+        protected static Task OnTestMessage906(TestMessage906 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_906(TestMessage0 message)
+        protected static Task OnTestMessage0_906(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage907(TestMessage907 message)
+        protected static Task OnTestMessage907(TestMessage907 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_907(TestMessage0 message)
+        protected static Task OnTestMessage0_907(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage908(TestMessage908 message)
+        protected static Task OnTestMessage908(TestMessage908 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_908(TestMessage0 message)
+        protected static Task OnTestMessage0_908(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage909(TestMessage909 message)
+        protected static Task OnTestMessage909(TestMessage909 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_909(TestMessage0 message)
+        protected static Task OnTestMessage0_909(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage910(TestMessage910 message)
+        protected static Task OnTestMessage910(TestMessage910 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_910(TestMessage0 message)
+        protected static Task OnTestMessage0_910(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage911(TestMessage911 message)
+        protected static Task OnTestMessage911(TestMessage911 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_911(TestMessage0 message)
+        protected static Task OnTestMessage0_911(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage912(TestMessage912 message)
+        protected static Task OnTestMessage912(TestMessage912 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_912(TestMessage0 message)
+        protected static Task OnTestMessage0_912(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage913(TestMessage913 message)
+        protected static Task OnTestMessage913(TestMessage913 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_913(TestMessage0 message)
+        protected static Task OnTestMessage0_913(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage914(TestMessage914 message)
+        protected static Task OnTestMessage914(TestMessage914 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_914(TestMessage0 message)
+        protected static Task OnTestMessage0_914(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage915(TestMessage915 message)
+        protected static Task OnTestMessage915(TestMessage915 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_915(TestMessage0 message)
+        protected static Task OnTestMessage0_915(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage916(TestMessage916 message)
+        protected static Task OnTestMessage916(TestMessage916 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_916(TestMessage0 message)
+        protected static Task OnTestMessage0_916(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage917(TestMessage917 message)
+        protected static Task OnTestMessage917(TestMessage917 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_917(TestMessage0 message)
+        protected static Task OnTestMessage0_917(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage918(TestMessage918 message)
+        protected static Task OnTestMessage918(TestMessage918 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_918(TestMessage0 message)
+        protected static Task OnTestMessage0_918(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage919(TestMessage919 message)
+        protected static Task OnTestMessage919(TestMessage919 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_919(TestMessage0 message)
+        protected static Task OnTestMessage0_919(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage920(TestMessage920 message)
+        protected static Task OnTestMessage920(TestMessage920 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_920(TestMessage0 message)
+        protected static Task OnTestMessage0_920(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage921(TestMessage921 message)
+        protected static Task OnTestMessage921(TestMessage921 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_921(TestMessage0 message)
+        protected static Task OnTestMessage0_921(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage922(TestMessage922 message)
+        protected static Task OnTestMessage922(TestMessage922 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_922(TestMessage0 message)
+        protected static Task OnTestMessage0_922(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage923(TestMessage923 message)
+        protected static Task OnTestMessage923(TestMessage923 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_923(TestMessage0 message)
+        protected static Task OnTestMessage0_923(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage924(TestMessage924 message)
+        protected static Task OnTestMessage924(TestMessage924 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_924(TestMessage0 message)
+        protected static Task OnTestMessage0_924(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage925(TestMessage925 message)
+        protected static Task OnTestMessage925(TestMessage925 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_925(TestMessage0 message)
+        protected static Task OnTestMessage0_925(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage926(TestMessage926 message)
+        protected static Task OnTestMessage926(TestMessage926 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_926(TestMessage0 message)
+        protected static Task OnTestMessage0_926(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage927(TestMessage927 message)
+        protected static Task OnTestMessage927(TestMessage927 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_927(TestMessage0 message)
+        protected static Task OnTestMessage0_927(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage928(TestMessage928 message)
+        protected static Task OnTestMessage928(TestMessage928 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_928(TestMessage0 message)
+        protected static Task OnTestMessage0_928(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage929(TestMessage929 message)
+        protected static Task OnTestMessage929(TestMessage929 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_929(TestMessage0 message)
+        protected static Task OnTestMessage0_929(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage930(TestMessage930 message)
+        protected static Task OnTestMessage930(TestMessage930 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_930(TestMessage0 message)
+        protected static Task OnTestMessage0_930(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage931(TestMessage931 message)
+        protected static Task OnTestMessage931(TestMessage931 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_931(TestMessage0 message)
+        protected static Task OnTestMessage0_931(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage932(TestMessage932 message)
+        protected static Task OnTestMessage932(TestMessage932 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_932(TestMessage0 message)
+        protected static Task OnTestMessage0_932(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage933(TestMessage933 message)
+        protected static Task OnTestMessage933(TestMessage933 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_933(TestMessage0 message)
+        protected static Task OnTestMessage0_933(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage934(TestMessage934 message)
+        protected static Task OnTestMessage934(TestMessage934 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_934(TestMessage0 message)
+        protected static Task OnTestMessage0_934(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage935(TestMessage935 message)
+        protected static Task OnTestMessage935(TestMessage935 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_935(TestMessage0 message)
+        protected static Task OnTestMessage0_935(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage936(TestMessage936 message)
+        protected static Task OnTestMessage936(TestMessage936 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_936(TestMessage0 message)
+        protected static Task OnTestMessage0_936(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage937(TestMessage937 message)
+        protected static Task OnTestMessage937(TestMessage937 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_937(TestMessage0 message)
+        protected static Task OnTestMessage0_937(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage938(TestMessage938 message)
+        protected static Task OnTestMessage938(TestMessage938 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_938(TestMessage0 message)
+        protected static Task OnTestMessage0_938(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage939(TestMessage939 message)
+        protected static Task OnTestMessage939(TestMessage939 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_939(TestMessage0 message)
+        protected static Task OnTestMessage0_939(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage940(TestMessage940 message)
+        protected static Task OnTestMessage940(TestMessage940 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_940(TestMessage0 message)
+        protected static Task OnTestMessage0_940(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage941(TestMessage941 message)
+        protected static Task OnTestMessage941(TestMessage941 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_941(TestMessage0 message)
+        protected static Task OnTestMessage0_941(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage942(TestMessage942 message)
+        protected static Task OnTestMessage942(TestMessage942 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_942(TestMessage0 message)
+        protected static Task OnTestMessage0_942(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage943(TestMessage943 message)
+        protected static Task OnTestMessage943(TestMessage943 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_943(TestMessage0 message)
+        protected static Task OnTestMessage0_943(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage944(TestMessage944 message)
+        protected static Task OnTestMessage944(TestMessage944 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_944(TestMessage0 message)
+        protected static Task OnTestMessage0_944(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage945(TestMessage945 message)
+        protected static Task OnTestMessage945(TestMessage945 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_945(TestMessage0 message)
+        protected static Task OnTestMessage0_945(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage946(TestMessage946 message)
+        protected static Task OnTestMessage946(TestMessage946 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_946(TestMessage0 message)
+        protected static Task OnTestMessage0_946(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage947(TestMessage947 message)
+        protected static Task OnTestMessage947(TestMessage947 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_947(TestMessage0 message)
+        protected static Task OnTestMessage0_947(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage948(TestMessage948 message)
+        protected static Task OnTestMessage948(TestMessage948 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_948(TestMessage0 message)
+        protected static Task OnTestMessage0_948(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage949(TestMessage949 message)
+        protected static Task OnTestMessage949(TestMessage949 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_949(TestMessage0 message)
+        protected static Task OnTestMessage0_949(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage950(TestMessage950 message)
+        protected static Task OnTestMessage950(TestMessage950 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_950(TestMessage0 message)
+        protected static Task OnTestMessage0_950(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage951(TestMessage951 message)
+        protected static Task OnTestMessage951(TestMessage951 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_951(TestMessage0 message)
+        protected static Task OnTestMessage0_951(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage952(TestMessage952 message)
+        protected static Task OnTestMessage952(TestMessage952 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_952(TestMessage0 message)
+        protected static Task OnTestMessage0_952(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage953(TestMessage953 message)
+        protected static Task OnTestMessage953(TestMessage953 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_953(TestMessage0 message)
+        protected static Task OnTestMessage0_953(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage954(TestMessage954 message)
+        protected static Task OnTestMessage954(TestMessage954 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_954(TestMessage0 message)
+        protected static Task OnTestMessage0_954(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage955(TestMessage955 message)
+        protected static Task OnTestMessage955(TestMessage955 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_955(TestMessage0 message)
+        protected static Task OnTestMessage0_955(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage956(TestMessage956 message)
+        protected static Task OnTestMessage956(TestMessage956 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_956(TestMessage0 message)
+        protected static Task OnTestMessage0_956(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage957(TestMessage957 message)
+        protected static Task OnTestMessage957(TestMessage957 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_957(TestMessage0 message)
+        protected static Task OnTestMessage0_957(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage958(TestMessage958 message)
+        protected static Task OnTestMessage958(TestMessage958 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_958(TestMessage0 message)
+        protected static Task OnTestMessage0_958(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage959(TestMessage959 message)
+        protected static Task OnTestMessage959(TestMessage959 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_959(TestMessage0 message)
+        protected static Task OnTestMessage0_959(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage960(TestMessage960 message)
+        protected static Task OnTestMessage960(TestMessage960 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_960(TestMessage0 message)
+        protected static Task OnTestMessage0_960(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage961(TestMessage961 message)
+        protected static Task OnTestMessage961(TestMessage961 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_961(TestMessage0 message)
+        protected static Task OnTestMessage0_961(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage962(TestMessage962 message)
+        protected static Task OnTestMessage962(TestMessage962 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_962(TestMessage0 message)
+        protected static Task OnTestMessage0_962(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage963(TestMessage963 message)
+        protected static Task OnTestMessage963(TestMessage963 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_963(TestMessage0 message)
+        protected static Task OnTestMessage0_963(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage964(TestMessage964 message)
+        protected static Task OnTestMessage964(TestMessage964 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_964(TestMessage0 message)
+        protected static Task OnTestMessage0_964(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage965(TestMessage965 message)
+        protected static Task OnTestMessage965(TestMessage965 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_965(TestMessage0 message)
+        protected static Task OnTestMessage0_965(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage966(TestMessage966 message)
+        protected static Task OnTestMessage966(TestMessage966 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_966(TestMessage0 message)
+        protected static Task OnTestMessage0_966(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage967(TestMessage967 message)
+        protected static Task OnTestMessage967(TestMessage967 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_967(TestMessage0 message)
+        protected static Task OnTestMessage0_967(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage968(TestMessage968 message)
+        protected static Task OnTestMessage968(TestMessage968 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_968(TestMessage0 message)
+        protected static Task OnTestMessage0_968(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage969(TestMessage969 message)
+        protected static Task OnTestMessage969(TestMessage969 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_969(TestMessage0 message)
+        protected static Task OnTestMessage0_969(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage970(TestMessage970 message)
+        protected static Task OnTestMessage970(TestMessage970 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_970(TestMessage0 message)
+        protected static Task OnTestMessage0_970(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage971(TestMessage971 message)
+        protected static Task OnTestMessage971(TestMessage971 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_971(TestMessage0 message)
+        protected static Task OnTestMessage0_971(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage972(TestMessage972 message)
+        protected static Task OnTestMessage972(TestMessage972 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_972(TestMessage0 message)
+        protected static Task OnTestMessage0_972(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage973(TestMessage973 message)
+        protected static Task OnTestMessage973(TestMessage973 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_973(TestMessage0 message)
+        protected static Task OnTestMessage0_973(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage974(TestMessage974 message)
+        protected static Task OnTestMessage974(TestMessage974 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_974(TestMessage0 message)
+        protected static Task OnTestMessage0_974(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage975(TestMessage975 message)
+        protected static Task OnTestMessage975(TestMessage975 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_975(TestMessage0 message)
+        protected static Task OnTestMessage0_975(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage976(TestMessage976 message)
+        protected static Task OnTestMessage976(TestMessage976 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_976(TestMessage0 message)
+        protected static Task OnTestMessage0_976(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage977(TestMessage977 message)
+        protected static Task OnTestMessage977(TestMessage977 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_977(TestMessage0 message)
+        protected static Task OnTestMessage0_977(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage978(TestMessage978 message)
+        protected static Task OnTestMessage978(TestMessage978 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_978(TestMessage0 message)
+        protected static Task OnTestMessage0_978(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage979(TestMessage979 message)
+        protected static Task OnTestMessage979(TestMessage979 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_979(TestMessage0 message)
+        protected static Task OnTestMessage0_979(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage980(TestMessage980 message)
+        protected static Task OnTestMessage980(TestMessage980 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_980(TestMessage0 message)
+        protected static Task OnTestMessage0_980(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage981(TestMessage981 message)
+        protected static Task OnTestMessage981(TestMessage981 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_981(TestMessage0 message)
+        protected static Task OnTestMessage0_981(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage982(TestMessage982 message)
+        protected static Task OnTestMessage982(TestMessage982 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_982(TestMessage0 message)
+        protected static Task OnTestMessage0_982(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage983(TestMessage983 message)
+        protected static Task OnTestMessage983(TestMessage983 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_983(TestMessage0 message)
+        protected static Task OnTestMessage0_983(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage984(TestMessage984 message)
+        protected static Task OnTestMessage984(TestMessage984 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_984(TestMessage0 message)
+        protected static Task OnTestMessage0_984(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage985(TestMessage985 message)
+        protected static Task OnTestMessage985(TestMessage985 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_985(TestMessage0 message)
+        protected static Task OnTestMessage0_985(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage986(TestMessage986 message)
+        protected static Task OnTestMessage986(TestMessage986 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_986(TestMessage0 message)
+        protected static Task OnTestMessage0_986(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage987(TestMessage987 message)
+        protected static Task OnTestMessage987(TestMessage987 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_987(TestMessage0 message)
+        protected static Task OnTestMessage0_987(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage988(TestMessage988 message)
+        protected static Task OnTestMessage988(TestMessage988 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_988(TestMessage0 message)
+        protected static Task OnTestMessage0_988(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage989(TestMessage989 message)
+        protected static Task OnTestMessage989(TestMessage989 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_989(TestMessage0 message)
+        protected static Task OnTestMessage0_989(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage990(TestMessage990 message)
+        protected static Task OnTestMessage990(TestMessage990 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_990(TestMessage0 message)
+        protected static Task OnTestMessage0_990(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage991(TestMessage991 message)
+        protected static Task OnTestMessage991(TestMessage991 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_991(TestMessage0 message)
+        protected static Task OnTestMessage0_991(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage992(TestMessage992 message)
+        protected static Task OnTestMessage992(TestMessage992 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_992(TestMessage0 message)
+        protected static Task OnTestMessage0_992(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage993(TestMessage993 message)
+        protected static Task OnTestMessage993(TestMessage993 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_993(TestMessage0 message)
+        protected static Task OnTestMessage0_993(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage994(TestMessage994 message)
+        protected static Task OnTestMessage994(TestMessage994 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_994(TestMessage0 message)
+        protected static Task OnTestMessage0_994(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage995(TestMessage995 message)
+        protected static Task OnTestMessage995(TestMessage995 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_995(TestMessage0 message)
+        protected static Task OnTestMessage0_995(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage996(TestMessage996 message)
+        protected static Task OnTestMessage996(TestMessage996 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_996(TestMessage0 message)
+        protected static Task OnTestMessage0_996(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage997(TestMessage997 message)
+        protected static Task OnTestMessage997(TestMessage997 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_997(TestMessage0 message)
+        protected static Task OnTestMessage0_997(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage998(TestMessage998 message)
+        protected static Task OnTestMessage998(TestMessage998 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_998(TestMessage0 message)
+        protected static Task OnTestMessage0_998(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage999(TestMessage999 message)
+        protected static Task OnTestMessage999(TestMessage999 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;
         }
-        protected Task OnTestMessage0_999(TestMessage0 message)
+        protected static Task OnTestMessage0_999(TestMessage0 message)
         {
             message.IntProperty++;
             return Task.CompletedTask;

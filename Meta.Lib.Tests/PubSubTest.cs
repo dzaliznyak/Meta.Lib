@@ -3,7 +3,6 @@ using Meta.Lib.Exceptions;
 using Meta.Lib.Modules.PubSub;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -70,7 +69,7 @@ namespace Meta.Lib.Tests
         [TestMethod]
         public async Task SubscribeNonGeneric()
         {
-            Task Handler(object obj)
+            static Task Handler(object obj)
             {
                 var message = (MyMessage)obj;
                 message.DeliveredCount++;
@@ -185,7 +184,7 @@ namespace Meta.Lib.Tests
 
             var res = await hub.When<MyEvent>(100);
 
-            Assert.IsTrue(res is MyEvent);
+            Assert.IsTrue(res is not null);
         }
 
         [TestMethod]
@@ -250,7 +249,7 @@ namespace Meta.Lib.Tests
             hub.Subscribe<MyMessage>(Handler);
 
             var res = await hub.Process<MyMessage, MyEvent>(new MyMessage(), responseTimeoutMs: 2000);
-            Assert.IsTrue(res is MyEvent);
+            Assert.IsTrue(res is not null);
         }
 
         [TestMethod]

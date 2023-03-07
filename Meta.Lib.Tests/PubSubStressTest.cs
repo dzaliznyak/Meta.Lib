@@ -59,7 +59,7 @@ namespace Meta.Lib.Tests
         {
             var hub = new MetaPubSub();
 
-            Task Handler(MyMessage x)
+            static Task Handler(MyMessage x)
             {
                 x.DeliveredCount++;
                 return Task.CompletedTask;
@@ -84,11 +84,11 @@ namespace Meta.Lib.Tests
                 for (int i = 0; i < 10000; i++)
                 {
                     hub.Subscribe<MyMessage>(Handler);
-                    
+
                     var message = new MyMessage();
                     hub.Publish(message);
                     Assert.IsTrue(message.DeliveredCount <= 1);
-                    
+
                     hub.Unsubscribe<MyMessage>(Handler);
                 }
             });

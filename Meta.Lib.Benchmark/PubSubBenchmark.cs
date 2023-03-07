@@ -1,5 +1,4 @@
 ﻿using BenchmarkDotNet.Attributes;
-using Meta.Lib.Modules.PubSub;
 using Meta.Lib.Test;
 
 namespace Meta.Lib.Benchmark
