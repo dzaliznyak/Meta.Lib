@@ -8,7 +8,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/dzaliznyak/Meta.Lib</PackageProjectUrl>
     <PackageLicenseFile></PackageLicenseFile>
-    <Copyright>Copyright © 2023 Denys Zaliznyak</Copyright>
+    <Copyright>Copyright © 2025 Denys Zaliznyak</Copyright>
     <Authors>Denys Zaliznyak</Authors>
     <RepositoryUrl>https://github.com/dzaliznyak/Meta.Lib.git</RepositoryUrl>
     <Description>A set of classes and modules for .Net development including MetaPubSub - a Publish-Subscribe pattern implementation with an interprocess communication channel</Description>
@@ -21,13 +21,13 @@
     <PackageTags>publish-subscribe utility csharp event-driven event-hub publisher-subscriber library pubsub IPC named-pipe RPC interprocess state-machine</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<Version>2.0.0-beta</Version>
+	<Version>2.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-    <PackageReference Include="System.Collections.Immutable" Version="7.0.0" />
-    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="9.0.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.0" />
 	<None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
