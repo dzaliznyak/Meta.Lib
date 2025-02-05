@@ -1,70 +1,88 @@
-﻿Meta.Lib
-========================
+﻿# Meta.Lib
 
-`MetaPubSub` is an implementation of the publish/subscribe pattern - when the publisher and subscriber know nothing of each other but can exchange messages. It's fast, lightweight and beside basic functionality has some cool features:
+`MetaPubSub` is an implementation of the publish/subscribe pattern, enabling message exchange between publishers and subscribers without direct dependencies. It is fast, lightweight, and offers several advanced features:
 
-- interprocess communication - messages can be sent between different processes and computers
-- awaitable methods, for example, you can await `Publish` and wait until all subscribers have finished processing the message 
-- at least once delivery check - you can opt in to have an exception if no one subscribed to your message
-- message filtering - you can define a predicate to subscribe only those messages you want to process
-- timeout to wait for a subscriber - your message can be queued and wait until someone subscribed and processed it
-- scheduling a message - your message can be queued and published after a time delay
-- request-response pattern - send a message and wait for the response as a single awaitable method, without need to `Subscribe/Unsubscribe` to the response message
-- cancellation token support - you can cancel scheduling or waiting for the message
-- exceptions handling - all exceptions raised when a message processing by subscribers can be caught by the publisher as an `AggregateException`
+- **Interprocess communication** – Messages can be sent between different processes and computers.
+- **Awaitable methods** – You can `await Publish` and wait until all subscribers have processed the message.
+- **At-least-once delivery check** – Optionally, throw an exception if no subscribers receive the message.
+- **Message filtering** – Subscribe only to specific messages using a predicate.
+- **Subscriber wait timeout** – Messages can be queued until a subscriber processes them.
+- **Scheduled messages** – Messages can be queued and published after a delay.
+- **Request-response pattern** – Send a message and wait for a response in a single awaitable method without needing to `Subscribe/Unsubscribe`.
+- **Cancellation token support** – Cancel scheduled messages or waiting for a response.
+- **Exception handling** – Exceptions raised during message processing can be caught by the publisher as an `AggregateException`.
 
+### `MetaPipeServer` and `MetaPipeConnection`
 
-`MetaPipeServer` and `MetaPipeConnection` are used to simplify inter-process communication using named pipes. The module utilizes `NamedPipeServerStream` and `NamedPipeClientStream` for message transmission. `System.Text.Json` is used for object serialization before sending. The main features of the module include:
+These components simplify interprocess communication using named pipes. They leverage `NamedPipeServerStream` and `NamedPipeClientStream` for message transmission, with `System.Text.Json` for object serialization. Features include:
 
-- automatic connection recovery in case of disconnection
-- transmission of strings, byte arrays, and arbitrary objects
-- sending an arbitrary object and waiting for the response in a single method call.
+- **Automatic connection recovery** in case of disconnection.
+- **Support for multiple data types**, including strings, byte arrays, and objects.
+- **Synchronous request-response support** – Send an object and wait for a response in a single method call.
 
-`PubSubPipe` extends the capabilities of the `MetaPubSub` module by adding the ability to exchange messages between processes or computers.
+### `PubSubPipe`
 
-`StateMachine` is a simple and easy to use state machine implementation. It is thread-safe and can be used in a concurrent environment. See the implementation of the `MetaPipeConnection` class for an example of usage.
+`PubSubPipe` extends `MetaPubSub`, enabling message exchange between processes or computers.
 
-# NuGet packages
+### `StateMachine`
 
-To install the [Meta.Lib](https://www.nuget.org/packages/Meta.Lib/) run the following command:
-```Powershell
-PM> Install-Package Meta.Lib 
+A simple, thread-safe state machine implementation suitable for concurrent environments. See `MetaPipeConnection` for a usage example.
+
+## NuGet Package
+
+To install [Meta.Lib](https://www.nuget.org/packages/Meta.Lib/), run:
+
+```powershell
+PM> Install-Package Meta.Lib
 ```
 
-# [How to use](https://github.com/dzaliznyak/Meta.Lib/wiki/HowTo)
+## [How to Use](https://github.com/dzaliznyak/Meta.Lib/wiki/HowTo)
 
-# [FAQ](https://github.com/dzaliznyak/Meta.Lib/wiki/FAQ)
+## [FAQ](https://github.com/dzaliznyak/Meta.Lib/wiki/FAQ)
 
-# Changelog
+---
 
-## Ver. 2.0.0
+## Changelog
 
-Note: this version has breaking changes. See [migration guide](https://github.com/dzaliznyak/Meta.Lib/wiki/MigrationTo20).
+### Version 2.0.2
 
-- MetaPubSub has been separated into three modules - local `PubSub`, `Pipe`, and `PubSubPipe`. `PubSub` – is a local publisher/subscriber implementation. `Pipe` – is a wrapper on `NamedPipeServerStream` and `NamedPipeClientStream` to simplify interprocess communication. `PubSubPipe` – is a wrapper on both `PubSub` and `Pipe` which adds interprocess communication ability for `PubSub` via `Pipe`.
+- Added MetaPubSub property to IPubSubPipeClient.
+- Added Connected and Disconnected events.
+
+### Version 2.0.1
+
+- Updated packages to .Net 9.
+
+### Version 2.0.0
+
+**Breaking changes** – See the [migration guide](https://github.com/dzaliznyak/Meta.Lib/wiki/MigrationTo20).
+
+- `MetaPubSub` has been split into three modules:
+  - `PubSub` – Local publish/subscribe implementation.
+  - `Pipe` – Wrapper for `NamedPipeServerStream` and `NamedPipeClientStream` to simplify interprocess communication.
+  - `PubSubPipe` – Combines `PubSub` and `Pipe` to enable interprocess communication for `PubSub`.
 - Added `ConcurrentStateMachine`.
-- Custom `Logger` implementation replaced with `ILogger` from the `Microsoft.Extensions.Logging` namespace.
-- Removed `IPubSubMessage` interface. You don't need to derive your message classes from this interface anymore.
+- Replaced custom `Logger` with `ILogger` from `Microsoft.Extensions.Logging`.
+- Removed `IPubSubMessage` interface (messages no longer need to implement it).
 - Performance improvements.
 
-## Ver. 1.1.3
+### Version 1.1.3
 
-Note: this version has breaking changes.
+**Breaking changes:**
 
-- `IPubSubMessage.Timeout` renamed to `WaitForSubscriberTimeout`.
-- Added `IPubSubMessage.ResponseTimeout` - Time interval during which the response message must be received otherwise the `TimeoutException` will be thrown. Used in `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()`.
-- Removed parameter `millisecondsTimeout` from `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()`. Use `IPubSubMessage.ResponseTimeout` instead.
-- Fixed bug: timeout in `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()` always use it's default value of 5 sec.
+- Renamed `IPubSubMessage.Timeout` to `WaitForSubscriberTimeout`.
+- Added `IPubSubMessage.ResponseTimeout` – Defines the time interval to receive a response before throwing a `TimeoutException`. Used in `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()`.
+- Removed `millisecondsTimeout` from `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()`. Use `IPubSubMessage.ResponseTimeout` instead.
+- Fixed bug where `IMetaPubSub.Process()` and `IMetaPubSub.ProcessOnServer()` always used the default timeout of 5 seconds.
 
+### Version 1.1.2
 
-## Ver. 1.1.2
+- Added `TryConnectToServer` and `TrySubscribeOnServer`.
+- Added a match predicate to `SubscribeOnServer`.
+- Introduced built-in `Connected/Disconnected` messages.
+- Added a delegate method for creating pipes with custom parameters.
 
-- Added `TryConnectToServer` & `TrySubscribeOnServer`.
-- Added a match predicate to `SubscribeOnServer` method.
-- Added `Connected/Disconnected` built-in messages.
-- Added a delegate method to create a pipe with non-default parameters.
+### Version 1.1.1
 
+- Implemented interprocess communication.
 
-## Ver. 1.1.1
-
-- Interprocess communication implemented.
