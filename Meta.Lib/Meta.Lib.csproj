@@ -12,16 +12,13 @@
     <Authors>Denys Zaliznyak</Authors>
     <RepositoryUrl>https://github.com/dzaliznyak/Meta.Lib.git</RepositoryUrl>
     <Description>A set of classes and modules for .Net development including MetaPubSub - a Publish-Subscribe pattern implementation with an interprocess communication channel</Description>
-    <PackageReleaseNotes>- MetaPubSub has been separated into three modules - local `PubSub`, `Pipe`, and `PubSubPipe`. `PubSub` – is a local publisher/subscriber implementation. `Pipe` – is a wrapper on `NamedPipeServerStream` and `NamedPipeClientStream` to simplify interprocess communication. `PubSubPipe` – is a wrapper on both `PubSub` and `Pipe` which adds interprocess communication ability for `PubSub` via `Pipe`.
-- Added `ConcurrentStateMachine`.
-- Custom `Logger` implementation replaced with `ILogger` from the `Microsoft.Extensions.Logging` namespace.
-- Removed `IPubSubMessage` interface. You don't need to derive your message classes from this interface anymore.
-- Performance improvements.
+    <PackageReleaseNotes>- Added MetaPubSub property to the IPubSubPipeClient;
+- Added Connected and Disconnected events to the IPubSubPipeClient;
 </PackageReleaseNotes>
     <PackageTags>publish-subscribe utility csharp event-driven event-hub publisher-subscriber library pubsub IPC named-pipe RPC interprocess state-machine</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<Version>2.0.1</Version>
+	<Version>2.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

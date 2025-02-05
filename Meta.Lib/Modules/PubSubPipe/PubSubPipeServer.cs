@@ -1,8 +1,10 @@
-﻿using Meta.Lib.Modules.Pipe;
+﻿using Meta.Lib.Messages;
+using Meta.Lib.Modules.Pipe;
 using Meta.Lib.Modules.PubSub;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.IO.Pipes;
 
 namespace Meta.Lib.Modules.PubSubPipe
@@ -53,6 +55,15 @@ namespace Meta.Lib.Modules.PubSubPipe
             if (_connections.TryAdd(e.Connection, connection))
             {
                 e.Connection.Disconnected += PipeConnection_Disconnected;
+
+                //try
+                //{
+                //    _pubSub.Publish(new RemoteClientConnectedEvent());
+                //}
+                //catch (Exception ex)
+                //{
+                //    Debug.WriteLine(ex);
+                //}
             }
         }
 

@@ -19,9 +19,13 @@ namespace Meta.Lib.Modules.PubSubPipe
         readonly SemaphoreSlim _subscribeLock = new SemaphoreSlim(1, 1);
         readonly ManualResetEvent _reconnectEvent = new ManualResetEvent(false);
 
+        public event EventHandler Connected;
+        public event EventHandler Disconnected;
+
         readonly ReferenceCountedCollection<Type> _subscribedTypes = new ReferenceCountedCollection<Type>();
 
         public bool IsConnected => _pipe.IsConnected;
+        public IMetaPubSub MetaPubSub => _pubSub;
 
         public PubSubPipeClient(
             string pipeName,
@@ -54,12 +58,38 @@ namespace Meta.Lib.Modules.PubSubPipe
             {
                 await ResubscribeAllMessages();
                 _reconnectEvent.Set();
+                OnConnected(EventArgs.Empty);
             });
         }
 
         void Pipe_Disconnected(object sender, EventArgs e)
         {
             _reconnectEvent.Reset();
+            OnDisconnected(EventArgs.Empty);
+        }
+
+        protected virtual void OnConnected(EventArgs e)
+        {
+            try
+            {
+                Connected?.Invoke(this, e);
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex, "Error in Connected event handler");
+            }
+        }
+
+        protected virtual void OnDisconnected(EventArgs e)
+        {
+            try
+            {
+                Disconnected?.Invoke(this, e);
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex, "Error in Disconnected event handler");
+            }
         }
 
         void Pipe_MessageReceived(object sender, PipeMessageEventArgs e)

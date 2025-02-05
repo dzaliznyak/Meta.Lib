@@ -6,8 +6,8 @@ namespace Meta.Lib.Examples
     {
         static void Main(string[] args)
         {
-            var examples = new PubSubExample();
-            examples.RunAllExamples();
+            //var examples = new PubSubExample();
+            //examples.RunAllExamples();
 
             var remote = new PubSubPipeExample();
             remote.RunAllExamples();

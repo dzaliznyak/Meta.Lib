@@ -1,4 +1,5 @@
 ﻿using Meta.Lib.Modules.PubSub;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,6 +11,10 @@ namespace Meta.Lib.Modules.PubSubPipe
     public interface IPubSubPipeClient
     {
         bool IsConnected { get; }
+        IMetaPubSub MetaPubSub { get; }
+
+        event EventHandler Connected;
+        event EventHandler Disconnected;
 
         /// <summary>
         /// Connect to a server pipe.
